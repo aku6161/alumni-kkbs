@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SystemConfig } from '../types';
-import { Settings, Database, MessageSquare, Facebook, Music, Lock, Save, CheckCircle2, RefreshCw, ShieldCheck } from 'lucide-react';
+import { Settings, Database, MessageSquare, Facebook, Music, Lock, Save, CheckCircle2, RefreshCw, ShieldCheck, HardDrive, Calendar, Clock, ExternalLink, FileJson, Trash2 } from 'lucide-react';
 
 interface SettingsPanelProps {
   config: SystemConfig;
@@ -153,7 +153,59 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         </div>
       )}
 
-      {/* 2. Association Branding Variables Form */}
+      {/* 2. Google Drive Cloud-to-Cloud Backup Card */}
+      {userRole === 'admin' && (
+        <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-2xs space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 text-indigo-950">
+              <HardDrive className="w-5 h-5 shrink-0 text-indigo-600" />
+              <h3 className="text-sm font-extrabold uppercase tracking-wider">Sandaran Awan (Google Drive Cloud-to-Cloud)</h3>
+            </div>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-[10px] font-bold">
+              <Clock className="w-3.5 h-3.5 text-indigo-500" /> Setiap Ahad 2:00 AM
+            </span>
+          </div>
+
+          <p className="text-xs text-slate-500 leading-relaxed">
+            Data Firestore disandarkan secara cloud-to-cloud ke Google Drive secara automatik. Hanya data <strong>2 minggu terkini</strong> (14 hari) disimpan, dan fail lama dibersihkan secara automatik.
+          </p>
+
+          <div className="bg-indigo-50/50 p-4 rounded-xl border border-indigo-100 text-xs space-y-2.5">
+            <div className="flex justify-between items-center text-slate-700">
+              <span className="font-semibold flex items-center gap-1.5">
+                <Calendar className="w-4 h-4 text-indigo-500" /> Jadual Sandaran:
+              </span>
+              <span className="font-bold text-indigo-900">Setiap Hari Ahad, Jam 2:00 Pagi</span>
+            </div>
+            <div className="flex justify-between items-center text-slate-700">
+              <span className="font-semibold flex items-center gap-1.5">
+                <Trash2 className="w-4 h-4 text-amber-600" /> Dasar Pengekalan (Retention):
+              </span>
+              <span className="font-bold text-amber-900">14 Hari (Auto-padam fail &gt; 2 minggu)</span>
+            </div>
+            <div className="flex justify-between items-center text-slate-700">
+              <span className="font-semibold flex items-center gap-1.5">
+                <FileJson className="w-4 h-4 text-blue-500" /> Format Fail:
+              </span>
+              <span className="font-mono text-slate-800">.JSON (Penuh) + .CSV (Ringkasan Ahli)</span>
+            </div>
+          </div>
+
+          <div className="pt-2 flex justify-between items-center">
+            <a
+              href="https://drive.google.com/drive/folders/1wGTh5vxZePNzv0hq2e51jkxuSXYVVear?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-xs transition-colors cursor-pointer"
+            >
+              <span>Buka Folder Google Drive Sandaran</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* 3. Association Branding Variables Form */}
       {userRole === 'admin' && (
         <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-2xs space-y-4">
           <div className="flex justify-between items-center pb-2 border-b border-slate-50">
