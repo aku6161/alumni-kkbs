@@ -12,8 +12,10 @@
  * PANDUAN PENYEDIAAN:
  * 1. Buka https://script.google.com/ dan cipta projek baharu bernama "Alumni KKBS Firestore Backup".
  * 2. Salin dan tampal keseluruhan kod ini ke dalam fail Code.gs.
- * 3. Jalankan fungsi "setupWeeklySunday2AMTrigger" sekali sahaja untuk mengaktifkan jadual automatik.
- * 4. Berikan kebenaran (Authorization) Google Drive & External API apabila diminta.
+ * 3. Di Apps Script, buka Project Settings -> tandakan "Show 'appsscript.json' manifest file in editor".
+ * 4. Tambahkan skop OAuth dalam appsscript.json (lihat panduan di bawah).
+ * 5. Jalankan fungsi "backupFirestoreToDrive" untuk menguji sandaran serta-merta.
+ * 6. Jalankan fungsi "setupWeeklySunday2AMTrigger" sekali untuk mengaktifkan jadual automatik setiap Ahad 2:00 AM.
  * ==============================================================================
  */
 
@@ -54,7 +56,7 @@ function backupFirestoreToDrive() {
       data: {}
     };
 
-    // 1. Tarik setiap koleksi daripada Firestore REST API
+    // 1. Tarik setiap koleksi daripada Firestore REST API dengan OAuth Bearer token
     CONFIG.COLLECTIONS.forEach(collectionName => {
       Logger.log(`Menarik data dari koleksi: ${collectionName}...`);
       const docs = getFirestoreDocuments(CONFIG.FIREBASE_PROJECT_ID, collectionName);
@@ -70,7 +72,7 @@ function backupFirestoreToDrive() {
     
     const backupFile = folder.createFile(fileName, jsonContent, MimeType.PLAIN_TEXT);
     backupFile.setDescription(`Sandaran automatik pangkalan data Firestore Alumni KKBS (icamp-aa9e4) pada ${backupData.backupLocalTime}`);
-    Logger.log(`✓ Fail sandaran berjaya dicipta: ${fileName} (ID: ${backupFile.getId()})`);
+    Logger.log(`✓ Fail sandaran JSON berjaya dicipta: ${fileName} (ID: ${backupFile.getId()})`);
 
     // 3. Hasilkan juga salinan CSV untuk alumni-members bagi semakan mudah dalam Spreadsheet
     if (backupData.data['alumni-members'] && backupData.data['alumni-members'].length > 0) {
@@ -105,12 +107,20 @@ function backupFirestoreToDrive() {
 }
 
 /**
- * Mengambil semua dokumen daripada satu koleksi Firestore REST API (dengan sokongan pagination)
+ * Mengambil semua dokumen daripada satu koleksi Firestore REST API (dengan sokongan pagination & OAuth)
  */
 function getFirestoreDocuments(projectId, collectionName) {
   let documents = [];
   let pageToken = '';
   const baseUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/${collectionName}`;
+
+  // Dapatkan OAuth Token Google Cloud untuk mengelakkan isu Security Rules
+  let authToken = '';
+  try {
+    authToken = ScriptApp.getOAuthToken();
+  } catch (e) {
+    Logger.log('Nota: Tiada OAuth token diambil, mencuba sambungan tanpa token.');
+  }
 
   do {
     let url = `${baseUrl}?pageSize=300`;
@@ -118,8 +128,14 @@ function getFirestoreDocuments(projectId, collectionName) {
       url += `&pageToken=${encodeURIComponent(pageToken)}`;
     }
 
+    const headers = {};
+    if (authToken) {
+      headers['Authorization'] = 'Bearer ' + authToken;
+    }
+
     const options = {
       method: 'GET',
+      headers: headers,
       muteHttpExceptions: true
     };
 
