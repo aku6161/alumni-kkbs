@@ -66,6 +66,116 @@ export const INITIAL_PROGRAMS_LIST: Program[] = [
     implikasiKewangan: 'RM 600.00',
     sasaranPeserta: 'Alumni & Pelajar Semester Akhir',
     bilanganPeserta: 80
+  },
+  {
+    id: 'PROG-3',
+    namaProgram: 'Mesyuarat Agung Tahunan (AGM) Persatuan Alumni KKBS Kali Ke-5',
+    tarikhProgram: '15 Mac 2026',
+    masaProgram: '8:30 Pagi - 12:30 Tengah Hari',
+    tempatProgram: 'Dewan Kuliah Utama KKBS',
+    kerjasama: 'Pengurusan KKBS',
+    implikasiKewangan: 'RM 800.00',
+    sasaranPeserta: 'Semua Ahli Berdaftar',
+    bilanganPeserta: 120
+  },
+  {
+    id: 'PROG-4',
+    namaProgram: 'Program Iftar Perdana & Santunan Kasih Ramadan Alumni KKBS',
+    tarikhProgram: '28 Mac 2026',
+    masaProgram: '5:30 Petang - 9:00 Malam',
+    tempatProgram: 'Dewan Serbaguna KKBS',
+    kerjasama: 'Surau An-Nur KKBS & Jawatankuasa Kebajikan',
+    implikasiKewangan: 'RM 1,500.00',
+    sasaranPeserta: 'Ahli Alumni, Pelajar & Asnaf',
+    bilanganPeserta: 150
+  },
+  {
+    id: 'PROG-5',
+    namaProgram: 'Karnival Sukaneka & Kejohanan Futsal Tertutup Alumni KKBS',
+    tarikhProgram: '10 Mei 2026',
+    masaProgram: '8:00 Pagi - 5:00 Petang',
+    tempatProgram: 'Gelanggang Futsal Kompleks Sukan Beaufort',
+    kerjasama: 'Kelab Sukan KKBS',
+    implikasiKewangan: 'RM 1,200.00',
+    sasaranPeserta: 'Ahli Alumni Mengikut Sijil/Kohort',
+    bilanganPeserta: 90
+  },
+  {
+    id: 'PROG-6',
+    namaProgram: 'Kursus Pensijilan & Peningkatan Kemahiran Elektrik (Wireman PW2/PW4)',
+    tarikhProgram: '14 Jun 2026',
+    masaProgram: '9:00 Pagi - 4:00 Petang',
+    tempatProgram: 'Bengkel Teknologi Elektrik KKBS',
+    kerjasama: 'Suruhanjaya Tenaga (ST) & Unit Elektrik KKBS',
+    implikasiKewangan: 'RM 750.00',
+    sasaranPeserta: 'Lulusan Sijil Pemasangan / Teknologi Elektrik',
+    bilanganPeserta: 35
+  },
+  {
+    id: 'PROG-7',
+    namaProgram: 'Bengkel Kemahiran Kulinari & Pastri Komersial Alumni',
+    tarikhProgram: '18 Julai 2026',
+    masaProgram: '8:30 Pagi - 3:30 Petang',
+    tempatProgram: 'Dapur Latihan Kulinari KKBS',
+    kerjasama: 'Persatuan Chef Sabah',
+    implikasiKewangan: 'RM 950.00',
+    sasaranPeserta: 'Lulusan Sijil Kulinari & Pengusaha Bakeri Alumni',
+    bilanganPeserta: 30
+  },
+  {
+    id: 'PROG-8',
+    namaProgram: 'Program Khidmat Komuniti & CSR "Alumni Prihatin" Beaufort',
+    tarikhProgram: '22 Ogos 2026',
+    masaProgram: '8:00 Pagi - 2:00 Petang',
+    tempatProgram: 'Kampung Weston / Lumadan, Beaufort',
+    kerjasama: 'JKKK Kampung & Pusat Khidmat Parlimen Beaufort',
+    implikasiKewangan: 'RM 1,000.00',
+    sasaranPeserta: 'Sukarelawan Alumni KKBS',
+    bilanganPeserta: 50
+  },
+  {
+    id: 'PROG-9',
+    namaProgram: 'Sambutan Hari Kebangsaan & Konvoi Kembara Merdeka Alumni KKBS',
+    tarikhProgram: '30 Ogos 2026',
+    masaProgram: '7:30 Pagi - 1:00 Tengah Hari',
+    tempatProgram: 'Dataran Bagandang Beaufort',
+    kerjasama: 'Kelab Permotoran Alumni & PDRM Beaufort',
+    implikasiKewangan: 'RM 500.00',
+    sasaranPeserta: 'Semua Ahli Alumni KKBS',
+    bilanganPeserta: 60
+  },
+  {
+    id: 'PROG-10',
+    namaProgram: 'Forum Bicara Alumni & Perkongsian Industri (Graduan Maju)',
+    tarikhProgram: '19 September 2026',
+    masaProgram: '9:00 Pagi - 12:00 Tengah Hari',
+    tempatProgram: 'Auditorium Kolej Komuniti Beaufort',
+    kerjasama: 'Unit Kaunseling & Kerjaya KKBS',
+    implikasiKewangan: 'RM 400.00',
+    sasaranPeserta: 'Pelajar Baharu & Semester Akhir',
+    bilanganPeserta: 100
+  },
+  {
+    id: 'PROG-11',
+    namaProgram: 'Majlis Makan Malam Gala Tahunan & Anugerah Ikon Alumni KKBS',
+    tarikhProgram: '14 November 2026',
+    masaProgram: '7:30 Malam - 11:00 Malam',
+    tempatProgram: 'Dewan Ballroom Hotel Grand Beaufort',
+    kerjasama: 'Pihak Pengurusan KKBS & Penaja Korporat',
+    implikasiKewangan: 'RM 3,500.00',
+    sasaranPeserta: 'Ahli Alumni, Staf Kolej & Tetamu Kehormat',
+    bilanganPeserta: 200
+  },
+  {
+    id: 'PROG-12',
+    namaProgram: 'Program Jejak Alumni & Kemas Kini Profil Kebolehpasaran',
+    tarikhProgram: '5 Disember 2026',
+    masaProgram: '9:00 Pagi - 4:00 Petang',
+    tempatProgram: 'Portal Rasmi Alumni KKBS (Hibrid)',
+    kerjasama: 'Unit Pengesanan Graduan (Tracer Study) KKBS',
+    implikasiKewangan: 'RM 300.00',
+    sasaranPeserta: 'Semua Graduan Kohort 2015-2025',
+    bilanganPeserta: 300
   }
 ];
 
