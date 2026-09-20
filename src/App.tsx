@@ -12,6 +12,23 @@ import { SettingsPanel } from './components/SettingsPanel';
 import { QrScannerModal } from './components/QrScannerModal';
 import { NetworkSecurityBackground } from './components/NetworkSecurityBackground';
 import { GraduationCap, Lock, ShieldCheck, Mail, Key, User, PlusCircle, LayoutGrid, CheckCircle } from 'lucide-react';
+import {
+  seedInitialFirestoreData,
+  subscribeToMembers,
+  subscribeToTransactions,
+  subscribeToPrograms,
+  subscribeToConfig,
+  addOrUpdateMember,
+  updateMemberPartial,
+  deleteMemberFromFirestore,
+  addOrUpdateTransaction,
+  deleteTransactionFromFirestore,
+  addOrUpdateProgram,
+  deleteProgramFromFirestore,
+  updateSystemConfig,
+  getMemberStatus,
+  INITIAL_PROGRAMS_LIST
+} from './firebase';
 
 export const formatIcNumber = (val: any): string => {
   const str = String(val || '');
@@ -28,39 +45,6 @@ export const formatPhone = (val: any): string => {
   return `${digits.substring(0, 3)}-${digits.substring(3)}`;
 };
 
-export const getMemberStatus = (noTelefon: string | undefined | null): 'Active' | 'Inactive' => {
-  const phone = String(noTelefon || '').replace(/\D/g, '');
-  if (!phone || phone === '0120000000' || phone === '01200000000' || phone === '-') {
-    return 'Inactive';
-  }
-  return 'Active';
-};
-
-const INITIAL_PROGRAMS: Program[] = [
-  {
-    id: 'PROG-1',
-    namaProgram: 'Kejohanan Badminton Alumni KKBS 2025',
-    tarikhProgram: '14 Ogos 2025',
-    masaProgram: '8:00 Pagi - 2:00 Petang',
-    tempatProgram: 'Dewan Sukan Beaufort',
-    kerjasama: 'Majlis Belia Beaufort',
-    implikasiKewangan: 'RM 450.00',
-    sasaranPeserta: 'Semua Ahli Alumni',
-    bilanganPeserta: 40
-  },
-  {
-    id: 'PROG-2',
-    namaProgram: 'Bengkel Kerjaya & Keusahawanan Alumni KKBS',
-    tarikhProgram: '20 Disember 2025',
-    masaProgram: '9:00 Pagi - 1:00 Tengah Hari',
-    tempatProgram: 'Bilik Seminar Kolej Komuniti Beaufort',
-    kerjasama: 'Unit Keusahawanan KKBS',
-    implikasiKewangan: 'RM 600.00',
-    sasaranPeserta: 'Alumni & Pelajar Semester Akhir',
-    bilanganPeserta: 80
-  }
-];
-
 export default function App() {
   const [userRole, setUserRole] = useState<UserRole>('landing');
   const [currentView, setCurrentView] = useState<ViewType>('dashboard');
@@ -70,29 +54,11 @@ export default function App() {
     INITIAL_MEMBERS.map(m => ({ ...m, status: getMemberStatus(m.noTelefon) }))
   );
   const [transactions, setTransactions] = useState<Transaction[]>(INITIAL_TRANSACTIONS);
-  const [programs, setPrograms] = useState<Program[]>(() => {
-    try {
-      const saved = localStorage.getItem('ALUMNI_PROGRAMS');
-      if (saved) return JSON.parse(saved);
-    } catch {}
-    return INITIAL_PROGRAMS;
-  });
-  // Load config from localStorage first, fall back to INITIAL_CONFIG
-  const [config, setConfig] = useState<SystemConfig>(() => {
-    try {
-      const saved = localStorage.getItem('ALUMNI_CONFIG');
-      if (saved) return { ...INITIAL_CONFIG, ...JSON.parse(saved) };
-    } catch {}
-    return INITIAL_CONFIG;
-  });
+  const [programs, setPrograms] = useState<Program[]>(INITIAL_PROGRAMS_LIST);
+  const [config, setConfig] = useState<SystemConfig>(INITIAL_CONFIG);
   
   const [currentMember, setCurrentMember] = useState<AlumniMember | null>(null);
-
-  // Connection config (Apps Script URL stored in localStorage, default to user's deployment URL)
-  const [appsScriptUrl, setAppsScriptUrl] = useState<string>(() => localStorage.getItem('ALUMNI_APPS_SCRIPT_URL') || 'https://script.google.com/macros/s/AKfycbytefO8nKNJyI22nrdg7r5QOtTevrvE4zyeKx_IGop_Q3dmQTpPVFMSkmoKBiQng5razw/exec');
-  const [isSyncing, setIsSyncing] = useState(false);
-  // True once Sheets data has been fetched at least once
-  const [sheetsDataLoaded, setSheetsDataLoaded] = useState(false);
+  const [isFirestoreLoaded, setIsFirestoreLoaded] = useState(false);
 
   // Modals
   const [isQrScannerOpen, setIsQrScannerOpen] = useState(false);
@@ -116,94 +82,58 @@ export default function App() {
   const [regEmployer, setRegEmployer] = useState('');
   const [regPassword, setRegPassword] = useState('');
 
-  // Sync data from Google Sheets database
-  const fetchData = async (targetUrl = appsScriptUrl) => {
-    if (!targetUrl) return;
-    setIsSyncing(true);
-    try {
-      const res = await fetch(`/api/data?appsScriptUrl=${encodeURIComponent(targetUrl)}`);
-      if (res.ok) {
-        const data = await res.json();
-        if (data.members) {
-          const mapped = data.members.map((m: any, idx: number) => ({
-            ...m,
-            id: m.id || m[""] || `MEM-${idx + 1}`,
-            status: getMemberStatus(m.noTelefon)
-          }));
-          setMembers(mapped);
-          
-          // Refresh local currentMember reference if logged in (member only)
+  // Real-time Firestore Subscriptions & Initial Seeding
+  useEffect(() => {
+    // Seed Firestore with initial records if collections are empty
+    seedInitialFirestoreData();
+
+    // 1. Subscribe to Members
+    const unsubMembers = subscribeToMembers(
+      (freshMembers) => {
+        if (freshMembers && freshMembers.length > 0) {
+          setMembers(freshMembers);
+          // Refresh local currentMember reference if logged in
           if (currentMember && userRole !== 'admin') {
-            const fresh = mapped.find((m: AlumniMember) => m.id === currentMember.id);
+            const fresh = freshMembers.find((m) => m.id === currentMember.id);
             if (fresh) setCurrentMember(fresh);
           }
         }
-        if (data.transactions) setTransactions(data.transactions);
-        if (data.config) {
-          setConfig(data.config);
-          // Persist config to localStorage so it survives refresh & admin login
-          try { localStorage.setItem('ALUMNI_CONFIG', JSON.stringify(data.config)); } catch {}
-        }
-        if (data.programs) {
-          setPrograms(data.programs);
-          try { localStorage.setItem('ALUMNI_PROGRAMS', JSON.stringify(data.programs)); } catch {}
-        }
-        setSheetsDataLoaded(true);
+        setIsFirestoreLoaded(true);
+      },
+      (err) => {
+        console.warn('Firestore members sync warning, using local initial state:', err);
+        setIsFirestoreLoaded(true);
       }
-    } catch (err) {
-      console.warn('Backend sync warning, using local initial state:', err);
-      setSheetsDataLoaded(true); // Allow login even if fetch fails
-    } finally {
-      setIsSyncing(false);
-    }
-  };
+    );
 
-  // Sync interval
-  useEffect(() => {
-    fetchData(appsScriptUrl);
-    const interval = setInterval(() => {
-      fetchData(appsScriptUrl);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, [appsScriptUrl, currentMember]);
+    // 2. Subscribe to Transactions
+    const unsubTransactions = subscribeToTransactions((freshTx) => {
+      if (freshTx && freshTx.length > 0) setTransactions(freshTx);
+    });
 
-  // Relays action command to Apps Script via backend proxy
-  const postAction = async (payload: any) => {
-    if (!appsScriptUrl) return { success: false, error: 'Database URL tidak diisi.' };
-    try {
-      const response = await fetch('/api/action', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-apps-script-url': appsScriptUrl
-        },
-        body: JSON.stringify(payload),
-      });
-      const result = await response.json();
-      fetchData(); // Trigger instant refresh
-      return result;
-    } catch (e: any) {
-      return { success: false, error: e.toString() };
-    }
-  };
+    // 3. Subscribe to Programs
+    const unsubPrograms = subscribeToPrograms((freshPrograms) => {
+      if (freshPrograms && freshPrograms.length > 0) setPrograms(freshPrograms);
+    });
 
-  const handleUpdateAppsScriptUrl = (url: string) => {
-    setAppsScriptUrl(url);
-    localStorage.setItem('ALUMNI_APPS_SCRIPT_URL', url);
-    fetchData(url);
-  };
+    // 4. Subscribe to Config
+    const unsubConfig = subscribeToConfig((freshConfig) => {
+      if (freshConfig) setConfig(freshConfig);
+    });
+
+    return () => {
+      unsubMembers();
+      unsubTransactions();
+      unsubPrograms();
+      unsubConfig();
+    };
+  }, [currentMember?.id, userRole]);
 
   // Logins Handler
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setAuthError('');
 
-    // If Apps Script URL is set but data hasn't loaded yet, ask user to wait
-    if (appsScriptUrl && !sheetsDataLoaded) {
-      setAuthError('Sedang muat data dari database... Sila tunggu sebentar dan cuba lagi.');
-      return;
-    }
-    
     // Look up email & password
     const emailMatch = members.find(
       m => String(m.emel || '').toLowerCase().trim() === loginEmail.toLowerCase().trim() && 
@@ -290,7 +220,7 @@ export default function App() {
       }
       if (!matchedAlumni) return;
 
-      const updateData = {
+      const updateData: Partial<AlumniMember> = {
         emel: regEmail,
         noTelefon: regPhone || '-',
         pekerjaanJawatan: regOccupation || '-',
@@ -299,147 +229,134 @@ export default function App() {
         status: 'Active' // Instantly activate!
       };
 
-      if (!appsScriptUrl) {
+      const success = await updateMemberPartial(matchedAlumni.id, updateData);
+
+      if (success) {
+        // Also update local state for immediate feedback
         setMembers(prev => prev.map(m => m.id === matchedAlumni.id ? { ...m, ...updateData } : m));
-        alert('Pendaftaran dihantar! (Simulasi mod lokal, tiada database link dikesan)');
-        setAuthMode('login');
-        setRegStep('ic_lookup');
-        setMatchedAlumni(null);
-        return;
-      }
-
-      const res = await postAction({
-        action: 'update_member',
-        id: matchedAlumni.id,
-        data: updateData
-      });
-
-      if (res.success) {
-        alert(`Pendaftaran selesai! Selamat Pagi/Petang ${matchedAlumni.nama}. Akaun anda telah aktif secara langsung. Sila log masuk.`);
+        alert(`Pendaftaran selesai! Selamat Pagi/Petang ${matchedAlumni.nama}. Akaun anda telah aktif dalam pangkalan data Firestore. Sila log masuk.`);
         setAuthMode('login');
         setRegStep('ic_lookup');
         setMatchedAlumni(null);
       } else {
-        setAuthError(res.error || 'Pendaftaran ralat. Sila cuba lagi.');
+        setAuthError('Pendaftaran ralat ke Firestore. Sila periksa sambungan internet dan cuba lagi.');
       }
     }
   };
 
-  // Relays Callbacks
+  // Firestore Callbacks
   const handleUpdateProfile = async (data: any) => {
     if (!currentMember) return false;
     const payload = {
       ...data,
       status: getMemberStatus(data.noTelefon)
     };
-    const res = await postAction({ action: 'update_member', id: currentMember.id, data: payload });
-    return res.success;
+    const success = await updateMemberPartial(currentMember.id, payload);
+    if (success) {
+      setMembers(prev => prev.map(m => m.id === currentMember.id ? { ...m, ...payload } : m));
+      setCurrentMember(prev => prev ? { ...prev, ...payload } : null);
+    }
+    return success;
   };
 
   const handleApproveMember = async (id: string, noAhli: string) => {
-    const fresh = members.find(m => m.id === id);
-    if (!fresh) return false;
-    const updated = { ...fresh, status: 'Active', noAhli };
-    const res = await postAction({ action: 'admin_update_member', id, member: updated });
-    return res.success;
+    const updated = { status: 'Active' as const, noAhli };
+    const success = await updateMemberPartial(id, updated);
+    if (success) {
+      setMembers(prev => prev.map(m => m.id === id ? { ...m, ...updated } : m));
+    }
+    return success;
   };
 
   const handleRejectMember = async (id: string) => {
-    const fresh = members.find(m => m.id === id);
-    if (!fresh) return false;
-    const updated = { ...fresh, status: 'Rejected' };
-    const res = await postAction({ action: 'admin_update_member', id, member: updated });
-    return res.success;
+    const updated = { status: 'Rejected' as const };
+    const success = await updateMemberPartial(id, updated);
+    if (success) {
+      setMembers(prev => prev.map(m => m.id === id ? { ...m, ...updated } : m));
+    }
+    return success;
   };
 
   const handleActivateMember = async (id: string) => {
-    const fresh = members.find(m => m.id === id);
-    if (!fresh) return false;
-    const updated = { ...fresh, status: 'Active' };
-    const res = await postAction({ action: 'admin_update_member', id, member: updated });
-    return res.success;
+    const updated = { status: 'Active' as const };
+    const success = await updateMemberPartial(id, updated);
+    if (success) {
+      setMembers(prev => prev.map(m => m.id === id ? { ...m, ...updated } : m));
+    }
+    return success;
   };
 
   const handleDeactivateMember = async (id: string) => {
-    const fresh = members.find(m => m.id === id);
-    if (!fresh) return false;
-    const updated = { ...fresh, status: 'Inactive' };
-    const res = await postAction({ action: 'admin_update_member', id, member: updated });
-    return res.success;
+    const updated = { status: 'Inactive' as const };
+    const success = await updateMemberPartial(id, updated);
+    if (success) {
+      setMembers(prev => prev.map(m => m.id === id ? { ...m, ...updated } : m));
+    }
+    return success;
   };
 
   const handleDeleteMember = async (id: string) => {
-    if (!appsScriptUrl) {
+    const success = await deleteMemberFromFirestore(id);
+    if (success) {
       setMembers(prev => prev.filter(m => m.id !== id));
-      return true;
     }
-    const res = await postAction({ action: 'delete_member', id });
-    return res.success;
+    return success;
   };
 
   const handleAddTransaction = async (tx: any) => {
-    if (!appsScriptUrl) {
-      const mockTx = { ...tx, id: 'TX-' + Date.now() };
-      setTransactions(prev => [...prev, mockTx]);
-      return true;
+    const fullTx: Transaction = {
+      ...tx,
+      id: tx.id || `TX-${Date.now()}`
+    };
+    const success = await addOrUpdateTransaction(fullTx);
+    if (success) {
+      setTransactions(prev => [fullTx, ...prev]);
     }
-    const res = await postAction({ action: 'add_transaction', transaction: tx });
-    return res.success;
+    return success;
   };
 
   const handleDeleteTransaction = async (id: string) => {
-    if (!appsScriptUrl) {
+    const success = await deleteTransactionFromFirestore(id);
+    if (success) {
       setTransactions(prev => prev.filter(t => t.id !== id));
-      return true;
     }
-    const res = await postAction({ action: 'delete_transaction', id });
-    return res.success;
+    return success;
   };
 
   const handleAddProgram = async (newProg: Omit<Program, 'id'>) => {
-    if (!appsScriptUrl) {
-      const p: Program = {
-        ...newProg,
-        id: `PROG-${Date.now()}`
-      };
-      const updated = [p, ...programs];
-      setPrograms(updated);
-      try { localStorage.setItem('ALUMNI_PROGRAMS', JSON.stringify(updated)); } catch {}
-      return true;
+    const p: Program = {
+      ...newProg,
+      id: `PROG-${Date.now()}`
+    };
+    const success = await addOrUpdateProgram(p);
+    if (success) {
+      setPrograms(prev => [p, ...prev]);
     }
-    const res = await postAction({ action: 'add_program', program: newProg });
-    return res.success;
+    return success;
   };
 
   const handleUpdateProgram = async (updatedProg: Program) => {
-    if (!appsScriptUrl) {
-      const updated = programs.map(p => p.id === updatedProg.id ? updatedProg : p);
-      setPrograms(updated);
-      try { localStorage.setItem('ALUMNI_PROGRAMS', JSON.stringify(updated)); } catch {}
-      return true;
+    const success = await addOrUpdateProgram(updatedProg);
+    if (success) {
+      setPrograms(prev => prev.map(p => p.id === updatedProg.id ? updatedProg : p));
     }
-    const res = await postAction({ action: 'update_program', id: updatedProg.id, program: updatedProg });
-    return res.success;
+    return success;
   };
 
   const handleDeleteProgram = async (id: string) => {
-    if (!appsScriptUrl) {
-      const updated = programs.filter(p => p.id !== id);
-      setPrograms(updated);
-      try { localStorage.setItem('ALUMNI_PROGRAMS', JSON.stringify(updated)); } catch {}
-      return true;
+    const success = await deleteProgramFromFirestore(id);
+    if (success) {
+      setPrograms(prev => prev.filter(p => p.id !== id));
     }
-    const res = await postAction({ action: 'delete_program', id });
-    return res.success;
+    return success;
   };
 
   const handleUpdateConfig = async (newConfig: SystemConfig) => {
-    if (!appsScriptUrl) {
+    const success = await updateSystemConfig(newConfig);
+    if (success) {
       setConfig(newConfig);
-      return true;
     }
-    const res = await postAction({ action: 'update_config', config: newConfig });
-    return res.success;
+    return success;
   };
 
   const handleLogout = () => {
@@ -804,10 +721,10 @@ export default function App() {
               <SettingsPanel
                 config={config}
                 userRole={userRole}
-                appsScriptUrl={appsScriptUrl}
                 onUpdateConfig={handleUpdateConfig}
-                onUpdateAppsScriptUrl={handleUpdateAppsScriptUrl}
                 onOpenAdminModal={() => setAuthMode('admin')}
+                onReseedFirestore={seedInitialFirestoreData}
+                membersCount={members.length}
               />
             )}
           </main>
@@ -825,7 +742,7 @@ export default function App() {
               <p>© {new Date().getFullYear()} Persatuan Alumni Kolej Komuniti Beaufort Sabah. Hak Cipta Terpelihara.</p>
               <div className="flex items-center gap-2 text-[9px] font-mono text-cyan-700 bg-cyan-50/80 px-2 py-0.5 rounded-full border border-cyan-200/60">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-ping"></span>
-                <span>SECURE NETWORK ENCRYPTION ACTIVE</span>
+                <span>SECURE FIRESTORE SYNC ACTIVE (icamp-aa9e4)</span>
               </div>
             </div>
           </footer>

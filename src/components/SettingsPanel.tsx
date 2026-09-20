@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { SystemConfig } from '../types';
-import { Settings, Link, MessageSquare, Facebook, Music, Lock, Save } from 'lucide-react';
+import { Settings, Database, MessageSquare, Facebook, Music, Lock, Save, CheckCircle2, RefreshCw, ShieldCheck } from 'lucide-react';
 
 interface SettingsPanelProps {
   config: SystemConfig;
   userRole: 'admin' | 'member';
-  appsScriptUrl: string;
+  appsScriptUrl?: string;
   onUpdateConfig: (newConfig: SystemConfig) => Promise<boolean>;
-  onUpdateAppsScriptUrl: (url: string) => void;
+  onUpdateAppsScriptUrl?: (url: string) => void;
   onOpenAdminModal: () => void;
+  onReseedFirestore?: () => Promise<void>;
+  membersCount?: number;
 }
 
 export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   config,
   userRole,
-  appsScriptUrl,
   onUpdateConfig,
-  onUpdateAppsScriptUrl,
   onOpenAdminModal,
+  onReseedFirestore,
+  membersCount = 0,
 }) => {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(config.associationName);
@@ -29,11 +31,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   const [bendahari, setBendahari] = useState(config.bendahari || '');
   const [juruAudit, setJuruAudit] = useState(config.juruAudit || '');
 
-  const [scriptUrl, setScriptUrl] = useState(appsScriptUrl);
   const [saveMsg, setSaveMsg] = useState<{ status: 'success' | 'error'; text: string } | null>(null);
+  const [isReseeding, setIsReseeding] = useState(false);
 
-  // Sync local form state whenever config prop updates from Sheets fetch
-  // but only if the user has not modified that specific input field (matches prevConfig)
+  // Sync local form state whenever config prop updates
   const [prevConfig, setPrevConfig] = useState(config);
 
   useEffect(() => {
@@ -73,17 +74,26 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     });
 
     if (ok) {
-      setSaveMsg({ status: 'success', text: 'Konfigurasi persatuan disimpan ke database!' });
+      setSaveMsg({ status: 'success', text: 'Konfigurasi persatuan disimpan ke Firestore (icamp-aa9e4)!' });
       setEditing(false);
     } else {
       setSaveMsg({ status: 'error', text: 'Ralat menyimpan konfigurasi.' });
     }
   };
 
-  const handleSaveUrl = (e: React.FormEvent) => {
-    e.preventDefault();
-    onUpdateAppsScriptUrl(scriptUrl.trim());
-    setSaveMsg({ status: 'success', text: 'Apps Script URL berjaya disimpan!' });
+  const handleTriggerReseed = async () => {
+    if (!onReseedFirestore) return;
+    if (window.confirm('Adakah anda pasti mahu menyegerak / muat data awal ke Firebase Firestore (icamp-aa9e4)?')) {
+      setIsReseeding(true);
+      try {
+        await onReseedFirestore();
+        setSaveMsg({ status: 'success', text: 'Penyegerakan data ke Firebase Firestore selesai!' });
+      } catch (err: any) {
+        setSaveMsg({ status: 'error', text: 'Ralat penyegerakan: ' + err.toString() });
+      } finally {
+        setIsReseeding(false);
+      }
+    }
   };
 
   const handleOpenSocial = (url: string) => {
@@ -93,33 +103,53 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       
-      {/* 1. Database Connection Setting Card */}
+      {/* 1. Firestore Database Status Card */}
       {userRole === 'admin' && (
         <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-2xs space-y-4">
-          <div className="flex items-center gap-2 text-blue-900">
-            <Link className="w-5 h-5 shrink-0" />
-            <h3 className="text-sm font-extrabold uppercase tracking-wider">Sambungan Database (Google Sheets)</h3>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 text-cyan-900">
+              <Database className="w-5 h-5 shrink-0 text-cyan-600" />
+              <h3 className="text-sm font-extrabold uppercase tracking-wider">Pangkalan Data Cloud Firestore</h3>
+            </div>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[10px] font-bold">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Tersambung
+            </span>
           </div>
-          <p className="text-xs text-slate-500">
-            Masukkan URL Web App daripada hasil *Deploy* Google Apps Script anda untuk menyegerakan pendaftaran pelajar secara langsung.
-          </p>
 
-          <form onSubmit={handleSaveUrl} className="flex gap-2">
-            <input
-              type="text"
-              placeholder="https://script.google.com/macros/s/.../exec"
-              value={scriptUrl}
-              onChange={(e) => setScriptUrl(e.target.value)}
-              className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-blue-600 font-mono font-bold"
-            />
-            <button
-              type="submit"
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-xs cursor-pointer flex items-center gap-1.5"
-            >
-              <Save className="w-4.5 h-4.5" />
-              <span>Simpan</span>
-            </button>
-          </form>
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
+            <div className="flex justify-between items-center text-slate-600">
+              <span className="font-semibold">Firebase Project ID:</span>
+              <span className="font-mono font-bold text-blue-700">icamp-aa9e4</span>
+            </div>
+            <div className="flex justify-between items-center text-slate-600">
+              <span className="font-semibold">Koleksi Firestore:</span>
+              <span className="font-mono text-[11px] text-slate-700">alumni-members, alumni-transactions, alumni-programs, alumni-config</span>
+            </div>
+            <div className="flex justify-between items-center text-slate-600">
+              <span className="font-semibold">Jumlah Ahli Tersinkron:</span>
+              <span className="font-mono font-bold text-slate-900">{membersCount} Ahli</span>
+            </div>
+            <div className="flex justify-between items-center text-slate-600">
+              <span className="font-semibold">Status Masa Nyata (Real-time):</span>
+              <span className="text-emerald-600 font-bold flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Aktif (onSnapshot)
+              </span>
+            </div>
+          </div>
+
+          {onReseedFirestore && (
+            <div className="pt-1 flex justify-end">
+              <button
+                type="button"
+                onClick={handleTriggerReseed}
+                disabled={isReseeding}
+                className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl flex items-center gap-1.5 cursor-pointer transition-colors disabled:opacity-50"
+              >
+                <RefreshCw className={`w-3.5 h-3.5 ${isReseeding ? 'animate-spin' : ''}`} />
+                <span>{isReseeding ? 'Sedang Memproses...' : 'Segerak Semula ke Firestore'}</span>
+              </button>
+            </div>
+          )}
         </div>
       )}
 
