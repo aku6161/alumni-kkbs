@@ -19125,4 +19125,14 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
   }
 ];
 
-export const INITIAL_TRANSACTIONS: Transaction[] = [];
+export const INITIAL_TRANSACTIONS: Transaction[] = [
+  {
+    id: "TX-001",
+    date: "2026-08-15T09:00:00.000Z",
+    category: "Geran",
+    amount: 5000.0,
+    type: "Income",
+    description: "Geran Pelancaran & Pengurusan Persatuan Alumni KKBS",
+    receiptUrl: ""
+  }
+];

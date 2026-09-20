@@ -50,10 +50,8 @@ export default function App() {
   const [currentView, setCurrentView] = useState<ViewType>('dashboard');
   
   // Data State
-  const [members, setMembers] = useState<AlumniMember[]>(() => 
-    INITIAL_MEMBERS.map(m => ({ ...m, status: getMemberStatus(m.noTelefon) }))
-  );
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [members, setMembers] = useState<AlumniMember[]>(INITIAL_MEMBERS);
+  const [transactions, setTransactions] = useState<Transaction[]>(INITIAL_TRANSACTIONS);
   const [programs, setPrograms] = useState<Program[]>(INITIAL_PROGRAMS_LIST);
   const [config, setConfig] = useState<SystemConfig>(INITIAL_CONFIG);
   

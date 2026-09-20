@@ -239,7 +239,7 @@ export async function seedInitialFirestoreData(): Promise<void> {
           batch.set(ref, {
             ...m,
             id: docId,
-            status: m.status || getMemberStatus(m.noTelefon)
+            status: m.status || 'Active'
           });
         });
         await batch.commit();
