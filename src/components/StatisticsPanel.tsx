@@ -192,35 +192,35 @@ export const StatisticsPanel: React.FC<StatisticsPanelProps> = ({ members }) => 
   return (
     <div className="space-y-6">
       {/* Sub Tabs */}
-      <div className="flex border-b border-slate-200">
+      <div className="flex flex-wrap border border-slate-800 bg-slate-900/80 backdrop-blur-md p-1.5 rounded-2xl gap-1 max-w-xl mx-auto shadow-2xs">
         <button
           onClick={() => setActiveSubTab('status')}
-          className={`py-2 px-3 text-xs font-bold border-b-2 transition-all cursor-pointer ${
-            activeSubTab === 'status' ? 'border-blue-700 text-blue-700' : 'border-transparent text-slate-500 hover:text-slate-800'
+          className={`flex-1 py-2 px-3 text-xs font-bold rounded-xl transition-all cursor-pointer text-center ${
+            activeSubTab === 'status' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-400 hover:text-slate-200'
           }`}
         >
           Status
         </button>
         <button
           onClick={() => setActiveSubTab('program')}
-          className={`py-2 px-3 text-xs font-bold border-b-2 transition-all cursor-pointer ${
-            activeSubTab === 'program' ? 'border-blue-700 text-blue-700' : 'border-transparent text-slate-500 hover:text-slate-800'
+          className={`flex-1 py-2 px-3 text-xs font-bold rounded-xl transition-all cursor-pointer text-center ${
+            activeSubTab === 'program' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-400 hover:text-slate-200'
           }`}
         >
           Program Pengajian
         </button>
         <button
           onClick={() => setActiveSubTab('year')}
-          className={`py-2 px-3 text-xs font-bold border-b-2 transition-all cursor-pointer ${
-            activeSubTab === 'year' ? 'border-blue-700 text-blue-700' : 'border-transparent text-slate-500 hover:text-slate-800'
+          className={`flex-1 py-2 px-3 text-xs font-bold rounded-xl transition-all cursor-pointer text-center ${
+            activeSubTab === 'year' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-400 hover:text-slate-200'
           }`}
         >
           Tahun Graduasi
         </button>
         <button
           onClick={() => setActiveSubTab('state')}
-          className={`py-2 px-3 text-xs font-bold border-b-2 transition-all cursor-pointer ${
-            activeSubTab === 'state' ? 'border-blue-700 text-blue-700' : 'border-transparent text-slate-500 hover:text-slate-800'
+          className={`flex-1 py-2 px-3 text-xs font-bold rounded-xl transition-all cursor-pointer text-center ${
+            activeSubTab === 'state' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-400 hover:text-slate-200'
           }`}
         >
           Negeri Kediaman

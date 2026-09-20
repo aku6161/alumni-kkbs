@@ -129,17 +129,18 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
         {/* Header & Add Button */}
         <div className="flex justify-between items-center gap-4 flex-wrap">
           <div>
-            <h3 className="text-sm font-extrabold text-slate-700 uppercase tracking-wider mb-1">
-              Pengurusan Kertas Kerja & Laporan Program
+            <h3 className="text-sm font-black text-cyan-300 uppercase tracking-wider mb-1 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span>Pengurusan Kertas Kerja & Laporan Program</span>
             </h3>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-300 font-medium">
               Urus permohonan kertas kerja program alumni dan cetak laporan aktiviti persatuan yang dijalankan.
             </p>
           </div>
           
           <button
             onClick={handleOpenAdd}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-xs transition-all cursor-pointer shrink-0"
+            className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg shadow-cyan-500/20 transition-all cursor-pointer shrink-0"
           >
             <PlusCircle className="w-4 h-4" />
             <span>Tambah Program</span>

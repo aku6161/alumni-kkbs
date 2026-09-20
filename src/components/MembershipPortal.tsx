@@ -512,9 +512,9 @@ export const MembershipPortal: React.FC<MembershipPortalProps> = ({
                 onChange={(e) => setStatusFilter(e.target.value as 'all' | 'Active' | 'Inactive')}
                 className="bg-transparent outline-none cursor-pointer font-bold text-slate-800 text-xs pr-1"
               >
-                <option value="all">Semua ({activeMembers.length})</option>
-                <option value="Active">Aktif ({activeMembers.filter(m => m.status === 'Active').length})</option>
-                <option value="Inactive">Tidak Aktif ({activeMembers.filter(m => m.status === 'Inactive').length})</option>
+                <option value="all">Semua</option>
+                <option value="Active">Aktif</option>
+                <option value="Inactive">Tidak Aktif</option>
               </select>
             </div>
           </div>
