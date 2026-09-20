@@ -49,8 +49,10 @@ export default function App() {
   const [userRole, setUserRole] = useState<UserRole>('landing');
   const [currentView, setCurrentView] = useState<ViewType>('dashboard');
   
-  // Data State
-  const [members, setMembers] = useState<AlumniMember[]>(INITIAL_MEMBERS);
+  // Data State — apply getMemberStatus to derive correct Active/Inactive from phone number
+  const [members, setMembers] = useState<AlumniMember[]>(() =>
+    INITIAL_MEMBERS.map(m => ({ ...m, status: m.status === 'Active' ? getMemberStatus(m.noTelefon) : m.status }))
+  );
   const [transactions, setTransactions] = useState<Transaction[]>(INITIAL_TRANSACTIONS);
   const [programs, setPrograms] = useState<Program[]>(INITIAL_PROGRAMS_LIST);
   const [config, setConfig] = useState<SystemConfig>(INITIAL_CONFIG);
