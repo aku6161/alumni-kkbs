@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AlumniMember, SystemConfig } from '../types';
-import { CreditCard, Edit, Users, ShieldCheck, Check, X, AlertTriangle, UserX, UserCheck, Trash2, Lock, User } from 'lucide-react';
+import { CreditCard, Edit, Users, ShieldCheck, Check, X, AlertTriangle, UserX, UserCheck, Trash2, Lock, User, Download, Filter, Search, FileSpreadsheet } from 'lucide-react';
 import { formatDateString } from '../utils/date';
 
 interface MembershipPortalProps {
@@ -51,8 +51,9 @@ export const MembershipPortal: React.FC<MembershipPortalProps> = ({
   const [newNoAhli, setNewNoAhli] = useState('');
   const [approvalMsg, setApprovalMsg] = useState<string | null>(null);
 
-  // Search in Admin Roster
+  // Search & Filter in Admin Roster
   const [rosterSearch, setRosterSearch] = useState('');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'Active' | 'Inactive'>('all');
 
   const handleUpdateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -102,11 +103,90 @@ export const MembershipPortal: React.FC<MembershipPortalProps> = ({
   const activeMembers = members.filter(m => (m.status === 'Active' || m.status === 'Inactive') && m.role !== 'Admin');
   const pendingMembers = members.filter(m => m.status === 'Pending');
 
-  const filteredRoster = activeMembers.filter(m => 
-    String(m.nama || '').toLowerCase().includes(rosterSearch.toLowerCase()) || 
-    String(m.noKp || '').includes(rosterSearch) ||
-    String(m.noAhli || '').toLowerCase().includes(rosterSearch.toLowerCase())
-  );
+  const filteredRoster = activeMembers.filter(m => {
+    // 1. Status filter
+    if (statusFilter !== 'all' && m.status !== statusFilter) {
+      return false;
+    }
+    // 2. Search query filter
+    if (!rosterSearch.trim()) return true;
+    const query = rosterSearch.toLowerCase().trim();
+    return (
+      String(m.nama || '').toLowerCase().includes(query) || 
+      String(m.noKp || '').includes(query) ||
+      String(m.noAhli || '').toLowerCase().includes(query) ||
+      String(m.program || '').toLowerCase().includes(query) ||
+      String(m.noPendaftaran || '').toLowerCase().includes(query) ||
+      String(m.emel || '').toLowerCase().includes(query) ||
+      String(m.noTelefon || '').includes(query)
+    );
+  });
+
+  // Export Filtered Roster to CSV
+  const handleExportCsv = () => {
+    if (filteredRoster.length === 0) {
+      alert('Tiada rekod alumni yang sepadan untuk dimuat turun.');
+      return;
+    }
+
+    const headers = [
+      'Bil',
+      'No. Ahli',
+      'Nama Penuh',
+      'No. Kad Pengenalan',
+      'No. Pendaftaran',
+      'Tahun Lulusan',
+      'Program Pengajian',
+      'Jantina',
+      'Agama',
+      'Kaum Utama',
+      'Tarikh Graduasi',
+      'No. Telefon',
+      'Emel',
+      'Pekerjaan',
+      'Nama Majikan',
+      'Negeri',
+      'Status Keahlian'
+    ];
+
+    const escapeCsv = (val: any) => {
+      const str = String(val ?? '').replace(/"/g, '""');
+      return `"${str}"`;
+    };
+
+    const rows = filteredRoster.map((m, idx) => [
+      idx + 1,
+      escapeCsv(m.noAhli || '-'),
+      escapeCsv(m.nama || ''),
+      escapeCsv(m.noKp || ''),
+      escapeCsv(m.noPendaftaran || ''),
+      escapeCsv(m.tahunLulusan || ''),
+      escapeCsv(m.program || ''),
+      escapeCsv(m.jantina || ''),
+      escapeCsv(m.agama || ''),
+      escapeCsv(m.kaumUtama || ''),
+      escapeCsv(formatDateString(m.tarikhGraduasi) || ''),
+      escapeCsv(m.noTelefon || ''),
+      escapeCsv(m.emel || ''),
+      escapeCsv(m.pekerjaanJawatan || ''),
+      escapeCsv(m.namaMajikan || ''),
+      escapeCsv(m.negeri || ''),
+      escapeCsv(m.status === 'Active' ? 'Aktif' : 'Tidak Aktif')
+    ].join(','));
+
+    const csvContent = [headers.join(','), ...rows].join('\r\n');
+    const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    const statusSuffix = statusFilter === 'all' ? 'Semua' : statusFilter === 'Active' ? 'Aktif' : 'Tidak_Aktif';
+    const dateStr = new Date().toISOString().split('T')[0];
+    link.setAttribute('href', url);
+    link.setAttribute('download', `Senarai_Alumni_KKBS_${statusSuffix}_${dateStr}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   // Simple QR URL generator (using qrserver api or inline QR drawing)
   const getQrUrl = (id: string) => {
@@ -399,25 +479,71 @@ export const MembershipPortal: React.FC<MembershipPortalProps> = ({
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        {/* Search bar */}
-        <div className="flex justify-between items-center gap-4 flex-wrap">
-          <div className="flex items-center bg-white border border-slate-200 rounded-2xl px-4 py-2 max-w-md shadow-2xs flex-1 min-w-[280px]">
-            <input
-              type="text"
-              placeholder="Cari nama, No. KP, atau No. Ahli..."
-              value={rosterSearch}
-              onChange={(e) => setRosterSearch(e.target.value)}
-              className="w-full text-sm bg-transparent outline-none"
-            />
+        {/* Search, Status Filter & Download CSV Toolbar */}
+        <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-3.5 rounded-2xl border border-slate-100 shadow-2xs">
+          <div className="flex flex-wrap items-center gap-2.5 flex-1 min-w-[280px]">
+            {/* Search Input */}
+            <div className="flex items-center bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 flex-1 min-w-[220px] focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500 transition-all">
+              <Search className="w-4 h-4 text-slate-400 mr-2 shrink-0" />
+              <input
+                type="text"
+                placeholder="Cari nama, No. KP, No. Ahli, program..."
+                value={rosterSearch}
+                onChange={(e) => setRosterSearch(e.target.value)}
+                className="w-full text-xs bg-transparent outline-none font-medium text-slate-800 placeholder-slate-400"
+              />
+              {rosterSearch && (
+                <button
+                  type="button"
+                  onClick={() => setRosterSearch('')}
+                  className="text-slate-400 hover:text-slate-600 text-xs px-1 cursor-pointer font-bold"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+
+            {/* Status Filter (Semua / Aktif / Tidak Aktif) */}
+            <div className="flex items-center bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 gap-1.5 shrink-0 focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500 transition-all">
+              <Filter className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <span className="text-[10px] text-slate-400 uppercase font-black">Status:</span>
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value as 'all' | 'Active' | 'Inactive')}
+                className="bg-transparent outline-none cursor-pointer font-bold text-slate-800 text-xs pr-1"
+              >
+                <option value="all">Semua ({activeMembers.length})</option>
+                <option value="Active">Aktif ({activeMembers.filter(m => m.status === 'Active').length})</option>
+                <option value="Inactive">Tidak Aktif ({activeMembers.filter(m => m.status === 'Inactive').length})</option>
+              </select>
+            </div>
           </div>
-          <div className="bg-slate-100 px-4 py-2 rounded-2xl text-xs font-bold text-slate-700">
-            Jumlah Roster Alumni: {activeMembers.length}
+
+          {/* Download CSV & Member Counter Action Group */}
+          <div className="flex items-center gap-2.5 shrink-0">
+            <button
+              type="button"
+              onClick={handleExportCsv}
+              className="bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-xs transition-all cursor-pointer border border-emerald-600"
+              title="Muat turun data keahlian dalam format fail .CSV"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Muat Turun .CSV</span>
+            </button>
+
+            <div className="bg-slate-100 text-slate-700 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap">
+              <span>Jumlah: </span>
+              <span className="text-blue-700 font-extrabold">{filteredRoster.length}</span>
+              <span className="text-slate-400 font-normal"> / {activeMembers.length}</span>
+            </div>
           </div>
         </div>
 
         {filteredRoster.length === 0 ? (
-          <div className="text-center py-12 text-slate-400 font-bold">
-            Tiada data alumni didaftarkan.
+          <div className="text-center py-12 bg-white rounded-2xl border border-slate-100 shadow-2xs space-y-2">
+            <Users className="w-8 h-8 text-slate-300 mx-auto" />
+            <p className="text-slate-500 font-bold text-sm">Tiada rekod alumni dijumpai.</p>
+            <p className="text-xs text-slate-400">Cuba ubah kata kunci carian atau tetapan penapis status.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
