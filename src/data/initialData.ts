@@ -19125,14 +19125,4 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
   }
 ];
 
-export const INITIAL_TRANSACTIONS: Transaction[] = [
-  {
-    id: "TX-001",
-    date: new Date().toISOString(),
-    category: "Yuran Keahlian",
-    amount: 150.0,
-    type: "Income",
-    description: "Sumbangan Keahlian Alumni",
-    receiptUrl: ""
-  }
-];
+export const INITIAL_TRANSACTIONS: Transaction[] = [];

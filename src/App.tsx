@@ -53,7 +53,7 @@ export default function App() {
   const [members, setMembers] = useState<AlumniMember[]>(() => 
     INITIAL_MEMBERS.map(m => ({ ...m, status: getMemberStatus(m.noTelefon) }))
   );
-  const [transactions, setTransactions] = useState<Transaction[]>(INITIAL_TRANSACTIONS);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [programs, setPrograms] = useState<Program[]>(INITIAL_PROGRAMS_LIST);
   const [config, setConfig] = useState<SystemConfig>(INITIAL_CONFIG);
   
@@ -106,17 +106,17 @@ export default function App() {
       }
     );
 
-    // 2. Subscribe to Transactions
+    // 2. Subscribe to Transactions (Real-time sync from Firestore)
     const unsubTransactions = subscribeToTransactions((freshTx) => {
-      if (freshTx && freshTx.length > 0) setTransactions(freshTx);
+      setTransactions(freshTx || []);
     });
 
-    // 3. Subscribe to Programs
+    // 3. Subscribe to Programs (Real-time sync from Firestore)
     const unsubPrograms = subscribeToPrograms((freshPrograms) => {
-      if (freshPrograms && freshPrograms.length > 0) setPrograms(freshPrograms);
+      if (freshPrograms) setPrograms(freshPrograms);
     });
 
-    // 4. Subscribe to Config
+    // 4. Subscribe to Config (Real-time sync from Firestore)
     const unsubConfig = subscribeToConfig((freshConfig) => {
       if (freshConfig) setConfig(freshConfig);
     });

@@ -34,23 +34,17 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   const [saveMsg, setSaveMsg] = useState<{ status: 'success' | 'error'; text: string } | null>(null);
   const [isReseeding, setIsReseeding] = useState(false);
 
-  // Sync local form state whenever config prop updates
-  const [prevConfig, setPrevConfig] = useState(config);
-
+  // Sync local form state whenever config prop updates from Firestore
   useEffect(() => {
-    if (config !== prevConfig) {
-      if (name === prevConfig.associationName) setName(config.associationName);
-      if (logo === prevConfig.associationLogoUrl) setLogo(config.associationLogoUrl);
-      if (fee === prevConfig.membershipFee.toString()) setFee(config.membershipFee.toString());
-      if (year === prevConfig.membershipYear) setYear(config.membershipYear);
-      if (pengerusi === (prevConfig.pengerusi || '')) setPengerusi(config.pengerusi || '');
-      if (setiausaha === (prevConfig.setiausaha || '')) setSetiausaha(config.setiausaha || '');
-      if (bendahari === (prevConfig.bendahari || '')) setBendahari(config.bendahari || '');
-      if (juruAudit === (prevConfig.juruAudit || '')) setJuruAudit(config.juruAudit || '');
-      
-      setPrevConfig(config);
-    }
-  }, [config, prevConfig, name, logo, fee, year, pengerusi, setiausaha, bendahari, juruAudit]);
+    setName(config.associationName || '');
+    setLogo(config.associationLogoUrl || '');
+    setFee((config.membershipFee ?? 50).toString());
+    setYear(config.membershipYear || '2026');
+    setPengerusi(config.pengerusi || '');
+    setSetiausaha(config.setiausaha || '');
+    setBendahari(config.bendahari || '');
+    setJuruAudit(config.juruAudit || '');
+  }, [config]);
 
   const handleSaveConfig = async (e: React.FormEvent) => {
     e.preventDefault();

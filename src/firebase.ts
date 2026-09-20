@@ -213,9 +213,9 @@ export async function seedInitialFirestoreData(): Promise<void> {
       await batch.commit();
     }
 
-    // 3. Check & Seed Transactions
+    // 3. Check & Seed Transactions (only if INITIAL_TRANSACTIONS has records)
     const txSnap = await getDocs(collection(db, COLLECTIONS.TRANSACTIONS));
-    if (txSnap.empty) {
+    if (txSnap.empty && INITIAL_TRANSACTIONS.length > 0) {
       console.log('Seeding initial transactions to Firestore...');
       const batch = writeBatch(db);
       INITIAL_TRANSACTIONS.forEach(tx => {
