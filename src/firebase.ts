@@ -15,8 +15,17 @@ import {
 import { AlumniMember, Transaction, Program, SystemConfig } from './types';
 import { INITIAL_MEMBERS, INITIAL_TRANSACTIONS, INITIAL_CONFIG } from './data/initialData';
 
+const getApiKey = () => {
+  try {
+    if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_FIREBASE_API_KEY) {
+      return import.meta.env.VITE_FIREBASE_API_KEY;
+    }
+  } catch {}
+  return "AIzaSyDummyKeyForFirestoreInit";
+};
+
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyDummyKeyForFirestoreInit",
+  apiKey: getApiKey(),
   authDomain: "icamp-aa9e4.firebaseapp.com",
   projectId: "icamp-aa9e4",
   storageBucket: "icamp-aa9e4.firebasestorage.app",
