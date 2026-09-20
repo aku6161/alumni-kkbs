@@ -451,7 +451,7 @@ export default function App() {
   return (
     <div className="min-h-screen relative flex flex-col font-sans text-slate-800 selection:bg-cyan-500 selection:text-white print:bg-white overflow-x-hidden">
       {/* Dynamic Network Security Background */}
-      <NetworkSecurityBackground />
+      <NetworkSecurityBackground showCentralLock={userRole === 'landing'} />
       
       {/* 1. AUTH LANDING PAGE VIEW */}
       {userRole === 'landing' ? (
@@ -736,7 +736,7 @@ export default function App() {
       ) : (
         
         /* 2. LOGGED IN DASHBOARD / NAVIGATION SHELL VIEW */
-        <>
+        <div className="relative z-10 flex flex-col flex-1 min-h-screen">
           <Navbar
             currentView={currentView}
             setCurrentView={setCurrentView}
@@ -829,7 +829,7 @@ export default function App() {
               </div>
             </div>
           </footer>
-        </>
+        </div>
       )}
 
     </div>

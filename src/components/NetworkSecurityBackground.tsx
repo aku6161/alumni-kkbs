@@ -1,7 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 
-export const NetworkSecurityBackground: React.FC = () => {
+interface NetworkSecurityBackgroundProps {
+  showCentralLock?: boolean;
+}
+
+export const NetworkSecurityBackground: React.FC<NetworkSecurityBackgroundProps> = ({
+  showCentralLock = false,
+}) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const showLockRef = useRef(showCentralLock);
+
+  useEffect(() => {
+    showLockRef.current = showCentralLock;
+  }, [showCentralLock]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -368,183 +379,185 @@ export const NetworkSecurityBackground: React.FC = () => {
         ctx.restore();
       }
 
-      // 6. Central Futuristic Network Security Lock & HUD Radar
-      const centerX = width / 2 + mouseOffsetX * 1.8;
-      const centerY = height * 0.46 + mouseOffsetY * 1.8;
+      // 6. Central Futuristic Network Security Lock & HUD Radar (Only displayed on landing / auth pages)
+      if (showLockRef.current) {
+        const centerX = width / 2 + mouseOffsetX * 1.8;
+        const centerY = height * 0.46 + mouseOffsetY * 1.8;
 
-      ringAngle1 += 0.008;
-      ringAngle2 -= 0.006;
-      ringAngle3 += 0.012;
-      lockAngle = Math.sin(time * 0.8) * 0.05;
+        ringAngle1 += 0.008;
+        ringAngle2 -= 0.006;
+        ringAngle3 += 0.012;
+        lockAngle = Math.sin(time * 0.8) * 0.05;
 
-      ctx.save();
-      ctx.translate(centerX, centerY);
-
-      // Outer HUD Ring 1: Segmented Arcs
-      ctx.save();
-      ctx.rotate(ringAngle1);
-      ctx.strokeStyle = 'rgba(0, 242, 254, 0.35)';
-      ctx.lineWidth = 1.5;
-      ctx.setLineDash([18, 12, 6, 12]);
-      ctx.beginPath();
-      ctx.arc(0, 0, 160, 0, Math.PI * 2);
-      ctx.stroke();
-
-      // Outer tick marks
-      ctx.setLineDash([]);
-      for (let i = 0; i < 36; i += 3) {
-        const rad = (i * Math.PI) / 18;
-        const r1 = 160;
-        const r2 = i % 6 === 0 ? 172 : 166;
-        ctx.beginPath();
-        ctx.moveTo(Math.cos(rad) * r1, Math.sin(rad) * r1);
-        ctx.lineTo(Math.cos(rad) * r2, Math.sin(rad) * r2);
-        ctx.strokeStyle = i % 6 === 0 ? 'rgba(0, 242, 254, 0.6)' : 'rgba(56, 189, 248, 0.25)';
-        ctx.lineWidth = i % 6 === 0 ? 2 : 1;
-        ctx.stroke();
-      }
-      ctx.restore();
-
-      // Middle HUD Ring 2: Rotating Scanning Arcs & Target brackets
-      ctx.save();
-      ctx.rotate(ringAngle2);
-      ctx.strokeStyle = 'rgba(14, 165, 233, 0.45)';
-      ctx.lineWidth = 2.5;
-      ctx.setLineDash([45, 30, 90, 30]);
-      ctx.beginPath();
-      ctx.arc(0, 0, 128, 0, Math.PI * 2);
-      ctx.stroke();
-
-      // Corner target brackets
-      ctx.setLineDash([]);
-      ctx.strokeStyle = 'rgba(0, 242, 254, 0.7)';
-      ctx.lineWidth = 2;
-      for (let k = 0; k < 4; k++) {
-        const angle = (k * Math.PI) / 2;
         ctx.save();
-        ctx.rotate(angle);
+        ctx.translate(centerX, centerY);
+
+        // Outer HUD Ring 1: Segmented Arcs
+        ctx.save();
+        ctx.rotate(ringAngle1);
+        ctx.strokeStyle = 'rgba(0, 242, 254, 0.35)';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([18, 12, 6, 12]);
         ctx.beginPath();
-        ctx.arc(0, 0, 138, -0.12, 0.12);
+        ctx.arc(0, 0, 160, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Outer tick marks
+        ctx.setLineDash([]);
+        for (let i = 0; i < 36; i += 3) {
+          const rad = (i * Math.PI) / 18;
+          const r1 = 160;
+          const r2 = i % 6 === 0 ? 172 : 166;
+          ctx.beginPath();
+          ctx.moveTo(Math.cos(rad) * r1, Math.sin(rad) * r1);
+          ctx.lineTo(Math.cos(rad) * r2, Math.sin(rad) * r2);
+          ctx.strokeStyle = i % 6 === 0 ? 'rgba(0, 242, 254, 0.6)' : 'rgba(56, 189, 248, 0.25)';
+          ctx.lineWidth = i % 6 === 0 ? 2 : 1;
+          ctx.stroke();
+        }
+        ctx.restore();
+
+        // Middle HUD Ring 2: Rotating Scanning Arcs & Target brackets
+        ctx.save();
+        ctx.rotate(ringAngle2);
+        ctx.strokeStyle = 'rgba(14, 165, 233, 0.45)';
+        ctx.lineWidth = 2.5;
+        ctx.setLineDash([45, 30, 90, 30]);
+        ctx.beginPath();
+        ctx.arc(0, 0, 128, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Corner target brackets
+        ctx.setLineDash([]);
+        ctx.strokeStyle = 'rgba(0, 242, 254, 0.7)';
+        ctx.lineWidth = 2;
+        for (let k = 0; k < 4; k++) {
+          const angle = (k * Math.PI) / 2;
+          ctx.save();
+          ctx.rotate(angle);
+          ctx.beginPath();
+          ctx.arc(0, 0, 138, -0.12, 0.12);
+          ctx.stroke();
+          ctx.restore();
+        }
+        ctx.restore();
+
+        // Inner HUD Ring 3: Fast Revolving Data Matrix Ring
+        ctx.save();
+        ctx.rotate(ringAngle3);
+        ctx.strokeStyle = 'rgba(99, 102, 241, 0.5)';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([8, 14]);
+        ctx.beginPath();
+        ctx.arc(0, 0, 96, 0, Math.PI * 2);
         ctx.stroke();
         ctx.restore();
+
+        // Subtle Pulsing Radar Sweep in Center
+        const radarAngle = (time * 1.5) % (Math.PI * 2);
+        const sweepGradient = ctx.createConicGradient(radarAngle, 0, 0);
+        sweepGradient.addColorStop(0, 'rgba(0, 242, 254, 0.15)');
+        sweepGradient.addColorStop(0.12, 'rgba(0, 242, 254, 0.0)');
+        sweepGradient.addColorStop(1, 'rgba(0, 242, 254, 0.0)');
+        ctx.fillStyle = sweepGradient;
+        ctx.beginPath();
+        ctx.arc(0, 0, 160, 0, Math.PI * 2);
+        ctx.fill();
+
+        // 7. Futuristic Digital Security Padlock in Center
+        ctx.save();
+        ctx.rotate(lockAngle);
+
+        // Padlock Shackle (Top U-Shape Arc)
+        const lockPulse = Math.sin(time * 2.5);
+        const shackleGlowColor = lockPulse > 0 ? 'rgba(0, 242, 254, 0.95)' : 'rgba(56, 189, 248, 0.8)';
+
+        ctx.strokeStyle = shackleGlowColor;
+        ctx.lineWidth = 7;
+        ctx.lineCap = 'round';
+        ctx.shadowColor = '#00f2fe';
+        ctx.shadowBlur = 18;
+
+        ctx.beginPath();
+        // Shackle arch
+        ctx.arc(0, -20, 28, Math.PI, 0, false);
+        ctx.lineTo(28, 4);
+        ctx.moveTo(-28, -20);
+        ctx.lineTo(-28, 4);
+        ctx.stroke();
+
+        // Padlock Body (Rounded Cyber Rect)
+        const bodyWidth = 74;
+        const bodyHeight = 58;
+        const bodyX = -bodyWidth / 2;
+        const bodyY = -4;
+        const radius = 10;
+
+        // Body Gradient Background
+        const lockBodyGrad = ctx.createLinearGradient(0, bodyY, 0, bodyY + bodyHeight);
+        lockBodyGrad.addColorStop(0, 'rgba(10, 37, 74, 0.85)');
+        lockBodyGrad.addColorStop(1, 'rgba(4, 18, 40, 0.95)');
+
+        ctx.fillStyle = lockBodyGrad;
+        ctx.beginPath();
+        ctx.roundRect(bodyX, bodyY, bodyWidth, bodyHeight, radius);
+        ctx.fill();
+
+        // Padlock Body Neon Border
+        ctx.strokeStyle = 'rgba(0, 242, 254, 0.9)';
+        ctx.lineWidth = 2.5;
+        ctx.shadowColor = '#00f2fe';
+        ctx.shadowBlur = 14;
+        ctx.stroke();
+
+        // Inner Tech Grid on Padlock Body
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = 'rgba(0, 242, 254, 0.2)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(bodyX + 8, bodyY + 12);
+        ctx.lineTo(bodyX + bodyWidth - 8, bodyY + 12);
+        ctx.moveTo(bodyX + 8, bodyY + bodyHeight - 12);
+        ctx.lineTo(bodyX + bodyWidth - 8, bodyY + bodyHeight - 12);
+        ctx.stroke();
+
+        // Center Keyhole (Glowing Neon Circle & Notch)
+        ctx.save();
+        ctx.fillStyle = '#00f2fe';
+        ctx.shadowColor = '#00f2fe';
+        ctx.shadowBlur = 16;
+        ctx.beginPath();
+        ctx.arc(0, bodyY + 22, 6.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(-3.5, bodyY + 24);
+        ctx.lineTo(3.5, bodyY + 24);
+        ctx.lineTo(5, bodyY + 38);
+        ctx.lineTo(-5, bodyY + 38);
+        ctx.closePath();
+        ctx.fill();
+
+        // Bright white core inside keyhole
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(0, bodyY + 22, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        // Cyber Security HUD Status Labels below lock
+        ctx.font = 'bold 9px "Courier New", monospace, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'rgba(0, 242, 254, 0.95)';
+        ctx.fillText('• NETWORK SECURITY LOCKED •', 0, 78);
+
+        ctx.font = '8px "Courier New", monospace, sans-serif';
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.65)';
+        ctx.fillText('ALUMNI KKBS // AES-256 ENCRYPTED', 0, 92);
+
+        ctx.restore(); // end lock transform
+        ctx.restore(); // end center transform
       }
-      ctx.restore();
-
-      // Inner HUD Ring 3: Fast Revolving Data Matrix Ring
-      ctx.save();
-      ctx.rotate(ringAngle3);
-      ctx.strokeStyle = 'rgba(99, 102, 241, 0.5)';
-      ctx.lineWidth = 1.5;
-      ctx.setLineDash([8, 14]);
-      ctx.beginPath();
-      ctx.arc(0, 0, 96, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.restore();
-
-      // Subtle Pulsing Radar Sweep in Center
-      const radarAngle = (time * 1.5) % (Math.PI * 2);
-      const sweepGradient = ctx.createConicGradient(radarAngle, 0, 0);
-      sweepGradient.addColorStop(0, 'rgba(0, 242, 254, 0.15)');
-      sweepGradient.addColorStop(0.12, 'rgba(0, 242, 254, 0.0)');
-      sweepGradient.addColorStop(1, 'rgba(0, 242, 254, 0.0)');
-      ctx.fillStyle = sweepGradient;
-      ctx.beginPath();
-      ctx.arc(0, 0, 160, 0, Math.PI * 2);
-      ctx.fill();
-
-      // 7. Futuristic Digital Security Padlock in Center
-      ctx.save();
-      ctx.rotate(lockAngle);
-
-      // Padlock Shackle (Top U-Shape Arc)
-      const lockPulse = Math.sin(time * 2.5);
-      const shackleGlowColor = lockPulse > 0 ? 'rgba(0, 242, 254, 0.95)' : 'rgba(56, 189, 248, 0.8)';
-
-      ctx.strokeStyle = shackleGlowColor;
-      ctx.lineWidth = 7;
-      ctx.lineCap = 'round';
-      ctx.shadowColor = '#00f2fe';
-      ctx.shadowBlur = 18;
-
-      ctx.beginPath();
-      // Shackle arch
-      ctx.arc(0, -20, 28, Math.PI, 0, false);
-      ctx.lineTo(28, 4);
-      ctx.moveTo(-28, -20);
-      ctx.lineTo(-28, 4);
-      ctx.stroke();
-
-      // Padlock Body (Rounded Cyber Rect)
-      const bodyWidth = 74;
-      const bodyHeight = 58;
-      const bodyX = -bodyWidth / 2;
-      const bodyY = -4;
-      const radius = 10;
-
-      // Body Gradient Background
-      const lockBodyGrad = ctx.createLinearGradient(0, bodyY, 0, bodyY + bodyHeight);
-      lockBodyGrad.addColorStop(0, 'rgba(10, 37, 74, 0.85)');
-      lockBodyGrad.addColorStop(1, 'rgba(4, 18, 40, 0.95)');
-
-      ctx.fillStyle = lockBodyGrad;
-      ctx.beginPath();
-      ctx.roundRect(bodyX, bodyY, bodyWidth, bodyHeight, radius);
-      ctx.fill();
-
-      // Padlock Body Neon Border
-      ctx.strokeStyle = 'rgba(0, 242, 254, 0.9)';
-      ctx.lineWidth = 2.5;
-      ctx.shadowColor = '#00f2fe';
-      ctx.shadowBlur = 14;
-      ctx.stroke();
-
-      // Inner Tech Grid on Padlock Body
-      ctx.shadowBlur = 0;
-      ctx.strokeStyle = 'rgba(0, 242, 254, 0.2)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(bodyX + 8, bodyY + 12);
-      ctx.lineTo(bodyX + bodyWidth - 8, bodyY + 12);
-      ctx.moveTo(bodyX + 8, bodyY + bodyHeight - 12);
-      ctx.lineTo(bodyX + bodyWidth - 8, bodyY + bodyHeight - 12);
-      ctx.stroke();
-
-      // Center Keyhole (Glowing Neon Circle & Notch)
-      ctx.save();
-      ctx.fillStyle = '#00f2fe';
-      ctx.shadowColor = '#00f2fe';
-      ctx.shadowBlur = 16;
-      ctx.beginPath();
-      ctx.arc(0, bodyY + 22, 6.5, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.moveTo(-3.5, bodyY + 24);
-      ctx.lineTo(3.5, bodyY + 24);
-      ctx.lineTo(5, bodyY + 38);
-      ctx.lineTo(-5, bodyY + 38);
-      ctx.closePath();
-      ctx.fill();
-
-      // Bright white core inside keyhole
-      ctx.fillStyle = '#ffffff';
-      ctx.beginPath();
-      ctx.arc(0, bodyY + 22, 2.5, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-
-      // Cyber Security HUD Status Labels below lock
-      ctx.font = 'bold 9px "Courier New", monospace, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillStyle = 'rgba(0, 242, 254, 0.95)';
-      ctx.fillText('• NETWORK SECURITY LOCKED •', 0, 78);
-
-      ctx.font = '8px "Courier New", monospace, sans-serif';
-      ctx.fillStyle = 'rgba(56, 189, 248, 0.65)';
-      ctx.fillText('ALUMNI KKBS // AES-256 ENCRYPTED', 0, 92);
-
-      ctx.restore(); // end lock transform
-      ctx.restore(); // end center transform
 
       // 8. Cyber Laser Scan Sweep (Vertical scan passing periodically)
       scanLineY += 1.8;

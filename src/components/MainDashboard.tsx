@@ -89,8 +89,9 @@ export const MainDashboard: React.FC<MainDashboardProps> = ({
 
       {/* Quick Action / Peluang Kerjaya Grid */}
       <div>
-        <h3 className="text-sm font-bold text-slate-700 uppercase tracking-wider mb-4">
-          {userRole === 'admin' ? 'Menu Tindakan Pantas' : 'Peluang Kerjaya'}
+        <h3 className="text-xs font-black text-cyan-300 uppercase tracking-wider mb-4 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          <span>{userRole === 'admin' ? 'Menu Tindakan Pantas' : 'Peluang Kerjaya'}</span>
         </h3>
         
         {userRole === 'admin' ? (
