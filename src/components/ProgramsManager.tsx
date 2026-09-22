@@ -10,6 +10,220 @@ interface ProgramsManagerProps {
   onDeleteProgram: (id: string) => void;
 }
 
+// Helper interface for tentative schedule
+interface ScheduleItem {
+  masa: string;
+  aktiviti: string;
+  tindakan: string;
+}
+
+// Helper interface for committee list
+interface CommitteeItem {
+  bil: number;
+  jawatan: string;
+  nama: string;
+  peranan: string;
+}
+
+// Helper function to generate contextual tentative schedule based on program details
+const generateTentativeSchedule = (program: Program): ScheduleItem[] => {
+  const name = (program.namaProgram || '').toLowerCase();
+  const timeRaw = (program.masaProgram || '').toLowerCase();
+  const venue = program.tempatProgram || 'Kolej Komuniti Beaufort';
+
+  // 1. Sukan / Futsal / Sukaneka / Karnival
+  if (name.includes('sukan') || name.includes('futsal') || name.includes('karnival') || name.includes('bola')) {
+    return [
+      { masa: '07:30 Pagi', aktiviti: 'Pendaftaran peserta, taklimat keselamatan dan penyerahan nombor penyertaan', tindakan: 'AJK Pendaftaran & Urus Setia' },
+      { masa: '08:00 Pagi', aktiviti: 'Sesi senamrobik / pemanasan badan dan taklimat peraturan pertandingan', tindakan: 'AJK Teknikal & Pengadil' },
+      { masa: '08:30 Pagi', aktiviti: 'Perlawanan peringkat kumpulan / acara saringan bermula', tindakan: 'Pegawai Perlawanan & Peserta' },
+      { masa: '10:30 Pagi', aktiviti: 'Rehat dan agihan minuman / makanan ringan', tindakan: 'AJK Jamuan' },
+      { masa: '11:00 Pagi', aktiviti: 'Perlawanan peringkat suku akhir & separuh akhir', tindakan: 'Pegawai Perlawanan' },
+      { masa: '01:00 Petang', aktiviti: 'Rehat, solat zohor dan makan tengah hari', tindakan: 'Semua Peserta' },
+      { masa: '02:30 Petang', aktiviti: 'Perlawanan akhir (Final) dan penentuan tempat ke-3 & ke-4', tindakan: 'Pengadil Perlawanan' },
+      { masa: '04:00 Petang', aktiviti: 'Majlis penutupan, penyampaian pingat, piala iringan dan cenderamata', tindakan: 'Pengerusi & Tetamu Jemputan' },
+      { masa: '05:00 Petang', aktiviti: 'Sesi fotografi kenangan dan gotong-royong pembersihan kawasan', tindakan: 'Semua Jawatankuasa' }
+    ];
+  }
+
+  // 2. Iftar / Ramadan / Makan Malam / Gala
+  if (name.includes('iftar') || name.includes('ramadan') || name.includes('makan malam') || name.includes('gala') || timeRaw.includes('malam') || (timeRaw.includes('pm') && (timeRaw.includes('7') || timeRaw.includes('8')))) {
+    if (name.includes('iftar') || name.includes('ramadan')) {
+      return [
+        { masa: '05:30 Petang', aktiviti: 'Ketibaan ahli alumni, jemputan khas dan pendaftaran', tindakan: 'AJK Pendaftaran & Protokol' },
+        { masa: '06:00 Petang', aktiviti: 'Tazkirah Ramadan dan perkongsian santai alumni', tindakan: 'Penceramah Jemputan' },
+        { masa: '06:25 Petang', aktiviti: 'Majlis penyerahan santunan kasih / sumbangan kebajikan asnaf', tindakan: 'Pengerusi Persatuan Alumni' },
+        { masa: '06:33 Petang', aktiviti: 'Iftar (berbuka puasa) dan solat Maghrib berjemaah', tindakan: 'Semua Hadirin' },
+        { masa: '07:15 Petang', aktiviti: 'Jamuan makan malam perdana iftar', tindakan: 'AJK Jamuan' },
+        { masa: '08:00 Malam', aktiviti: 'Solat Isyak dan solat sunat Tarawih berjemaah', tindakan: 'Imam & Jemaah' },
+        { masa: '09:00 Malam', aktiviti: 'Moreh, sesi ramah mesra alumni dan bersurai', tindakan: 'Urus Setia' }
+      ];
+    }
+    return [
+      { masa: '07:00 Malam', aktiviti: 'Ketibaan para alumni, pendaftaran dan sesi fotografi di Photo Booth', tindakan: 'AJK Pendaftaran & Media' },
+      { masa: '07:45 Malam', aktiviti: 'Ketibaan tetamu kehormat dan nyanyian lagu Negaraku & Sabah Tanah Airku', tindakan: 'AJK Protokol' },
+      { masa: '08:00 Malam', aktiviti: 'Bacaan doa dan ucapan alu-aluan Pengerusi Persatuan Alumni KKBS', tindakan: 'Pengerusi Alumni' },
+      { masa: '08:15 Malam', aktiviti: 'Ucapan perasmian majlis oleh Tetamu Kehormat', tindakan: 'Tetamu Kehormat' },
+      { masa: '08:30 Malam', aktiviti: 'Jamuan makan malam berhidang dan persembahan montaj aktiviti alumni', tindakan: 'AJK Jamuan & Multimedia' },
+      { masa: '09:30 Malam', aktiviti: 'Penyampaian Anugerah Ikon Alumni & cabutan bertuah perdana', tindakan: 'Jawatankuasa Majlis' },
+      { masa: '10:30 Malam', aktiviti: 'Sesi bergambar rasmi jawatankuasa dan bersurai', tindakan: 'AJK Dokumentasi' }
+    ];
+  }
+
+  // 3. Sumbangan / CSR / Kebajikan / Prihatin / Bayaran Balik
+  if (name.includes('sumbangan') || name.includes('kasih') || name.includes('csr') || name.includes('prihatin') || name.includes('kanopi') || name.includes('kebajikan') || name.includes('bayaran balik') || name.includes('cenderamata')) {
+    return [
+      { masa: '08:30 Pagi', aktiviti: `Ketibaan jawatankuasa persatuan dan wakil penerima di ${venue}`, tindakan: 'AJK Sambutan & Protokol' },
+      { masa: '09:00 Pagi', aktiviti: 'Bacaan doa selamat dan ucapan pembukaan oleh Pengerusi Persatuan Alumni', tindakan: 'Pengerusi Alumni' },
+      { masa: '09:30 Pagi', aktiviti: 'Ucapan aluan wakil Kolej Komuniti Beaufort / wakil komuniti setempat', tindakan: 'Pengurusan KKBS / Komuniti' },
+      { masa: '10:00 Pagi', aktiviti: `Sesi simbolik penyerahan bantuan / program '${program.namaProgram}'`, tindakan: 'Pengerusi & Ahli Jawatankuasa' },
+      { masa: '10:30 Pagi', aktiviti: 'Sesi fotografi penyerahan sumbangan dan temubual ringkas penerima', tindakan: 'AJK Publisiti & Media' },
+      { masa: '11:00 Pagi', aktiviti: 'Jamuan ringan, sesi ramah mesra bersama penerima dan bersurai', tindakan: 'Urus Setia' }
+    ];
+  }
+
+  // 4. Camp / Bootcamp / Kepimpinan
+  if (name.includes('camp') || name.includes('kem') || name.includes('bootcamp') || name.includes('lead') || name.includes('futureready')) {
+    return [
+      { masa: '08:00 Pagi', aktiviti: 'Pendaftaran peserta, pembahagian kumpulan dan agihan kit peserta', tindakan: 'AJK Pendaftaran' },
+      { masa: '08:30 Pagi', aktiviti: 'Taklimat program, sesi ice-breaking dan pembinaan dinamika kumpulan', tindakan: 'Ketua Fasilitator' },
+      { masa: '10:30 Pagi', aktiviti: 'Rehat dan minum pagi', tindakan: 'AJK Jamuan' },
+      { masa: '11:00 Pagi', aktiviti: 'Modul 1: Kepimpinan adaptif, kemahiran insaniah & strategi kerjaya moden', tindakan: 'Penceramah / Fasilitator' },
+      { masa: '01:00 Petang', aktiviti: 'Makan tengah hari, solat zohor dan rehat kendiri', tindakan: 'Semua Peserta' },
+      { masa: '02:00 Petang', aktiviti: 'Modul 2: Latihan Dalam Kumpulan (LDK) & simulasi industri dunia sebenar', tindakan: 'Fasilitator & Peserta' },
+      { masa: '04:00 Petang', aktiviti: 'Pembentangan hasil kumpulan, rumusan fasilitator dan penilaian kendiri', tindakan: 'Panel Penilai' },
+      { masa: '04:45 Petang', aktiviti: 'Penyampaian sijil penyertaan, sesi fotografi kenangan dan bersurai', tindakan: 'Pengerusi & Urus Setia' }
+    ];
+  }
+
+  // 5. Mesyuarat Agung / AGM / Minit Mesyuarat
+  if (name.includes('agm') || name.includes('mesyuarat') || name.includes('minit')) {
+    return [
+      { masa: '08:00 Pagi', aktiviti: 'Pendaftaran kehadiran ahli alumni dan pengedaran naskhah laporan tahunan', tindakan: 'AJK Pendaftaran & Urus Setia' },
+      { masa: '08:45 Pagi', aktiviti: 'Ketibaan tetamu kehormat dan bacaan doa selamat', tindakan: 'AJK Protokol' },
+      { masa: '09:00 Pagi', aktiviti: 'Ucapan alu-aluan Pengerusi Persatuan Alumni Kolej Komuniti Beaufort', tindakan: 'Pengerusi Alumni' },
+      { masa: '09:30 Pagi', aktiviti: 'Ucapan perasmian oleh Pengarah Kolej Komuniti Beaufort', tindakan: 'Penaung / Pengarah' },
+      { masa: '10:15 Pagi', aktiviti: 'Rehat dan jamuan minum pagi', tindakan: 'AJK Jamuan' },
+      { masa: '10:45 Pagi', aktiviti: 'Mesyuarat bermula: Pembentangan minit, laporan aktiviti & penyata kewangan', tindakan: 'Setiausaha & Bendahari' },
+      { masa: '12:30 Tengah Hari', aktiviti: 'Perbahasan usul, pelantikan jawatankuasa (jika ada) dan ucapan penangguhan', tindakan: 'Pengerusi Mesyuarat' },
+      { masa: '01:15 Petang', aktiviti: 'Makan tengah hari, solat zohor dan bersurai', tindakan: 'Semua Hadirin' }
+    ];
+  }
+
+  // 6. Bengkel / Kursus / Career / Lawatan / Default Standard Program
+  return [
+    { masa: '08:00 Pagi', aktiviti: 'Pendaftaran kehadiran peserta, pengambilan bahan kursus dan sarapan pagi', tindakan: 'AJK Pendaftaran' },
+    { masa: '08:45 Pagi', aktiviti: 'Ketibaan tetamu jemputan, nyanyian lagu Negaraku dan bacaan doa', tindakan: 'AJK Protokol' },
+    { masa: '09:00 Pagi', aktiviti: `Ucapan pembukaan program: '${program.namaProgram}'`, tindakan: 'Pengarah Program / Pengerusi' },
+    { masa: '09:30 Pagi', aktiviti: 'Sesi 1: Perkongsian ilmu / modul pengenalan bersama penceramah industri', tindakan: 'Penceramah Jemputan' },
+    { masa: '10:30 Pagi', aktiviti: 'Rehat dan jamuan minum pagi (networking alumni)', tindakan: 'AJK Jamuan' },
+    { masa: '11:00 Pagi', aktiviti: 'Sesi 2: Bengkel kemahiran praktikal, sesi interaktif dan soal jawab (Q&A)', tindakan: 'Penceramah & Peserta' },
+    { masa: '01:00 Petang', aktiviti: 'Makan tengah hari, solat zohor dan rehat kendiri', tindakan: 'Semua Peserta' },
+    { masa: '02:00 Petang', aktiviti: 'Sesi 3: Perkongsian pengalaman kerjaya alumni, tips pasaran kerja & bimbingan industri', tindakan: 'Panel Alumni / Industri' },
+    { masa: '03:45 Petang', aktiviti: 'Sesi penilaian program dan pengisian borang maklum balas peserta', tindakan: 'Urus Setia' },
+    { masa: '04:15 Petang', aktiviti: 'Majlis penutupan, penyampaian cenderamata penceramah dan sijil kehadiran', tindakan: 'Pengerusi & Pengurusan KKBS' },
+    { masa: '05:00 Petang', aktiviti: 'Sesi fotografi kenangan beramai-ramai dan majlis bersurai', tindakan: 'AJK Dokumentasi' }
+  ];
+};
+
+// Helper function to generate committee list dynamically based on system config
+const generateCommitteeList = (config: SystemConfig, program: Program): CommitteeItem[] => {
+  const list: CommitteeItem[] = [];
+  let bil = 1;
+
+  // 1. Penaung / Penasihat
+  list.push({
+    bil: bil++,
+    jawatan: 'Penaung / Penasihat',
+    nama: config.penasihat || 'PENGARAH KOLEJ KOMUNITI BEAUFORT',
+    peranan: 'Memberikan panduan dasar, nasihat pengurusan dan sokongan kolej.'
+  });
+
+  // 2. Pengerusi
+  list.push({
+    bil: bil++,
+    jawatan: 'Pengerusi Program',
+    nama: config.pengerusi || 'MOHAMMAD SYAFIQ BIN SHAMSUDDIN',
+    peranan: 'Mengetuai pelaksanaan program, menyelia keseluruhan gerak kerja dan kelulusan program.'
+  });
+
+  // 3. Timbalan Pengerusi
+  list.push({
+    bil: bil++,
+    jawatan: 'Timbalan Pengerusi Program',
+    nama: config.timbalanPengerusi || 'TIMBALAN PENGERUSI PERSATUAN ALUMNI',
+    peranan: 'Membantu memantau kelancaran gerak kerja jawatankuasa dan penyelarasan aktiviti.'
+  });
+
+  // 4. Setiausaha / Pengarah Program
+  list.push({
+    bil: bil++,
+    jawatan: 'Pengarah Program / Setiausaha',
+    nama: config.setiausaha || 'MOHD ISKANDAR BIN JIBLIN',
+    peranan: 'Menyediakan kertas kerja, urusan surat-menyurat rasmi, minit mesyuarat dan laporan akhir.'
+  });
+
+  // 5. Penolong Setiausaha
+  list.push({
+    bil: bil++,
+    jawatan: 'Penolong Setiausaha',
+    nama: config.penolongSetiausaha || 'PENOLONG SETIAUSAHA PERSATUAN ALUMNI',
+    peranan: 'Menguruskan pendaftaran peserta, rekod kehadiran dan dokumentasi program.'
+  });
+
+  // 6. Bendahari
+  list.push({
+    bil: bil++,
+    jawatan: 'Bendahari / Pengurus Kewangan',
+    nama: config.bendahari || 'SITI NURHAWA NABILAH BINTI FEDELIS',
+    peranan: 'Menguruskan bajet perbelanjaan, rekod resit, tuntutan kewangan dan penyata kewangan.'
+  });
+
+  // 7. Juru Audit
+  list.push({
+    bil: bil++,
+    jawatan: 'Pemeriksa Kira-Kira / Juru Audit',
+    nama: config.juruAudit || 'REZIELLA BINTI LAHAJI',
+    peranan: 'Menyemak ketepatan penyata perbelanjaan dan memastikan tatakelola kewangan berhemah.'
+  });
+
+  // 8. Ahli Jawatankuasa (AJK)
+  const portfolioDefaults = [
+    { title: 'AJK Logistik, Peralatan & Tempat', task: 'Menyediakan persiapan dewan/tempat, susun atur teknikal dan peralatan program.' },
+    { title: 'AJK Protokol, Sambutan & Pengacaraan', task: 'Menyelaras sambutan tetamu jemputan, atur cara majlis dan teks juruacara.' },
+    { title: 'AJK Makanan, Jamuan & Minuman', task: 'Mengurus tempahan katering, menu sajian dan agihan makanan kepada peserta.' },
+    { title: 'AJK Publisiti, Media & Siaraya', task: 'Mengurus poster hebahan, siaran media sosial, fotografi dan rakaman montaj.' },
+    { title: 'AJK Pendaftaran, Sijil & Cenderamata', task: 'Menyelaras kaunter pendaftaran, penyediaan sijil penyertaan dan cenderamata.' },
+    { title: 'AJK Keselamatan, Kebajikan & Kebersihan', task: 'Memastikan keselamatan peserta, peti kecemasan dan kebersihan lokasi program.' },
+    { title: 'AJK Teknikal & Multimedia', task: 'Mengurus PA sistem, projektor paparan, slaid pembentangan dan sokongan audio-visual.' },
+    { title: 'AJK Fasilitator & Aktiviti', task: 'Memudah cara pelaksanaan aktiviti, penyelarasan modul dan interaksi peserta.' }
+  ];
+
+  if (Array.isArray(config.ajk) && config.ajk.length > 0) {
+    config.ajk.forEach((ajkName, index) => {
+      const port = portfolioDefaults[index % portfolioDefaults.length];
+      list.push({
+        bil: bil++,
+        jawatan: port.title,
+        nama: ajkName.toUpperCase(),
+        peranan: port.task
+      });
+    });
+  } else {
+    // Default allocations when no custom AJK entered yet
+    portfolioDefaults.slice(0, 4).forEach((port) => {
+      list.push({
+        bil: bil++,
+        jawatan: port.title,
+        nama: 'AHLI JAWATANKUASA ALUMNI KKBS',
+        peranan: port.task
+      });
+    });
+  }
+
+  return list;
+};
+
 export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
   programs,
   config,
@@ -499,6 +713,70 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
                 <p style={{ fontWeight: 'normal', margin: '2px 0 0 0' }}>Persatuan Alumni KKBS</p>
               </div>
             </div>
+
+            {/* LAMPIRAN 1: TENTATIF PROGRAM (KERTAS KERJA) */}
+            <div className="page-break" style={{ pageBreakBefore: 'always', marginTop: '36px', paddingTop: '16px' }}>
+              <div style={{ textAlign: 'center', marginBottom: '14px' }}>
+                <h3 style={{ fontWeight: 'bold', fontSize: '12px', textTransform: 'uppercase', margin: '0', textDecoration: 'underline' }}>
+                  LAMPIRAN 1: TENTATIF {printJob.program.namaProgram?.toUpperCase()}
+                </h3>
+                <p style={{ fontSize: '10px', margin: '4px 0 0 0', color: '#444' }}>
+                  Tarikh: <strong>{printJob.program.tarikhProgram || '-'}</strong> &nbsp;|&nbsp; Masa: <strong>{printJob.program.masaProgram || '-'}</strong> &nbsp;|&nbsp; Tempat: <strong>{printJob.program.tempatProgram || '-'}</strong>
+                </p>
+              </div>
+
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', tableLayout: 'fixed' }}>
+                <thead>
+                  <tr style={{ backgroundColor: '#f1f5f9' }}>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '22%', textAlign: 'center', fontWeight: 'bold' }}>MASA</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '56%', textAlign: 'left', fontWeight: 'bold' }}>PENGISIAN / AKTIVITI</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '22%', textAlign: 'center', fontWeight: 'bold' }}>TINDAKAN / CATATAN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {generateTentativeSchedule(printJob.program).map((slot, idx) => (
+                    <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? '#fff' : '#fcfcfc' }}>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', fontWeight: 'bold', wordBreak: 'break-word' }}>{slot.masa}</td>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'left', wordBreak: 'break-word' }}>{slot.aktiviti}</td>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', wordBreak: 'break-word', color: '#444' }}>{slot.tindakan}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* LAMPIRAN 2: JAWATANKUASA PELAKSANA (KERTAS KERJA) */}
+            <div className="page-break" style={{ pageBreakBefore: 'always', marginTop: '36px', paddingTop: '16px' }}>
+              <div style={{ textAlign: 'center', marginBottom: '14px' }}>
+                <h3 style={{ fontWeight: 'bold', fontSize: '12px', textTransform: 'uppercase', margin: '0', textDecoration: 'underline' }}>
+                  LAMPIRAN 2: JAWATANKUASA PELAKSANA {printJob.program.namaProgram?.toUpperCase()}
+                </h3>
+                <p style={{ fontSize: '10px', margin: '4px 0 0 0', color: '#444' }}>
+                  Persatuan Alumni Kolej Komuniti Beaufort Sabah (PAKKBS)
+                </p>
+              </div>
+
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', tableLayout: 'fixed' }}>
+                <thead>
+                  <tr style={{ backgroundColor: '#f1f5f9' }}>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '8%', textAlign: 'center', fontWeight: 'bold' }}>BIL</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '32%', textAlign: 'left', fontWeight: 'bold' }}>JAWATAN / PORTFOLIO</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '35%', textAlign: 'left', fontWeight: 'bold' }}>NAMA PEGAWAI / AHLI</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '25%', textAlign: 'left', fontWeight: 'bold' }}>PERANAN & TUGASAN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {generateCommitteeList(config, printJob.program).map((item) => (
+                    <tr key={item.bil} style={{ backgroundColor: item.bil % 2 === 0 ? '#fcfcfc' : '#fff' }}>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', fontWeight: 'bold' }}>{item.bil}</td>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', fontWeight: 'bold', color: '#1e3a8a', wordBreak: 'break-word' }}>{item.jawatan}</td>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', fontWeight: 'bold', textTransform: 'uppercase', wordBreak: 'break-word' }}>{item.nama}</td>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', fontSize: '10px', color: '#444', wordBreak: 'break-word' }}>{item.peranan}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       )}
@@ -538,6 +816,10 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
               td, th {
                 word-break: break-word !important;
                 box-sizing: border-box !important;
+              }
+              .page-break {
+                page-break-before: always !important;
+                break-before: page !important;
               }
             }
           `}</style>
@@ -633,6 +915,70 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
                 <p style={{ fontWeight: 'normal', margin: '2px 0 0 0' }}>Pengerusi</p>
                 <p style={{ fontWeight: 'normal', margin: '2px 0 0 0' }}>Persatuan Alumni KKBS</p>
               </div>
+            </div>
+
+            {/* LAMPIRAN 1: ATUR CARA PROGRAM (LAPORAN) */}
+            <div className="page-break" style={{ pageBreakBefore: 'always', marginTop: '36px', paddingTop: '16px' }}>
+              <div style={{ textAlign: 'center', marginBottom: '14px' }}>
+                <h3 style={{ fontWeight: 'bold', fontSize: '12px', textTransform: 'uppercase', margin: '0', textDecoration: 'underline' }}>
+                  LAMPIRAN 1: ATUR CARA {printJob.program.namaProgram?.toUpperCase()}
+                </h3>
+                <p style={{ fontSize: '10px', margin: '4px 0 0 0', color: '#444' }}>
+                  Tarikh: <strong>{printJob.program.tarikhProgram || '-'}</strong> &nbsp;|&nbsp; Masa: <strong>{printJob.program.masaProgram || '-'}</strong> &nbsp;|&nbsp; Tempat: <strong>{printJob.program.tempatProgram || '-'}</strong>
+                </p>
+              </div>
+
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', tableLayout: 'fixed' }}>
+                <thead>
+                  <tr style={{ backgroundColor: '#f1f5f9' }}>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '22%', textAlign: 'center', fontWeight: 'bold' }}>MASA</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '56%', textAlign: 'left', fontWeight: 'bold' }}>PENGISIAN / AKTIVITI</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '22%', textAlign: 'center', fontWeight: 'bold' }}>TINDAKAN / CATATAN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {generateTentativeSchedule(printJob.program).map((slot, idx) => (
+                    <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? '#fff' : '#fcfcfc' }}>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', fontWeight: 'bold', wordBreak: 'break-word' }}>{slot.masa}</td>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'left', wordBreak: 'break-word' }}>{slot.aktiviti}</td>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', wordBreak: 'break-word', color: '#444' }}>{slot.tindakan}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* LAMPIRAN 2: JAWATANKUASA PELAKSANA (LAPORAN) */}
+            <div className="page-break" style={{ pageBreakBefore: 'always', marginTop: '36px', paddingTop: '16px' }}>
+              <div style={{ textAlign: 'center', marginBottom: '14px' }}>
+                <h3 style={{ fontWeight: 'bold', fontSize: '12px', textTransform: 'uppercase', margin: '0', textDecoration: 'underline' }}>
+                  LAMPIRAN 2: JAWATANKUASA PELAKSANA {printJob.program.namaProgram?.toUpperCase()}
+                </h3>
+                <p style={{ fontSize: '10px', margin: '4px 0 0 0', color: '#444' }}>
+                  Persatuan Alumni Kolej Komuniti Beaufort Sabah (PAKKBS)
+                </p>
+              </div>
+
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', tableLayout: 'fixed' }}>
+                <thead>
+                  <tr style={{ backgroundColor: '#f1f5f9' }}>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '8%', textAlign: 'center', fontWeight: 'bold' }}>BIL</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '32%', textAlign: 'left', fontWeight: 'bold' }}>JAWATAN / PORTFOLIO</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '35%', textAlign: 'left', fontWeight: 'bold' }}>NAMA PEGAWAI / AHLI</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '25%', textAlign: 'left', fontWeight: 'bold' }}>PERANAN & TUGASAN</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {generateCommitteeList(config, printJob.program).map((item) => (
+                    <tr key={item.bil} style={{ backgroundColor: item.bil % 2 === 0 ? '#fcfcfc' : '#fff' }}>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', fontWeight: 'bold' }}>{item.bil}</td>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', fontWeight: 'bold', color: '#1e3a8a', wordBreak: 'break-word' }}>{item.jawatan}</td>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', fontWeight: 'bold', textTransform: 'uppercase', wordBreak: 'break-word' }}>{item.nama}</td>
+                      <td style={{ border: '1px solid #999', padding: '6px 8px', fontSize: '10px', color: '#444', wordBreak: 'break-word' }}>{item.peranan}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

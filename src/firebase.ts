@@ -188,6 +188,8 @@ export async function seedInitialFirestoreData(): Promise<void> {
     if (!configSnap.exists()) {
       console.log('Seeding initial config to Firestore...');
       await setDoc(configDocRef, INITIAL_CONFIG);
+    } else {
+      await setDoc(configDocRef, { ...INITIAL_CONFIG, ...configSnap.data() }, { merge: true });
     }
 
     // 2. Check & Seed Programs
@@ -335,7 +337,7 @@ export function subscribeToConfig(
     docRef,
     (snapshot) => {
       if (snapshot.exists()) {
-        onUpdate(snapshot.data() as SystemConfig);
+        onUpdate({ ...INITIAL_CONFIG, ...snapshot.data() } as SystemConfig);
       } else {
         onUpdate(INITIAL_CONFIG);
       }
