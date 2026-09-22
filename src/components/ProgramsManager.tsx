@@ -728,9 +728,8 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', tableLayout: 'fixed' }}>
                 <thead>
                   <tr style={{ backgroundColor: '#f1f5f9' }}>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '22%', textAlign: 'center', fontWeight: 'bold' }}>MASA</th>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '56%', textAlign: 'left', fontWeight: 'bold' }}>PENGISIAN / AKTIVITI</th>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '22%', textAlign: 'center', fontWeight: 'bold' }}>TINDAKAN / CATATAN</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '25%', textAlign: 'center', fontWeight: 'bold' }}>MASA</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '75%', textAlign: 'left', fontWeight: 'bold' }}>PENGISIAN / AKTIVITI</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -738,7 +737,6 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
                     <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? '#fff' : '#fcfcfc' }}>
                       <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', fontWeight: 'bold', wordBreak: 'break-word' }}>{slot.masa}</td>
                       <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'left', wordBreak: 'break-word' }}>{slot.aktiviti}</td>
-                      <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', wordBreak: 'break-word', color: '#444' }}>{slot.tindakan}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -759,10 +757,9 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', tableLayout: 'fixed' }}>
                 <thead>
                   <tr style={{ backgroundColor: '#f1f5f9' }}>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '8%', textAlign: 'center', fontWeight: 'bold' }}>BIL</th>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '32%', textAlign: 'left', fontWeight: 'bold' }}>JAWATAN / PORTFOLIO</th>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '35%', textAlign: 'left', fontWeight: 'bold' }}>NAMA PEGAWAI / AHLI</th>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '25%', textAlign: 'left', fontWeight: 'bold' }}>PERANAN & TUGASAN</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '10%', textAlign: 'center', fontWeight: 'bold' }}>BIL</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '45%', textAlign: 'left', fontWeight: 'bold' }}>JAWATAN / PORTFOLIO</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '45%', textAlign: 'left', fontWeight: 'bold' }}>NAMA PEGAWAI / AHLI</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -771,7 +768,6 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
                       <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', fontWeight: 'bold' }}>{item.bil}</td>
                       <td style={{ border: '1px solid #999', padding: '6px 8px', fontWeight: 'bold', color: '#1e3a8a', wordBreak: 'break-word' }}>{item.jawatan}</td>
                       <td style={{ border: '1px solid #999', padding: '6px 8px', fontWeight: 'bold', textTransform: 'uppercase', wordBreak: 'break-word' }}>{item.nama}</td>
-                      <td style={{ border: '1px solid #999', padding: '6px 8px', fontSize: '10px', color: '#444', wordBreak: 'break-word' }}>{item.peranan}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -931,9 +927,8 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', tableLayout: 'fixed' }}>
                 <thead>
                   <tr style={{ backgroundColor: '#f1f5f9' }}>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '22%', textAlign: 'center', fontWeight: 'bold' }}>MASA</th>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '56%', textAlign: 'left', fontWeight: 'bold' }}>PENGISIAN / AKTIVITI</th>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '22%', textAlign: 'center', fontWeight: 'bold' }}>TINDAKAN / CATATAN</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '25%', textAlign: 'center', fontWeight: 'bold' }}>MASA</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '75%', textAlign: 'left', fontWeight: 'bold' }}>PENGISIAN / AKTIVITI</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -941,7 +936,6 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
                     <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? '#fff' : '#fcfcfc' }}>
                       <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', fontWeight: 'bold', wordBreak: 'break-word' }}>{slot.masa}</td>
                       <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'left', wordBreak: 'break-word' }}>{slot.aktiviti}</td>
-                      <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', wordBreak: 'break-word', color: '#444' }}>{slot.tindakan}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -962,10 +956,9 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', tableLayout: 'fixed' }}>
                 <thead>
                   <tr style={{ backgroundColor: '#f1f5f9' }}>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '8%', textAlign: 'center', fontWeight: 'bold' }}>BIL</th>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '32%', textAlign: 'left', fontWeight: 'bold' }}>JAWATAN / PORTFOLIO</th>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '35%', textAlign: 'left', fontWeight: 'bold' }}>NAMA PEGAWAI / AHLI</th>
-                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '25%', textAlign: 'left', fontWeight: 'bold' }}>PERANAN & TUGASAN</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '10%', textAlign: 'center', fontWeight: 'bold' }}>BIL</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '45%', textAlign: 'left', fontWeight: 'bold' }}>JAWATAN / PORTFOLIO</th>
+                    <th style={{ border: '1px solid #777', padding: '6px 8px', width: '45%', textAlign: 'left', fontWeight: 'bold' }}>NAMA PEGAWAI / AHLI</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -974,7 +967,6 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
                       <td style={{ border: '1px solid #999', padding: '6px 8px', textAlign: 'center', fontWeight: 'bold' }}>{item.bil}</td>
                       <td style={{ border: '1px solid #999', padding: '6px 8px', fontWeight: 'bold', color: '#1e3a8a', wordBreak: 'break-word' }}>{item.jawatan}</td>
                       <td style={{ border: '1px solid #999', padding: '6px 8px', fontWeight: 'bold', textTransform: 'uppercase', wordBreak: 'break-word' }}>{item.nama}</td>
-                      <td style={{ border: '1px solid #999', padding: '6px 8px', fontSize: '10px', color: '#444', wordBreak: 'break-word' }}>{item.peranan}</td>
                     </tr>
                   ))}
                 </tbody>
