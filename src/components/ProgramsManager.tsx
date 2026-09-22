@@ -24,14 +24,185 @@ interface CommitteeItem {
   peranan: string;
 }
 
-// Helper function to generate contextual tentative schedule based on program details
+// Helper function to generate contextual, smart tentative schedule based on program details
 const generateTentativeSchedule = (program: Program): ScheduleItem[] => {
   const name = (program.namaProgram || '').toLowerCase();
   const timeRaw = (program.masaProgram || '').toLowerCase();
   const dateRaw = (program.tarikhProgram || '').trim();
   const isMultiDay = dateRaw.includes('&') || dateRaw.includes('dan') || dateRaw.includes('hingga') || dateRaw.includes('-');
 
-  // 1. Multi-Day Programs (e.g., 13 & 14 Jun 2026, 22 & 23 Julai 2026)
+  // 1. Ziarah Kematian / Takziah / Sumbangan Meninggal Dunia / Khairat / Tahlil / Alumni Meninggal Dunia
+  if (
+    name.includes('meninggal') ||
+    name.includes('kematian') ||
+    name.includes('takziah') ||
+    name.includes('tahlil') ||
+    name.includes('khairat') ||
+    name.includes('jenazah') ||
+    name.includes('pusara') ||
+    name.includes('arwah') ||
+    name.includes('allahyarham') ||
+    (name.includes('kasih') && (name.includes('mati') || name.includes('meninggal') || name.includes('keluarga')))
+  ) {
+    const defaultTime = program.masaProgram ? program.masaProgram.split(/[-–]/)[0]?.trim() || '09:00 Pagi' : '09:00 Pagi';
+    return [
+      { masa: defaultTime, aktiviti: 'Ketibaan delegasi Jawatankuasa PAKKBS & wakil alumni di lokasi kediaman keluarga Allahyarham / waris' },
+      { masa: 'Sesi Tahlil & Doa', aktiviti: 'Bacaan tahlil ringkas & doa selamat dipimpin oleh wakil persatuan' },
+      { masa: 'Ucapan Takziah', aktiviti: 'Ucapan takziah, kata-kata semangat dan sokongan moral oleh Pengerusi / wakil Persatuan Alumni KKBS' },
+      { masa: 'Penyerahan Sumbangan', aktiviti: `Majlis simbolik penyerahan sumbangan kebajikan / khairat '${program.namaProgram}' kepada waris keluarga penerima` },
+      { masa: 'Ramah Mesra & Bersurai', aktiviti: 'Sesi ramah mesra bersama waris keluarga, bertanyakan khabar kebajikan & majlis bersurai' }
+    ];
+  }
+
+  // 2. Ziarah Sakit / Hospital / Bantuan Musibah / Kemalangan / Bencana
+  if (
+    name.includes('sakit') ||
+    name.includes('hospital') ||
+    name.includes('wad') ||
+    name.includes('musibah') ||
+    name.includes('banjir') ||
+    name.includes('kebakaran') ||
+    name.includes('kemalangan') ||
+    name.includes('bencana')
+  ) {
+    const defaultTime = program.masaProgram ? program.masaProgram.split(/[-–]/)[0]?.trim() || '10:00 Pagi' : '10:00 Pagi';
+    return [
+      { masa: defaultTime, aktiviti: 'Ketibaan delegasi Jawatankuasa PAKKBS di lokasi kediaman / hospital' },
+      { masa: 'Bertanya Khabar & Doa', aktiviti: 'Sesi ramah mesra, bertanyakan perkembangan kesihatan & bacaan doa kesembuhan / afiyah' },
+      { masa: 'Sokongan Moral', aktiviti: 'Ucapan kata-kata perangsang dan sokongan moral oleh Pengerusi / wakil persatuan alumni' },
+      { masa: 'Penyerahan Sumbangan', aktiviti: `Penyerahan sumbangan kebajikan prihatin '${program.namaProgram}' kepada penerima / waris` },
+      { masa: 'Sesi Bersurai', aktiviti: 'Sesi bersurai dan doa kebaikan bersama' }
+    ];
+  }
+
+  // 3. Sumbangan / Infaq / Kanopi / Peralatan / CSR Kasih Komuniti / Cenderamata
+  if (
+    name.includes('sumbangan') ||
+    name.includes('kasih') ||
+    name.includes('infaq') ||
+    name.includes('sedekah') ||
+    name.includes('wakaf') ||
+    name.includes('prihatin') ||
+    name.includes('kanopi') ||
+    name.includes('cenderamata')
+  ) {
+    return [
+      { masa: '08:30 Pagi', aktiviti: 'Ketibaan Jawatankuasa PAKKBS, tetamu jemputan dan wakil penerima sumbangan' },
+      { masa: '09:00 Pagi', aktiviti: 'Bacaan doa selamat & ucapan alu-aluan oleh Pengerusi Persatuan Alumni KKBS' },
+      { masa: '09:30 Pagi', aktiviti: 'Ucapan ringkas wakil pihak pengurusan kolej / penerima sumbangan' },
+      { masa: '10:00 Pagi', aktiviti: `Majlis simbolik penyerahan '${program.namaProgram}' kepada pihak penerima` },
+      { masa: '10:30 Pagi', aktiviti: 'Sesi fotografi kenangan, ramah mesra bersama penerima & jamuan ringan (Bersurai 11:30 Pagi)' }
+    ];
+  }
+
+  // 4. Mesyuarat Agung Tahunan (AGM) / Mesyuarat Khas / Perjumpaan Rasmi
+  if (
+    name.includes('agm') ||
+    name.includes('mesyuarat agung') ||
+    name.includes('mesyuarat tahunan') ||
+    name.includes('mesyuarat khas') ||
+    name.includes('mesyuarat ajk')
+  ) {
+    return [
+      { masa: '08:00 Pagi', aktiviti: 'Pendaftaran kehadiran ahli alumni & edaran buku laporan tahunan / penyata kewangan' },
+      { masa: '08:45 Pagi', aktiviti: 'Nyanyian lagu Negaraku, bacaan doa & ucapan alu-aluan Pengerusi Persatuan Alumni' },
+      { masa: '09:15 Pagi', aktiviti: 'Pembentangan & pengesahan minit mesyuarat yang lalu' },
+      { masa: '09:45 Pagi', aktiviti: 'Pembentangan laporan aktiviti tahunan persatuan bagi sesi lepas' },
+      { masa: '10:30 Pagi', aktiviti: 'Rehat & jamuan minum pagi' },
+      { masa: '11:00 Pagi', aktiviti: 'Pembentangan dan penerimaan penyata kewangan yang telah diaudit' },
+      { masa: '11:45 Pagi', aktiviti: 'Perbincangan usul-usul ahli & hal-hal berbangkit (atau pemilihan AJK baharu)' },
+      { masa: '01:00 Petang', aktiviti: 'Ucapan penangguhan mesyuarat, sesi fotografi & jamuan tengah hari (Bersurai)' }
+    ];
+  }
+
+  // 5. Iftar / Ramadan / Majlis Berbuka Puasa / Solat Tarawih / Bubur Lambuk
+  if (
+    name.includes('iftar') ||
+    name.includes('ramadan') ||
+    name.includes('berbuka') ||
+    name.includes('tarawih') ||
+    name.includes('tazkirah') ||
+    name.includes('qiamullail') ||
+    name.includes('bubur lambuk')
+  ) {
+    return [
+      { masa: '05:30 Petang', aktiviti: 'Ketibaan ahli alumni, dif-dif jemputan & pendaftaran kehadiran' },
+      { masa: '06:00 Petang', aktiviti: 'Tazkirah Ramadan, bacaan tahlil ringkas & majlis penyerahan santunan kasih asnaf / pelajar' },
+      { masa: '06:33 Petang', aktiviti: 'Sesi iftar (berbuka puasa dengan kurma & kuih-muih) serta solat Maghrib berjemaah' },
+      { masa: '07:15 Petang', aktiviti: 'Jamuan makan malam perdana iftar bersama keluarga alumni & warga kolej' },
+      { masa: '08:00 Malam', aktiviti: 'Solat Isyak dan solat sunat Tarawih berjemaah secara beramai-ramai' },
+      { masa: '09:15 Malam', aktiviti: 'Moreh santai alumni, sesi ramah mesra, fotografi & majlis bersurai (10:00 Malam)' }
+    ];
+  }
+
+  // 6. Majlis Makan Malam / Dinner / Reunion / Gala / Jamuan Raya
+  if (
+    name.includes('dinner') ||
+    name.includes('makan malam') ||
+    name.includes('reunion') ||
+    name.includes('gala') ||
+    name.includes('raya') ||
+    name.includes('aidilfitri') ||
+    name.includes('aidiladha') ||
+    name.includes('hi-tea') ||
+    name.includes('apresiasi') ||
+    timeRaw.includes('malam')
+  ) {
+    return [
+      { masa: '07:00 Malam', aktiviti: 'Ketibaan tetamu alumni, pendaftaran di meja urus setia & sesi bergambar photo booth' },
+      { masa: '07:45 Malam', aktiviti: 'Ketibaan tetamu kehormat & tayangan montaj kenangan alumni' },
+      { masa: '08:00 Malam', aktiviti: 'Nyanyian lagu Negaraku, bacaan doa pembuka & ucapan alu-aluan Pengerusi Persatuan' },
+      { masa: '08:30 Malam', aktiviti: 'Jamuan makan malam perdana berhidang diserikan dengan persembahan selingan alumni' },
+      { masa: '09:30 Malam', aktiviti: 'Sesi penyampaian anugerah penghargaan alumni, cabutan bertuah perdana & ramah mesra' },
+      { masa: '10:30 Malam', aktiviti: 'Sesi fotografi rasmi beramai-ramai & majlis bersurai' }
+    ];
+  }
+
+  // 7. Sukan / Futsal / Badminton / Bowling / Bola / Fun Run / Sukaneka / Riadah / Kayuhan
+  if (
+    name.includes('sukan') ||
+    name.includes('futsal') ||
+    name.includes('badminton') ||
+    name.includes('bowling') ||
+    name.includes('bola') ||
+    name.includes('fun run') ||
+    name.includes('riadah') ||
+    name.includes('marathon') ||
+    name.includes('sukaneka') ||
+    name.includes('kayuhan') ||
+    name.includes('cycling')
+  ) {
+    return [
+      { masa: '07:30 Pagi', aktiviti: 'Pendaftaran peserta / pasukan & sesi taklimat keselamatan pertandingan' },
+      { masa: '08:00 Pagi', aktiviti: 'Sesi pemanasan badan (warm-up) & regangan beramai-ramai' },
+      { masa: '08:30 Pagi', aktiviti: 'Perlawanan pusingan awal / acara sukan bermula' },
+      { masa: '10:30 Pagi', aktiviti: 'Rehat pendek & agihan minuman isotonik' },
+      { masa: '11:00 Pagi', aktiviti: 'Perlawanan peringkat suku akhir & separuh akhir' },
+      { masa: '12:00 Tengah Hari', aktiviti: 'Perlawanan peringkat akhir (Final) kejohanan' },
+      { masa: '01:00 Petang', aktiviti: 'Majlis penutupan, penyampaian pingat/hadiah, sesi fotografi & jamuan makan (Bersurai)' }
+    ];
+  }
+
+  // 8. Gotong-royong / Khidmat Masyarakat / CSR Pembersihan / Alam Sekitar / Tanaman Pokok
+  if (
+    name.includes('gotong') ||
+    name.includes('pembersihan') ||
+    name.includes('khidmat masyarakat') ||
+    name.includes('tanaman') ||
+    name.includes('pokok') ||
+    name.includes('pantai')
+  ) {
+    return [
+      { masa: '07:30 Pagi', aktiviti: 'Pendaftaran sukarelawan alumni & sarapan pagi' },
+      { masa: '08:00 Pagi', aktiviti: 'Taklimat agihan zon tugas & pengedaran alatan keselamatan / kebersihan' },
+      { masa: '08:30 Pagi', aktiviti: 'Aktiviti gotong-royong bermula secara serentak mengikut zon ditetapkan' },
+      { masa: '10:30 Pagi', aktiviti: 'Rehat & jamuan minum pagi' },
+      { masa: '11:00 Pagi', aktiviti: 'Sambungan kerja pembersihan, pengumpulan sisa buangan & pengemasan tapak' },
+      { masa: '12:30 Tengah Hari', aktiviti: 'Majlis penutup ringkas, ucapan terima kasih, sesi fotografi & jamuan tengah hari' }
+    ];
+  }
+
+  // 9. Multi-Day Programs (e.g., 13 & 14 Jun 2026, 22 & 23 Julai 2026)
   if (isMultiDay && (dateRaw.includes('&') || dateRaw.includes('dan'))) {
     const dates = dateRaw.split(/&|dan/i).map((d) => d.trim());
     const day1Date = dates[0] || 'Hari 1';
@@ -53,8 +224,37 @@ const generateTentativeSchedule = (program: Program): ScheduleItem[] => {
     ];
   }
 
-  // 2. Short / Brief Programs (< 3 hours / half-day specific)
-  if (timeRaw.includes('1 jam') || timeRaw.includes('2 jam') || (timeRaw.includes('9.00') && timeRaw.includes('11.00')) || (timeRaw.includes('2.00') && timeRaw.includes('4.00')) || timeRaw.includes('10.00 pagi')) {
+  // 10. Kerjaya / Industri / Temuduga / Resume / Career / Kebolehpasaran
+  if (
+    name.includes('career') ||
+    name.includes('kerjaya') ||
+    name.includes('industri') ||
+    name.includes('temuduga') ||
+    name.includes('resume') ||
+    name.includes('kebolehpasaran') ||
+    name.includes('employability')
+  ) {
+    return [
+      { masa: '08:00 Pagi', aktiviti: 'Pendaftaran peserta, sarapan pagi & edaran kit modul program' },
+      { masa: '08:45 Pagi', aktiviti: 'Ketibaan tetamu jemputan, nyanyian lagu Negaraku & bacaan doa' },
+      { masa: '09:00 Pagi', aktiviti: `Ucapan pembukaan program '${program.namaProgram}' oleh Pengerusi Alumni / Pegawai Pengiring` },
+      { masa: '09:15 Pagi', aktiviti: 'Sesi 1: Perkongsian hala tuju kerjaya & modul kebolehpasaran industri masa kini' },
+      { masa: '10:30 Pagi', aktiviti: 'Rehat minum pagi & sesi networking interaktif bersama panel jemputan' },
+      { masa: '11:00 Pagi', aktiviti: 'Sesi 2: Bengkel kemahiran praktikal penulisan resume berimpak tinggi & simulasi temuduga' },
+      { masa: '01:00 Petang', aktiviti: 'Makan tengah hari, solat Zohor & rehat kendiri' },
+      { masa: '02:00 Petang', aktiviti: 'Sesi 3: Perkongsian pengalaman alumni industri, bimbingan kerjaya & sesi soal jawab (Q&A)' },
+      { masa: '04:15 Petang', aktiviti: 'Majlis penutupan rasmi, penyampaian cenderamata penceramah & sesi fotografi (Bersurai 05:00 Petang)' }
+    ];
+  }
+
+  // 11. Short / Brief Programs (< 3 hours / half-day specific)
+  if (
+    timeRaw.includes('1 jam') ||
+    timeRaw.includes('2 jam') ||
+    (timeRaw.includes('9.00') && timeRaw.includes('11.00')) ||
+    (timeRaw.includes('2.00') && timeRaw.includes('4.00')) ||
+    timeRaw.includes('10.00 pagi')
+  ) {
     return [
       { masa: 'Pendaftaran & Ketibaan', aktiviti: 'Ketibaan tetamu jemputan, pendaftaran kehadiran & taklimat ringkas' },
       { masa: 'Pelaksanaan Acara', aktiviti: `Pelaksanaan aktiviti utama program: '${program.namaProgram}'` },
@@ -62,59 +262,15 @@ const generateTentativeSchedule = (program: Program): ScheduleItem[] => {
     ];
   }
 
-  // 3. Sukan / Futsal / Sukaneka / Karnival
-  if (name.includes('sukan') || name.includes('futsal') || name.includes('karnival') || name.includes('bola')) {
-    return [
-      { masa: '07:30 Pagi', aktiviti: 'Pendaftaran pasukan, taklimat keselamatan & sesi pemanasan badan' },
-      { masa: '08:30 Pagi', aktiviti: 'Perlawanan peringkat kumpulan / acara saringan bermula' },
-      { masa: '10:30 Pagi', aktiviti: 'Rehat & agihan minuman isotonik' },
-      { masa: '11:00 Pagi', aktiviti: 'Perlawanan peringkat suku akhir & separuh akhir' },
-      { masa: '01:00 Petang', aktiviti: 'Rehat, makan tengah hari & solat Zohor' },
-      { masa: '02:30 Petang', aktiviti: 'Perlawanan akhir (Final) kejohanan' },
-      { masa: '04:00 Petang', aktiviti: 'Majlis penutupan, penyampaian hadiah, piala iringan & sesi fotografi (Bersurai 05:00 Petang)' }
-    ];
-  }
-
-  // 4. Iftar / Ramadan / Makan Malam / Gala
-  if (name.includes('iftar') || name.includes('ramadan') || name.includes('makan malam') || name.includes('gala') || timeRaw.includes('malam')) {
-    if (name.includes('iftar') || name.includes('ramadan')) {
-      return [
-        { masa: '05:30 Petang', aktiviti: 'Ketibaan ahli alumni, tetamu jemputan & pendaftaran' },
-        { masa: '06:00 Petang', aktiviti: 'Tazkirah Ramadan & majlis penyerahan santunan kasih asnaf' },
-        { masa: '06:33 Petang', aktiviti: 'Iftar (berbuka puasa) & solat Maghrib berjemaah' },
-        { masa: '07:15 Petang', aktiviti: 'Jamuan makan malam perdana iftar' },
-        { masa: '08:00 Malam', aktiviti: 'Solat Isyak, solat sunat Tarawih berjemaah & moreh santai alumni (Bersurai 09:30 Malam)' }
-      ];
-    }
-    return [
-      { masa: '07:00 Malam', aktiviti: 'Ketibaan tetamu alumni, pendaftaran & sesi fotografi photo booth' },
-      { masa: '08:00 Malam', aktiviti: 'Ketibaan tetamu kehormat, nyanyian lagu Negaraku & ucapan alu-aluan Pengerusi' },
-      { masa: '08:30 Malam', aktiviti: 'Jamuan makan malam berhidang & tayangan montaj kenangan alumni' },
-      { masa: '09:30 Malam', aktiviti: 'Penyampaian Anugerah Ikon Alumni & cabutan bertuah perdana' },
-      { masa: '10:30 Malam', aktiviti: 'Sesi bergambar rasmi & majlis bersurai' }
-    ];
-  }
-
-  // 5. Sumbangan / CSR / Prihatin / Kasih
-  if (name.includes('sumbangan') || name.includes('kasih') || name.includes('csr') || name.includes('prihatin') || name.includes('kanopi') || name.includes('kebajikan') || name.includes('cenderamata')) {
-    return [
-      { masa: '08:30 Pagi', aktiviti: 'Ketibaan jawatankuasa persatuan & wakil penerima sasaran' },
-      { masa: '09:00 Pagi', aktiviti: 'Bacaan doa selamat & ucapan aluan Pengerusi Persatuan Alumni' },
-      { masa: '09:30 Pagi', aktiviti: 'Ucapan aluan pihak pengurusan kolej / komuniti' },
-      { masa: '10:00 Pagi', aktiviti: `Simbolik penyerahan sumbangan '${program.namaProgram}'` },
-      { masa: '10:30 Pagi', aktiviti: 'Sesi fotografi kenangan, jamuan ringan & majlis bersurai (11:30 Pagi)' }
-    ];
-  }
-
-  // 6. Standard 1-Day Program / Kursus / Bengkel / Career (Ringkas & Padat)
+  // 12. Standard 1-Day Program / Kursus / Bengkel / Latihan (Default Ringkas & Padat)
   return [
     { masa: '08:00 Pagi', aktiviti: 'Pendaftaran peserta, sarapan pagi & edaran bahan modul' },
     { masa: '08:45 Pagi', aktiviti: 'Ketibaan tetamu jemputan, nyanyian lagu Negaraku & bacaan doa' },
-    { masa: '09:00 Pagi', aktiviti: `Sesi 1: Perkongsian ilmu & modul industri program '${program.namaProgram}'` },
+    { masa: '09:00 Pagi', aktiviti: `Sesi 1: Pengenalan & modul perkongsian program '${program.namaProgram}'` },
     { masa: '10:30 Pagi', aktiviti: 'Rehat & jamuan minum pagi (networking alumni)' },
-    { masa: '11:00 Pagi', aktiviti: 'Sesi 2: Bengkel kemahiran praktikal & sesi interaktif bersama peserta' },
+    { masa: '11:00 Pagi', aktiviti: 'Sesi 2: Bengkel kemahiran praktikal & aktiviti interaktif bersama peserta' },
     { masa: '01:00 Petang', aktiviti: 'Makan tengah hari, solat Zohor & rehat kendiri' },
-    { masa: '02:00 Petang', aktiviti: 'Sesi 3: Perkongsian pengalaman industri, tips kerjaya & sesi soal jawab (Q&A)' },
+    { masa: '02:00 Petang', aktiviti: 'Sesi 3: Perkongsian aplikasi amali, sesi bimbingan & soal jawab (Q&A)' },
     { masa: '04:15 Petang', aktiviti: 'Majlis penutupan rasmi, penyampaian sijil/cenderamata & sesi fotografi (Bersurai 05:00 Petang)' }
   ];
 };
