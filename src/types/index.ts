@@ -37,10 +37,14 @@ export interface SystemConfig {
   membershipFee: number;
   membershipYear: string;
   appVersion: string;
+  penasihat?: string;
   pengerusi?: string;
+  timbalanPengerusi?: string;
   setiausaha?: string;
+  penolongSetiausaha?: string;
   bendahari?: string;
   juruAudit?: string;
+  ajk?: string[];
 }
 
 export interface Program {

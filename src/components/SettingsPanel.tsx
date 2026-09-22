@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SystemConfig } from '../types';
-import { Settings, Database, MessageSquare, Facebook, Music, Lock, Save, CheckCircle2, RefreshCw, ShieldCheck, HardDrive, Calendar, Clock, ExternalLink, FileJson, Trash2 } from 'lucide-react';
+import { Settings, Database, MessageSquare, Facebook, Music, Lock, Save, CheckCircle2, RefreshCw, ShieldCheck, HardDrive, Calendar, Clock, ExternalLink, FileJson, Trash2, Plus, Users } from 'lucide-react';
 
 interface SettingsPanelProps {
   config: SystemConfig;
@@ -26,10 +26,14 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   const [logo, setLogo] = useState(config.associationLogoUrl);
   const [fee, setFee] = useState(config.membershipFee.toString());
   const [year, setYear] = useState(config.membershipYear);
+  const [penasihat, setPenasihat] = useState(config.penasihat || '');
   const [pengerusi, setPengerusi] = useState(config.pengerusi || '');
+  const [timbalanPengerusi, setTimbalanPengerusi] = useState(config.timbalanPengerusi || '');
   const [setiausaha, setSetiausaha] = useState(config.setiausaha || '');
+  const [penolongSetiausaha, setPenolongSetiausaha] = useState(config.penolongSetiausaha || '');
   const [bendahari, setBendahari] = useState(config.bendahari || '');
   const [juruAudit, setJuruAudit] = useState(config.juruAudit || '');
+  const [ajkList, setAjkList] = useState<string[]>(config.ajk || []);
 
   const [saveMsg, setSaveMsg] = useState<{ status: 'success' | 'error'; text: string } | null>(null);
   const [isReseeding, setIsReseeding] = useState(false);
@@ -40,11 +44,31 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     setLogo(config.associationLogoUrl || '');
     setFee((config.membershipFee ?? 50).toString());
     setYear(config.membershipYear || '2026');
+    setPenasihat(config.penasihat || '');
     setPengerusi(config.pengerusi || '');
+    setTimbalanPengerusi(config.timbalanPengerusi || '');
     setSetiausaha(config.setiausaha || '');
+    setPenolongSetiausaha(config.penolongSetiausaha || '');
     setBendahari(config.bendahari || '');
     setJuruAudit(config.juruAudit || '');
+    setAjkList(Array.isArray(config.ajk) ? config.ajk : []);
   }, [config]);
+
+  const handleAddAjk = () => {
+    setAjkList((prev) => [...prev, '']);
+  };
+
+  const handleAjkChange = (index: number, val: string) => {
+    setAjkList((prev) => {
+      const updated = [...prev];
+      updated[index] = val.toUpperCase();
+      return updated;
+    });
+  };
+
+  const handleRemoveAjk = (index: number) => {
+    setAjkList((prev) => prev.filter((_, i) => i !== index));
+  };
 
   const handleSaveConfig = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,16 +79,22 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
       return;
     }
 
+    const cleanedAjk = ajkList.map((item) => item.trim()).filter((item) => item.length > 0);
+
     const ok = await onUpdateConfig({
       associationName: name,
       associationLogoUrl: logo,
       membershipFee: numFee,
       membershipYear: year,
       appVersion: config.appVersion,
-      pengerusi,
-      setiausaha,
-      bendahari,
-      juruAudit
+      penasihat: penasihat.trim(),
+      pengerusi: pengerusi.trim(),
+      timbalanPengerusi: timbalanPengerusi.trim(),
+      setiausaha: setiausaha.trim(),
+      penolongSetiausaha: penolongSetiausaha.trim(),
+      bendahari: bendahari.trim(),
+      juruAudit: juruAudit.trim(),
+      ajk: cleanedAjk,
     });
 
     if (ok) {
@@ -250,52 +280,144 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Jawatan Utama & Eksekutif */}
+            <div className="pt-2 border-t border-slate-100 space-y-4">
+              <h4 className="text-xs font-black text-slate-700 uppercase tracking-wider">Jawatankuasa Utama</h4>
+
               <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase mb-1 font-sans">Nama Pengerusi</label>
+                <label className="block text-xs font-bold text-slate-500 uppercase mb-1 font-sans">Nama Penasihat</label>
                 <input
                   type="text"
-                  value={pengerusi}
-                  placeholder="Contoh: AHMAD BIN ALI"
-                  onChange={(e) => setPengerusi(e.target.value.toUpperCase())}
+                  value={penasihat}
+                  placeholder="Contoh: PENGARAH KOLEJ KOMUNITI BEAUFORT"
+                  onChange={(e) => setPenasihat(e.target.value.toUpperCase())}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-blue-600 uppercase"
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase mb-1 font-sans">Nama Setiausaha</label>
-                <input
-                  type="text"
-                  value={setiausaha}
-                  placeholder="Contoh: SITI BINTI ABU"
-                  onChange={(e) => setSetiausaha(e.target.value.toUpperCase())}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-blue-600 uppercase"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1 font-sans">Nama Pengerusi</label>
+                  <input
+                    type="text"
+                    value={pengerusi}
+                    placeholder="Contoh: AHMAD BIN ALI"
+                    onChange={(e) => setPengerusi(e.target.value.toUpperCase())}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-blue-600 uppercase"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1 font-sans">Nama Timbalan Pengerusi</label>
+                  <input
+                    type="text"
+                    value={timbalanPengerusi}
+                    placeholder="Contoh: MOHD SHARIF BIN KASIM"
+                    onChange={(e) => setTimbalanPengerusi(e.target.value.toUpperCase())}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-blue-600 uppercase"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1 font-sans">Nama Setiausaha</label>
+                  <input
+                    type="text"
+                    value={setiausaha}
+                    placeholder="Contoh: SITI BINTI ABU"
+                    onChange={(e) => setSetiausaha(e.target.value.toUpperCase())}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-blue-600 uppercase"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1 font-sans">Nama Penolong Setiausaha</label>
+                  <input
+                    type="text"
+                    value={penolongSetiausaha}
+                    placeholder="Contoh: NURUL AIN BINTI ISMAIL"
+                    onChange={(e) => setPenolongSetiausaha(e.target.value.toUpperCase())}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-blue-600 uppercase"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1 font-sans">Nama Bendahari</label>
+                  <input
+                    type="text"
+                    value={bendahari}
+                    placeholder="Contoh: MOHD BIN OTHMAN"
+                    onChange={(e) => setBendahari(e.target.value.toUpperCase())}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-blue-600 uppercase"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1 font-sans">Nama Juru Audit</label>
+                  <input
+                    type="text"
+                    value={juruAudit}
+                    placeholder="Contoh: FATIMAH BINTI RAMLI"
+                    onChange={(e) => setJuruAudit(e.target.value.toUpperCase())}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-blue-600 uppercase"
+                  />
+                </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase mb-1 font-sans">Nama Bendahari</label>
-                <input
-                  type="text"
-                  value={bendahari}
-                  placeholder="Contoh: MOHD BIN OTHMAN"
-                  onChange={(e) => setBendahari(e.target.value.toUpperCase())}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-blue-600 uppercase"
-                />
+            {/* Ahli Jawatankuasa (AJK) Dynamic Section */}
+            <div className="pt-2 border-t border-slate-100 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-blue-600" />
+                  <h4 className="text-xs font-black text-slate-700 uppercase tracking-wider">Ahli Jawatankuasa (AJK)</h4>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
+                    {ajkList.length} AJK
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleAddAjk}
+                  className="px-2.5 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs rounded-xl border border-blue-200 flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Tambah AJK</span>
+                </button>
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase mb-1 font-sans">Nama Juru Audit</label>
-                <input
-                  type="text"
-                  value={juruAudit}
-                  placeholder="Contoh: FATIMAH BINTI RAMLI"
-                  onChange={(e) => setJuruAudit(e.target.value.toUpperCase())}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-blue-600 uppercase"
-                />
-              </div>
+              {ajkList.length === 0 ? (
+                <div className="p-4 rounded-xl border border-dashed border-slate-200 bg-slate-50/60 text-center text-xs text-slate-500">
+                  Tiada Ahli Jawatankuasa (AJK) ditambah. Klik butang <strong>&quot;Tambah AJK&quot;</strong> di atas untuk menambah senarai AJK.
+                </div>
+              ) : (
+                <div className="space-y-2.5">
+                  {ajkList.map((item, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <span className="shrink-0 w-16 text-[11px] font-extrabold text-slate-500 bg-slate-100 px-2 py-2 rounded-xl text-center">
+                        AJK {index + 1}
+                      </span>
+                      <input
+                        type="text"
+                        value={item}
+                        placeholder={`Contoh: NAMA AHLI JAWATANKUASA ${index + 1}`}
+                        onChange={(e) => handleAjkChange(index, e.target.value)}
+                        className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-blue-600 uppercase"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveAjk(index)}
+                        className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer shrink-0"
+                        title="Padam AJK"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="pt-2">

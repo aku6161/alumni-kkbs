@@ -202,7 +202,7 @@ function convertMembersToCsv(members) {
   const headers = [
     'ID', 'No Ahli', 'Nama', 'No KP', 'No Pendaftaran', 'Tahun Lulusan',
     'Program', 'Jantina', 'Agama', 'Kaum', 'Tarikh Graduasi', 'No Telefon',
-    'Emel', 'Pekerjaan/Jawatan', 'Nama Majikan', 'Negeri', 'Status', 'Peranan'
+    'Emel', 'Pekerjaan/Jawatan', 'Nama Majikan', 'Negeri', 'Status', 'Peranan', 'Kata Laluan'
   ];
 
   const escapeCsv = (str) => {
@@ -233,7 +233,8 @@ function convertMembersToCsv(members) {
       escapeCsv(m.namaMajikan),
       escapeCsv(m.negeri),
       escapeCsv(m.status),
-      escapeCsv(m.role)
+      escapeCsv(m.role),
+      escapeCsv(m.password)
     ];
     rows.push(row.join(','));
   });

@@ -1,15 +1,19 @@
 import { AlumniMember, Transaction, SystemConfig } from '../types';
 
 export const INITIAL_CONFIG: SystemConfig = {
-  associationName: "Persatuan Alumni Kolej Komuniti Beaufort Sabah",
-  associationLogoUrl: "",
-  membershipFee: 50.0,
-  membershipYear: "2026",
-  appVersion: "1.0.0",
-  pengerusi: "NAMA PENGERUSI",
-  setiausaha: "NAMA SETIAUSAHA",
-  bendahari: "NAMA BENDAHARI",
-  juruAudit: "NAMA JURU AUDIT"
+  "associationName": "Persatuan Alumni Kolej Komuniti Beaufort Sabah",
+  "associationLogoUrl": "https://drive.google.com/file/d/1f0ZnxpvnhbwVu_S3MaO7hUFqSAIwhA2A/view?usp=sharing",
+  "membershipFee": 25,
+  "membershipYear": "2026",
+  "appVersion": "1.0.0",
+  "penasihat": "",
+  "pengerusi": "MOHAMMAD SYAFIQ BIN SHAMSUDDIN",
+  "timbalanPengerusi": "",
+  "setiausaha": "MOHD ISKANDAR BIN JIBLIN",
+  "penolongSetiausaha": "",
+  "bendahari": "SITI NURHAWA NABILAH BINTI FEDELIS",
+  "juruAudit": "REZIELLA BINTI LAHAJI",
+  "ajk": []
 };
 
 export const INITIAL_MEMBERS: AlumniMember[] = [
@@ -24,7 +28,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -32,6 +36,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.153Z",
     "password": "950326125671"
   },
   {
@@ -45,7 +50,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -53,6 +58,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "940502126261"
   },
   {
@@ -66,7 +72,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "BUDDHA",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -74,6 +80,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "951204125029"
   },
   {
@@ -87,7 +94,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -95,6 +102,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "951211126521"
   },
   {
@@ -108,7 +116,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -116,6 +124,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "941017155039"
   },
   {
@@ -129,7 +138,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -137,6 +146,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "950102126413"
   },
   {
@@ -150,7 +160,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -158,6 +168,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "950428126333"
   },
   {
@@ -171,7 +182,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -179,6 +190,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "950807125277"
   },
   {
@@ -192,7 +204,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -200,6 +212,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "940513126072"
   },
   {
@@ -213,7 +226,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -221,6 +234,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "940321126676"
   },
   {
@@ -234,14 +248,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "010-8244495",
     "emel": "sabarinusaren@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Suri rumah",
+    "namaMajikan": "Bekerja sendiri",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "rena95"
   },
   {
@@ -255,7 +270,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -263,6 +278,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "951207126756"
   },
   {
@@ -276,7 +292,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -284,6 +300,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "920401125974"
   },
   {
@@ -297,7 +314,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -305,6 +322,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "951004125198"
   },
   {
@@ -318,7 +336,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -326,6 +344,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "940129016506"
   },
   {
@@ -339,7 +358,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -347,6 +366,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "941227126658"
   },
   {
@@ -360,7 +380,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -368,6 +388,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "950828126738"
   },
   {
@@ -381,7 +402,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -389,6 +410,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "951221126250"
   },
   {
@@ -402,7 +424,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -410,6 +432,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "900115125502"
   },
   {
@@ -423,7 +446,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -431,6 +454,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "820429126292"
   },
   {
@@ -444,14 +468,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "BUDDHA",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "013-8520462",
     "emel": "herwindialys@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Cashier",
+    "namaMajikan": "Layangan Shopper PLT",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "HERWINDIA"
   },
   {
@@ -465,7 +490,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -473,6 +498,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.154Z",
     "password": "950221126504"
   },
   {
@@ -486,7 +512,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -494,6 +520,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "951013125886"
   },
   {
@@ -507,7 +534,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -515,6 +542,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "930209125666"
   },
   {
@@ -528,7 +556,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -536,6 +564,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950307125350"
   },
   {
@@ -549,7 +578,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -557,6 +586,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "750125125222"
   },
   {
@@ -570,7 +600,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "BUDDHA",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -578,6 +608,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950510125399"
   },
   {
@@ -591,7 +622,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -599,6 +630,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950925126465"
   },
   {
@@ -612,7 +644,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -620,6 +652,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "921108126753"
   },
   {
@@ -633,7 +666,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -641,6 +674,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "940501126315"
   },
   {
@@ -654,7 +688,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -662,6 +696,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950127125361"
   },
   {
@@ -675,7 +710,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -683,6 +718,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "930812126823"
   },
   {
@@ -696,7 +732,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -704,6 +740,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960103126211"
   },
   {
@@ -717,7 +754,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -725,6 +762,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950904126669"
   },
   {
@@ -738,7 +776,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -746,6 +784,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "940218126635"
   },
   {
@@ -759,7 +798,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -767,6 +806,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "941006126769"
   },
   {
@@ -780,7 +820,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -788,6 +828,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "951221126621"
   },
   {
@@ -801,7 +842,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -809,6 +850,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950925125411"
   },
   {
@@ -822,7 +864,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2016",
+    "tarikhGraduasi": "8/10/2016",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -830,6 +872,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "941224126601"
   },
   {
@@ -843,7 +886,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -851,6 +894,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960625126817"
   },
   {
@@ -864,7 +908,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -872,6 +916,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "961129126759"
   },
   {
@@ -885,7 +930,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -893,6 +938,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960701126545"
   },
   {
@@ -906,7 +952,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -914,6 +960,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960212126245"
   },
   {
@@ -927,7 +974,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -935,6 +982,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960921126555"
   },
   {
@@ -948,7 +996,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -956,6 +1004,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950617126711"
   },
   {
@@ -969,14 +1018,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "012-6655150",
     "emel": "kimberlymajaly2695@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "chef",
+    "namaMajikan": "oak offshore",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "123456"
   },
   {
@@ -990,7 +1040,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -998,6 +1048,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "961229126289"
   },
   {
@@ -1011,7 +1062,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1019,6 +1070,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "940428125163"
   },
   {
@@ -1032,7 +1084,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1040,6 +1092,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950413126533"
   },
   {
@@ -1053,7 +1106,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "JAWA",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1061,6 +1114,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "961102126310"
   },
   {
@@ -1074,7 +1128,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUGIS",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1082,6 +1136,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960701126270"
   },
   {
@@ -1095,7 +1150,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1103,6 +1158,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "941103126664"
   },
   {
@@ -1116,7 +1172,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1124,6 +1180,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "961229125454"
   },
   {
@@ -1137,7 +1194,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1145,6 +1202,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960723126714"
   },
   {
@@ -1158,7 +1216,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1166,6 +1224,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "930329126700"
   },
   {
@@ -1179,7 +1238,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1187,6 +1246,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "930803125642"
   },
   {
@@ -1200,7 +1260,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1208,6 +1268,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960924125822"
   },
   {
@@ -1221,7 +1282,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1229,6 +1290,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "911110126200"
   },
   {
@@ -1242,7 +1304,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/14/2017",
+    "tarikhGraduasi": "14/10/2017",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1250,6 +1312,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960110126340"
   },
   {
@@ -1263,7 +1326,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1271,6 +1334,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "961025126703"
   },
   {
@@ -1284,14 +1348,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "012-8637140",
     "emel": "nazrul9668@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Juruwang",
+    "namaMajikan": "Guardian Health And Beauty",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "Nazrul2203@"
   },
   {
@@ -1305,7 +1370,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1313,6 +1378,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970710126431"
   },
   {
@@ -1326,7 +1392,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1334,6 +1400,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970904126077"
   },
   {
@@ -1347,7 +1414,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1355,6 +1422,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960828126745"
   },
   {
@@ -1368,7 +1436,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1376,6 +1444,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970207125271"
   },
   {
@@ -1389,7 +1458,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1397,6 +1466,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "941103125661"
   },
   {
@@ -1410,7 +1480,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1418,6 +1488,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950111126351"
   },
   {
@@ -1431,7 +1502,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1439,6 +1510,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970304126321"
   },
   {
@@ -1452,7 +1524,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1460,6 +1532,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960323125421"
   },
   {
@@ -1473,7 +1546,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1481,6 +1554,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950908126789"
   },
   {
@@ -1494,7 +1568,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1502,6 +1576,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970820126053"
   },
   {
@@ -1515,7 +1590,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1523,6 +1598,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960120126483"
   },
   {
@@ -1536,7 +1612,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1544,6 +1620,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960531125118"
   },
   {
@@ -1557,7 +1634,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1565,6 +1642,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970725125853"
   },
   {
@@ -1578,7 +1656,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1586,6 +1664,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970411126407"
   },
   {
@@ -1599,7 +1678,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1607,6 +1686,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970606125877"
   },
   {
@@ -1620,7 +1700,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1628,6 +1708,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960717125563"
   },
   {
@@ -1641,14 +1722,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971205136449"
   },
   {
@@ -1662,7 +1744,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1670,6 +1752,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970731126131"
   },
   {
@@ -1683,7 +1766,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1691,6 +1774,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971210125971"
   },
   {
@@ -1704,7 +1788,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1712,6 +1796,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971025126083"
   },
   {
@@ -1725,7 +1810,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1733,6 +1818,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "951017126405"
   },
   {
@@ -1746,7 +1832,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1754,6 +1840,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960719126463"
   },
   {
@@ -1767,7 +1854,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1775,6 +1862,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971113125961"
   },
   {
@@ -1788,7 +1876,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1796,6 +1884,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "931028125055"
   },
   {
@@ -1809,7 +1898,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1817,6 +1906,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950717126399"
   },
   {
@@ -1830,7 +1920,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1838,6 +1928,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970712126419"
   },
   {
@@ -1851,14 +1942,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. LABUAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960923155077"
   },
   {
@@ -1872,7 +1964,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1880,6 +1972,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960116126827"
   },
   {
@@ -1893,7 +1986,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1901,6 +1994,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970821126995"
   },
   {
@@ -1914,7 +2008,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1922,6 +2016,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970724125106"
   },
   {
@@ -1935,14 +2030,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SELANGOR",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970204105232"
   },
   {
@@ -1956,7 +2052,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "BUDDHA",
     "kaumUtama": "CINA",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -1964,6 +2060,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971225126168"
   },
   {
@@ -1977,14 +2074,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "PULAU PINANG",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970728075740"
   },
   {
@@ -1998,7 +2096,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2006,6 +2104,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "930307125934"
   },
   {
@@ -2019,7 +2118,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2027,6 +2126,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950429126642"
   },
   {
@@ -2040,7 +2140,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2048,6 +2148,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960627126466"
   },
   {
@@ -2061,7 +2162,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2069,6 +2170,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971124125246"
   },
   {
@@ -2082,7 +2184,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2090,6 +2192,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970604126550"
   },
   {
@@ -2103,7 +2206,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2111,6 +2214,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "920708125354"
   },
   {
@@ -2124,7 +2228,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2132,6 +2236,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "921016126692"
   },
   {
@@ -2145,7 +2250,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2153,6 +2258,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970603125118"
   },
   {
@@ -2166,7 +2272,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2174,6 +2280,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970723126860"
   },
   {
@@ -2187,7 +2294,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2195,6 +2302,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971215125954"
   },
   {
@@ -2208,14 +2316,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. LABUAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971204155058"
   },
   {
@@ -2229,7 +2338,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2237,6 +2346,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "931014126065"
   },
   {
@@ -2250,7 +2360,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2258,6 +2368,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970129125929"
   },
   {
@@ -2271,7 +2382,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2279,6 +2390,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960607126805"
   },
   {
@@ -2292,7 +2404,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2300,6 +2412,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "961206126251"
   },
   {
@@ -2313,7 +2426,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2321,6 +2434,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970721125311"
   },
   {
@@ -2334,7 +2448,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2342,6 +2456,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950601125757"
   },
   {
@@ -2355,7 +2470,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2363,6 +2478,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "930723125837"
   },
   {
@@ -2376,7 +2492,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2384,6 +2500,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971030126459"
   },
   {
@@ -2397,7 +2514,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2405,6 +2522,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971007125909"
   },
   {
@@ -2418,7 +2536,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2426,6 +2544,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960508126869"
   },
   {
@@ -2439,7 +2558,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2447,6 +2566,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960120126379"
   },
   {
@@ -2460,7 +2580,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "JAWA",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2468,6 +2588,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970303126215"
   },
   {
@@ -2481,7 +2602,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2489,6 +2610,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971130125920"
   },
   {
@@ -2502,7 +2624,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2510,6 +2632,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "951120126788"
   },
   {
@@ -2523,7 +2646,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2531,6 +2654,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "940907127078"
   },
   {
@@ -2544,7 +2668,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2552,6 +2676,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "940617125576"
   },
   {
@@ -2565,7 +2690,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2573,6 +2698,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950610125572"
   },
   {
@@ -2586,7 +2712,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2594,6 +2720,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970205125892"
   },
   {
@@ -2607,7 +2734,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2615,6 +2742,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971111126282"
   },
   {
@@ -2628,7 +2756,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "BUDDHA",
     "kaumUtama": "CINA",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2636,6 +2764,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971120125257"
   },
   {
@@ -2649,7 +2778,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2657,6 +2786,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "950309126154"
   },
   {
@@ -2670,7 +2800,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2678,6 +2808,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970808126042"
   },
   {
@@ -2691,7 +2822,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2699,6 +2830,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960309126524"
   },
   {
@@ -2712,7 +2844,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/22/2018",
+    "tarikhGraduasi": "22/9/2018",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2720,6 +2852,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "940430126472"
   },
   {
@@ -2733,7 +2866,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2741,6 +2874,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "940620126596"
   },
   {
@@ -2754,7 +2888,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2762,6 +2896,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970908126031"
   },
   {
@@ -2775,7 +2910,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2783,6 +2918,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980902125993"
   },
   {
@@ -2796,7 +2932,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2804,6 +2940,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980817126270"
   },
   {
@@ -2817,7 +2954,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2825,6 +2962,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971123125068"
   },
   {
@@ -2838,7 +2976,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2846,6 +2984,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960109126212"
   },
   {
@@ -2859,7 +2998,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2867,6 +3006,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960827125257"
   },
   {
@@ -2880,7 +3020,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2888,6 +3028,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980812125594"
   },
   {
@@ -2901,7 +3042,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2909,6 +3050,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980722125910"
   },
   {
@@ -2922,7 +3064,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2930,6 +3072,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970203125880"
   },
   {
@@ -2943,7 +3086,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2951,6 +3094,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980702126190"
   },
   {
@@ -2964,7 +3108,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2972,6 +3116,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980209126269"
   },
   {
@@ -2985,7 +3130,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -2993,6 +3138,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980722126665"
   },
   {
@@ -3006,7 +3152,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3014,6 +3160,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971201126243"
   },
   {
@@ -3027,7 +3174,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3035,6 +3182,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971012125997"
   },
   {
@@ -3048,7 +3196,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3056,6 +3204,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980727126429"
   },
   {
@@ -3069,14 +3218,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SELANGOR",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960826105537"
   },
   {
@@ -3090,7 +3240,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3098,6 +3248,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980801126284"
   },
   {
@@ -3111,7 +3262,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3119,6 +3270,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980817125593"
   },
   {
@@ -3132,7 +3284,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3140,6 +3292,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "901013125792"
   },
   {
@@ -3153,7 +3306,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3161,6 +3314,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980511125080"
   },
   {
@@ -3174,7 +3328,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3182,6 +3336,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980419125053"
   },
   {
@@ -3195,7 +3350,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3203,6 +3358,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980918125111"
   },
   {
@@ -3216,7 +3372,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3224,6 +3380,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980618125136"
   },
   {
@@ -3237,7 +3394,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3245,6 +3402,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980126125519"
   },
   {
@@ -3258,7 +3416,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3266,6 +3424,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980701126068"
   },
   {
@@ -3279,7 +3438,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3287,6 +3446,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980821125764"
   },
   {
@@ -3300,7 +3460,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3308,6 +3468,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "961028125036"
   },
   {
@@ -3321,7 +3482,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3329,6 +3490,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980325126143"
   },
   {
@@ -3342,7 +3504,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3350,6 +3512,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980119125502"
   },
   {
@@ -3363,7 +3526,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3371,6 +3534,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980707126085"
   },
   {
@@ -3384,7 +3548,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3392,6 +3556,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "960829126368"
   },
   {
@@ -3405,14 +3570,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "NEGERI SEMBILAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980707055555"
   },
   {
@@ -3426,7 +3592,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3434,6 +3600,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970704126208"
   },
   {
@@ -3447,7 +3614,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3455,6 +3622,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "971117126275"
   },
   {
@@ -3468,7 +3636,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3476,6 +3644,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980920065090"
   },
   {
@@ -3489,7 +3658,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3497,6 +3666,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "951006126477"
   },
   {
@@ -3510,7 +3680,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3518,6 +3688,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "981103126468"
   },
   {
@@ -3531,7 +3702,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3539,6 +3710,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980304125539"
   },
   {
@@ -3552,7 +3724,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3560,6 +3732,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970921136787"
   },
   {
@@ -3573,7 +3746,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3581,6 +3754,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970802125831"
   },
   {
@@ -3594,7 +3768,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3602,6 +3776,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "890708125026"
   },
   {
@@ -3615,7 +3790,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3623,6 +3798,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980630126385"
   },
   {
@@ -3636,7 +3812,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3644,6 +3820,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980407125822"
   },
   {
@@ -3657,7 +3834,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3665,6 +3842,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "981116126088"
   },
   {
@@ -3678,7 +3856,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3686,6 +3864,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "981002125140"
   },
   {
@@ -3699,7 +3878,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3707,6 +3886,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980715125445"
   },
   {
@@ -3720,7 +3900,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3728,6 +3908,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980715125437"
   },
   {
@@ -3741,7 +3922,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3749,6 +3930,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "970723126094"
   },
   {
@@ -3762,7 +3944,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3770,6 +3952,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "961126125267"
   },
   {
@@ -3783,7 +3966,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3791,6 +3974,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "980609126057"
   },
   {
@@ -3804,7 +3988,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "BUDDHA",
     "kaumUtama": "CINA",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3812,6 +3996,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.155Z",
     "password": "981207125291"
   },
   {
@@ -3825,7 +4010,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3833,6 +4018,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "930822125867"
   },
   {
@@ -3846,7 +4032,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3854,6 +4040,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "950830125443"
   },
   {
@@ -3867,7 +4054,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3875,6 +4062,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "981215126219"
   },
   {
@@ -3888,7 +4076,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3896,6 +4084,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "981006125447"
   },
   {
@@ -3909,7 +4098,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3917,6 +4106,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980112125147"
   },
   {
@@ -3930,7 +4120,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "BUDDHA",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3938,6 +4128,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980405125095"
   },
   {
@@ -3951,7 +4142,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3959,6 +4150,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980911125709"
   },
   {
@@ -3972,7 +4164,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -3980,6 +4172,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "871106495798"
   },
   {
@@ -3993,7 +4186,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4001,6 +4194,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980227125083"
   },
   {
@@ -4014,14 +4208,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980811136793"
   },
   {
@@ -4035,7 +4230,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4043,6 +4238,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "961227126189"
   },
   {
@@ -4056,7 +4252,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4064,6 +4260,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980502125871"
   },
   {
@@ -4077,7 +4274,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4085,6 +4282,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980325125095"
   },
   {
@@ -4098,7 +4296,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4106,6 +4304,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "920829126695"
   },
   {
@@ -4119,7 +4318,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4127,6 +4326,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "981125125095"
   },
   {
@@ -4140,14 +4340,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "951128136163"
   },
   {
@@ -4161,7 +4362,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4169,6 +4370,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "960812125289"
   },
   {
@@ -4182,7 +4384,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4190,6 +4392,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "960520125308"
   },
   {
@@ -4203,7 +4406,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4211,6 +4414,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980419125192"
   },
   {
@@ -4224,7 +4428,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4232,6 +4436,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980907155059"
   },
   {
@@ -4245,7 +4450,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4253,6 +4458,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991003125483"
   },
   {
@@ -4266,7 +4472,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "CINA",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4274,6 +4480,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980102125506"
   },
   {
@@ -4287,7 +4494,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4295,6 +4502,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "971201125320"
   },
   {
@@ -4308,7 +4516,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4316,6 +4524,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990718126450"
   },
   {
@@ -4329,7 +4538,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4337,6 +4546,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980124126147"
   },
   {
@@ -4350,7 +4560,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4358,6 +4568,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980711125931"
   },
   {
@@ -4371,7 +4582,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4379,6 +4590,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "981116125835"
   },
   {
@@ -4392,7 +4604,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4400,6 +4612,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "970121126409"
   },
   {
@@ -4413,7 +4626,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4421,6 +4634,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980424125023"
   },
   {
@@ -4434,7 +4648,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4442,6 +4656,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991026126921"
   },
   {
@@ -4455,7 +4670,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4463,6 +4678,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980421126135"
   },
   {
@@ -4476,7 +4692,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/21/2019",
+    "tarikhGraduasi": "21/9/2019",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -4484,6 +4700,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990617136203"
   },
   {
@@ -4505,6 +4722,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "971027126095"
   },
   {
@@ -4526,6 +4744,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980412605038"
   },
   {
@@ -4547,6 +4766,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990405125940"
   },
   {
@@ -4568,6 +4788,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990701125929"
   },
   {
@@ -4589,6 +4810,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991221126230"
   },
   {
@@ -4610,6 +4832,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "981107126182"
   },
   {
@@ -4628,9 +4851,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990816126526"
   },
   {
@@ -4652,6 +4876,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "981220126053"
   },
   {
@@ -4673,6 +4898,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980510125898"
   },
   {
@@ -4694,6 +4920,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990207125157"
   },
   {
@@ -4715,6 +4942,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990314125187"
   },
   {
@@ -4733,9 +4961,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990811136389"
   },
   {
@@ -4757,6 +4986,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990111125136"
   },
   {
@@ -4778,6 +5008,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "970325125213"
   },
   {
@@ -4799,6 +5030,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990830126127"
   },
   {
@@ -4820,6 +5052,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "Nurzimah98_"
   },
   {
@@ -4841,6 +5074,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990705125782"
   },
   {
@@ -4862,6 +5096,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980404125894"
   },
   {
@@ -4883,6 +5118,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990612126698"
   },
   {
@@ -4904,6 +5140,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "971224126203"
   },
   {
@@ -4925,6 +5162,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990818126538"
   },
   {
@@ -4946,6 +5184,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "961028125474"
   },
   {
@@ -4962,11 +5201,12 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "tarikhGraduasi": "2020",
     "noTelefon": "011-70107479",
     "emel": "lyvesterleely@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Chef",
+    "namaMajikan": "Golden Grill",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "Lyvester6777"
   },
   {
@@ -4988,6 +5228,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990206125171"
   },
   {
@@ -5009,6 +5250,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990115155025"
   },
   {
@@ -5030,6 +5272,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980606126166"
   },
   {
@@ -5051,6 +5294,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990905126149"
   },
   {
@@ -5072,6 +5316,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990211126187"
   },
   {
@@ -5093,6 +5338,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991106127027"
   },
   {
@@ -5114,6 +5360,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990509125312"
   },
   {
@@ -5135,6 +5382,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990524126647"
   },
   {
@@ -5156,6 +5404,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990724126473"
   },
   {
@@ -5177,6 +5426,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991022126027"
   },
   {
@@ -5198,6 +5448,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990727125599"
   },
   {
@@ -5219,6 +5470,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990128125220"
   },
   {
@@ -5240,6 +5492,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991002129511"
   },
   {
@@ -5261,6 +5514,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "970327126332"
   },
   {
@@ -5282,6 +5536,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "970103125613"
   },
   {
@@ -5303,6 +5558,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991224155168"
   },
   {
@@ -5324,6 +5580,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980807125186"
   },
   {
@@ -5345,6 +5602,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "981228126584"
   },
   {
@@ -5366,6 +5624,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990803125102"
   },
   {
@@ -5384,9 +5643,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. LABUAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990926155010"
   },
   {
@@ -5408,6 +5668,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990427125634"
   },
   {
@@ -5429,6 +5690,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990129125185"
   },
   {
@@ -5450,6 +5712,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991017126268"
   },
   {
@@ -5471,6 +5734,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990603126522"
   },
   {
@@ -5492,6 +5756,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "981217126669"
   },
   {
@@ -5513,6 +5778,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991124125340"
   },
   {
@@ -5534,6 +5800,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980417125973"
   },
   {
@@ -5555,6 +5822,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "981014125148"
   },
   {
@@ -5576,6 +5844,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990612126583"
   },
   {
@@ -5597,6 +5866,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991125125051"
   },
   {
@@ -5618,6 +5888,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990602126301"
   },
   {
@@ -5639,6 +5910,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990927125833"
   },
   {
@@ -5660,6 +5932,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990624125940"
   },
   {
@@ -5678,9 +5951,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990821136200"
   },
   {
@@ -5702,6 +5976,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991130126235"
   },
   {
@@ -5723,6 +5998,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991010127890"
   },
   {
@@ -5744,6 +6020,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990914605029"
   },
   {
@@ -5765,6 +6042,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990203125475"
   },
   {
@@ -5786,6 +6064,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991219126936"
   },
   {
@@ -5807,6 +6086,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990604126399"
   },
   {
@@ -5823,11 +6103,12 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "tarikhGraduasi": "2020",
     "noTelefon": "013-8785804",
     "emel": "norhafizahsadar13@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Tidak bekerja",
+    "namaMajikan": "Tiada",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "Hafizah06!"
   },
   {
@@ -5849,6 +6130,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990701126489"
   },
   {
@@ -5870,6 +6152,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990422126486"
   },
   {
@@ -5891,6 +6174,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990515125298"
   },
   {
@@ -5912,6 +6196,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980808126295"
   },
   {
@@ -5933,6 +6218,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990829126111"
   },
   {
@@ -5954,6 +6240,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980518126617"
   },
   {
@@ -5975,6 +6262,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990123125061"
   },
   {
@@ -5996,6 +6284,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980204126411"
   },
   {
@@ -6017,6 +6306,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990518126157"
   },
   {
@@ -6038,6 +6328,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990303125667"
   },
   {
@@ -6059,6 +6350,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990510127497"
   },
   {
@@ -6075,11 +6367,12 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "tarikhGraduasi": "2020",
     "noTelefon": "016-2349730",
     "emel": "s04sop17f024@kkbs.edu.my",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Housekeeping",
+    "namaMajikan": "Oyo sdn bhd",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990805126520"
   },
   {
@@ -6101,6 +6394,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990724125155"
   },
   {
@@ -6122,6 +6416,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990731125874"
   },
   {
@@ -6138,11 +6433,12 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "tarikhGraduasi": "2020",
     "noTelefon": "019-2555628",
     "emel": "faizahnoy99@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "SURI RUMAH",
+    "namaMajikan": "TIADA",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "Faizahnoy@99"
   },
   {
@@ -6159,11 +6455,12 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "tarikhGraduasi": "2020",
     "noTelefon": "019-8335815",
     "emel": "znoorhaziemah@gmail.com",
-    "pekerjaanJawatan": "-",
+    "pekerjaanJawatan": "Bekerja sendiri",
     "namaMajikan": "-",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "Pisang@99"
   },
   {
@@ -6180,11 +6477,12 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "tarikhGraduasi": "2020",
     "noTelefon": "013-5327518",
     "emel": "ernaasaii14@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Assistant Account",
+    "namaMajikan": "Paduan Hebat (S) sdn bhd",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "Yuyun020999"
   },
   {
@@ -6201,11 +6499,12 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "tarikhGraduasi": "2020",
     "noTelefon": "010-9885672",
     "emel": "miraazmi1009@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Suri rumah",
+    "namaMajikan": "Tiada",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "Miraazmi1009"
   },
   {
@@ -6227,6 +6526,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "970106126435"
   },
   {
@@ -6248,6 +6548,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990309125115"
   },
   {
@@ -6269,6 +6570,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990920126892"
   },
   {
@@ -6290,6 +6592,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980908126559"
   },
   {
@@ -6311,6 +6614,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990726125941"
   },
   {
@@ -6332,6 +6636,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991021125575"
   },
   {
@@ -6353,6 +6658,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "970529126621"
   },
   {
@@ -6369,11 +6675,12 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "tarikhGraduasi": "2020",
     "noTelefon": "013-8715427",
     "emel": "Shafikryjaul99@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "skilled workers",
+    "namaMajikan": "EMAS DINAMIK SDN BHD",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "Rubyy@99"
   },
   {
@@ -6395,6 +6702,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980703126467"
   },
   {
@@ -6416,6 +6724,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990109125647"
   },
   {
@@ -6437,6 +6746,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990108125725"
   },
   {
@@ -6458,6 +6768,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990523125685"
   },
   {
@@ -6476,9 +6787,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990711136277"
   },
   {
@@ -6500,6 +6812,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990702126501"
   },
   {
@@ -6521,6 +6834,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990721126371"
   },
   {
@@ -6542,6 +6856,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990819125107"
   },
   {
@@ -6563,6 +6878,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980412136585"
   },
   {
@@ -6584,6 +6900,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990313125417"
   },
   {
@@ -6605,6 +6922,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991216125591"
   },
   {
@@ -6626,6 +6944,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990824125953"
   },
   {
@@ -6644,9 +6963,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990213136047"
   },
   {
@@ -6668,6 +6988,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990731126367"
   },
   {
@@ -6689,6 +7010,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "970803125868"
   },
   {
@@ -6710,6 +7032,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990916126857"
   },
   {
@@ -6731,6 +7054,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991104125183"
   },
   {
@@ -6752,6 +7076,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990321125425"
   },
   {
@@ -6773,6 +7098,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991108125041"
   },
   {
@@ -6791,9 +7117,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991012136539"
   },
   {
@@ -6812,9 +7139,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990902136579"
   },
   {
@@ -6836,6 +7164,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980829126083"
   },
   {
@@ -6857,6 +7186,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "970729126335"
   },
   {
@@ -6878,6 +7208,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990621126235"
   },
   {
@@ -6899,6 +7230,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990118126959"
   },
   {
@@ -6920,6 +7252,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990515105895"
   },
   {
@@ -6933,7 +7266,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -6941,6 +7274,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "629122081"
   },
   {
@@ -6954,7 +7288,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -6962,6 +7296,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "1215121083"
   },
   {
@@ -6975,7 +7310,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -6983,6 +7318,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "709120895"
   },
   {
@@ -6996,7 +7332,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "BUDDHA",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7004,6 +7340,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "1010121581"
   },
   {
@@ -7017,7 +7354,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7025,6 +7362,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "990516125871"
   },
   {
@@ -7038,7 +7376,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7046,6 +7384,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "418121759"
   },
   {
@@ -7059,7 +7398,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7067,6 +7406,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "402120647"
   },
   {
@@ -7080,7 +7420,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7088,6 +7428,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "117122037"
   },
   {
@@ -7101,7 +7442,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7109,6 +7450,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "991129125657"
   },
   {
@@ -7122,7 +7464,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7130,6 +7472,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "721121735"
   },
   {
@@ -7143,7 +7486,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7151,6 +7494,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.156Z",
     "password": "980818126213"
   },
   {
@@ -7164,7 +7508,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7172,6 +7516,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "419121697"
   },
   {
@@ -7185,7 +7530,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7193,6 +7538,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "418120393"
   },
   {
@@ -7206,7 +7552,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7214,6 +7560,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "317120597"
   },
   {
@@ -7227,7 +7574,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7235,6 +7582,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "529120927"
   },
   {
@@ -7248,7 +7596,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7256,6 +7604,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "525120639"
   },
   {
@@ -7269,7 +7618,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7277,6 +7626,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "803121819"
   },
   {
@@ -7290,7 +7640,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7298,6 +7648,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1215120611"
   },
   {
@@ -7311,7 +7662,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7319,6 +7670,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "328121755"
   },
   {
@@ -7332,7 +7684,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7340,6 +7692,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1209121378"
   },
   {
@@ -7353,7 +7706,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7361,6 +7714,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1019120737"
   },
   {
@@ -7374,7 +7728,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7382,6 +7736,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "331120374"
   },
   {
@@ -7395,7 +7750,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7403,6 +7758,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "213121288"
   },
   {
@@ -7416,7 +7772,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7424,6 +7780,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "960701125278"
   },
   {
@@ -7437,7 +7794,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7445,6 +7802,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1209120789"
   },
   {
@@ -7458,7 +7816,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7466,6 +7824,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "608122517"
   },
   {
@@ -7479,7 +7838,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7487,6 +7846,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "980529126006"
   },
   {
@@ -7500,7 +7860,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7508,6 +7868,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1209120041"
   },
   {
@@ -7521,7 +7882,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7529,6 +7890,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "716150021"
   },
   {
@@ -7542,14 +7904,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "011-36393941",
     "emel": "mohdsyafiqshamsuddin.ss@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "commis chef",
+    "namaMajikan": "shangri la tannung aru",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "syafiqskru"
   },
   {
@@ -7563,7 +7926,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7571,6 +7934,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "106121848"
   },
   {
@@ -7584,7 +7948,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7592,6 +7956,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "517121770"
   },
   {
@@ -7605,7 +7970,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7613,6 +7978,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1001120405"
   },
   {
@@ -7626,14 +7992,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1126130914"
   },
   {
@@ -7647,7 +8014,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7655,6 +8022,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "426131404"
   },
   {
@@ -7668,7 +8036,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7676,6 +8044,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "614121772"
   },
   {
@@ -7689,7 +8058,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7697,6 +8066,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "518120948"
   },
   {
@@ -7710,14 +8080,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "012-8622864",
     "emel": "mohdshazmiebinsamjan@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Pelajar Universiti",
+    "namaMajikan": "UITM",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "Malaysia2000"
   },
   {
@@ -7731,7 +8102,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7739,6 +8110,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "310122338"
   },
   {
@@ -7752,7 +8124,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7760,6 +8132,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "806120416"
   },
   {
@@ -7773,7 +8146,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7781,6 +8154,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "521121546"
   },
   {
@@ -7794,7 +8168,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7802,6 +8176,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1008121056"
   },
   {
@@ -7815,7 +8190,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7823,6 +8198,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "724120068"
   },
   {
@@ -7836,7 +8212,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7844,6 +8220,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1214120329"
   },
   {
@@ -7857,7 +8234,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7865,6 +8242,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "428120207"
   },
   {
@@ -7878,7 +8256,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7886,6 +8264,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "802121569"
   },
   {
@@ -7899,7 +8278,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7907,6 +8286,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1030120703"
   },
   {
@@ -7920,7 +8300,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7928,6 +8308,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "802121497"
   },
   {
@@ -7941,7 +8322,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7949,6 +8330,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "812121255"
   },
   {
@@ -7962,7 +8344,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7970,6 +8352,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "805120748"
   },
   {
@@ -7983,7 +8366,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -7991,6 +8374,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "990327126525"
   },
   {
@@ -8004,7 +8388,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8012,6 +8396,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1206120054"
   },
   {
@@ -8025,7 +8410,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8033,6 +8418,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "224121398"
   },
   {
@@ -8046,7 +8432,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8054,6 +8440,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1020120371"
   },
   {
@@ -8067,7 +8454,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8075,6 +8462,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "515122649"
   },
   {
@@ -8088,7 +8476,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8096,6 +8484,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "991130125400"
   },
   {
@@ -8109,7 +8498,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8117,6 +8506,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "116121438"
   },
   {
@@ -8130,7 +8520,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8138,6 +8528,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "619150011"
   },
   {
@@ -8151,7 +8542,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8159,6 +8550,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "627120867"
   },
   {
@@ -8172,7 +8564,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8180,6 +8572,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "990209126161"
   },
   {
@@ -8193,7 +8586,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8201,6 +8594,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1209120236"
   },
   {
@@ -8214,7 +8608,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8222,6 +8616,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "712121610"
   },
   {
@@ -8235,14 +8630,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "011-51720021",
     "emel": "adeklin131000@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "tidak bekerja",
+    "namaMajikan": "tiada",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "Alinyong@28"
   },
   {
@@ -8256,7 +8652,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8264,6 +8660,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "730121745"
   },
   {
@@ -8277,7 +8674,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8285,6 +8682,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1221120044"
   },
   {
@@ -8298,7 +8696,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8306,6 +8704,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "429121885"
   },
   {
@@ -8319,7 +8718,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8327,6 +8726,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "951129126522"
   },
   {
@@ -8340,7 +8740,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8348,6 +8748,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "815121218"
   },
   {
@@ -8361,7 +8762,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8369,6 +8770,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "409121458"
   },
   {
@@ -8382,14 +8784,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "921131444"
   },
   {
@@ -8403,7 +8806,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "CINA",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8411,6 +8814,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "904121105"
   },
   {
@@ -8424,7 +8828,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8432,6 +8836,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "724121829"
   },
   {
@@ -8445,7 +8850,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8453,6 +8858,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "990416126682"
   },
   {
@@ -8466,14 +8872,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. LABUAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "303150066"
   },
   {
@@ -8487,14 +8894,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. LABUAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1224150046"
   },
   {
@@ -8508,7 +8916,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8516,6 +8924,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "129121760"
   },
   {
@@ -8529,7 +8938,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8537,6 +8946,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "801121612"
   },
   {
@@ -8550,7 +8960,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8558,6 +8968,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "828121284"
   },
   {
@@ -8571,7 +8982,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8579,6 +8990,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "990721126320"
   },
   {
@@ -8592,7 +9004,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8600,6 +9012,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "208120483"
   },
   {
@@ -8613,7 +9026,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8621,6 +9034,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "901121919"
   },
   {
@@ -8634,7 +9048,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8642,6 +9056,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "410120946"
   },
   {
@@ -8655,7 +9070,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8663,6 +9078,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "614121422"
   },
   {
@@ -8676,7 +9092,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8684,6 +9100,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1227120416"
   },
   {
@@ -8697,7 +9114,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8705,6 +9122,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1110120244"
   },
   {
@@ -8718,7 +9136,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8726,6 +9144,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10103121091"
   },
   {
@@ -8739,7 +9158,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8747,6 +9166,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "726120053"
   },
   {
@@ -8760,7 +9180,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8768,6 +9188,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1127120101"
   },
   {
@@ -8781,7 +9202,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8789,6 +9210,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1117121290"
   },
   {
@@ -8802,7 +9224,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8810,6 +9232,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "731120269"
   },
   {
@@ -8823,7 +9246,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8831,6 +9254,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "980201125325"
   },
   {
@@ -8844,7 +9268,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8852,6 +9276,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "803131240"
   },
   {
@@ -8865,7 +9290,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8873,6 +9298,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "991001128330"
   },
   {
@@ -8886,7 +9312,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8894,6 +9320,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "114121987"
   },
   {
@@ -8907,7 +9334,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8915,6 +9342,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "818121782"
   },
   {
@@ -8928,7 +9356,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8936,6 +9364,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1125120087"
   },
   {
@@ -8949,7 +9378,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8957,6 +9386,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "981014126060"
   },
   {
@@ -8970,7 +9400,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8978,6 +9408,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "313120610"
   },
   {
@@ -8991,7 +9422,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -8999,6 +9430,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "108121585"
   },
   {
@@ -9012,7 +9444,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "12/1/2021",
+    "tarikhGraduasi": "1/12/2021",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9020,6 +9452,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "991123125613"
   },
   {
@@ -9033,7 +9466,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9041,6 +9474,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10712120676"
   },
   {
@@ -9054,7 +9488,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9062,6 +9496,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11212120674"
   },
   {
@@ -9075,14 +9510,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SARAWAK",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "017-8370891",
     "emel": "Yuzie1994@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
-    "negeri": "SABAH",
+    "pekerjaanJawatan": "Chef",
+    "namaMajikan": "Horizon Hotel Kota Kinabalu, Wholly by Terra Gemiland Sdn.Bhd",
+    "negeri": "SARAWAK",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "Yuzie123?"
   },
   {
@@ -9096,7 +9532,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9104,6 +9540,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10220120098"
   },
   {
@@ -9117,7 +9554,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9125,6 +9562,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10317120051"
   },
   {
@@ -9138,7 +9576,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9146,6 +9584,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10324120877"
   },
   {
@@ -9159,7 +9598,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9167,6 +9606,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10628121385"
   },
   {
@@ -9180,7 +9620,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9188,6 +9628,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1127121358"
   },
   {
@@ -9201,7 +9642,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9209,6 +9650,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11004120688"
   },
   {
@@ -9222,7 +9664,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9230,6 +9672,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10322120259"
   },
   {
@@ -9243,7 +9686,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9251,6 +9694,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "826040202"
   },
   {
@@ -9264,7 +9708,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9272,6 +9716,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11122120507"
   },
   {
@@ -9285,7 +9730,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9293,6 +9738,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10517120486"
   },
   {
@@ -9306,7 +9752,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9314,6 +9760,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10321120281"
   },
   {
@@ -9327,7 +9774,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9335,6 +9782,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11104120255"
   },
   {
@@ -9348,7 +9796,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9356,6 +9804,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10729130491"
   },
   {
@@ -9369,7 +9818,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9377,6 +9826,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11022120075"
   },
   {
@@ -9390,7 +9840,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9398,6 +9848,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11129120518"
   },
   {
@@ -9411,7 +9862,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9419,6 +9870,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10417120059"
   },
   {
@@ -9432,7 +9884,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9440,6 +9892,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10601120104"
   },
   {
@@ -9453,7 +9906,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9461,6 +9914,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10430121179"
   },
   {
@@ -9474,7 +9928,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9482,6 +9936,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10219120437"
   },
   {
@@ -9495,7 +9950,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9503,6 +9958,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11208120022"
   },
   {
@@ -9516,7 +9972,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9524,6 +9980,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "702120374"
   },
   {
@@ -9537,7 +9994,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9545,6 +10002,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10324120025"
   },
   {
@@ -9558,7 +10016,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9566,6 +10024,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "908121815"
   },
   {
@@ -9579,7 +10038,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9587,6 +10046,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10924120379"
   },
   {
@@ -9600,7 +10060,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9608,6 +10068,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10316120041"
   },
   {
@@ -9621,14 +10082,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "PAHANG",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10806060408"
   },
   {
@@ -9642,7 +10104,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9650,6 +10112,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10709120368"
   },
   {
@@ -9663,7 +10126,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9671,6 +10134,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "980415125064"
   },
   {
@@ -9684,7 +10148,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9692,6 +10156,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "227150186"
   },
   {
@@ -9705,7 +10170,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9713,6 +10178,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11027120402"
   },
   {
@@ -9726,7 +10192,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9734,6 +10200,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10305120564"
   },
   {
@@ -9747,7 +10214,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9755,6 +10222,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "991218126694"
   },
   {
@@ -9768,7 +10236,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9776,6 +10244,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10912130844"
   },
   {
@@ -9789,7 +10258,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9797,6 +10266,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "990301126316"
   },
   {
@@ -9810,7 +10280,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9818,6 +10288,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10921120250"
   },
   {
@@ -9831,7 +10302,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9839,6 +10310,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1209120332"
   },
   {
@@ -9852,7 +10324,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9860,6 +10332,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10914120738"
   },
   {
@@ -9873,7 +10346,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9881,6 +10354,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "308122179"
   },
   {
@@ -9894,7 +10368,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9902,6 +10376,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10823120783"
   },
   {
@@ -9915,14 +10390,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. LABUAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10301150037"
   },
   {
@@ -9936,7 +10412,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9944,6 +10420,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10109121404"
   },
   {
@@ -9957,7 +10434,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9965,6 +10442,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10301120620"
   },
   {
@@ -9978,7 +10456,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -9986,6 +10464,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "920121818"
   },
   {
@@ -9999,7 +10478,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10007,6 +10486,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10409120390"
   },
   {
@@ -10020,7 +10500,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10028,6 +10508,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "990806126258"
   },
   {
@@ -10041,7 +10522,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10049,6 +10530,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10207121635"
   },
   {
@@ -10062,7 +10544,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "BUDDHA",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10070,6 +10552,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10205120444"
   },
   {
@@ -10083,7 +10566,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10091,6 +10574,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10919120526"
   },
   {
@@ -10104,7 +10588,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10112,6 +10596,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10103120232"
   },
   {
@@ -10125,7 +10610,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10133,6 +10618,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10611120706"
   },
   {
@@ -10146,14 +10632,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SARAWAK",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11201130586"
   },
   {
@@ -10167,7 +10654,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10175,6 +10662,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11001120105"
   },
   {
@@ -10188,14 +10676,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SARAWAK",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10613130385"
   },
   {
@@ -10209,7 +10698,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10217,6 +10706,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10321121903"
   },
   {
@@ -10230,7 +10720,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10238,6 +10728,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "990517126059"
   },
   {
@@ -10251,7 +10742,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10259,6 +10750,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10208120271"
   },
   {
@@ -10272,14 +10764,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. LABUAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10411150011"
   },
   {
@@ -10293,7 +10786,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10301,6 +10794,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10718121573"
   },
   {
@@ -10314,7 +10808,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10322,6 +10816,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11108120551"
   },
   {
@@ -10335,7 +10830,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "BUDDHA",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10343,6 +10838,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11230120563"
   },
   {
@@ -10356,7 +10852,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10364,6 +10860,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1005120349"
   },
   {
@@ -10377,14 +10874,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SARAWAK",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11005120073"
   },
   {
@@ -10398,7 +10896,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10406,6 +10904,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10222120147"
   },
   {
@@ -10419,7 +10918,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10427,6 +10926,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11031120173"
   },
   {
@@ -10440,14 +10940,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SARAWAK",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1209131429"
   },
   {
@@ -10461,7 +10962,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10469,6 +10970,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10904120427"
   },
   {
@@ -10482,7 +10984,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10490,6 +10992,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10127120237"
   },
   {
@@ -10503,7 +11006,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10511,6 +11014,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1230120345"
   },
   {
@@ -10524,7 +11028,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10532,6 +11036,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10410120849"
   },
   {
@@ -10545,7 +11050,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10553,6 +11058,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11222120555"
   },
   {
@@ -10566,7 +11072,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10574,6 +11080,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1121121509"
   },
   {
@@ -10587,7 +11094,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10595,6 +11102,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10504121113"
   },
   {
@@ -10608,7 +11116,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10616,6 +11124,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10526121181"
   },
   {
@@ -10629,7 +11138,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10637,6 +11146,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "421121901"
   },
   {
@@ -10650,7 +11160,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10658,6 +11168,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "10715121527"
   },
   {
@@ -10671,7 +11182,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10679,6 +11190,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "11130120515"
   },
   {
@@ -10692,7 +11204,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10700,6 +11212,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.157Z",
     "password": "1016121857"
   },
   {
@@ -10713,7 +11226,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10721,6 +11234,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "970808125285"
   },
   {
@@ -10734,7 +11248,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10742,6 +11256,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "970512126019"
   },
   {
@@ -10755,7 +11270,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10763,6 +11278,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "103120663"
   },
   {
@@ -10776,7 +11292,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10784,6 +11300,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "990901125173"
   },
   {
@@ -10797,7 +11314,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10805,6 +11322,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "990419125167"
   },
   {
@@ -10818,14 +11336,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SARAWAK",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10930130514"
   },
   {
@@ -10839,7 +11358,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10847,6 +11366,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10513120083"
   },
   {
@@ -10860,7 +11380,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10868,6 +11388,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10327120434"
   },
   {
@@ -10881,7 +11402,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10889,6 +11410,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "11225120112"
   },
   {
@@ -10902,7 +11424,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10910,6 +11432,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "520120592"
   },
   {
@@ -10923,7 +11446,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10931,6 +11454,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "504120963"
   },
   {
@@ -10944,7 +11468,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10952,6 +11476,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10107120635"
   },
   {
@@ -10965,7 +11490,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10973,6 +11498,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10823102075"
   },
   {
@@ -10986,7 +11512,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -10994,6 +11520,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20103120047"
   },
   {
@@ -11007,7 +11534,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11015,6 +11542,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "11206120010"
   },
   {
@@ -11028,7 +11556,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11036,6 +11564,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10711120826"
   },
   {
@@ -11049,7 +11578,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11057,6 +11586,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10503120071"
   },
   {
@@ -11070,7 +11600,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11078,6 +11608,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10204121699"
   },
   {
@@ -11091,7 +11622,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11099,6 +11630,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "11122120355"
   },
   {
@@ -11112,7 +11644,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11120,6 +11652,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "11023120608"
   },
   {
@@ -11133,7 +11666,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11141,6 +11674,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "11001120738"
   },
   {
@@ -11154,7 +11688,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11162,6 +11696,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10923120246"
   },
   {
@@ -11175,7 +11710,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11183,6 +11718,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "950614125596"
   },
   {
@@ -11196,7 +11732,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11204,6 +11740,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "217121242"
   },
   {
@@ -11217,7 +11754,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11225,6 +11762,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "990916125942"
   },
   {
@@ -11238,7 +11776,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11246,6 +11784,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10114120799"
   },
   {
@@ -11259,7 +11798,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11267,6 +11806,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "990202125238"
   },
   {
@@ -11280,7 +11820,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11288,6 +11828,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "991228125556"
   },
   {
@@ -11301,7 +11842,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11309,6 +11850,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10619121391"
   },
   {
@@ -11322,7 +11864,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11330,6 +11872,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "940107125891"
   },
   {
@@ -11343,7 +11886,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11351,6 +11894,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10716120294"
   },
   {
@@ -11364,7 +11908,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11372,6 +11916,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "990527125789"
   },
   {
@@ -11385,7 +11930,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11393,6 +11938,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10906121247"
   },
   {
@@ -11406,7 +11952,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11414,6 +11960,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10603120335"
   },
   {
@@ -11427,7 +11974,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11435,6 +11982,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "980907125351"
   },
   {
@@ -11448,7 +11996,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11456,6 +12004,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "990602125210"
   },
   {
@@ -11469,7 +12018,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11477,6 +12026,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10515121602"
   },
   {
@@ -11490,7 +12040,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11498,6 +12048,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "1007120369"
   },
   {
@@ -11511,7 +12062,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11519,6 +12070,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "11130120910"
   },
   {
@@ -11532,14 +12084,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SARAWAK",
-    "tarikhGraduasi": "10/8/2022",
+    "tarikhGraduasi": "8/10/2022",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10313130834"
   },
   {
@@ -11553,7 +12106,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11561,6 +12114,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21120120123"
   },
   {
@@ -11574,7 +12128,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11582,6 +12136,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20615121094"
   },
   {
@@ -11595,7 +12150,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11603,6 +12158,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21117120683"
   },
   {
@@ -11616,7 +12172,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11624,6 +12180,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20510120423"
   },
   {
@@ -11637,7 +12194,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11645,6 +12202,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20823121419"
   },
   {
@@ -11658,7 +12216,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11666,6 +12224,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20212121639"
   },
   {
@@ -11679,7 +12238,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11687,6 +12246,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21216120961"
   },
   {
@@ -11700,7 +12260,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11708,6 +12268,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21101121091"
   },
   {
@@ -11721,7 +12282,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11729,6 +12290,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20908121119"
   },
   {
@@ -11742,7 +12304,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11750,6 +12312,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20710120401"
   },
   {
@@ -11763,7 +12326,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11771,6 +12334,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "11219120183"
   },
   {
@@ -11784,7 +12348,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11792,6 +12356,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20609120271"
   },
   {
@@ -11805,7 +12370,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11813,6 +12378,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20514120834"
   },
   {
@@ -11826,7 +12392,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11834,6 +12400,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20916121477"
   },
   {
@@ -11847,7 +12414,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11855,6 +12422,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20909120521"
   },
   {
@@ -11868,7 +12436,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "LAIN - LAIN",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11876,6 +12444,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20807121611"
   },
   {
@@ -11889,14 +12458,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20821131875"
   },
   {
@@ -11910,14 +12480,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SARAWAK",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21119130375"
   },
   {
@@ -11931,7 +12502,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11939,6 +12510,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20622121017"
   },
   {
@@ -11952,7 +12524,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -11960,6 +12532,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20602101625"
   },
   {
@@ -11973,14 +12546,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20522131031"
   },
   {
@@ -11994,14 +12568,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20731131361"
   },
   {
@@ -12015,7 +12590,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12023,6 +12598,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20515120107"
   },
   {
@@ -12036,7 +12612,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "010-4323802",
     "emel": "mohdafq64@gmail.com",
     "pekerjaanJawatan": "-",
@@ -12044,6 +12620,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "S04SKU20F002"
   },
   {
@@ -12057,7 +12634,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12065,6 +12642,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10902120511"
   },
   {
@@ -12078,7 +12656,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12086,6 +12664,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "960619045279"
   },
   {
@@ -12099,7 +12678,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "017-6384375",
     "emel": "ierdinahazikaa@gmail.com",
     "pekerjaanJawatan": "-",
@@ -12107,6 +12686,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "Ierdinahazika31"
   },
   {
@@ -12120,14 +12700,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "012-8251510",
     "emel": "mohdsahrul0411@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Peniaga",
+    "namaMajikan": "ZILLA ENTERPRISE",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "Msahrul00#"
   },
   {
@@ -12141,7 +12722,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12149,6 +12730,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20907120683"
   },
   {
@@ -12162,7 +12744,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12170,6 +12752,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20722120652"
   },
   {
@@ -12183,7 +12766,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12191,6 +12774,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20516120459"
   },
   {
@@ -12204,14 +12788,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "016-2465941",
     "emel": "mohdiskandar2237@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Tidak bekerja",
+    "namaMajikan": "Tiada",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "Jaidah7322@"
   },
   {
@@ -12225,7 +12810,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12233,6 +12818,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20112120276"
   },
   {
@@ -12246,7 +12832,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12254,6 +12840,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20618120484"
   },
   {
@@ -12267,7 +12854,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12275,6 +12862,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20829120206"
   },
   {
@@ -12288,7 +12876,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12296,6 +12884,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20904120346"
   },
   {
@@ -12309,7 +12898,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12317,6 +12906,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21016121118"
   },
   {
@@ -12330,7 +12920,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12338,6 +12928,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20325121571"
   },
   {
@@ -12351,7 +12942,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12359,6 +12950,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20929120983"
   },
   {
@@ -12372,7 +12964,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12380,6 +12972,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20618120097"
   },
   {
@@ -12393,7 +12986,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12401,6 +12994,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21117120157"
   },
   {
@@ -12414,7 +13008,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12422,6 +13016,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20911121531"
   },
   {
@@ -12435,7 +13030,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12443,6 +13038,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20304120553"
   },
   {
@@ -12456,7 +13052,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12464,6 +13060,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21223120652"
   },
   {
@@ -12477,7 +13074,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12485,6 +13082,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "11204120906"
   },
   {
@@ -12498,7 +13096,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12506,6 +13104,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20424120195"
   },
   {
@@ -12519,7 +13118,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12527,6 +13126,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20804121261"
   },
   {
@@ -12540,7 +13140,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12548,6 +13148,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "11226120499"
   },
   {
@@ -12561,7 +13162,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12569,6 +13170,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20607121086"
   },
   {
@@ -12582,7 +13184,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12590,6 +13192,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "530120238"
   },
   {
@@ -12603,7 +13206,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12611,6 +13214,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "322122028"
   },
   {
@@ -12624,7 +13228,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12632,6 +13236,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "1124120894"
   },
   {
@@ -12645,14 +13250,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "016-2755990",
     "emel": "safuanaiman37@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Chef",
+    "namaMajikan": "Plaza premium",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "Safu@n01"
   },
   {
@@ -12666,7 +13272,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12674,6 +13280,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20918120785"
   },
   {
@@ -12687,7 +13294,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12695,6 +13302,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "11230121291"
   },
   {
@@ -12708,7 +13316,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12716,6 +13324,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20310120090"
   },
   {
@@ -12729,7 +13338,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12737,6 +13346,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20618120206"
   },
   {
@@ -12750,7 +13360,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12758,6 +13368,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "305120266"
   },
   {
@@ -12771,7 +13382,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12779,6 +13390,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20909120660"
   },
   {
@@ -12792,7 +13404,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12800,6 +13412,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21024120158"
   },
   {
@@ -12813,7 +13426,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12821,6 +13434,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10411121616"
   },
   {
@@ -12834,7 +13448,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/20/2023",
+    "tarikhGraduasi": "20/9/2023",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12842,6 +13456,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20309040229"
   },
   {
@@ -12855,7 +13470,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "LAIN-LAIN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12863,6 +13478,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31227120026"
   },
   {
@@ -12876,7 +13492,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "KADAZAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12884,6 +13500,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31109120519"
   },
   {
@@ -12897,7 +13514,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12905,6 +13522,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30329121033"
   },
   {
@@ -12918,7 +13536,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12926,6 +13544,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30312120288"
   },
   {
@@ -12939,7 +13558,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "KAYAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12947,6 +13566,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "11024130867"
   },
   {
@@ -12960,7 +13580,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12968,6 +13588,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20406120036"
   },
   {
@@ -12981,7 +13602,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "INDONESIA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -12989,6 +13610,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30417121228"
   },
   {
@@ -13002,7 +13624,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "INDONESIA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13010,6 +13632,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30329120081"
   },
   {
@@ -13023,7 +13646,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13031,6 +13654,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31001120058"
   },
   {
@@ -13044,7 +13668,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13052,6 +13676,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31210120839"
   },
   {
@@ -13065,7 +13690,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13073,6 +13698,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30825120451"
   },
   {
@@ -13086,7 +13712,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13094,6 +13720,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10720120895"
   },
   {
@@ -13107,7 +13734,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13115,6 +13742,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31218120825"
   },
   {
@@ -13128,7 +13756,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUGIS",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13136,6 +13764,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "816120305"
   },
   {
@@ -13149,7 +13778,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13157,6 +13786,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30612120490"
   },
   {
@@ -13170,7 +13800,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BAJAU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13178,6 +13808,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30726120288"
   },
   {
@@ -13191,14 +13822,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21218131322"
   },
   {
@@ -13212,7 +13844,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13220,6 +13852,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30309120324"
   },
   {
@@ -13233,14 +13866,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30202131138"
   },
   {
@@ -13254,7 +13888,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13262,6 +13896,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30723120266"
   },
   {
@@ -13275,7 +13910,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13283,6 +13918,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30322120433"
   },
   {
@@ -13296,7 +13932,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "KADAZAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13304,6 +13940,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30814120261"
   },
   {
@@ -13317,7 +13954,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13325,6 +13962,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30716120460"
   },
   {
@@ -13338,7 +13976,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13346,6 +13984,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30930120584"
   },
   {
@@ -13359,14 +13998,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30119131284"
   },
   {
@@ -13380,7 +14020,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13388,6 +14028,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30803120098"
   },
   {
@@ -13401,14 +14042,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. LABUAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30111150069"
   },
   {
@@ -13422,14 +14064,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "IBAN/SEA DAYAK",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "40101130100"
   },
   {
@@ -13443,7 +14086,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUGIS",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13451,6 +14094,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31111101456"
   },
   {
@@ -13464,7 +14108,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13472,6 +14116,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30126120217"
   },
   {
@@ -13485,14 +14130,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "017-3122904",
     "emel": "zahrfan01@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Housekeeping",
+    "namaMajikan": "ALL ARE WELCOME INN BOUTIQUE HOTEL",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30429120257"
   },
   {
@@ -13506,14 +14152,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "013-6614928",
     "emel": "erlynatata2003@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "LATIHAN INDUSTRI",
+    "namaMajikan": "SABAH TOURISM BOARD",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "Erlyna2104!"
   },
   {
@@ -13527,7 +14174,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13535,6 +14182,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30409040380"
   },
   {
@@ -13548,7 +14196,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13556,6 +14204,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10519120527"
   },
   {
@@ -13569,7 +14218,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "MURUT",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13577,6 +14226,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30916120975"
   },
   {
@@ -13590,7 +14240,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13598,6 +14248,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "10430120854"
   },
   {
@@ -13611,7 +14262,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BAJAU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13619,6 +14270,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21114120303"
   },
   {
@@ -13632,7 +14284,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13640,6 +14292,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30806121627"
   },
   {
@@ -13653,14 +14306,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "013-5743040",
     "emel": "shahzale13@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "FnB Service Associate",
+    "namaMajikan": "Sabah Oriental Hotel",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "Shahzale@00"
   },
   {
@@ -13674,7 +14328,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13682,6 +14336,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30812120110"
   },
   {
@@ -13695,7 +14350,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13703,6 +14358,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30516120466"
   },
   {
@@ -13716,7 +14372,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13724,6 +14380,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30422120086"
   },
   {
@@ -13737,7 +14394,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13745,6 +14402,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30619120346"
   },
   {
@@ -13758,7 +14416,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13766,6 +14424,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21207121436"
   },
   {
@@ -13779,14 +14438,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "010-2551509",
     "emel": "putrinajwanaziha03@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Kerja sendiri",
+    "namaMajikan": "Usaha Maju",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "Naziha@03"
   },
   {
@@ -13800,14 +14460,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "20425131232"
   },
   {
@@ -13821,7 +14482,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13829,6 +14490,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30714120336"
   },
   {
@@ -13842,7 +14504,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13850,6 +14512,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30121120349"
   },
   {
@@ -13863,7 +14526,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13871,6 +14534,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31117120797"
   },
   {
@@ -13884,7 +14548,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13892,6 +14556,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31212120461"
   },
   {
@@ -13905,7 +14570,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "KADAZAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13913,6 +14578,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30502121353"
   },
   {
@@ -13926,7 +14592,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BIDAYUH/LAND DAYAK",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13934,6 +14600,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30828160117"
   },
   {
@@ -13947,7 +14614,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "BUDDHA",
     "kaumUtama": "CINA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13955,6 +14622,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30627120661"
   },
   {
@@ -13968,7 +14636,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13976,6 +14644,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30627121277"
   },
   {
@@ -13989,7 +14658,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -13997,6 +14666,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30227120945"
   },
   {
@@ -14010,7 +14680,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "KADAZAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14018,6 +14688,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31231120459"
   },
   {
@@ -14031,14 +14702,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "MURUT",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "019-8587074",
     "emel": "s04ske21f019@kkbs.edu.my",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Pelajar",
+    "namaMajikan": "Politeknik Kota Kinabalu",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "Emanuels25_"
   },
   {
@@ -14052,7 +14724,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14060,6 +14732,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30611121037"
   },
   {
@@ -14073,7 +14746,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "KADAZAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14081,6 +14754,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30908120211"
   },
   {
@@ -14094,7 +14768,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "SULUK",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14102,6 +14776,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31114120441"
   },
   {
@@ -14115,14 +14790,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "LUNDAYEH",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30524130701"
   },
   {
@@ -14136,7 +14812,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "RUNGUS",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14144,6 +14820,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "21231120361"
   },
   {
@@ -14157,7 +14834,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "CINA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14165,6 +14842,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31030120313"
   },
   {
@@ -14178,7 +14856,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14186,6 +14864,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31119120619"
   },
   {
@@ -14199,7 +14878,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14207,6 +14886,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30718102039"
   },
   {
@@ -14220,7 +14900,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "KADAZAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14228,6 +14908,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30324120701"
   },
   {
@@ -14241,14 +14922,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SELANGOR",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30323100477"
   },
   {
@@ -14262,7 +14944,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14270,6 +14952,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31011150015"
   },
   {
@@ -14283,7 +14966,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14291,6 +14974,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30409120305"
   },
   {
@@ -14304,7 +14988,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14312,6 +14996,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30716120479"
   },
   {
@@ -14325,7 +15010,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "KADAZAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14333,6 +15018,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30919120129"
   },
   {
@@ -14346,7 +15032,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14354,6 +15040,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "31215120205"
   },
   {
@@ -14367,7 +15054,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14375,6 +15062,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.158Z",
     "password": "30626120635"
   },
   {
@@ -14388,7 +15076,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14396,6 +15084,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "10619121367"
   },
   {
@@ -14409,7 +15098,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14417,6 +15106,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "21217121173"
   },
   {
@@ -14430,7 +15120,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14438,6 +15128,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30311120681"
   },
   {
@@ -14451,7 +15142,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14459,6 +15150,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30311120673"
   },
   {
@@ -14472,14 +15164,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. LABUAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30628150045"
   },
   {
@@ -14493,14 +15186,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SELANGOR",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30911102081"
   },
   {
@@ -14514,7 +15208,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14522,6 +15216,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31025120319"
   },
   {
@@ -14535,7 +15230,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14543,6 +15238,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30318120625"
   },
   {
@@ -14556,7 +15252,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14564,6 +15260,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31207101637"
   },
   {
@@ -14577,7 +15274,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14585,6 +15282,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30918120979"
   },
   {
@@ -14598,7 +15296,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14606,6 +15304,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30521120225"
   },
   {
@@ -14619,7 +15318,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14627,6 +15326,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30705120158"
   },
   {
@@ -14640,7 +15340,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14648,6 +15348,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30311120649"
   },
   {
@@ -14661,7 +15362,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14669,6 +15370,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30901120024"
   },
   {
@@ -14682,14 +15384,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30401130031"
   },
   {
@@ -14703,7 +15406,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14711,6 +15414,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30624120308"
   },
   {
@@ -14724,7 +15428,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14732,6 +15436,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31126120131"
   },
   {
@@ -14745,7 +15450,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "KADAZAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14753,6 +15458,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31021120805"
   },
   {
@@ -14766,14 +15472,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "IBAN/SEA DAYAK",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30202130565"
   },
   {
@@ -14787,7 +15494,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14795,6 +15502,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31101120039"
   },
   {
@@ -14808,7 +15516,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14816,6 +15524,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30521121359"
   },
   {
@@ -14829,7 +15538,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14837,6 +15546,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30209120976"
   },
   {
@@ -14850,7 +15560,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "KADAZAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14858,6 +15568,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30626120133"
   },
   {
@@ -14871,7 +15582,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14879,6 +15590,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31206120609"
   },
   {
@@ -14892,7 +15604,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14900,6 +15612,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "828121532"
   },
   {
@@ -14913,7 +15626,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14921,6 +15634,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "991011128115"
   },
   {
@@ -14934,7 +15648,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14942,6 +15656,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30714120141"
   },
   {
@@ -14955,7 +15670,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "CINA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14963,6 +15678,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30327120299"
   },
   {
@@ -14976,7 +15692,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -14984,6 +15700,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31108120111"
   },
   {
@@ -14997,7 +15714,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUGIS",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15005,6 +15722,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31202120046"
   },
   {
@@ -15018,7 +15736,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "KADAZAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15026,6 +15744,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30923120324"
   },
   {
@@ -15039,7 +15758,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15047,6 +15766,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30521120372"
   },
   {
@@ -15060,7 +15780,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15068,6 +15788,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31204120605"
   },
   {
@@ -15081,7 +15802,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15089,6 +15810,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "990211125600"
   },
   {
@@ -15102,7 +15824,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15110,6 +15832,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30410120353"
   },
   {
@@ -15123,7 +15846,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15131,6 +15854,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "21212120737"
   },
   {
@@ -15144,7 +15868,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15152,6 +15876,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "10807120185"
   },
   {
@@ -15165,7 +15890,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15173,6 +15898,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30613120177"
   },
   {
@@ -15186,7 +15912,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15194,6 +15920,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "20630120145"
   },
   {
@@ -15207,14 +15934,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "011-12873751",
     "emel": "irfanfirdausmuhd@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Chef",
+    "namaMajikan": "Hilton Hotel",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "MuhdIrfan01*"
   },
   {
@@ -15228,14 +15956,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "20709131218"
   },
   {
@@ -15249,7 +15978,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15257,6 +15986,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30825120208"
   },
   {
@@ -15270,7 +16000,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15278,6 +16008,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "970405126486"
   },
   {
@@ -15291,7 +16022,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15299,6 +16030,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30913120160"
   },
   {
@@ -15312,7 +16044,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "KEDAYAN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15320,6 +16052,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30920120206"
   },
   {
@@ -15333,7 +16066,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BRUNEI",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15341,6 +16074,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30605120070"
   },
   {
@@ -15354,7 +16088,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15362,6 +16096,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30831120466"
   },
   {
@@ -15375,14 +16110,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "013-9241713",
     "emel": "peterdemon18@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Housekeeping Attendant",
+    "namaMajikan": "River Park Hotel Beaufort Sdn Bhd",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "Peterdemon@18"
   },
   {
@@ -15396,14 +16132,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BISAYA",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "011-26818861",
     "emel": "sitiroslianamusli@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Front Office Associate",
+    "namaMajikan": "The Gem Hotel Beaufort Sdn Bhd",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "Rosliana@01"
   },
   {
@@ -15417,7 +16154,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15425,6 +16162,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31226120825"
   },
   {
@@ -15438,7 +16176,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "BUDDHA",
     "kaumUtama": "DUSUN",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15446,6 +16184,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "705121823"
   },
   {
@@ -15459,7 +16198,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "10/19/2024",
+    "tarikhGraduasi": "19/10/2024",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15467,6 +16206,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30602120390"
   },
   {
@@ -15480,7 +16220,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "LAIN-LAIN",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15488,6 +16228,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40929120711"
   },
   {
@@ -15501,7 +16242,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15509,6 +16250,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40125120361"
   },
   {
@@ -15522,7 +16264,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15530,6 +16272,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "20809120700"
   },
   {
@@ -15543,7 +16286,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15551,6 +16294,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "812120244"
   },
   {
@@ -15564,7 +16308,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15572,6 +16316,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41208120740"
   },
   {
@@ -15585,14 +16330,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "013-6468913",
     "emel": "jeremeyjoshuajiarry@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "chef",
+    "namaMajikan": "SHANGRI-LA",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "Jeremeyjoshua2609"
   },
   {
@@ -15606,7 +16352,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15614,6 +16360,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31117120607"
   },
   {
@@ -15627,7 +16374,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15635,6 +16382,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40611121175"
   },
   {
@@ -15648,7 +16396,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15656,6 +16404,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40606120549"
   },
   {
@@ -15669,7 +16418,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15677,6 +16426,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40923120139"
   },
   {
@@ -15690,14 +16440,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "016-6678774",
     "emel": "apanjohny216@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Chef",
+    "namaMajikan": "Hyatt Regency Kinabalu",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "123456"
   },
   {
@@ -15711,14 +16462,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "011-61725819",
     "emel": "hafizreyyhan@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Chef",
+    "namaMajikan": "citra delight",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "Ammanboy1"
   },
   {
@@ -15732,7 +16484,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15740,6 +16492,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "20602120893"
   },
   {
@@ -15753,7 +16506,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15761,6 +16514,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41111120437"
   },
   {
@@ -15774,7 +16528,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15782,6 +16536,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40824040045"
   },
   {
@@ -15795,7 +16550,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15803,6 +16558,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "405120175"
   },
   {
@@ -15816,7 +16572,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15824,6 +16580,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31211120224"
   },
   {
@@ -15837,7 +16594,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15845,6 +16602,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40113140840"
   },
   {
@@ -15858,7 +16616,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15866,6 +16624,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41224120636"
   },
   {
@@ -15879,14 +16638,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "013-4183695",
     "emel": "nurulainashikinmohdsilin@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "kitchen helper",
+    "namaMajikan": "Degree Cafe",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "NurulAin@07"
   },
   {
@@ -15900,7 +16660,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15908,6 +16668,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40402120504"
   },
   {
@@ -15921,7 +16682,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15929,6 +16690,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40716121091"
   },
   {
@@ -15942,7 +16704,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "LAIN-LAIN",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15950,6 +16712,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40903120094"
   },
   {
@@ -15963,14 +16726,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40630130050"
   },
   {
@@ -15984,7 +16748,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -15992,6 +16756,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "11005121228"
   },
   {
@@ -16005,14 +16770,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "018-9720185",
     "emel": "hawafedelis@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Chef",
+    "namaMajikan": "OH MJ CHEESESTEK",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "Nabilah19"
   },
   {
@@ -16026,7 +16792,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16034,6 +16800,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41010120841"
   },
   {
@@ -16047,14 +16814,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. LABUAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40407150016"
   },
   {
@@ -16068,7 +16836,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16076,6 +16844,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40327120909"
   },
   {
@@ -16089,7 +16858,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "BUDDHA",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16097,6 +16866,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40321120019"
   },
   {
@@ -16110,14 +16880,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "012-6024240",
     "emel": "fanddyeddie16@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "F&B Service Supervisor",
+    "namaMajikan": "Sheraton Johor Bahru",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "*123Fanddy"
   },
   {
@@ -16131,7 +16902,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16139,6 +16910,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41210121048"
   },
   {
@@ -16152,7 +16924,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16160,6 +16932,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30910120229"
   },
   {
@@ -16173,7 +16946,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16181,6 +16954,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41123120805"
   },
   {
@@ -16194,7 +16968,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16202,6 +16976,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40423120407"
   },
   {
@@ -16215,7 +16990,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16223,6 +16998,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40102120203"
   },
   {
@@ -16236,7 +17012,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16244,6 +17020,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40614120071"
   },
   {
@@ -16257,7 +17034,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "LAIN-LAIN",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16265,6 +17042,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41124120276"
   },
   {
@@ -16278,7 +17056,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16286,6 +17064,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40420120428"
   },
   {
@@ -16299,7 +17078,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16307,6 +17086,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41206120907"
   },
   {
@@ -16320,14 +17100,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40226130139"
   },
   {
@@ -16341,7 +17122,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16349,6 +17130,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "20829100731"
   },
   {
@@ -16362,7 +17144,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16370,6 +17152,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40928120779"
   },
   {
@@ -16383,7 +17166,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16391,6 +17174,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40527121359"
   },
   {
@@ -16404,7 +17188,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16412,6 +17196,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40906121228"
   },
   {
@@ -16425,7 +17210,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16433,6 +17218,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30303120243"
   },
   {
@@ -16446,7 +17232,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16454,6 +17240,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40209121177"
   },
   {
@@ -16467,7 +17254,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16475,6 +17262,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41227130135"
   },
   {
@@ -16488,7 +17276,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16496,6 +17284,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40824131115"
   },
   {
@@ -16509,7 +17298,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16517,6 +17306,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41031120875"
   },
   {
@@ -16530,7 +17320,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16538,6 +17328,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40706120765"
   },
   {
@@ -16551,7 +17342,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16559,6 +17350,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40221120505"
   },
   {
@@ -16572,7 +17364,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16580,6 +17372,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40325121131"
   },
   {
@@ -16593,7 +17386,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16601,6 +17394,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40421120155"
   },
   {
@@ -16614,7 +17408,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16622,6 +17416,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40313120123"
   },
   {
@@ -16635,7 +17430,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16643,6 +17438,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30209150059"
   },
   {
@@ -16656,7 +17452,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16664,6 +17460,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30605120265"
   },
   {
@@ -16677,7 +17474,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16685,6 +17482,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30109120653"
   },
   {
@@ -16698,7 +17496,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16706,6 +17504,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30627120741"
   },
   {
@@ -16719,7 +17518,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16727,6 +17526,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41219120551"
   },
   {
@@ -16740,7 +17540,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16748,6 +17548,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "31122121153"
   },
   {
@@ -16761,7 +17562,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16769,6 +17570,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41123121509"
   },
   {
@@ -16782,7 +17584,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16790,6 +17592,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40831120641"
   },
   {
@@ -16803,7 +17606,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16811,6 +17614,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30127120147"
   },
   {
@@ -16824,7 +17628,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16832,6 +17636,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40302120697"
   },
   {
@@ -16845,14 +17650,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "011-18810966",
     "emel": "nurazrabatrisyaroslan@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Student",
+    "namaMajikan": "Politeknik kota kinabalu",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "Tasya22"
   },
   {
@@ -16866,14 +17672,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40613130366"
   },
   {
@@ -16887,7 +17694,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16895,6 +17702,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40718130557"
   },
   {
@@ -16908,7 +17716,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "LAIN-LAIN",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16916,6 +17724,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40709121288"
   },
   {
@@ -16929,7 +17738,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16937,6 +17746,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40416120169"
   },
   {
@@ -16950,7 +17760,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16958,6 +17768,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41214140473"
   },
   {
@@ -16971,7 +17782,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -16979,6 +17790,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "20825120313"
   },
   {
@@ -16992,7 +17804,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17000,6 +17812,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40424120265"
   },
   {
@@ -17013,7 +17826,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17021,6 +17834,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30801120668"
   },
   {
@@ -17034,14 +17848,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. KUALA LUMPUR",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "11226140481"
   },
   {
@@ -17055,7 +17870,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17063,6 +17878,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "20515120924"
   },
   {
@@ -17076,7 +17892,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17084,6 +17900,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30929120771"
   },
   {
@@ -17097,7 +17914,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "LAIN-LAIN",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17105,6 +17922,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30517120273"
   },
   {
@@ -17118,7 +17936,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17126,6 +17944,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40526120223"
   },
   {
@@ -17139,7 +17958,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17147,6 +17966,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41220120647"
   },
   {
@@ -17160,7 +17980,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17168,6 +17988,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "1022120455"
   },
   {
@@ -17181,7 +18002,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17189,6 +18010,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40214121737"
   },
   {
@@ -17202,14 +18024,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. LABUAN",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "30922150089"
   },
   {
@@ -17223,7 +18046,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17231,6 +18054,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "20509120493"
   },
   {
@@ -17244,7 +18068,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17252,6 +18076,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "10503120696"
   },
   {
@@ -17265,7 +18090,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "LAIN-LAIN",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17273,6 +18098,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40825120928"
   },
   {
@@ -17286,7 +18112,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17294,6 +18120,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40315120522"
   },
   {
@@ -17307,7 +18134,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17315,6 +18142,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40419120519"
   },
   {
@@ -17328,7 +18156,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17336,6 +18164,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40627120476"
   },
   {
@@ -17349,7 +18178,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17357,6 +18186,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "20317121053"
   },
   {
@@ -17370,7 +18200,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "BUDDHA",
     "kaumUtama": "CINA",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17378,6 +18208,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "20808120813"
   },
   {
@@ -17391,7 +18222,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17399,6 +18230,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40103121099"
   },
   {
@@ -17412,7 +18244,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17420,6 +18252,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40910121036"
   },
   {
@@ -17433,7 +18266,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17441,6 +18274,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "41008120287"
   },
   {
@@ -17454,7 +18288,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17462,6 +18296,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40430121475"
   },
   {
@@ -17475,14 +18310,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "KRISTIAN",
     "kaumUtama": "BUMIPUTERA SARAWAK",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40513130131"
   },
   {
@@ -17496,7 +18332,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17504,6 +18340,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "40929120973"
   },
   {
@@ -17517,7 +18354,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17525,6 +18362,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.159Z",
     "password": "10129120265"
   },
   {
@@ -17538,7 +18376,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "BUMIPUTERA SABAH",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17546,6 +18384,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "40807120027"
   },
   {
@@ -17559,7 +18398,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17567,6 +18406,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "40813120111"
   },
   {
@@ -17580,14 +18420,15 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "LELAKI",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "019-7821565",
     "emel": "shahaffendie12@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "general worker",
+    "namaMajikan": "TURCOMP",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "gabit1215"
   },
   {
@@ -17601,7 +18442,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "jantina": "PEREMPUAN",
     "agama": "ISLAM",
     "kaumUtama": "MELAYU",
-    "tarikhGraduasi": "9/6/2025",
+    "tarikhGraduasi": "6/9/2025",
     "noTelefon": "",
     "emel": "",
     "pekerjaanJawatan": "-",
@@ -17609,6 +18450,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "41003121248"
   },
   {
@@ -17630,6 +18472,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50402120378"
   },
   {
@@ -17651,6 +18494,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50113120849"
   },
   {
@@ -17669,9 +18513,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. KUALA LUMPUR",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50504140775"
   },
   {
@@ -17693,6 +18538,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "30323120603"
   },
   {
@@ -17714,6 +18560,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50530120807"
   },
   {
@@ -17735,6 +18582,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51018120677"
   },
   {
@@ -17753,9 +18601,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "W.P. KUALA LUMPUR",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50504140660"
   },
   {
@@ -17777,6 +18626,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50131120033"
   },
   {
@@ -17798,6 +18648,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "30227120240"
   },
   {
@@ -17819,6 +18670,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51014121349"
   },
   {
@@ -17840,6 +18692,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50701121231"
   },
   {
@@ -17861,6 +18714,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "40413120622"
   },
   {
@@ -17882,6 +18736,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "1226120414"
   },
   {
@@ -17903,6 +18758,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "41107121525"
   },
   {
@@ -17924,6 +18780,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50915102204"
   },
   {
@@ -17945,6 +18802,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "20715120232"
   },
   {
@@ -17966,6 +18824,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "40325120075"
   },
   {
@@ -17987,6 +18846,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50627121136"
   },
   {
@@ -18008,6 +18868,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51108121104"
   },
   {
@@ -18029,6 +18890,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "40525120723"
   },
   {
@@ -18047,9 +18909,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51028130457"
   },
   {
@@ -18071,6 +18934,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "40423120490"
   },
   {
@@ -18092,6 +18956,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50315120812"
   },
   {
@@ -18113,6 +18978,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50629120532"
   },
   {
@@ -18134,6 +19000,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50505120696"
   },
   {
@@ -18150,11 +19017,12 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "tarikhGraduasi": "24/9/2026",
     "noTelefon": "016-5765428",
     "emel": "sitinorsuadah997@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "F&B Attendant",
+    "namaMajikan": "Le Meredien Kota Kinabalu",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "sada"
   },
   {
@@ -18171,11 +19039,12 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "tarikhGraduasi": "24/9/2026",
     "noTelefon": "013-5499327",
     "emel": "snurhasnita@gmail.com",
-    "pekerjaanJawatan": "-",
-    "namaMajikan": "-",
+    "pekerjaanJawatan": "Juruwang",
+    "namaMajikan": "The Gem Hotel",
     "negeri": "SABAH",
     "status": "Active",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "Alumnikkbs05!"
   },
   {
@@ -18197,6 +19066,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50427120497"
   },
   {
@@ -18218,6 +19088,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51029120429"
   },
   {
@@ -18239,6 +19110,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50816120423"
   },
   {
@@ -18260,6 +19132,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "40929120498"
   },
   {
@@ -18281,6 +19154,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50125121101"
   },
   {
@@ -18302,6 +19176,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50715120838"
   },
   {
@@ -18323,6 +19198,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50401120595"
   },
   {
@@ -18344,6 +19220,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50908131357"
   },
   {
@@ -18365,6 +19242,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50608120883"
   },
   {
@@ -18386,6 +19264,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51012120107"
   },
   {
@@ -18407,6 +19286,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51226120591"
   },
   {
@@ -18428,6 +19308,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "30427121053"
   },
   {
@@ -18449,6 +19330,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50525120749"
   },
   {
@@ -18470,6 +19352,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51215120748"
   },
   {
@@ -18491,6 +19374,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50209120587"
   },
   {
@@ -18512,6 +19396,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51019120783"
   },
   {
@@ -18533,6 +19418,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50731120897"
   },
   {
@@ -18554,6 +19440,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51005121769"
   },
   {
@@ -18575,6 +19462,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51030120303"
   },
   {
@@ -18596,6 +19484,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50721120025"
   },
   {
@@ -18617,6 +19506,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50118120231"
   },
   {
@@ -18638,6 +19528,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51130150059"
   },
   {
@@ -18659,6 +19550,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51101120133"
   },
   {
@@ -18680,6 +19572,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50917121417"
   },
   {
@@ -18701,6 +19594,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "60110120279"
   },
   {
@@ -18722,6 +19616,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "990515126493"
   },
   {
@@ -18743,6 +19638,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "40302120531"
   },
   {
@@ -18764,6 +19660,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50106120517"
   },
   {
@@ -18785,6 +19682,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50308140751"
   },
   {
@@ -18806,6 +19704,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50522120209"
   },
   {
@@ -18827,6 +19726,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51016120219"
   },
   {
@@ -18848,6 +19748,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50324121403"
   },
   {
@@ -18869,6 +19770,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50226121303"
   },
   {
@@ -18890,6 +19792,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51101121793"
   },
   {
@@ -18908,9 +19811,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51208130577"
   },
   {
@@ -18932,6 +19836,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50816120351"
   },
   {
@@ -18953,6 +19858,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50403121153"
   },
   {
@@ -18971,9 +19877,10 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "emel": "",
     "pekerjaanJawatan": "-",
     "namaMajikan": "-",
-    "negeri": "SABAH",
+    "negeri": "SARAWAK",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50331130340"
   },
   {
@@ -18995,6 +19902,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51028120427"
   },
   {
@@ -19016,6 +19924,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50603120825"
   },
   {
@@ -19037,6 +19946,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "51113150049"
   },
   {
@@ -19058,6 +19968,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50622121241"
   },
   {
@@ -19079,6 +19990,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50918130411"
   },
   {
@@ -19100,6 +20012,7 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50619120301"
   },
   {
@@ -19121,18 +20034,19 @@ export const INITIAL_MEMBERS: AlumniMember[] = [
     "negeri": "SABAH",
     "status": "Inactive",
     "role": "Member",
+    "createdAt": "2026-08-13T01:39:13.160Z",
     "password": "50623121569"
   }
 ];
 
 export const INITIAL_TRANSACTIONS: Transaction[] = [
   {
-    id: "TX-001",
-    date: "2026-08-15T09:00:00.000Z",
-    category: "Geran",
-    amount: 5000.0,
-    type: "Income",
-    description: "Geran Pelancaran & Pengurusan Persatuan Alumni KKBS",
-    receiptUrl: ""
+    "id": "TX-eeac12a8",
+    "date": "2026-03-05T00:00:00.000Z",
+    "category": "Yuran Keahlian",
+    "amount": 5000,
+    "type": "Income",
+    "description": "Yuran Ahli",
+    "receiptUrl": "resit_alumni_1786623141756.png"
   }
 ];
