@@ -328,15 +328,7 @@ const generateCommitteeList = (config: SystemConfig, program: Program): Committe
     peranan: 'Menguruskan bajet perbelanjaan, rekod resit, tuntutan kewangan dan penyata kewangan.'
   });
 
-  // 7. Juru Audit
-  list.push({
-    bil: bil++,
-    jawatan: 'Pemeriksa Kira-Kira / Juru Audit',
-    nama: config.juruAudit || 'REZIELLA BINTI LAHAJI',
-    peranan: 'Menyemak ketepatan penyata perbelanjaan dan memastikan tatakelola kewangan berhemah.'
-  });
-
-  // 8. Ahli Jawatankuasa (AJK)
+  // 7. Ahli Jawatankuasa (AJK)
   const portfolioDefaults = [
     { title: 'AJK Logistik, Peralatan & Tempat', task: 'Menyediakan persiapan dewan/tempat, susun atur teknikal dan peralatan program.' },
     { title: 'AJK Protokol, Sambutan & Pengacaraan', task: 'Menyelaras sambutan tetamu jemputan, atur cara majlis dan teks juruacara.' },
