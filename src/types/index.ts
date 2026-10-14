@@ -59,5 +59,26 @@ export interface Program {
   bilanganPeserta: number;
 }
 
+export interface ProgramReceipt {
+  id: string;
+  receiptNo: string;
+  date: string;
+  payerName: string;
+  payerIcOrReg?: string;
+  payerPhone?: string;
+  payerEmail?: string;
+  programName: string;
+  programId?: string;
+  paymentCategory: string;
+  paymentMethod: string;
+  referenceNo: string;
+  amount: number;
+  description?: string;
+  receivedBy: string;
+  status: 'Lunas' | 'Batal';
+  createdAt: string;
+  autoLedgerSync?: boolean;
+}
+
 export type ViewType = 'dashboard' | 'programs' | 'membership' | 'finance' | 'statistics' | 'reports' | 'settings';
 export type UserRole = 'landing' | 'member' | 'admin';

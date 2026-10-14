@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { AlumniMember, Transaction, SystemConfig, ViewType, UserRole, Program } from './types';
-import { INITIAL_MEMBERS, INITIAL_TRANSACTIONS, INITIAL_CONFIG } from './data/initialData';
+import { AlumniMember, Transaction, SystemConfig, ViewType, UserRole, Program, ProgramReceipt } from './types';
+import { INITIAL_MEMBERS, INITIAL_TRANSACTIONS, INITIAL_CONFIG, INITIAL_RECEIPTS } from './data/initialData';
 import { Navbar } from './components/Navbar';
 import { MainDashboard } from './components/MainDashboard';
 import { MembershipPortal } from './components/MembershipPortal';
@@ -27,6 +27,9 @@ import {
   deleteProgramFromFirestore,
   updateSystemConfig,
   getMemberStatus,
+  subscribeToReceipts,
+  addOrUpdateReceipt,
+  deleteReceiptFromFirestore,
   INITIAL_PROGRAMS_LIST
 } from './firebase';
 
@@ -55,6 +58,7 @@ export default function App() {
   );
   const [transactions, setTransactions] = useState<Transaction[]>(INITIAL_TRANSACTIONS);
   const [programs, setPrograms] = useState<Program[]>(INITIAL_PROGRAMS_LIST);
+  const [receipts, setReceipts] = useState<ProgramReceipt[]>(INITIAL_RECEIPTS);
   const [config, setConfig] = useState<SystemConfig>(INITIAL_CONFIG);
   
   const [currentMember, setCurrentMember] = useState<AlumniMember | null>(null);
@@ -121,11 +125,17 @@ export default function App() {
       if (freshConfig) setConfig(freshConfig);
     });
 
+    // 5. Subscribe to Program Receipts (Real-time sync from Firestore)
+    const unsubReceipts = subscribeToReceipts((freshReceipts) => {
+      if (freshReceipts) setReceipts(freshReceipts);
+    });
+
     return () => {
       unsubMembers();
       unsubTransactions();
       unsubPrograms();
       unsubConfig();
+      unsubReceipts();
     };
   }, [currentMember?.id, userRole]);
 
@@ -347,6 +357,27 @@ export default function App() {
     const success = await deleteProgramFromFirestore(id);
     if (success) {
       setPrograms(prev => prev.filter(p => p.id !== id));
+    }
+    return success;
+  };
+
+  const handleAddReceipt = async (receiptData: Omit<ProgramReceipt, 'id' | 'createdAt'>): Promise<boolean> => {
+    const fullReceipt: ProgramReceipt = {
+      ...receiptData,
+      id: `REC-${Date.now()}`,
+      createdAt: new Date().toISOString()
+    };
+    const success = await addOrUpdateReceipt(fullReceipt);
+    if (success) {
+      setReceipts(prev => [fullReceipt, ...prev.filter(r => r.id !== fullReceipt.id)]);
+    }
+    return success;
+  };
+
+  const handleDeleteReceipt = async (id: string): Promise<boolean> => {
+    const success = await deleteReceiptFromFirestore(id);
+    if (success) {
+      setReceipts(prev => prev.filter(r => r.id !== id));
     }
     return success;
   };
@@ -705,8 +736,14 @@ export default function App() {
             {currentView === 'finance' && userRole === 'admin' && (
               <FinanceLedger
                 transactions={transactions}
+                programs={programs}
+                config={config}
+                members={members}
+                receipts={receipts}
                 onAddTransaction={handleAddTransaction}
                 onDeleteTransaction={handleDeleteTransaction}
+                onAddReceipt={handleAddReceipt}
+                onDeleteReceipt={handleDeleteReceipt}
               />
             )}
             

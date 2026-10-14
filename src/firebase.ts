@@ -12,8 +12,8 @@ import {
   writeBatch,
   Unsubscribe
 } from 'firebase/firestore';
-import { AlumniMember, Transaction, Program, SystemConfig } from './types';
-import { INITIAL_MEMBERS, INITIAL_TRANSACTIONS, INITIAL_CONFIG } from './data/initialData';
+import { AlumniMember, Transaction, Program, SystemConfig, ProgramReceipt } from './types';
+import { INITIAL_MEMBERS, INITIAL_TRANSACTIONS, INITIAL_CONFIG, INITIAL_RECEIPTS } from './data/initialData';
 
 const getApiKey = () => {
   try {
@@ -41,7 +41,8 @@ export const COLLECTIONS = {
   MEMBERS: 'alumni-members',
   TRANSACTIONS: 'alumni-transactions',
   PROGRAMS: 'alumni-programs',
-  CONFIG: 'alumni-config'
+  CONFIG: 'alumni-config',
+  RECEIPTS: 'alumni-receipts'
 } as const;
 
 export const INITIAL_PROGRAMS_LIST: Program[] = [
@@ -212,6 +213,18 @@ export async function seedInitialFirestoreData(): Promise<void> {
       INITIAL_TRANSACTIONS.forEach(tx => {
         const ref = doc(db, COLLECTIONS.TRANSACTIONS, tx.id);
         batch.set(ref, tx);
+      });
+      await batch.commit();
+    }
+
+    // 3b. Check & Seed Receipts for Special Programs
+    const recSnap = await getDocs(collection(db, COLLECTIONS.RECEIPTS));
+    if (recSnap.empty && INITIAL_RECEIPTS.length > 0) {
+      console.log('Seeding initial receipts to Firestore...');
+      const batch = writeBatch(db);
+      INITIAL_RECEIPTS.forEach(rec => {
+        const ref = doc(db, COLLECTIONS.RECEIPTS, rec.id);
+        batch.set(ref, rec);
       });
       await batch.commit();
     }
@@ -438,6 +451,55 @@ export async function updateSystemConfig(config: SystemConfig): Promise<boolean>
     return true;
   } catch (err) {
     console.error('Error updating system config:', err);
+    return false;
+  }
+}
+
+/**
+ * Real-time listener for Program Receipts
+ */
+export function subscribeToReceipts(
+  onUpdate: (receipts: ProgramReceipt[]) => void,
+  onError?: (err: any) => void
+): Unsubscribe {
+  const colRef = collection(db, COLLECTIONS.RECEIPTS);
+  return onSnapshot(
+    colRef,
+    (snapshot) => {
+      const items: ProgramReceipt[] = [];
+      snapshot.forEach((doc) => {
+        items.push({ ...(doc.data() as ProgramReceipt), id: doc.id });
+      });
+      // Sort newest first by date/createdAt
+      items.sort((a, b) => new Date(b.date || b.createdAt).getTime() - new Date(a.date || a.createdAt).getTime());
+      onUpdate(items);
+    },
+    (err) => {
+      console.error('Error listening to alumni-receipts:', err);
+      if (onError) onError(err);
+    }
+  );
+}
+
+export async function addOrUpdateReceipt(receipt: ProgramReceipt): Promise<boolean> {
+  try {
+    const docId = receipt.id || `REC-${Date.now()}`;
+    const docRef = doc(db, COLLECTIONS.RECEIPTS, docId);
+    await setDoc(docRef, { ...receipt, id: docId }, { merge: true });
+    return true;
+  } catch (err) {
+    console.error('Error saving program receipt:', err);
+    return false;
+  }
+}
+
+export async function deleteReceiptFromFirestore(id: string): Promise<boolean> {
+  try {
+    const docRef = doc(db, COLLECTIONS.RECEIPTS, id);
+    await deleteDoc(docRef);
+    return true;
+  } catch (err) {
+    console.error('Error deleting program receipt:', err);
     return false;
   }
 }

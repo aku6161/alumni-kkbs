@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
-import { Transaction } from '../types';
-import { PlusCircle, ArrowDownCircle, ArrowUpCircle, Trash2, Calendar, FileText, Image, Printer } from 'lucide-react';
+import { Transaction, Program, SystemConfig, AlumniMember, ProgramReceipt } from '../types';
+import { PlusCircle, ArrowDownCircle, ArrowUpCircle, Trash2, Calendar, FileText, Image, Printer, Receipt } from 'lucide-react';
+import { ProgramReceiptsManager } from './ProgramReceiptsManager';
 
 interface FinanceLedgerProps {
   transactions: Transaction[];
+  programs?: Program[];
+  config?: SystemConfig;
+  members?: AlumniMember[];
+  receipts?: ProgramReceipt[];
   onAddTransaction: (tx: Omit<Transaction, 'id'>) => Promise<boolean>;
   onDeleteTransaction: (id: string) => Promise<boolean>;
+  onAddReceipt?: (receipt: Omit<ProgramReceipt, 'id' | 'createdAt'>) => Promise<boolean>;
+  onDeleteReceipt?: (id: string) => Promise<boolean>;
 }
 
 export const FinanceLedger: React.FC<FinanceLedgerProps> = ({
   transactions,
+  programs = [],
+  config,
+  members = [],
+  receipts = [],
   onAddTransaction,
   onDeleteTransaction,
+  onAddReceipt,
+  onDeleteReceipt
 }) => {
-  const [activeTab, setActiveTab] = useState<'roster' | 'add'>('roster');
+  const [activeTab, setActiveTab] = useState<'roster' | 'add' | 'receipts'>('roster');
   const [selectedYear, setSelectedYear] = useState<string>('Semua');
 
   const handlePrint = () => {
@@ -103,26 +116,35 @@ export const FinanceLedger: React.FC<FinanceLedgerProps> = ({
   return (
     <div className="space-y-6">
       {/* Finance Portal Subtabs */}
-      <div className="flex border-b border-slate-200 print:hidden">
+      <div className="flex border-b border-slate-200 print:hidden overflow-x-auto">
         <button
           onClick={() => setActiveTab('roster')}
-          className={`py-2.5 px-4 text-sm font-bold border-b-2 transition-all cursor-pointer ${
-            activeTab === 'roster' ? 'border-blue-700 text-blue-700' : 'border-transparent text-slate-500 hover:text-slate-800'
+          className={`py-2.5 px-4 text-sm font-bold border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+            activeTab === 'roster' ? 'border-blue-700 text-blue-700 font-extrabold' : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
           Ringkasan & Lejar
         </button>
         <button
           onClick={() => setActiveTab('add')}
-          className={`py-2.5 px-4 text-sm font-bold border-b-2 transition-all cursor-pointer ${
-            activeTab === 'add' ? 'border-blue-700 text-blue-700' : 'border-transparent text-slate-500 hover:text-slate-800'
+          className={`py-2.5 px-4 text-sm font-bold border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+            activeTab === 'add' ? 'border-blue-700 text-blue-700 font-extrabold' : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
           Rekod Transaksi
         </button>
+        <button
+          onClick={() => setActiveTab('receipts')}
+          className={`py-2.5 px-4 text-sm font-bold border-b-2 transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+            activeTab === 'receipts' ? 'border-blue-700 text-blue-700 font-extrabold' : 'border-transparent text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <Receipt className="w-4 h-4" />
+          <span>Resit / Invois</span>
+        </button>
       </div>
 
-      {activeTab === 'roster' ? (
+      {activeTab === 'roster' && (
         <div className="space-y-6">
           {/* Print-only Header */}
           <div className="hidden print:block border-b border-slate-300 pb-4 mb-6">
@@ -256,7 +278,9 @@ export const FinanceLedger: React.FC<FinanceLedgerProps> = ({
             </div>
           </div>
         </div>
-      ) : (
+      )}
+
+      {activeTab === 'add' && (
         /* Record transaction form */
         <div className="max-w-xl mx-auto bg-white p-6 rounded-2xl border border-slate-100 shadow-2xs">
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -375,6 +399,18 @@ export const FinanceLedger: React.FC<FinanceLedgerProps> = ({
             </div>
           </form>
         </div>
+      )}
+
+      {activeTab === 'receipts' && (
+        <ProgramReceiptsManager
+          receipts={receipts}
+          programs={programs}
+          config={config}
+          members={members}
+          onAddReceipt={onAddReceipt || (async () => false)}
+          onDeleteReceipt={onDeleteReceipt || (async () => false)}
+          onAddTransaction={onAddTransaction}
+        />
       )}
     </div>
   );
