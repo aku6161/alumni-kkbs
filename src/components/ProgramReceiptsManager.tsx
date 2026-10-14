@@ -128,240 +128,173 @@ export const OfficialReceiptDocument: React.FC<{ receipt: ProgramReceipt }> = ({
         boxSizing: 'border-box'
       }}
     >
-      {/* 1. Header Letterhead */}
+      {/* 1. Header Letterhead - Kotak No. Resit di bahagian atas telah dipadam */}
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
+          gap: '16px',
           borderBottom: '3px double #000000',
           paddingBottom: '12px',
           marginBottom: '14px'
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <img
-            src="/logo-alumni.png"
-            alt="Logo Alumni KKBS"
-            style={{ width: '75px', height: '75px', objectFit: 'contain' }}
-          />
-          <div>
-            <h1
-              style={{
-                fontSize: '13.5px',
-                fontWeight: 'bold',
-                margin: '0',
-                textTransform: 'uppercase',
-                letterSpacing: '0.4px',
-                color: '#000'
-              }}
-            >
-              PERSATUAN ALUMNI KOLEJ KOMUNITI BEAUFORT SABAH
-            </h1>
-            <p style={{ fontSize: '9.5px', margin: '2px 0 0 0', color: '#333' }}>
-              d.a. Kolej Komuniti Beaufort, Jalan Melalugus, Peti Surat 399, 89807 Beaufort, Sabah.
-            </p>
-            <p style={{ fontSize: '9px', margin: '2px 0 0 0', color: '#555' }}>
-              Laman Web: alumni-kkbs.vercel.app &nbsp;|&nbsp; Emel: alumni.kkbs@gmail.com
-            </p>
-          </div>
-        </div>
-        <div style={{ textAlign: 'right' }}>
-          <div
+        <img
+          src="/logo-alumni.png"
+          alt="Logo Alumni KKBS"
+          style={{ width: '75px', height: '75px', objectFit: 'contain' }}
+        />
+        <div style={{ flex: 1 }}>
+          <h1
             style={{
-              border: '2px solid #000',
-              padding: '6px 12px',
-              textAlign: 'center',
-              backgroundColor: '#f8f9fa'
+              fontSize: '13.5px',
+              fontWeight: 'bold',
+              margin: '0',
+              textTransform: 'uppercase',
+              letterSpacing: '0.4px',
+              color: '#000'
             }}
           >
-            <span style={{ fontSize: '8.5px', fontWeight: 'bold', display: 'block', textTransform: 'uppercase', color: '#444' }}>
-              NO. RESIT RASMI
-            </span>
-            <span style={{ fontSize: '13px', fontWeight: 'bold', fontFamily: 'monospace', color: '#000' }}>
-              {receipt.receiptNo}
-            </span>
-          </div>
+            PERSATUAN ALUMNI KOLEJ KOMUNITI BEAUFORT SABAH
+          </h1>
+          <p style={{ fontSize: '9.5px', margin: '2px 0 0 0', color: '#333' }}>
+            d.a. Kolej Komuniti Beaufort, Jalan Melalugus, Peti Surat 399, 89807 Beaufort, Sabah.
+          </p>
+          <p style={{ fontSize: '9px', margin: '2px 0 0 0', color: '#555' }}>
+            Laman Web: alumni-kkbs.vercel.app &nbsp;|&nbsp; Emel: alumni.kkbs@gmail.com
+          </p>
         </div>
       </div>
 
-      {/* 2. Document Title */}
-      <div style={{ textAlign: 'center', margin: '12px 0 14px 0' }}>
+      {/* 2. Document Title - Ditukar ke [RESIT RASMI BAYARAN] */}
+      <div style={{ textAlign: 'center', margin: '14px 0 16px 0' }}>
         <h2
           style={{
             fontSize: '14px',
             fontWeight: 'bold',
             textTransform: 'uppercase',
             margin: '0',
-            textDecoration: 'underline'
+            textDecoration: 'underline',
+            letterSpacing: '0.5px'
           }}
         >
-          RESIT RASMI BAYARAN PROGRAM KHAS
+          RESIT RASMI BAYARAN
         </h2>
-        <p style={{ fontSize: '9.5px', fontStyle: 'italic', margin: '2px 0 0 0', color: '#444' }}>
-          OFFICIAL RECEIPT - SPECIAL PROGRAMME PAYMENT
-        </p>
       </div>
 
-      {/* 3. Payer & Metadata Info Box */}
-      <table
+      {/* 3. Maklumat Pembayar & Transaksi (Biasa, bukan jadual kotak, ada no resit, tarikh, nama, no telefon, kaedah bayaran) */}
+      <div
         style={{
-          width: '100%',
-          borderCollapse: 'collapse',
-          marginBottom: '14px',
-          fontSize: '10.5px',
-          border: '1px solid #000'
+          display: 'grid',
+          gridTemplateColumns: '1.1fr 1fr',
+          gap: '8px 24px',
+          marginBottom: '16px',
+          fontSize: '11px',
+          lineHeight: '1.6'
         }}
       >
-        <tbody>
-          <tr style={{ backgroundColor: '#f1f3f5' }}>
-            <td
-              colSpan={2}
-              style={{
-                padding: '5px 8px',
-                fontWeight: 'bold',
-                textTransform: 'uppercase',
-                borderBottom: '1px solid #000'
-              }}
-            >
-              A. MAKLUMAT PEMBAYAR & PROGRAM
-            </td>
-            <td
-              style={{
-                padding: '5px 8px',
-                fontWeight: 'bold',
-                textTransform: 'uppercase',
-                borderBottom: '1px solid #000',
-                borderLeft: '1px solid #000'
-              }}
-            >
-              B. STATUS & RUJUKAN
-            </td>
-          </tr>
-          <tr>
-            <td style={{ width: '22%', padding: '6px 8px', fontWeight: 'bold', borderBottom: '1px solid #ddd' }}>
-              Diterima Daripada:
-            </td>
-            <td style={{ width: '45%', padding: '6px 8px', fontWeight: 'bold', fontSize: '11.5px', borderBottom: '1px solid #ddd' }}>
-              {receipt.payerName}
-            </td>
-            <td rowSpan={3} style={{ width: '33%', padding: '8px', borderLeft: '1px solid #000', verticalAlign: 'top' }}>
-              <div style={{ marginBottom: '6px' }}>
-                <span style={{ fontSize: '8.5px', color: '#555', display: 'block' }}>TARIKH BAYARAN:</span>
-                <strong style={{ fontSize: '11px' }}>{formatDisplayDate(receipt.date)}</strong>
-              </div>
-              <div style={{ marginBottom: '6px' }}>
-                <span style={{ fontSize: '8.5px', color: '#555', display: 'block' }}>STATUS BAYARAN:</span>
-                <span
-                  style={{
-                    display: 'inline-block',
-                    backgroundColor: '#e6f7ec',
-                    border: '1px solid #28a745',
-                    color: '#155724',
-                    fontWeight: 'bold',
-                    fontSize: '9.5px',
-                    padding: '1px 6px',
-                    borderRadius: '3px'
-                  }}
-                >
-                  ✓ LUNAS (PAID)
-                </span>
-              </div>
-              <div>
-                <span style={{ fontSize: '8.5px', color: '#555', display: 'block' }}>NO. RUJUKAN TRANSAKSI:</span>
-                <strong style={{ fontFamily: 'monospace', fontSize: '10px' }}>{receipt.referenceNo || '-'}</strong>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td style={{ padding: '6px 8px', fontWeight: 'bold', borderBottom: '1px solid #ddd' }}>
-              No. KP / No. Rujukan:
-            </td>
-            <td style={{ padding: '6px 8px', borderBottom: '1px solid #ddd' }}>
-              {receipt.payerIcOrReg || '-'}
-            </td>
-          </tr>
-          <tr>
-            <td style={{ padding: '6px 8px', fontWeight: 'bold' }}>
-              No. Telefon / Emel:
-            </td>
-            <td style={{ padding: '6px 8px' }}>
-              {receipt.payerPhone || '-'} {receipt.payerEmail ? `(${receipt.payerEmail})` : ''}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <div>
+          <div style={{ display: 'flex' }}>
+            <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>No. Resit</span>
+            <span style={{ width: '12px' }}>:</span>
+            <strong style={{ fontFamily: 'monospace', fontSize: '12px', color: '#000' }}>{receipt.receiptNo}</strong>
+          </div>
+          <div style={{ display: 'flex' }}>
+            <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>Tarikh</span>
+            <span style={{ width: '12px' }}>:</span>
+            <strong style={{ color: '#000' }}>{formatDisplayDate(receipt.date)}</strong>
+          </div>
+          <div style={{ display: 'flex' }}>
+            <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>Kaedah Bayaran</span>
+            <span style={{ width: '12px' }}>:</span>
+            <strong style={{ color: '#000' }}>
+              {receipt.paymentMethod}
+              {receipt.referenceNo ? ` (Ruj: ${receipt.referenceNo})` : ''}
+            </strong>
+          </div>
+        </div>
 
-      {/* 4. Particulars Table */}
+        <div>
+          <div style={{ display: 'flex' }}>
+            <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>Nama</span>
+            <span style={{ width: '12px' }}>:</span>
+            <strong style={{ textTransform: 'uppercase', color: '#000' }}>{receipt.payerName}</strong>
+          </div>
+          <div style={{ display: 'flex' }}>
+            <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>No. Telefon</span>
+            <span style={{ width: '12px' }}>:</span>
+            <strong style={{ color: '#000' }}>{receipt.payerPhone || '-'}</strong>
+          </div>
+          {receipt.payerIcOrReg && (
+            <div style={{ display: 'flex' }}>
+              <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>No. KP / Syarikat</span>
+              <span style={{ width: '12px' }}>:</span>
+              <span style={{ color: '#000' }}>{receipt.payerIcOrReg}</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* 4. Particulars Table (Kolum Kaedah & Kategori dipadam, tajuk kolum [PERIHAL BAYARAN]) */}
       <table
         style={{
           width: '100%',
           borderCollapse: 'collapse',
           marginBottom: '14px',
-          fontSize: '10.5px',
+          fontSize: '11px',
           border: '1px solid #000'
         }}
       >
         <thead>
           <tr style={{ backgroundColor: '#e9ecef', borderBottom: '1px solid #000' }}>
-            <th style={{ width: '6%', padding: '7px', borderRight: '1px solid #000', textAlign: 'center' }}>BIL</th>
-            <th style={{ width: '54%', padding: '7px 8px', borderRight: '1px solid #000', textAlign: 'left' }}>
-              PERIHAL PROGRAM KHAS & KETERANGAN BAYARAN
+            <th style={{ width: '8%', padding: '8px', borderRight: '1px solid #000', textAlign: 'center' }}>BIL</th>
+            <th style={{ width: '70%', padding: '8px 10px', borderRight: '1px solid #000', textAlign: 'left' }}>
+              PERIHAL BAYARAN
             </th>
-            <th style={{ width: '22%', padding: '7px 8px', borderRight: '1px solid #000', textAlign: 'left' }}>
-              KAEDAH & KATEGORI
-            </th>
-            <th style={{ width: '18%', padding: '7px 8px', textAlign: 'right' }}>JUMLAH (RM)</th>
+            <th style={{ width: '22%', padding: '8px 10px', textAlign: 'right' }}>JUMLAH (RM)</th>
           </tr>
         </thead>
         <tbody>
-          <tr style={{ minHeight: '80px', verticalAlign: 'top' }}>
-            <td style={{ padding: '8px 6px', borderRight: '1px solid #000', textAlign: 'center', fontWeight: 'bold' }}>
+          <tr style={{ minHeight: '85px', verticalAlign: 'top' }}>
+            <td style={{ padding: '10px 8px', borderRight: '1px solid #000', textAlign: 'center', fontWeight: 'bold' }}>
               1
             </td>
-            <td style={{ padding: '8px 8px', borderRight: '1px solid #000' }}>
-              <div style={{ fontWeight: 'bold', fontSize: '11px', textTransform: 'uppercase' }}>
+            <td style={{ padding: '10px 10px', borderRight: '1px solid #000' }}>
+              <div style={{ fontWeight: 'bold', fontSize: '11.5px', textTransform: 'uppercase' }}>
                 {receipt.programName}
               </div>
-              <div style={{ marginTop: '3px', color: '#333', fontSize: '10px' }}>
+              <div style={{ marginTop: '4px', color: '#333', fontSize: '10.5px' }}>
                 {receipt.description || `Bayaran ${receipt.paymentCategory}`}
               </div>
             </td>
-            <td style={{ padding: '8px 8px', borderRight: '1px solid #000' }}>
-              <div style={{ fontWeight: 'bold' }}>{receipt.paymentCategory}</div>
-              <div style={{ fontSize: '9.5px', color: '#555', marginTop: '2px' }}>
-                Kaedah: {receipt.paymentMethod}
-              </div>
-            </td>
-            <td style={{ padding: '8px 8px', textAlign: 'right', fontWeight: 'bold', fontSize: '11.5px' }}>
+            <td style={{ padding: '10px 10px', textAlign: 'right', fontWeight: 'bold', fontSize: '12px' }}>
               {receipt.amount.toFixed(2)}
             </td>
           </tr>
 
           {/* Spacer row */}
-          <tr style={{ height: '30px' }}>
-            <td style={{ borderRight: '1px solid #000' }}></td>
+          <tr style={{ height: '35px' }}>
             <td style={{ borderRight: '1px solid #000' }}></td>
             <td style={{ borderRight: '1px solid #000' }}></td>
             <td></td>
           </tr>
 
-          {/* Subtotal / Total Row */}
+          {/* Total Row */}
           <tr style={{ backgroundColor: '#f1f3f5', borderTop: '2px solid #000', borderBottom: '2px solid #000' }}>
             <td
-              colSpan={3}
+              colSpan={2}
               style={{
-                padding: '7px 8px',
+                padding: '8px 10px',
                 textAlign: 'right',
                 fontWeight: 'bold',
                 borderRight: '1px solid #000',
-                fontSize: '10.5px',
+                fontSize: '11px',
                 textTransform: 'uppercase'
               }}
             >
-              JUMLAH KESELURUHAN (TOTAL AMOUNT):
+              JUMLAH KESELURUHAN:
             </td>
-            <td style={{ padding: '7px 8px', textAlign: 'right', fontWeight: 'bold', fontSize: '12.5px' }}>
+            <td style={{ padding: '8px 10px', textAlign: 'right', fontWeight: 'bold', fontSize: '13px' }}>
               RM {receipt.amount.toFixed(2)}
             </td>
           </tr>
@@ -372,9 +305,9 @@ export const OfficialReceiptDocument: React.FC<{ receipt: ProgramReceipt }> = ({
       <div
         style={{
           border: '1px solid #000',
-          padding: '7px 10px',
+          padding: '8px 12px',
           backgroundColor: '#fafafa',
-          marginBottom: '18px'
+          marginBottom: '20px'
         }}
       >
         <span style={{ fontSize: '8.5px', fontWeight: 'bold', color: '#444', textTransform: 'uppercase', display: 'block' }}>
@@ -385,74 +318,46 @@ export const OfficialReceiptDocument: React.FC<{ receipt: ProgramReceipt }> = ({
         </strong>
       </div>
 
-      {/* 6. Official Stamp & Signatures */}
+      {/* 6. Official Stamp & Signatures - Padam "DISAHKAN LUNAS PERSATUAN ALUMNI KKBS", QR kod square sempurna */}
       <div
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'flex-start',
-          marginTop: '18px',
+          alignItems: 'center',
+          marginTop: '20px',
           pageBreakInside: 'avoid'
         }}
       >
-        {/* Left: Stamp & Self-contained QR Badge */}
-        <div
-          style={{
-            width: '48%',
-            border: '1px dashed #666',
-            padding: '10px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            borderRadius: '4px'
-          }}
-        >
-          <div
+        {/* Left: Square QR Code */}
+        <div style={{ textAlign: 'center', width: '130px' }}>
+          <img
+            src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&data=${encodeURIComponent(
+              `RESIT RASMI BAYARAN: ${receipt.receiptNo}\nTARIKH: ${receipt.date}\nNAMA: ${receipt.payerName}\nJUMLAH: RM ${receipt.amount.toFixed(2)}\nKAEDAH: ${receipt.paymentMethod}`
+            )}`}
+            alt="QR Code"
             style={{
-              border: '1.5px solid #000',
-              padding: '4px',
+              width: '85px',
+              height: '85px',
+              display: 'block',
+              margin: '0 auto',
+              border: '1px solid #000',
+              padding: '3px',
               backgroundColor: '#fff',
-              textAlign: 'center',
-              width: '58px',
-              height: '58px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              shrink: 0
+              boxSizing: 'border-box'
             }}
-          >
-            <QrCode style={{ width: '42px', height: '42px', color: '#000' }} />
-            <span style={{ fontSize: '6.5px', fontWeight: 'bold', color: '#333', marginTop: '1px' }}>KOD SAH</span>
-          </div>
-          <div>
-            <div
-              style={{
-                border: '1.5px solid #1e3a8a',
-                padding: '3px 6px',
-                borderRadius: '4px',
-                color: '#1e3a8a',
-                textAlign: 'center'
-              }}
-            >
-              <span style={{ fontSize: '8.5px', fontWeight: 'bold', textTransform: 'uppercase', display: 'block' }}>
-                DISAHKAN LUNAS
-              </span>
-              <span style={{ fontSize: '7.5px', display: 'block' }}>PERSATUAN ALUMNI KKBS</span>
-            </div>
-            <p style={{ fontSize: '7.5px', color: '#555', margin: '3px 0 0 0', lineHeight: '1.3' }}>
-              Resit sah diperakui melalui sistem pangkalan data rasmi Persatuan Alumni Kolej Komuniti Beaufort.
-            </p>
-          </div>
+          />
+          <span style={{ fontSize: '7.5px', color: '#333', display: 'block', marginTop: '4px', fontWeight: 'bold', letterSpacing: '0.3px' }}>
+            IMBAS KOD PENGESAHAN
+          </span>
         </div>
 
         {/* Right: Signature Section */}
         <div style={{ width: '45%', textAlign: 'center', paddingLeft: '16px' }}>
-          <p style={{ fontSize: '9.5px', margin: '0 0 40px 0', fontWeight: 'normal', textAlign: 'left' }}>
+          <p style={{ fontSize: '9.5px', margin: '0 0 45px 0', fontWeight: 'normal', textAlign: 'left' }}>
             Disediakan / Diterima oleh:
           </p>
           <div style={{ borderBottom: '1px solid #000', width: '85%', margin: '0 auto 4px auto' }}></div>
-          <strong style={{ fontSize: '10.5px', display: 'block', textTransform: 'uppercase' }}>
+          <strong style={{ fontSize: '11px', display: 'block', textTransform: 'uppercase' }}>
             {receipt.receivedBy || 'BENDAHARI PERSATUAN ALUMNI'}
           </strong>
           <span style={{ fontSize: '9px', color: '#444', display: 'block' }}>
