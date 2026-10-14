@@ -21,7 +21,8 @@ import {
   Download,
   CheckSquare,
   Square,
-  QrCode
+  QrCode,
+  ShieldCheck
 } from 'lucide-react';
 
 interface ProgramReceiptsManagerProps {
@@ -34,7 +35,7 @@ interface ProgramReceiptsManagerProps {
   onAddTransaction?: (tx: Omit<Transaction, 'id'>) => Promise<boolean>;
 }
 
-// Convert numbers into Malay words for official receipts
+// Helper: Convert numbers into Malay words for official receipts
 export function numberToMalayWords(amount: number): string {
   if (isNaN(amount) || amount <= 0) return 'SIFAR RINGGIT SAHAJA';
 
@@ -95,6 +96,391 @@ export function numberToMalayWords(amount: number): string {
   return text;
 }
 
+// Helper: Format date
+export const formatDisplayDate = (isoOrStr: string) => {
+  try {
+    const d = new Date(isoOrStr);
+    if (isNaN(d.getTime())) return isoOrStr;
+    return d.toLocaleDateString('ms-MY', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    });
+  } catch {
+    return isoOrStr;
+  }
+};
+
+// Reusable Official Receipt Document Component (used for Screen Modal Preview & Browser Printing)
+export const OfficialReceiptDocument: React.FC<{ receipt: ProgramReceipt }> = ({ receipt }) => {
+  return (
+    <div
+      style={{
+        width: '100%',
+        maxWidth: '780px',
+        margin: '0 auto',
+        padding: '24px 28px',
+        backgroundColor: '#ffffff',
+        color: '#000000',
+        fontFamily: 'Arial, Helvetica, sans-serif',
+        fontSize: '11px',
+        lineHeight: '1.4',
+        boxSizing: 'border-box'
+      }}
+    >
+      {/* 1. Header Letterhead */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          borderBottom: '3px double #000000',
+          paddingBottom: '12px',
+          marginBottom: '14px'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <img
+            src="/logo-alumni.png"
+            alt="Logo Alumni KKBS"
+            style={{ width: '75px', height: '75px', objectFit: 'contain' }}
+          />
+          <div>
+            <h1
+              style={{
+                fontSize: '13.5px',
+                fontWeight: 'bold',
+                margin: '0',
+                textTransform: 'uppercase',
+                letterSpacing: '0.4px',
+                color: '#000'
+              }}
+            >
+              PERSATUAN ALUMNI KOLEJ KOMUNITI BEAUFORT SABAH
+            </h1>
+            <p style={{ fontSize: '9.5px', margin: '2px 0 0 0', color: '#333' }}>
+              d.a. Kolej Komuniti Beaufort, Jalan Melalugus, Peti Surat 399, 89807 Beaufort, Sabah.
+            </p>
+            <p style={{ fontSize: '9px', margin: '2px 0 0 0', color: '#555' }}>
+              Laman Web: alumni-kkbs.vercel.app &nbsp;|&nbsp; Emel: alumni.kkbs@gmail.com
+            </p>
+          </div>
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          <div
+            style={{
+              border: '2px solid #000',
+              padding: '6px 12px',
+              textAlign: 'center',
+              backgroundColor: '#f8f9fa'
+            }}
+          >
+            <span style={{ fontSize: '8.5px', fontWeight: 'bold', display: 'block', textTransform: 'uppercase', color: '#444' }}>
+              NO. RESIT RASMI
+            </span>
+            <span style={{ fontSize: '13px', fontWeight: 'bold', fontFamily: 'monospace', color: '#000' }}>
+              {receipt.receiptNo}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. Document Title */}
+      <div style={{ textAlign: 'center', margin: '12px 0 14px 0' }}>
+        <h2
+          style={{
+            fontSize: '14px',
+            fontWeight: 'bold',
+            textTransform: 'uppercase',
+            margin: '0',
+            textDecoration: 'underline'
+          }}
+        >
+          RESIT RASMI BAYARAN PROGRAM KHAS
+        </h2>
+        <p style={{ fontSize: '9.5px', fontStyle: 'italic', margin: '2px 0 0 0', color: '#444' }}>
+          OFFICIAL RECEIPT - SPECIAL PROGRAMME PAYMENT
+        </p>
+      </div>
+
+      {/* 3. Payer & Metadata Info Box */}
+      <table
+        style={{
+          width: '100%',
+          borderCollapse: 'collapse',
+          marginBottom: '14px',
+          fontSize: '10.5px',
+          border: '1px solid #000'
+        }}
+      >
+        <tbody>
+          <tr style={{ backgroundColor: '#f1f3f5' }}>
+            <td
+              colSpan={2}
+              style={{
+                padding: '5px 8px',
+                fontWeight: 'bold',
+                textTransform: 'uppercase',
+                borderBottom: '1px solid #000'
+              }}
+            >
+              A. MAKLUMAT PEMBAYAR & PROGRAM
+            </td>
+            <td
+              style={{
+                padding: '5px 8px',
+                fontWeight: 'bold',
+                textTransform: 'uppercase',
+                borderBottom: '1px solid #000',
+                borderLeft: '1px solid #000'
+              }}
+            >
+              B. STATUS & RUJUKAN
+            </td>
+          </tr>
+          <tr>
+            <td style={{ width: '22%', padding: '6px 8px', fontWeight: 'bold', borderBottom: '1px solid #ddd' }}>
+              Diterima Daripada:
+            </td>
+            <td style={{ width: '45%', padding: '6px 8px', fontWeight: 'bold', fontSize: '11.5px', borderBottom: '1px solid #ddd' }}>
+              {receipt.payerName}
+            </td>
+            <td rowSpan={3} style={{ width: '33%', padding: '8px', borderLeft: '1px solid #000', verticalAlign: 'top' }}>
+              <div style={{ marginBottom: '6px' }}>
+                <span style={{ fontSize: '8.5px', color: '#555', display: 'block' }}>TARIKH BAYARAN:</span>
+                <strong style={{ fontSize: '11px' }}>{formatDisplayDate(receipt.date)}</strong>
+              </div>
+              <div style={{ marginBottom: '6px' }}>
+                <span style={{ fontSize: '8.5px', color: '#555', display: 'block' }}>STATUS BAYARAN:</span>
+                <span
+                  style={{
+                    display: 'inline-block',
+                    backgroundColor: '#e6f7ec',
+                    border: '1px solid #28a745',
+                    color: '#155724',
+                    fontWeight: 'bold',
+                    fontSize: '9.5px',
+                    padding: '1px 6px',
+                    borderRadius: '3px'
+                  }}
+                >
+                  ✓ LUNAS (PAID)
+                </span>
+              </div>
+              <div>
+                <span style={{ fontSize: '8.5px', color: '#555', display: 'block' }}>NO. RUJUKAN TRANSAKSI:</span>
+                <strong style={{ fontFamily: 'monospace', fontSize: '10px' }}>{receipt.referenceNo || '-'}</strong>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style={{ padding: '6px 8px', fontWeight: 'bold', borderBottom: '1px solid #ddd' }}>
+              No. KP / No. Rujukan:
+            </td>
+            <td style={{ padding: '6px 8px', borderBottom: '1px solid #ddd' }}>
+              {receipt.payerIcOrReg || '-'}
+            </td>
+          </tr>
+          <tr>
+            <td style={{ padding: '6px 8px', fontWeight: 'bold' }}>
+              No. Telefon / Emel:
+            </td>
+            <td style={{ padding: '6px 8px' }}>
+              {receipt.payerPhone || '-'} {receipt.payerEmail ? `(${receipt.payerEmail})` : ''}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      {/* 4. Particulars Table */}
+      <table
+        style={{
+          width: '100%',
+          borderCollapse: 'collapse',
+          marginBottom: '14px',
+          fontSize: '10.5px',
+          border: '1px solid #000'
+        }}
+      >
+        <thead>
+          <tr style={{ backgroundColor: '#e9ecef', borderBottom: '1px solid #000' }}>
+            <th style={{ width: '6%', padding: '7px', borderRight: '1px solid #000', textAlign: 'center' }}>BIL</th>
+            <th style={{ width: '54%', padding: '7px 8px', borderRight: '1px solid #000', textAlign: 'left' }}>
+              PERIHAL PROGRAM KHAS & KETERANGAN BAYARAN
+            </th>
+            <th style={{ width: '22%', padding: '7px 8px', borderRight: '1px solid #000', textAlign: 'left' }}>
+              KAEDAH & KATEGORI
+            </th>
+            <th style={{ width: '18%', padding: '7px 8px', textAlign: 'right' }}>JUMLAH (RM)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style={{ minHeight: '80px', verticalAlign: 'top' }}>
+            <td style={{ padding: '8px 6px', borderRight: '1px solid #000', textAlign: 'center', fontWeight: 'bold' }}>
+              1
+            </td>
+            <td style={{ padding: '8px 8px', borderRight: '1px solid #000' }}>
+              <div style={{ fontWeight: 'bold', fontSize: '11px', textTransform: 'uppercase' }}>
+                {receipt.programName}
+              </div>
+              <div style={{ marginTop: '3px', color: '#333', fontSize: '10px' }}>
+                {receipt.description || `Bayaran ${receipt.paymentCategory}`}
+              </div>
+            </td>
+            <td style={{ padding: '8px 8px', borderRight: '1px solid #000' }}>
+              <div style={{ fontWeight: 'bold' }}>{receipt.paymentCategory}</div>
+              <div style={{ fontSize: '9.5px', color: '#555', marginTop: '2px' }}>
+                Kaedah: {receipt.paymentMethod}
+              </div>
+            </td>
+            <td style={{ padding: '8px 8px', textAlign: 'right', fontWeight: 'bold', fontSize: '11.5px' }}>
+              {receipt.amount.toFixed(2)}
+            </td>
+          </tr>
+
+          {/* Spacer row */}
+          <tr style={{ height: '30px' }}>
+            <td style={{ borderRight: '1px solid #000' }}></td>
+            <td style={{ borderRight: '1px solid #000' }}></td>
+            <td style={{ borderRight: '1px solid #000' }}></td>
+            <td></td>
+          </tr>
+
+          {/* Subtotal / Total Row */}
+          <tr style={{ backgroundColor: '#f1f3f5', borderTop: '2px solid #000', borderBottom: '2px solid #000' }}>
+            <td
+              colSpan={3}
+              style={{
+                padding: '7px 8px',
+                textAlign: 'right',
+                fontWeight: 'bold',
+                borderRight: '1px solid #000',
+                fontSize: '10.5px',
+                textTransform: 'uppercase'
+              }}
+            >
+              JUMLAH KESELURUHAN (TOTAL AMOUNT):
+            </td>
+            <td style={{ padding: '7px 8px', textAlign: 'right', fontWeight: 'bold', fontSize: '12.5px' }}>
+              RM {receipt.amount.toFixed(2)}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      {/* 5. Ringgit in Words Box */}
+      <div
+        style={{
+          border: '1px solid #000',
+          padding: '7px 10px',
+          backgroundColor: '#fafafa',
+          marginBottom: '18px'
+        }}
+      >
+        <span style={{ fontSize: '8.5px', fontWeight: 'bold', color: '#444', textTransform: 'uppercase', display: 'block' }}>
+          RINGGIT MALAYSIA DALAM PERKATAAN:
+        </span>
+        <strong style={{ fontSize: '11px', textTransform: 'uppercase', display: 'block', marginTop: '2px', color: '#000' }}>
+          {numberToMalayWords(receipt.amount)}
+        </strong>
+      </div>
+
+      {/* 6. Official Stamp & Signatures */}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          marginTop: '18px',
+          pageBreakInside: 'avoid'
+        }}
+      >
+        {/* Left: Stamp & Self-contained QR Badge */}
+        <div
+          style={{
+            width: '48%',
+            border: '1px dashed #666',
+            padding: '10px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            borderRadius: '4px'
+          }}
+        >
+          <div
+            style={{
+              border: '1.5px solid #000',
+              padding: '4px',
+              backgroundColor: '#fff',
+              textAlign: 'center',
+              width: '58px',
+              height: '58px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              shrink: 0
+            }}
+          >
+            <QrCode style={{ width: '42px', height: '42px', color: '#000' }} />
+            <span style={{ fontSize: '6.5px', fontWeight: 'bold', color: '#333', marginTop: '1px' }}>KOD SAH</span>
+          </div>
+          <div>
+            <div
+              style={{
+                border: '1.5px solid #1e3a8a',
+                padding: '3px 6px',
+                borderRadius: '4px',
+                color: '#1e3a8a',
+                textAlign: 'center'
+              }}
+            >
+              <span style={{ fontSize: '8.5px', fontWeight: 'bold', textTransform: 'uppercase', display: 'block' }}>
+                DISAHKAN LUNAS
+              </span>
+              <span style={{ fontSize: '7.5px', display: 'block' }}>PERSATUAN ALUMNI KKBS</span>
+            </div>
+            <p style={{ fontSize: '7.5px', color: '#555', margin: '3px 0 0 0', lineHeight: '1.3' }}>
+              Resit sah diperakui melalui sistem pangkalan data rasmi Persatuan Alumni Kolej Komuniti Beaufort.
+            </p>
+          </div>
+        </div>
+
+        {/* Right: Signature Section */}
+        <div style={{ width: '45%', textAlign: 'center', paddingLeft: '16px' }}>
+          <p style={{ fontSize: '9.5px', margin: '0 0 40px 0', fontWeight: 'normal', textAlign: 'left' }}>
+            Disediakan / Diterima oleh:
+          </p>
+          <div style={{ borderBottom: '1px solid #000', width: '85%', margin: '0 auto 4px auto' }}></div>
+          <strong style={{ fontSize: '10.5px', display: 'block', textTransform: 'uppercase' }}>
+            {receipt.receivedBy || 'BENDAHARI PERSATUAN ALUMNI'}
+          </strong>
+          <span style={{ fontSize: '9px', color: '#444', display: 'block' }}>
+            Bendahari / Pegawai Persatuan Alumni
+          </span>
+          <span style={{ fontSize: '8.5px', color: '#666', display: 'block' }}>
+            Kolej Komuniti Beaufort Sabah
+          </span>
+        </div>
+      </div>
+
+      {/* 7. Bottom Disclaimer */}
+      <div
+        style={{
+          marginTop: '24px',
+          borderTop: '1px solid #ccc',
+          paddingTop: '6px',
+          textAlign: 'center',
+          fontSize: '8px',
+          color: '#666'
+        }}
+      >
+        Peringatan: Sila simpan resit rasmi ini sebagai bukti pembayaran yang sah bagi urusan rekod, audit persatuan, dan pendaftaran program.
+      </div>
+    </div>
+  );
+};
+
 export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
   receipts = [],
   programs = [],
@@ -118,7 +504,7 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
   const defaultOfficer = config?.bendahari || 'SITI NURHAWA NABILAH BINTI FEDELIS';
   const currentYear = new Date().getFullYear();
 
-  // Generate automatic receipt number: e.g. RESIT-PK/2026/003
+  // Generate automatic receipt number: e.g. RESIT-PK/2026/001
   const nextReceiptNumber = useMemo(() => {
     const yearPrefix = `RESIT-PK/${currentYear}/`;
     const yearReceipts = receipts.filter(r => r.receiptNo && r.receiptNo.startsWith(yearPrefix));
@@ -149,7 +535,7 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
   const [receivedBy, setReceivedBy] = useState(defaultOfficer);
   const [autoLedgerSync, setAutoLedgerSync] = useState(true);
 
-  // Member autofill selector helper
+  // Member selector
   const [selectedMemberId, setSelectedMemberId] = useState('');
 
   // Form message
@@ -212,6 +598,15 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
     }
   };
 
+  // Direct Print & Preview Trigger: opens on-screen preview AND browser print dialog
+  const handleTriggerPrint = (receipt: ProgramReceipt) => {
+    setPrintReceipt(receipt);
+    setSelectedReceiptForPreview(receipt);
+    setTimeout(() => {
+      window.print();
+    }, 250);
+  };
+
   // Submit Handler
   const handleSubmitReceipt = async (e: React.FormEvent, shouldPrintImmediately = false) => {
     e.preventDefault();
@@ -259,7 +654,6 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
     try {
       const ok = await onAddReceipt(newReceiptPayload);
       if (ok) {
-        // If autoLedgerSync is checked, simultaneously add income transaction into ledger
         if (autoLedgerSync && onAddTransaction) {
           await onAddTransaction({
             date: new Date(date).toISOString(),
@@ -271,21 +665,19 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
           });
         }
 
-        setFormMsg({ type: 'success', text: `Resit ${newReceiptPayload.receiptNo} berjaya dijana!` });
-
-        if (shouldPrintImmediately) {
-          const fullReceipt: ProgramReceipt = {
-            ...newReceiptPayload,
-            id: `REC-${Date.now()}`,
-            createdAt: new Date().toISOString()
-          };
-          setPrintReceipt(fullReceipt);
-          setTimeout(() => {
-            window.print();
-          }, 350);
-        }
+        const fullReceipt: ProgramReceipt = {
+          ...newReceiptPayload,
+          id: `REC-${Date.now()}`,
+          createdAt: new Date().toISOString()
+        };
 
         setIsFormOpen(false);
+
+        if (shouldPrintImmediately) {
+          handleTriggerPrint(fullReceipt);
+        } else {
+          setSelectedReceiptForPreview(fullReceipt);
+        }
       } else {
         setFormMsg({ type: 'error', text: 'Gagal menjana resit ke pengkalan data. Sila cuba lagi.' });
       }
@@ -296,25 +688,6 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
       setIsSubmitting(false);
     }
   };
-
-  // Print existing receipt
-  const handlePrintExisting = (receipt: ProgramReceipt) => {
-    setPrintReceipt(receipt);
-    setTimeout(() => {
-      window.print();
-    }, 350);
-  };
-
-  // Clean print state on afterprint
-  React.useEffect(() => {
-    const handleAfterPrint = () => {
-      setPrintReceipt(null);
-    };
-    window.addEventListener('afterprint', handleAfterPrint);
-    return () => {
-      window.removeEventListener('afterprint', handleAfterPrint);
-    };
-  }, []);
 
   // Filter receipts
   const filteredReceipts = useMemo(() => {
@@ -341,24 +714,10 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
     return new Intl.NumberFormat('en-MY', { style: 'currency', currency: 'MYR' }).format(val);
   };
 
-  const formatDate = (isoOrStr: string) => {
-    try {
-      const d = new Date(isoOrStr);
-      if (isNaN(d.getTime())) return isoOrStr;
-      return d.toLocaleDateString('ms-MY', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric'
-      });
-    } catch {
-      return isoOrStr;
-    }
-  };
-
   return (
     <div className="space-y-6">
-      {/* 1. TOP STATS & ACTIONS HEADER (Screen only) */}
-      <div className="print:hidden space-y-4">
+      {/* 1. SCREEN BROWSING UI (Hidden completely during printing) */}
+      <div className="space-y-6 print:hidden">
         {/* Banner Card */}
         <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-5 rounded-2xl shadow-sm border border-blue-800/40 relative overflow-hidden">
           <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -462,123 +821,132 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
             </div>
           </div>
         </div>
-      </div>
 
-      {/* 2. SENARAI REKOD RESIT (Screen Table) */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-2xs overflow-hidden print:hidden">
-        <div className="px-5 py-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
-          <h4 className="font-extrabold text-xs text-slate-700 uppercase tracking-wider flex items-center gap-2">
-            <Receipt className="w-4 h-4 text-blue-600" />
-            <span>Rekod Resit Bayaran Program Khas ({filteredReceipts.length})</span>
-          </h4>
-          <span className="text-[10px] font-bold text-slate-400">
-            Jumlah: <strong className="text-slate-700">{formatCurrency(totalReceiptsAmount)}</strong>
-          </span>
-        </div>
+        {/* Table of Receipts */}
+        <div className="bg-white rounded-2xl border border-slate-100 shadow-2xs overflow-hidden">
+          <div className="px-5 py-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
+            <h4 className="font-extrabold text-xs text-slate-700 uppercase tracking-wider flex items-center gap-2">
+              <Receipt className="w-4 h-4 text-blue-600" />
+              <span>Rekod Resit Bayaran Program Khas ({filteredReceipts.length})</span>
+            </h4>
+            <span className="text-[10px] font-bold text-slate-400">
+              Jumlah: <strong className="text-slate-700">{formatCurrency(totalReceiptsAmount)}</strong>
+            </span>
+          </div>
 
-        {filteredReceipts.length === 0 ? (
-          <div className="text-center py-14 px-4">
-            <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3 text-slate-400">
-              <Receipt className="w-6 h-6" />
+          {filteredReceipts.length === 0 ? (
+            <div className="text-center py-14 px-4">
+              <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3 text-slate-400">
+                <Receipt className="w-6 h-6" />
+              </div>
+              <p className="text-sm font-bold text-slate-600">Tiada resit bayaran ditemui.</p>
+              <p className="text-xs text-slate-400 mt-1">Klik butang "Jana Resit Baharu" untuk mula mengeluarkan resit program khas.</p>
+              <button
+                onClick={handleOpenForm}
+                className="mt-4 inline-flex items-center gap-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition-all cursor-pointer shadow-xs"
+              >
+                <PlusCircle className="w-3.5 h-3.5" />
+                <span>Jana Resit Pertama</span>
+              </button>
             </div>
-            <p className="text-sm font-bold text-slate-600">Tiada resit bayaran ditemui.</p>
-            <p className="text-xs text-slate-400 mt-1">Klik butang "Jana Resit Baharu" untuk mula mengeluarkan resit program khas.</p>
-            <button
-              onClick={handleOpenForm}
-              className="mt-4 inline-flex items-center gap-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition-all cursor-pointer shadow-xs"
-            >
-              <PlusCircle className="w-3.5 h-3.5" />
-              <span>Jana Resit Pertama</span>
-            </button>
-          </div>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs border-collapse">
-              <thead>
-                <tr className="border-b border-slate-100 bg-slate-50/70 text-[10px] font-black text-slate-500 uppercase tracking-wider">
-                  <th className="py-3 px-4">No. Resit & Tarikh</th>
-                  <th className="py-3 px-4">Diterima Daripada</th>
-                  <th className="py-3 px-4">Program Khas & Kategori</th>
-                  <th className="py-3 px-4">Kaedah & Rujukan</th>
-                  <th className="py-3 px-4 text-right">Amaun (RM)</th>
-                  <th className="py-3 px-4 text-center">Status</th>
-                  <th className="py-3 px-4 text-right">Tindakan</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-700">
-                {filteredReceipts.map((rec) => (
-                  <tr key={rec.id} className="hover:bg-slate-50/70 transition-colors">
-                    <td className="py-3 px-4 whitespace-nowrap">
-                      <span className="font-extrabold text-blue-700 font-mono block text-xs">{rec.receiptNo}</span>
-                      <span className="text-[10px] text-slate-400 font-medium">{formatDate(rec.date)}</span>
-                    </td>
-                    <td className="py-3 px-4">
-                      <p className="font-bold text-slate-800 line-clamp-1">{rec.payerName}</p>
-                      <p className="text-[10px] text-slate-400 font-medium">
-                        {rec.payerPhone ? `Tel: ${rec.payerPhone}` : rec.payerIcOrReg ? `ID: ${rec.payerIcOrReg}` : '-'}
-                      </p>
-                    </td>
-                    <td className="py-3 px-4 max-w-[220px]">
-                      <p className="font-semibold text-slate-800 text-xs truncate" title={rec.programName}>
-                        {rec.programName}
-                      </p>
-                      <span className="inline-block text-[9px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 mt-0.5">
-                        {rec.paymentCategory}
-                      </span>
-                    </td>
-                    <td className="py-3 px-4 whitespace-nowrap">
-                      <p className="font-medium text-slate-700 text-xs">{rec.paymentMethod}</p>
-                      <p className="text-[10px] text-slate-400 font-mono">Ruj: {rec.referenceNo || '-'}</p>
-                    </td>
-                    <td className="py-3 px-4 text-right whitespace-nowrap">
-                      <span className="font-black text-emerald-700 text-sm">
-                        {formatCurrency(rec.amount)}
-                      </span>
-                    </td>
-                    <td className="py-3 px-4 text-center whitespace-nowrap">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800 border border-emerald-200">
-                        <CheckCircle className="w-2.5 h-2.5" />
-                        <span>LUNAS</span>
-                      </span>
-                    </td>
-                    <td className="py-3 px-4 text-right whitespace-nowrap">
-                      <div className="flex items-center justify-end gap-1.5">
-                        <button
-                          onClick={() => setSelectedReceiptForPreview(rec)}
-                          title="Papar Resit"
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer"
-                        >
-                          <Eye className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => handlePrintExisting(rec)}
-                          title="Cetak Resit Rasmi (PDF)"
-                          className="p-1.5 rounded-lg text-slate-500 hover:text-blue-700 hover:bg-blue-50 transition-colors cursor-pointer"
-                        >
-                          <Printer className="w-4 h-4 text-blue-600" />
-                        </button>
-                        <button
-                          onClick={() => {
-                            if (window.confirm(`Adakah anda pasti mahu memadamkan rekod resit ${rec.receiptNo}?`)) {
-                              onDeleteReceipt(rec.id);
-                            }
-                          }}
-                          title="Padam Rekod"
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </td>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="border-b border-slate-100 bg-slate-50/70 text-[10px] font-black text-slate-500 uppercase tracking-wider">
+                    <th className="py-3 px-4">No. Resit & Tarikh</th>
+                    <th className="py-3 px-4">Diterima Daripada</th>
+                    <th className="py-3 px-4">Program Khas & Kategori</th>
+                    <th className="py-3 px-4">Kaedah & Rujukan</th>
+                    <th className="py-3 px-4 text-right">Amaun (RM)</th>
+                    <th className="py-3 px-4 text-center">Status</th>
+                    <th className="py-3 px-4 text-right">Tindakan Cetakan</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+                </thead>
+                <tbody className="divide-y divide-slate-100 text-slate-700">
+                  {filteredReceipts.map((rec) => (
+                    <tr key={rec.id} className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-3 px-4 whitespace-nowrap">
+                        <span className="font-extrabold text-blue-700 font-mono block text-xs">{rec.receiptNo}</span>
+                        <span className="text-[10px] text-slate-400 font-medium">{formatDisplayDate(rec.date)}</span>
+                      </td>
+                      <td className="py-3 px-4">
+                        <p className="font-bold text-slate-800 line-clamp-1">{rec.payerName}</p>
+                        <p className="text-[10px] text-slate-400 font-medium">
+                          {rec.payerPhone ? `Tel: ${rec.payerPhone}` : rec.payerIcOrReg ? `ID: ${rec.payerIcOrReg}` : '-'}
+                        </p>
+                      </td>
+                      <td className="py-3 px-4 max-w-[220px]">
+                        <p className="font-semibold text-slate-800 text-xs truncate" title={rec.programName}>
+                          {rec.programName}
+                        </p>
+                        <span className="inline-block text-[9px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 mt-0.5">
+                          {rec.paymentCategory}
+                        </span>
+                      </td>
+                      <td className="py-3 px-4 whitespace-nowrap">
+                        <p className="font-medium text-slate-700 text-xs">{rec.paymentMethod}</p>
+                        <p className="text-[10px] text-slate-400 font-mono">Ruj: {rec.referenceNo || '-'}</p>
+                      </td>
+                      <td className="py-3 px-4 text-right whitespace-nowrap">
+                        <span className="font-black text-emerald-700 text-sm">
+                          {formatCurrency(rec.amount)}
+                        </span>
+                      </td>
+                      <td className="py-3 px-4 text-center whitespace-nowrap">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800 border border-emerald-200">
+                          <CheckCircle className="w-2.5 h-2.5" />
+                          <span>LUNAS</span>
+                        </span>
+                      </td>
+                      <td className="py-3 px-4 text-right whitespace-nowrap">
+                        <div className="flex items-center justify-end gap-1.5">
+                          {/* Main Print Button */}
+                          <button
+                            onClick={() => handleTriggerPrint(rec)}
+                            title="Cetak Resit Rasmi (A4 / PDF)"
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold text-xs transition-all cursor-pointer border border-blue-200"
+                          >
+                            <Printer className="w-3.5 h-3.5" />
+                            <span>Cetak</span>
+                          </button>
+
+                          {/* Preview Button */}
+                          <button
+                            onClick={() => {
+                              setSelectedReceiptForPreview(rec);
+                              setPrintReceipt(rec);
+                            }}
+                            title="Papar Resit"
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+                          >
+                            <Eye className="w-4 h-4" />
+                          </button>
+
+                          {/* Delete Button */}
+                          <button
+                            onClick={() => {
+                              if (window.confirm(`Adakah anda pasti mahu memadamkan rekod resit ${rec.receiptNo}?`)) {
+                                onDeleteReceipt(rec.id);
+                              }
+                            }}
+                            title="Padam Rekod"
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* 3. MODAL: JANA RESIT BAHARU */}
+      {/* 2. MODAL: JANA RESIT BAHARU (Screen only) */}
       {isFormOpen && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto print:hidden">
           <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-200 overflow-hidden my-8 animate-in fade-in zoom-in-95 duration-150">
@@ -878,7 +1246,10 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
               </div>
 
               {/* Option: Auto-sync to Ledger */}
-              <div className="bg-blue-50/60 border border-blue-200 p-3 rounded-xl flex items-center justify-between cursor-pointer" onClick={() => setAutoLedgerSync(!autoLedgerSync)}>
+              <div
+                className="bg-blue-50/60 border border-blue-200 p-3 rounded-xl flex items-center justify-between cursor-pointer"
+                onClick={() => setAutoLedgerSync(!autoLedgerSync)}
+              >
                 <div className="flex items-center gap-2.5">
                   {autoLedgerSync ? (
                     <CheckSquare className="w-5 h-5 text-blue-700 shrink-0" />
@@ -934,113 +1305,85 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
         </div>
       )}
 
-      {/* 4. MODAL: LIHAT / PREVIEW RESIT (Screen modal with quick print) */}
+      {/* 3. MODAL: PAPARAN CETAKAN RESIT RASMI DI SKRIN (Screen Preview Modal) */}
       {selectedReceiptForPreview && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto print:hidden">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-xl w-full border border-slate-200 overflow-hidden my-8 animate-in fade-in zoom-in-95 duration-150">
-            {/* Header */}
-            <div className="bg-slate-900 px-5 py-3.5 text-white flex items-center justify-between">
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto print:hidden">
+          <div className="bg-slate-100 rounded-3xl shadow-2xl max-w-4xl w-full border border-slate-300 overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-150 flex flex-col max-h-[92vh]">
+            {/* Modal Top Bar */}
+            <div className="bg-slate-900 px-6 py-3.5 text-white flex items-center justify-between shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="p-1.5 bg-blue-600/30 rounded-lg text-blue-400">
+                  <Receipt className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-black uppercase tracking-wider text-slate-100">
+                    Paparan Cetakan Resit Rasmi: {selectedReceiptForPreview.receiptNo}
+                  </h4>
+                  <p className="text-[10px] text-slate-400">
+                    Sahkan maklumat resit di bawah dan klik butang "Cetak / Simpan PDF"
+                  </p>
+                </div>
+              </div>
+
               <div className="flex items-center gap-2">
-                <Receipt className="w-4 h-4 text-cyan-400" />
-                <h4 className="text-xs font-black uppercase tracking-wider">
-                  Salinan Resit: {selectedReceiptForPreview.receiptNo}
-                </h4>
-              </div>
-              <button
-                type="button"
-                onClick={() => setSelectedReceiptForPreview(null)}
-                className="p-1 rounded-lg text-slate-400 hover:text-white transition-colors cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Receipt Summary Card */}
-            <div className="p-6 space-y-4">
-              <div className="text-center pb-4 border-b border-slate-100">
-                <img
-                  src="/logo-alumni.png"
-                  alt="Logo Alumni KKBS"
-                  className="w-16 h-16 object-contain mx-auto mb-2"
-                />
-                <h3 className="font-black text-sm text-slate-800 uppercase tracking-tight">
-                  Persatuan Alumni Kolej Komuniti Beaufort Sabah
-                </h3>
-                <p className="text-[10px] text-slate-500">Resit Rasmi Bayaran Program Khas</p>
-                <span className="inline-block mt-2 font-mono font-black text-xs px-3 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200">
-                  {selectedReceiptForPreview.receiptNo}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 text-xs">
-                <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase block">Tarikh Bayaran</span>
-                  <p className="font-bold text-slate-800">{formatDate(selectedReceiptForPreview.date)}</p>
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase block">Status</span>
-                  <span className="inline-flex items-center gap-1 text-[10px] font-black text-emerald-700">
-                    <CheckCircle className="w-3 h-3 text-emerald-600" />
-                    <span>LUNAS</span>
-                  </span>
-                </div>
-                <div className="col-span-2">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase block">Diterima Daripada</span>
-                  <p className="font-black text-slate-800 text-sm">{selectedReceiptForPreview.payerName}</p>
-                  {selectedReceiptForPreview.payerIcOrReg && (
-                    <p className="text-[10px] text-slate-500">No. KP / Reg: {selectedReceiptForPreview.payerIcOrReg}</p>
-                  )}
-                  {selectedReceiptForPreview.payerPhone && (
-                    <p className="text-[10px] text-slate-500">No. Tel: {selectedReceiptForPreview.payerPhone}</p>
-                  )}
-                </div>
-                <div className="col-span-2 bg-slate-50 p-3 rounded-xl">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase block">Program Khas</span>
-                  <p className="font-extrabold text-slate-800">{selectedReceiptForPreview.programName}</p>
-                  <p className="text-[10px] text-slate-500 mt-0.5">{selectedReceiptForPreview.paymentCategory}</p>
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase block">Kaedah Bayaran</span>
-                  <p className="font-bold text-slate-800">{selectedReceiptForPreview.paymentMethod}</p>
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase block">No. Rujukan</span>
-                  <p className="font-bold text-slate-800 font-mono">{selectedReceiptForPreview.referenceNo || '-'}</p>
-                </div>
-                <div className="col-span-2 pt-2 border-t border-slate-100 flex justify-between items-baseline">
-                  <span className="font-bold text-xs text-slate-600 uppercase">Jumlah Bayaran</span>
-                  <span className="text-xl font-black text-emerald-700">
-                    {formatCurrency(selectedReceiptForPreview.amount)}
-                  </span>
-                </div>
-                <div className="col-span-2 bg-emerald-50/80 p-2.5 rounded-xl border border-emerald-200/60">
-                  <span className="text-[9px] font-bold text-emerald-800 uppercase block">Ejaan Ringgit Malaysia:</span>
-                  <span className="text-xs font-black text-emerald-900 block mt-0.5">
-                    {numberToMalayWords(selectedReceiptForPreview.amount)}
-                  </span>
-                </div>
-              </div>
-
-              {/* Action buttons */}
-              <div className="pt-3 flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => setSelectedReceiptForPreview(null)}
-                  className="flex-1 py-2.5 border border-slate-200 hover:bg-slate-100 text-slate-700 text-xs font-bold rounded-xl cursor-pointer"
-                >
-                  Tutup
-                </button>
                 <button
                   type="button"
                   onClick={() => {
-                    const r = selectedReceiptForPreview;
-                    setSelectedReceiptForPreview(null);
-                    handlePrintExisting(r);
+                    setPrintReceipt(selectedReceiptForPreview);
+                    setTimeout(() => {
+                      window.print();
+                    }, 200);
                   }}
-                  className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                  className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-blue-500/30 cursor-pointer transition-all active:scale-95"
                 >
                   <Printer className="w-4 h-4" />
-                  <span>Cetak Resit Rasmi (A4 / PDF)</span>
+                  <span>Cetak / Simpan PDF</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedReceiptForPreview(null)}
+                  className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Document Paper Container on Screen */}
+            <div className="p-4 sm:p-8 overflow-y-auto bg-slate-200/80 flex justify-center">
+              <div className="bg-white rounded-xl shadow-xl border border-slate-300 w-full max-w-[760px] p-6 sm:p-8">
+                <OfficialReceiptDocument receipt={selectedReceiptForPreview} />
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="bg-white px-6 py-3 border-t border-slate-200 flex justify-between items-center shrink-0">
+              <span className="text-[11px] font-medium text-slate-500">
+                Pilihan saiz cetakan disyorkan: <strong>A4 Potret (Portrait)</strong>
+              </span>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setSelectedReceiptForPreview(null)}
+                  className="px-4 py-2 border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold rounded-xl cursor-pointer"
+                >
+                  Tutup Paparan
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPrintReceipt(selectedReceiptForPreview);
+                    setTimeout(() => {
+                      window.print();
+                    }, 200);
+                  }}
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs"
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  <span>Cetak Dokumen Sekarang</span>
                 </button>
               </div>
             </div>
@@ -1048,13 +1391,26 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
         </div>
       )}
 
-      {/* 5. DOKUMEN CETAKAN RASMI RESIT BAYARAN PROGRAM KHAS (Print-only A4 Official Layout) */}
+      {/* 4. DOKUMEN CETAKAN ASAL (Hanya dipaparkan semasa cetakan sebenar / browser print dialog) */}
       {printReceipt && (
-        <div className="hidden print:block fixed inset-0 z-[99999] bg-white text-black p-0 m-0">
-          <style dangerouslySetInnerHTML={{ __html: `
+        <div
+          className="hidden print:block print-container"
+          style={{
+            width: '100%',
+            maxWidth: '100%',
+            boxSizing: 'border-box',
+            backgroundColor: '#ffffff',
+            color: '#000000',
+            margin: '0 auto',
+            padding: '0'
+          }}
+        >
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
             @page {
               size: A4 portrait;
-              margin: 12mm 15mm 15mm 15mm !important;
+              margin: 10mm 12mm 12mm 12mm !important;
             }
             @media print {
               html, body, #root, main, div, table, tr, td, th {
@@ -1062,227 +1418,41 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
                 scrollbar-width: none !important;
                 -ms-overflow-style: none !important;
               }
-              *::-webkit-scrollbar {
+              *::-webkit-scrollbar,
+              html::-webkit-scrollbar,
+              body::-webkit-scrollbar {
                 display: none !important;
+                width: 0 !important;
+                height: 0 !important;
               }
               body {
                 margin: 0 !important;
                 padding: 0 !important;
                 width: 100% !important;
-                background-color: #fff !important;
-                color: #000 !important;
+                background-color: #ffffff !important;
+                color: #000000 !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
                 font-family: Arial, Helvetica, sans-serif !important;
               }
+              .print-container {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                padding: 0 !important;
+                box-sizing: border-box !important;
+                overflow: visible !important;
+              }
+              .no-print, .print\\:hidden {
+                display: none !important;
+              }
             }
-          `}} />
+          `
+            }}
+          />
 
-          <div style={{ width: '100%', boxSizing: 'border-box', color: '#000', fontSize: '12px', lineHeight: '1.4' }}>
-            {/* Header Letterhead */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '3px double #000', paddingBottom: '12px', marginBottom: '14px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <img
-                  src="/logo-alumni.png"
-                  alt="Logo"
-                  style={{ width: '75px', height: '75px', objectFit: 'contain' }}
-                />
-                <div>
-                  <h1 style={{ fontSize: '14px', fontWeight: 'bold', margin: '0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    PERSATUAN ALUMNI KOLEJ KOMUNITI BEAUFORT SABAH
-                  </h1>
-                  <p style={{ fontSize: '10px', margin: '2px 0 0 0', color: '#333' }}>
-                    d.a. Kolej Komuniti Beaufort, Jalan Melalugus, Peti Surat 399, 89807 Beaufort, Sabah.
-                  </p>
-                  <p style={{ fontSize: '9px', margin: '2px 0 0 0', color: '#444' }}>
-                    Laman Web: alumni-kkbs.vercel.app &nbsp;|&nbsp; Emel: alumni.kkbs@gmail.com
-                  </p>
-                </div>
-              </div>
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ border: '2px solid #000', padding: '6px 12px', textAlign: 'center', backgroundColor: '#f9f9f9' }}>
-                  <span style={{ fontSize: '9px', fontWeight: 'bold', display: 'block', textTransform: 'uppercase' }}>NO. RESIT</span>
-                  <span style={{ fontSize: '13px', fontWeight: 'bold', fontFamily: 'monospace' }}>{printReceipt.receiptNo}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Document Title */}
-            <div style={{ textAlign: 'center', margin: '14px 0 16px 0' }}>
-              <h2 style={{ fontSize: '15px', fontWeight: 'bold', textTransform: 'uppercase', margin: '0', textDecoration: 'underline' }}>
-                RESIT RASMI BAYARAN PROGRAM KHAS
-              </h2>
-              <p style={{ fontSize: '10px', fontStyle: 'italic', margin: '2px 0 0 0', color: '#444' }}>
-                OFFICIAL RECEIPT - SPECIAL PROGRAMME PAYMENT
-              </p>
-            </div>
-
-            {/* Payer and Metadata Info Box */}
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '16px', fontSize: '11px', border: '1px solid #000' }}>
-              <tbody>
-                <tr style={{ backgroundColor: '#f2f2f2' }}>
-                  <td colSpan={2} style={{ padding: '6px 10px', fontWeight: 'bold', textTransform: 'uppercase', borderBottom: '1px solid #000' }}>
-                    A. MAKLUMAT PEMBAYAR & PROGRAM
-                  </td>
-                  <td style={{ padding: '6px 10px', fontWeight: 'bold', textTransform: 'uppercase', borderBottom: '1px solid #000', borderLeft: '1px solid #000' }}>
-                    B. STATUS & TARIKH
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: '22%', padding: '6px 10px', fontWeight: 'bold', borderBottom: '1px solid #ddd' }}>
-                    Diterima Daripada:
-                  </td>
-                  <td style={{ width: '45%', padding: '6px 10px', fontWeight: 'bold', fontSize: '12px', borderBottom: '1px solid #ddd' }}>
-                    {printReceipt.payerName}
-                  </td>
-                  <td rowSpan={3} style={{ width: '33%', padding: '8px 10px', borderLeft: '1px solid #000', verticalAlign: 'top' }}>
-                    <div style={{ marginBottom: '6px' }}>
-                      <span style={{ fontSize: '9px', color: '#555', display: 'block' }}>TARIKH BAYARAN:</span>
-                      <strong style={{ fontSize: '11px' }}>{formatDate(printReceipt.date)}</strong>
-                    </div>
-                    <div style={{ marginBottom: '6px' }}>
-                      <span style={{ fontSize: '9px', color: '#555', display: 'block' }}>STATUS BAYARAN:</span>
-                      <span style={{ display: 'inline-block', backgroundColor: '#e6f7ec', border: '1px solid #28a745', color: '#155724', fontWeight: 'bold', fontSize: '10px', padding: '2px 6px', borderRadius: '4px' }}>
-                        ✓ LUNAS (PAID)
-                      </span>
-                    </div>
-                    <div>
-                      <span style={{ fontSize: '9px', color: '#555', display: 'block' }}>NO. RUJUKAN TRANSAKSI:</span>
-                      <strong style={{ fontFamily: 'monospace', fontSize: '10px' }}>{printReceipt.referenceNo || '-'}</strong>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '6px 10px', fontWeight: 'bold', borderBottom: '1px solid #ddd' }}>
-                    No. KP / No. Rujukan:
-                  </td>
-                  <td style={{ padding: '6px 10px', borderBottom: '1px solid #ddd' }}>
-                    {printReceipt.payerIcOrReg || '-'}
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '6px 10px', fontWeight: 'bold' }}>
-                    No. Telefon / Emel:
-                  </td>
-                  <td style={{ padding: '6px 10px' }}>
-                    {printReceipt.payerPhone || '-'} {printReceipt.payerEmail ? `(${printReceipt.payerEmail})` : ''}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            {/* Particulars Table */}
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '14px', fontSize: '11px', border: '1px solid #000' }}>
-              <thead>
-                <tr style={{ backgroundColor: '#e9ecef', borderBottom: '1px solid #000' }}>
-                  <th style={{ width: '6%', padding: '8px', borderRight: '1px solid #000', textAlign: 'center' }}>BIL</th>
-                  <th style={{ width: '54%', padding: '8px', borderRight: '1px solid #000', textAlign: 'left' }}>PERIHAL PROGRAM KHAS & KETERANGAN BAYARAN</th>
-                  <th style={{ width: '22%', padding: '8px', borderRight: '1px solid #000', textAlign: 'left' }}>KAEDAH & KATEGORI</th>
-                  <th style={{ width: '18%', padding: '8px', textAlign: 'right' }}>JUMLAH (RM)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={{ minHeight: '90px', verticalAlign: 'top' }}>
-                  <td style={{ padding: '10px 8px', borderRight: '1px solid #000', textAlign: 'center', fontWeight: 'bold' }}>
-                    1
-                  </td>
-                  <td style={{ padding: '10px 10px', borderRight: '1px solid #000' }}>
-                    <div style={{ fontWeight: 'bold', fontSize: '12px', textTransform: 'uppercase' }}>
-                      {printReceipt.programName}
-                    </div>
-                    <div style={{ marginTop: '4px', color: '#333', fontSize: '10.5px' }}>
-                      {printReceipt.description || `Bayaran ${printReceipt.paymentCategory}`}
-                    </div>
-                  </td>
-                  <td style={{ padding: '10px 10px', borderRight: '1px solid #000' }}>
-                    <div style={{ fontWeight: 'bold' }}>{printReceipt.paymentCategory}</div>
-                    <div style={{ fontSize: '10px', color: '#555', marginTop: '2px' }}>
-                      Kaedah: {printReceipt.paymentMethod}
-                    </div>
-                  </td>
-                  <td style={{ padding: '10px 10px', textAlign: 'right', fontWeight: 'bold', fontSize: '12px' }}>
-                    {printReceipt.amount.toFixed(2)}
-                  </td>
-                </tr>
-
-                {/* Blank spacing lines for professional look */}
-                <tr style={{ height: '35px' }}>
-                  <td style={{ borderRight: '1px solid #000' }}></td>
-                  <td style={{ borderRight: '1px solid #000' }}></td>
-                  <td style={{ borderRight: '1px solid #000' }}></td>
-                  <td></td>
-                </tr>
-
-                {/* Subtotal / Total Row */}
-                <tr style={{ backgroundColor: '#f2f2f2', borderTop: '2px solid #000', borderBottom: '2px solid #000' }}>
-                  <td colSpan={3} style={{ padding: '8px 10px', textAlign: 'right', fontWeight: 'bold', borderRight: '1px solid #000', fontSize: '11px', textTransform: 'uppercase' }}>
-                    JUMLAH KESELURUHAN (TOTAL AMOUNT):
-                  </td>
-                  <td style={{ padding: '8px 10px', textAlign: 'right', fontWeight: 'bold', fontSize: '13px' }}>
-                    RM {printReceipt.amount.toFixed(2)}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            {/* Ringgit In Words Box */}
-            <div style={{ border: '1px solid #000', padding: '8px 12px', backgroundColor: '#fafafa', marginBottom: '22px' }}>
-              <span style={{ fontSize: '9px', fontWeight: 'bold', color: '#444', textTransform: 'uppercase', display: 'block' }}>
-                RINGGIT MALAYSIA DALAM PERKATAAN:
-              </span>
-              <strong style={{ fontSize: '11.5px', textTransform: 'uppercase', display: 'block', marginTop: '2px' }}>
-                {numberToMalayWords(printReceipt.amount)}
-              </strong>
-            </div>
-
-            {/* Official Stamp & Signatures */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: '24px', pageBreakInside: 'avoid' }}>
-              {/* Left: Stamp & Verification QR */}
-              <div style={{ width: '48%', border: '1px dashed #666', padding: '12px', display: 'flex', alignItems: 'center', gap: '14px', borderRadius: '4px' }}>
-                <div style={{ border: '1px solid #999', padding: '4px', backgroundColor: '#fff', textAlign: 'center' }}>
-                  <img
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=70x70&data=${encodeURIComponent(
-                      `PERSATUAN ALUMNI KKBS\nRESIT: ${printReceipt.receiptNo}\nTARIKH: ${printReceipt.date}\nPEMBAYAR: ${printReceipt.payerName}\nJUMLAH: RM ${printReceipt.amount.toFixed(2)}\nPROGRAM: ${printReceipt.programName}`
-                    )}`}
-                    alt="Kod Pengesahan"
-                    style={{ width: '65px', height: '65px', display: 'block' }}
-                  />
-                  <span style={{ fontSize: '7px', fontWeight: 'bold', color: '#666', marginTop: '2px', display: 'block' }}>KOD SAH RESIT</span>
-                </div>
-                <div>
-                  <div style={{ border: '2px solid #1e3a8a', padding: '4px 8px', borderRadius: '4px', color: '#1e3a8a', textAlign: 'center' }}>
-                    <span style={{ fontSize: '9px', fontWeight: 'bold', textTransform: 'uppercase', display: 'block' }}>DISAHKAN LUNAS</span>
-                    <span style={{ fontSize: '8px', display: 'block' }}>PERSATUAN ALUMNI KKBS</span>
-                  </div>
-                  <p style={{ fontSize: '8px', color: '#555', margin: '4px 0 0 0' }}>
-                    Resit ini sah diperakui melalui janaan pangkalan data rasmi Persatuan Alumni Kolej Komuniti Beaufort.
-                  </p>
-                </div>
-              </div>
-
-              {/* Right: Signature Section */}
-              <div style={{ width: '45%', textAlign: 'center', paddingLeft: '20px' }}>
-                <p style={{ fontSize: '10px', margin: '0 0 45px 0', fontWeight: 'normal', textAlign: 'left' }}>
-                  Disediakan / Diterima oleh:
-                </p>
-                <div style={{ borderBottom: '1px solid #000', width: '80%', margin: '0 auto 4px auto' }}></div>
-                <strong style={{ fontSize: '11px', display: 'block', textTransform: 'uppercase' }}>
-                  {printReceipt.receivedBy || 'BENDAHARI PERSATUAN ALUMNI'}
-                </strong>
-                <span style={{ fontSize: '9.5px', color: '#444', display: 'block' }}>
-                  Bendahari / Pegawai Persatuan Alumni
-                </span>
-                <span style={{ fontSize: '9px', color: '#666', display: 'block' }}>
-                  Kolej Komuniti Beaufort Sabah
-                </span>
-              </div>
-            </div>
-
-            {/* Bottom Disclaimer */}
-            <div style={{ marginTop: '30px', borderTop: '1px solid #ccc', paddingTop: '6px', textAlign: 'center', fontSize: '8.5px', color: '#777' }}>
-              Peringatan: Sila simpan resit rasmi ini sebagai bukti pembayaran yang sah bagi urusan rekod, audit persatuan, dan pendaftaran program.
-            </div>
-          </div>
+          <OfficialReceiptDocument receipt={printReceipt} />
         </div>
       )}
     </div>

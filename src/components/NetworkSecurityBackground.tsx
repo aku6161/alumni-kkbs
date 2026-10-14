@@ -595,7 +595,7 @@ export const NetworkSecurityBackground: React.FC<NetworkSecurityBackgroundProps>
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none print:hidden">
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full block"
