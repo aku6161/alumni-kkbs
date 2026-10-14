@@ -3,10 +3,10 @@ import { AlumniMember, Transaction, SystemConfig, ProgramReceipt } from '../type
 export const INITIAL_RECEIPTS: ProgramReceipt[] = [
   {
     id: "REC-2026-001",
-    receiptNo: "RESIT-PK/2026/001",
+    receiptNo: "INV-2026.001",
     date: "2026-08-01",
     payerName: "Koperasi Warga Beaufort Berhad",
-    payerIcOrReg: "ROC-892182-X",
+    payerIcOrReg: "Peti Surat 123, 89807 Beaufort, Sabah",
     payerPhone: "087-212345",
     payerEmail: "koperasi.bft@gmail.com",
     programName: "MINGGU TRANSFORMASI SISWA SESI I 2025/2026",
@@ -22,7 +22,7 @@ export const INITIAL_RECEIPTS: ProgramReceipt[] = [
   },
   {
     id: "REC-2026-002",
-    receiptNo: "RESIT-PK/2026/002",
+    receiptNo: "INV-2026.002",
     date: "2026-09-15",
     payerName: "Persatuan Belia Prihatin Beaufort",
     payerIcOrReg: "ROS-SBH-2022-99",

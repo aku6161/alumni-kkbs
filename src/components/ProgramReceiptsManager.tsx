@@ -214,7 +214,7 @@ export const OfficialReceiptDocument: React.FC<{ receipt: ProgramReceipt }> = ({
         </div>
         {receipt.payerIcOrReg && (
           <div style={{ display: 'flex', alignItems: 'baseline' }}>
-            <span style={{ width: '125px', color: '#333', fontWeight: '500' }}>No. KP / Syarikat</span>
+            <span style={{ width: '125px', color: '#333', fontWeight: '500' }}>Alamat</span>
             <span style={{ width: '14px', textAlign: 'center' }}>:</span>
             <strong style={{ color: '#000' }}>{receipt.payerIcOrReg}</strong>
           </div>
@@ -403,16 +403,24 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
   const defaultOfficer = config?.bendahari || 'SITI NURHAWA NABILAH BINTI FEDELIS';
   const currentYear = new Date().getFullYear();
 
-  // Generate automatic receipt number: e.g. RESIT-PK/2026/001
+  // Generate automatic receipt number format: INV-2026.001, INV-2026.002, INV-2026.003
   const nextReceiptNumber = useMemo(() => {
-    const yearPrefix = `RESIT-PK/${currentYear}/`;
-    const yearReceipts = receipts.filter(r => r.receiptNo && r.receiptNo.startsWith(yearPrefix));
+    const yearPrefix = `INV-${currentYear}.`;
     let maxNum = 0;
-    yearReceipts.forEach(r => {
-      const parts = r.receiptNo.split('/');
-      const numPart = parseInt(parts[parts.length - 1], 10);
-      if (!isNaN(numPart) && numPart > maxNum) {
-        maxNum = numPart;
+    receipts.forEach(r => {
+      if (r.receiptNo) {
+        if (r.receiptNo.startsWith(yearPrefix)) {
+          const numPart = parseInt(r.receiptNo.slice(yearPrefix.length), 10);
+          if (!isNaN(numPart) && numPart > maxNum) {
+            maxNum = numPart;
+          }
+        } else if (r.receiptNo.includes(String(currentYear))) {
+          const match = r.receiptNo.match(/(\d+)$/);
+          if (match) {
+            const num = parseInt(match[1], 10);
+            if (!isNaN(num) && num > maxNum) maxNum = num;
+          }
+        }
       }
     });
     return `${yearPrefix}${String(maxNum + 1).padStart(3, '0')}`;
@@ -420,11 +428,9 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
 
   const [receiptNo, setReceiptNo] = useState('');
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
-  const [selectedProgramId, setSelectedProgramId] = useState('');
   const [customProgramName, setCustomProgramName] = useState('');
-  const [paymentCategory, setPaymentCategory] = useState('Yuran Penyertaan Program Khas');
   const [payerName, setPayerName] = useState('');
-  const [payerIcOrReg, setPayerIcOrReg] = useState('');
+  const [payerAddress, setPayerAddress] = useState('');
   const [payerPhone, setPayerPhone] = useState('');
   const [payerEmail, setPayerEmail] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('Pindahan Bank (Online)');
@@ -441,18 +447,6 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
   const [formMsg, setFormMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Categories list
-  const categoryOptions = [
-    'Yuran Penyertaan Program Khas',
-    'Tajaan & Sumbangan Program Khas',
-    'Bayaran Sewaan Gerai / Booth',
-    'Sumbangan Meja Majlis Makan Malam',
-    'Yuran Kursus & Bengkel Kemahiran',
-    'Bayaran Pendaftaran Kontinjen / Pasukan',
-    'Kerjasama Agensi / Penaja Luar',
-    'Lain-lain Bayaran Khas'
-  ];
-
   const methodOptions = [
     'Pindahan Bank (Online)',
     'DuitNow QR',
@@ -465,11 +459,9 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
   const handleOpenForm = () => {
     setReceiptNo(nextReceiptNumber);
     setDate(new Date().toISOString().substring(0, 10));
-    setSelectedProgramId(programs.length > 0 ? programs[0].id : '');
     setCustomProgramName('');
-    setPaymentCategory('Yuran Penyertaan Program Khas');
     setPayerName('');
-    setPayerIcOrReg('');
+    setPayerAddress('');
     setPayerPhone('');
     setPayerEmail('');
     setPaymentMethod('Pindahan Bank (Online)');
@@ -491,19 +483,38 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
     const found = members.find(m => m.id === memId);
     if (found) {
       setPayerName(found.nama);
-      setPayerIcOrReg(found.noKp || found.noAhli || '');
+      setPayerAddress(found.alamat || found.noKp || '');
       setPayerPhone(found.noTelefon || '');
       setPayerEmail(found.emel || '');
     }
   };
 
   // Direct Print & Preview Trigger: opens on-screen preview AND browser print dialog
+  // Pastikan nama dokumen yang disimpan pelayar (Save as PDF) adalah mengikut no resit rasmi
   const handleTriggerPrint = (receipt: ProgramReceipt) => {
+    const originalTitle = document.title;
+    document.title = receipt.receiptNo;
     setPrintReceipt(receipt);
     setSelectedReceiptForPreview(receipt);
+
+    // Lancarkan dialog cetak pelayar serta-merta
     setTimeout(() => {
-      window.print();
-    }, 250);
+      try {
+        window.print();
+      } catch (err) {
+        console.error('Error opening print window:', err);
+      }
+    }, 80);
+
+    // Kembalikan tajuk tetingkap asal selepas cetakan
+    const restoreDocTitle = () => {
+      document.title = originalTitle;
+      window.removeEventListener('afterprint', restoreDocTitle);
+    };
+    window.addEventListener('afterprint', restoreDocTitle);
+    setTimeout(() => {
+      document.title = originalTitle;
+    }, 3000);
   };
 
   // Submit Handler
@@ -517,17 +528,12 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
       return;
     }
 
-    let resolvedProgramName = '';
-    if (selectedProgramId === 'custom' || !selectedProgramId) {
-      if (!customProgramName.trim()) {
-        setFormMsg({ type: 'error', text: 'Sila masukkan nama program khas.' });
-        return;
-      }
-      resolvedProgramName = customProgramName.trim();
-    } else {
-      const match = programs.find(p => p.id === selectedProgramId);
-      resolvedProgramName = match ? match.namaProgram : customProgramName.trim() || 'PROGRAM KHAS ALUMNI';
+    if (!customProgramName.trim()) {
+      setFormMsg({ type: 'error', text: 'Sila masukkan nama program.' });
+      return;
     }
+
+    const resolvedProgramName = customProgramName.trim().toUpperCase();
 
     setIsSubmitting(true);
 
@@ -535,16 +541,15 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
       receiptNo: receiptNo.trim() || nextReceiptNumber,
       date,
       payerName: payerName.trim(),
-      payerIcOrReg: payerIcOrReg.trim() || undefined,
+      payerIcOrReg: payerAddress.trim() || undefined,
       payerPhone: payerPhone.trim() || undefined,
       payerEmail: payerEmail.trim() || undefined,
       programName: resolvedProgramName,
-      programId: selectedProgramId !== 'custom' ? selectedProgramId : undefined,
-      paymentCategory,
+      paymentCategory: 'Bayaran Program Khas',
       paymentMethod,
       referenceNo: referenceNo.trim() || `REF-${Date.now().toString().slice(-6)}`,
       amount: parsedAmount,
-      description: description.trim() || `Bayaran ${paymentCategory} bagi ${resolvedProgramName}`,
+      description: description.trim() || `Bayaran bagi ${resolvedProgramName}`,
       receivedBy: receivedBy.trim() || defaultOfficer,
       status: 'Lunas',
       autoLedgerSync
@@ -892,7 +897,7 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
                     required
                     value={receiptNo}
                     onChange={(e) => setReceiptNo(e.target.value)}
-                    placeholder="Contoh: RESIT-PK/2026/001"
+                    placeholder="Contoh: INV-2026.001"
                     className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono font-bold text-blue-800 focus:outline-blue-600"
                   />
                   <span className="text-[9px] text-slate-400 mt-0.5 block">Format auto janaan sistem atau boleh disunting.</span>
@@ -912,61 +917,19 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
                 </div>
               </div>
 
-              {/* Section 2: Program Khas & Kategori */}
-              <div className="space-y-3">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
-                      Pilih Program Khas
-                    </label>
-                    <select
-                      value={selectedProgramId}
-                      onChange={(e) => setSelectedProgramId(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 focus:outline-blue-600"
-                    >
-                      {programs.map((p) => (
-                        <option key={p.id} value={p.id}>
-                          {p.namaProgram}
-                        </option>
-                      ))}
-                      <option value="custom">+ Program Khas Baharu / Masukkan Manual</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
-                      Kategori Bayaran
-                    </label>
-                    <select
-                      value={paymentCategory}
-                      onChange={(e) => setPaymentCategory(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 focus:outline-blue-600"
-                    >
-                      {categoryOptions.map((cat) => (
-                        <option key={cat} value={cat}>
-                          {cat}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* If custom program selected */}
-                {(selectedProgramId === 'custom' || programs.length === 0) && (
-                  <div>
-                    <label className="block text-[10px] font-black text-blue-700 uppercase mb-1">
-                      Nama Program Khas (Manual)
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Contoh: KURSUS KEMAHIRAN PEMBUATAN PASTRI ALUMNI 2026"
-                      value={customProgramName}
-                      onChange={(e) => setCustomProgramName(e.target.value)}
-                      className="w-full bg-blue-50/50 border border-blue-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:outline-blue-600"
-                    />
-                  </div>
-                )}
+              {/* Section 2: Nama Program (Manual) */}
+              <div>
+                <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
+                  Nama Program *
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Masukkan nama program secara manual (Contoh: MAKAN MALAM AMAL ALUMNI KKBS 2026)"
+                  value={customProgramName}
+                  onChange={(e) => setCustomProgramName(e.target.value)}
+                  className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:outline-blue-600 uppercase"
+                />
               </div>
 
               {/* Section 3: Maklumat Pembayar */}
@@ -1012,13 +975,13 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
 
                   <div>
                     <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
-                      No. Kad Pengenalan / Pendaftaran Syarikat
+                      Alamat
                     </label>
                     <input
                       type="text"
-                      placeholder="Contoh: 940215-12-5541 atau SSM 202201099"
-                      value={payerIcOrReg}
-                      onChange={(e) => setPayerIcOrReg(e.target.value)}
+                      placeholder="Masukkan alamat pembayar / syarikat (Opsyen)"
+                      value={payerAddress}
+                      onChange={(e) => setPayerAddress(e.target.value)}
                       className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-medium text-slate-700 focus:outline-blue-600"
                     />
                   </div>
@@ -1227,12 +1190,7 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  onClick={() => {
-                    setPrintReceipt(selectedReceiptForPreview);
-                    setTimeout(() => {
-                      window.print();
-                    }, 200);
-                  }}
+                  onClick={() => handleTriggerPrint(selectedReceiptForPreview)}
                   className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-blue-500/30 cursor-pointer transition-all active:scale-95"
                 >
                   <Printer className="w-4 h-4" />
@@ -1273,12 +1231,7 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
 
                 <button
                   type="button"
-                  onClick={() => {
-                    setPrintReceipt(selectedReceiptForPreview);
-                    setTimeout(() => {
-                      window.print();
-                    }, 200);
-                  }}
+                  onClick={() => handleTriggerPrint(selectedReceiptForPreview)}
                   className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs"
                 >
                   <Printer className="w-3.5 h-3.5" />
@@ -1291,10 +1244,11 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
       )}
 
       {/* 4. DOKUMEN CETAKAN ASAL (Hanya dipaparkan semasa cetakan sebenar / browser print dialog) */}
-      {printReceipt && (
+      {(printReceipt || selectedReceiptForPreview) && (
         <div
-          className="hidden print:block print-container"
+          id="receipt-print-area"
           style={{
+            display: 'none',
             width: '100%',
             maxWidth: '100%',
             boxSizing: 'border-box',
@@ -1304,56 +1258,46 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
             padding: '0'
           }}
         >
-          <style
-            dangerouslySetInnerHTML={{
-              __html: `
-            @page {
-              size: A4 portrait;
-              margin: 10mm 12mm 12mm 12mm !important;
-            }
-            @media print {
-              html, body, #root, main, div, table, tr, td, th {
-                overflow: visible !important;
-                scrollbar-width: none !important;
-                -ms-overflow-style: none !important;
-              }
-              *::-webkit-scrollbar,
-              html::-webkit-scrollbar,
-              body::-webkit-scrollbar {
-                display: none !important;
-                width: 0 !important;
-                height: 0 !important;
-              }
-              body {
-                margin: 0 !important;
-                padding: 0 !important;
-                width: 100% !important;
-                background-color: #ffffff !important;
-                color: #000000 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                font-family: Arial, Helvetica, sans-serif !important;
-              }
-              .print-container {
-                display: block !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                margin: 0 auto !important;
-                padding: 0 !important;
-                box-sizing: border-box !important;
-                overflow: visible !important;
-              }
-              .no-print, .print\\:hidden {
-                display: none !important;
-              }
-            }
-          `
-            }}
-          />
-
-          <OfficialReceiptDocument receipt={printReceipt} />
+          <OfficialReceiptDocument receipt={printReceipt || selectedReceiptForPreview!} />
         </div>
       )}
+
+      {/* Global CSS for Receipt Printing: 100% reliable print isolation */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        @page {
+          size: A4 portrait;
+          margin: 10mm 12mm 12mm 12mm !important;
+        }
+        @media print {
+          body * {
+            visibility: hidden !important;
+          }
+          #receipt-print-area, #receipt-print-area * {
+            visibility: visible !important;
+          }
+          #receipt-print-area {
+            display: block !important;
+            position: fixed !important;
+            left: 0 !important;
+            top: 0 !important;
+            width: 100% !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: #ffffff !important;
+            z-index: 99999999 !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+          .print\\:hidden, .no-print {
+            display: none !important;
+          }
+        }
+      `
+        }}
+      />
     </div>
   );
 };
