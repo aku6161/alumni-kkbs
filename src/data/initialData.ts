@@ -1,45 +1,6 @@
 import { AlumniMember, Transaction, SystemConfig, ProgramReceipt } from '../types';
 
-export const INITIAL_RECEIPTS: ProgramReceipt[] = [
-  {
-    id: "REC-2026-001",
-    receiptNo: "INV-2026.001",
-    date: "2026-08-01",
-    payerName: "Koperasi Warga Beaufort Berhad",
-    payerIcOrReg: "Peti Surat 123, 89807 Beaufort, Sabah",
-    payerPhone: "087-212345",
-    payerEmail: "koperasi.bft@gmail.com",
-    programName: "MINGGU TRANSFORMASI SISWA SESI I 2025/2026",
-    paymentCategory: "Tajaan & Sumbangan Program",
-    paymentMethod: "Pindahan Bank (Online)",
-    referenceNo: "MBB-TRX-9481029",
-    amount: 1500.00,
-    description: "Tajaan makan minum peserta dan cenderahati penceramah jemputan.",
-    receivedBy: "SITI NURHAWA NABILAH BINTI FEDELIS",
-    status: "Lunas",
-    createdAt: "2026-08-01T10:30:00.000Z",
-    autoLedgerSync: true
-  },
-  {
-    id: "REC-2026-002",
-    receiptNo: "INV-2026.002",
-    date: "2026-09-15",
-    payerName: "Persatuan Belia Prihatin Beaufort",
-    payerIcOrReg: "ROS-SBH-2022-99",
-    payerPhone: "013-8899123",
-    payerEmail: "belia.beaufort@yahoo.com",
-    programName: "KURSUS KEUSAHAWANAN & DIGITALISASI ALUMNI KKBS",
-    paymentCategory: "Yuran Penyertaan Program Khas",
-    paymentMethod: "DuitNow QR",
-    referenceNo: "DN-20260915-7712",
-    amount: 450.00,
-    description: "Bayaran yuran pendaftaran 3 orang wakil belia bagi kursus khas keusahawanan.",
-    receivedBy: "SITI NURHAWA NABILAH BINTI FEDELIS",
-    status: "Lunas",
-    createdAt: "2026-09-15T14:15:00.000Z",
-    autoLedgerSync: true
-  }
-];
+export const INITIAL_RECEIPTS: ProgramReceipt[] = [];
 
 export const INITIAL_CONFIG: SystemConfig = {
   "associationName": "Persatuan Alumni Kolej Komuniti Beaufort Sabah",

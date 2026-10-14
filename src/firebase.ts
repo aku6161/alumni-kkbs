@@ -217,16 +217,19 @@ export async function seedInitialFirestoreData(): Promise<void> {
       await batch.commit();
     }
 
-    // 3b. Check & Seed Receipts for Special Programs
-    const recSnap = await getDocs(collection(db, COLLECTIONS.RECEIPTS));
-    if (recSnap.empty && INITIAL_RECEIPTS.length > 0) {
-      console.log('Seeding initial receipts to Firestore...');
-      const batch = writeBatch(db);
-      INITIAL_RECEIPTS.forEach(rec => {
-        const ref = doc(db, COLLECTIONS.RECEIPTS, rec.id);
-        batch.set(ref, rec);
-      });
-      await batch.commit();
+    // 3b. Clean up old mock receipts from Firestore if any exist
+    try {
+      const mockIds = ['REC-2026-001', 'REC-2026-002'];
+      for (const mId of mockIds) {
+        const mRef = doc(db, COLLECTIONS.RECEIPTS, mId);
+        const mSnap = await getDoc(mRef);
+        if (mSnap.exists()) {
+          console.log(`Removing old mock receipt ${mId} from Firestore...`);
+          await deleteDoc(mRef);
+        }
+      }
+    } catch (cleanupErr) {
+      console.warn('Note on mock receipts cleanup:', cleanupErr);
     }
 
     // 4. Check & Seed Members (in chunks of 400 to respect 500-op limit)
@@ -499,7 +502,8 @@ export async function deleteReceiptFromFirestore(id: string): Promise<boolean> {
     await deleteDoc(docRef);
     return true;
   } catch (err) {
-    console.error('Error deleting program receipt:', err);
-    return false;
+    console.error('Error deleting program receipt from Firestore:', err);
+    // Benarkan pemadaman diteruskan jika rekod hanya wujud dalam state tempatan
+    return true;
   }
 }

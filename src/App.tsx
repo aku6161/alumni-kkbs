@@ -375,10 +375,8 @@ export default function App() {
   };
 
   const handleDeleteReceipt = async (id: string): Promise<boolean> => {
+    setReceipts(prev => prev.filter(r => r.id !== id));
     const success = await deleteReceiptFromFirestore(id);
-    if (success) {
-      setReceipts(prev => prev.filter(r => r.id !== id));
-    }
     return success;
   };
 

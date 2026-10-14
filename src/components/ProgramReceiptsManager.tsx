@@ -829,9 +829,9 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
 
                           {/* Delete Button */}
                           <button
-                            onClick={() => {
+                            onClick={async () => {
                               if (window.confirm(`Adakah anda pasti mahu memadamkan rekod resit ${rec.receiptNo}?`)) {
-                                onDeleteReceipt(rec.id);
+                                await onDeleteReceipt(rec.id);
                               }
                             }}
                             title="Padam Rekod"
