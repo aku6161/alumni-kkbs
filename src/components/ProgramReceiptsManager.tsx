@@ -96,16 +96,16 @@ export function numberToMalayWords(amount: number): string {
   return text;
 }
 
-// Helper: Format date
+// Helper: Format date dengan ejaan penuh bulan dalam Bahasa Melayu
 export const formatDisplayDate = (isoOrStr: string) => {
   try {
     const d = new Date(isoOrStr);
     if (isNaN(d.getTime())) return isoOrStr;
-    return d.toLocaleDateString('ms-MY', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric'
-    });
+    const monthsMalay = [
+      'Januari', 'Februari', 'Mac', 'April', 'Mei', 'Jun',
+      'Julai', 'Ogos', 'September', 'Oktober', 'November', 'Disember'
+    ];
+    return `${d.getDate()} ${monthsMalay[d.getMonth()]} ${d.getFullYear()}`;
   } catch {
     return isoOrStr;
   }
@@ -161,7 +161,7 @@ export const OfficialReceiptDocument: React.FC<{ receipt: ProgramReceipt }> = ({
             d.a. Kolej Komuniti Beaufort, Jalan Melalugus, Peti Surat 399, 89807 Beaufort, Sabah.
           </p>
           <p style={{ fontSize: '9px', margin: '2px 0 0 0', color: '#555' }}>
-            Laman Web: alumni-kkbs.vercel.app &nbsp;|&nbsp; Emel: alumni.kkbs@gmail.com
+            Laman Web: alumnikkbs.sudin.my &nbsp;|&nbsp; Emel: alumni.kkbs@gmail.com
           </p>
         </div>
       </div>
@@ -182,56 +182,50 @@ export const OfficialReceiptDocument: React.FC<{ receipt: ProgramReceipt }> = ({
         </h2>
       </div>
 
-      {/* 3. Maklumat Pembayar & Transaksi (Biasa, bukan jadual kotak, ada no resit, tarikh, nama, no telefon, kaedah bayaran) */}
+      {/* 3. Maklumat Pembayar & Transaksi (Satu kolum selari & kemas) */}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1.1fr 1fr',
-          gap: '8px 24px',
+          width: '100%',
+          maxWidth: '560px',
           marginBottom: '16px',
           fontSize: '11px',
-          lineHeight: '1.6'
+          lineHeight: '1.7'
         }}
       >
-        <div>
-          <div style={{ display: 'flex' }}>
-            <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>No. Resit</span>
-            <span style={{ width: '12px' }}>:</span>
-            <strong style={{ fontFamily: 'monospace', fontSize: '12px', color: '#000' }}>{receipt.receiptNo}</strong>
-          </div>
-          <div style={{ display: 'flex' }}>
-            <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>Tarikh</span>
-            <span style={{ width: '12px' }}>:</span>
-            <strong style={{ color: '#000' }}>{formatDisplayDate(receipt.date)}</strong>
-          </div>
-          <div style={{ display: 'flex' }}>
-            <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>Kaedah Bayaran</span>
-            <span style={{ width: '12px' }}>:</span>
-            <strong style={{ color: '#000' }}>
-              {receipt.paymentMethod}
-              {receipt.referenceNo ? ` (Ruj: ${receipt.referenceNo})` : ''}
-            </strong>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'baseline' }}>
+          <span style={{ width: '125px', color: '#333', fontWeight: '500' }}>No. Resit</span>
+          <span style={{ width: '14px', textAlign: 'center' }}>:</span>
+          <strong style={{ fontFamily: 'monospace', fontSize: '12px', color: '#000' }}>{receipt.receiptNo}</strong>
         </div>
-
-        <div>
-          <div style={{ display: 'flex' }}>
-            <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>Nama</span>
-            <span style={{ width: '12px' }}>:</span>
-            <strong style={{ textTransform: 'uppercase', color: '#000' }}>{receipt.payerName}</strong>
+        <div style={{ display: 'flex', alignItems: 'baseline' }}>
+          <span style={{ width: '125px', color: '#333', fontWeight: '500' }}>Tarikh</span>
+          <span style={{ width: '14px', textAlign: 'center' }}>:</span>
+          <strong style={{ color: '#000' }}>{formatDisplayDate(receipt.date)}</strong>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'baseline' }}>
+          <span style={{ width: '125px', color: '#333', fontWeight: '500' }}>Nama</span>
+          <span style={{ width: '14px', textAlign: 'center' }}>:</span>
+          <strong style={{ textTransform: 'uppercase', color: '#000' }}>{receipt.payerName}</strong>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'baseline' }}>
+          <span style={{ width: '125px', color: '#333', fontWeight: '500' }}>No. Telefon</span>
+          <span style={{ width: '14px', textAlign: 'center' }}>:</span>
+          <strong style={{ color: '#000' }}>{receipt.payerPhone || '-'}</strong>
+        </div>
+        {receipt.payerIcOrReg && (
+          <div style={{ display: 'flex', alignItems: 'baseline' }}>
+            <span style={{ width: '125px', color: '#333', fontWeight: '500' }}>No. KP / Syarikat</span>
+            <span style={{ width: '14px', textAlign: 'center' }}>:</span>
+            <strong style={{ color: '#000' }}>{receipt.payerIcOrReg}</strong>
           </div>
-          <div style={{ display: 'flex' }}>
-            <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>No. Telefon</span>
-            <span style={{ width: '12px' }}>:</span>
-            <strong style={{ color: '#000' }}>{receipt.payerPhone || '-'}</strong>
-          </div>
-          {receipt.payerIcOrReg && (
-            <div style={{ display: 'flex' }}>
-              <span style={{ width: '105px', color: '#333', fontWeight: '500' }}>No. KP / Syarikat</span>
-              <span style={{ width: '12px' }}>:</span>
-              <span style={{ color: '#000' }}>{receipt.payerIcOrReg}</span>
-            </div>
-          )}
+        )}
+        <div style={{ display: 'flex', alignItems: 'baseline' }}>
+          <span style={{ width: '125px', color: '#333', fontWeight: '500' }}>Kaedah Bayaran</span>
+          <span style={{ width: '14px', textAlign: 'center' }}>:</span>
+          <strong style={{ color: '#000' }}>
+            {receipt.paymentMethod}
+            {receipt.referenceNo ? ` (Ruj: ${receipt.referenceNo})` : ''}
+          </strong>
         </div>
       </div>
 
@@ -360,11 +354,11 @@ export const OfficialReceiptDocument: React.FC<{ receipt: ProgramReceipt }> = ({
           <strong style={{ fontSize: '11px', display: 'block', textTransform: 'uppercase' }}>
             {receipt.receivedBy || 'BENDAHARI PERSATUAN ALUMNI'}
           </strong>
-          <span style={{ fontSize: '9px', color: '#444', display: 'block' }}>
-            Bendahari / Pegawai Persatuan Alumni
+          <span style={{ fontSize: '9.5px', fontWeight: 'bold', color: '#000', display: 'block', marginTop: '2px' }}>
+            Bendahari
           </span>
-          <span style={{ fontSize: '8.5px', color: '#666', display: 'block' }}>
-            Kolej Komuniti Beaufort Sabah
+          <span style={{ fontSize: '9px', color: '#333', display: 'block' }}>
+            Persatuan Alumni KKBS
           </span>
         </div>
       </div>
