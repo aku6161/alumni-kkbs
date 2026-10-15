@@ -172,39 +172,39 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   const handleDownloadExcelTemplate = () => {
     const templateRows = [
       {
-        'No Ahli': 'ALUMNI-2026-001',
         'Nama Penuh': 'AHMAD BIN ALI',
         'No KP': '980102125541',
         'No Pendaftaran Pelajar': 'KKBS-2020-001',
+        'Program': 'Sijil Kulinari',
         'Tahun Lulusan': '2024',
-        'Program': 'Sijil Teknologi Senibina',
+        'Tarikh Graduasi': '12/10/2024',
         'Jantina': 'Lelaki',
         'Agama': 'Islam',
-        'Kaum': 'Bumiputera Sabah',
-        'Tarikh Graduasi': '12/10/2024',
+        'Kaum Utama': 'Bumiputera Sabah',
+        'Negeri': 'Sabah',
         'No Telefon': '0138899123',
         'Emel': 'ahmad@gmail.com',
-        'Pekerjaan / Jawatan': 'Juruteknik',
-        'Nama Majikan': 'Syarikat Pembinaan Sabah Sdn Bhd',
-        'Negeri': 'Sabah',
+        'No Ahli': 'ALUMNI-2026-001',
+        'Pekerjaan / Jawatan': 'Demi Chef',
+        'Nama Majikan': 'Hotel Grand Beaufort',
         'Status': 'Active'
       },
       {
-        'No Ahli': 'ALUMNI-2026-002',
         'Nama Penuh': 'SITI NURHALIZA BINTI MOHD',
         'No KP': '000512126622',
         'No Pendaftaran Pelajar': 'KKBS-2021-045',
+        'Program': 'Sijil Kulinari',
         'Tahun Lulusan': '2024',
-        'Program': 'Sijil Operasi Perhotelan',
+        'Tarikh Graduasi': '12/10/2024',
         'Jantina': 'Perempuan',
         'Agama': 'Islam',
-        'Kaum': 'Melayu',
-        'Tarikh Graduasi': '12/10/2024',
+        'Kaum Utama': 'Melayu',
+        'Negeri': 'Sabah',
         'No Telefon': '0198877665',
         'Emel': 'siti.nur@yahoo.com',
-        'Pekerjaan / Jawatan': 'Penyelia Khidmat Pelanggan',
-        'Nama Majikan': 'Resort Beaufort',
-        'Negeri': 'Sabah',
+        'No Ahli': 'ALUMNI-2026-002',
+        'Pekerjaan / Jawatan': 'Pastry Chef',
+        'Nama Majikan': 'Bakery Delights Beaufort',
         'Status': 'Active'
       }
     ];
@@ -212,21 +212,21 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     const ws = XLSX.utils.json_to_sheet(templateRows);
     // Auto column width
     ws['!cols'] = [
-      { wch: 18 }, // No Ahli
-      { wch: 30 }, // Nama
+      { wch: 30 }, // Nama Penuh
       { wch: 16 }, // No KP
-      { wch: 22 }, // No Pendaftaran
-      { wch: 14 }, // Tahun
-      { wch: 28 }, // Program
+      { wch: 24 }, // No Pendaftaran Pelajar
+      { wch: 22 }, // Program
+      { wch: 14 }, // Tahun Lulusan
+      { wch: 16 }, // Tarikh Graduasi
       { wch: 12 }, // Jantina
       { wch: 12 }, // Agama
-      { wch: 18 }, // Kaum
-      { wch: 16 }, // Tarikh Graduasi
-      { wch: 16 }, // Telefon
-      { wch: 25 }, // Emel
-      { wch: 24 }, // Pekerjaan
-      { wch: 30 }, // Majikan
+      { wch: 18 }, // Kaum Utama
       { wch: 14 }, // Negeri
+      { wch: 16 }, // No Telefon
+      { wch: 25 }, // Emel
+      { wch: 18 }, // No Ahli
+      { wch: 24 }, // Pekerjaan / Jawatan
+      { wch: 30 }, // Nama Majikan
       { wch: 12 }  // Status
     ];
 
@@ -269,7 +269,16 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
           const jantina = String(row['Jantina'] || row['jantina'] || 'Lelaki').trim();
           const agama = String(row['Agama'] || row['agama'] || 'Islam').trim();
           const kaumUtama = String(row['Kaum'] || row['Kaum Utama'] || row['kaumUtama'] || 'Bumiputera Sabah').trim();
-          const tarikhGraduasi = String(row['Tarikh Graduasi'] || row['tarikhGraduasi'] || '').trim();
+          let tarikhGraduasi = String(row['Tarikh Graduasi'] || row['tarikhGraduasi'] || row['Tarikh Konvokesyen'] || '').trim();
+          if (/^\d{5}$/.test(tarikhGraduasi)) {
+            const serial = parseInt(tarikhGraduasi, 10);
+            const utc_days = Math.floor(serial - 25569);
+            const date_info = new Date(utc_days * 86400 * 1000);
+            const day = String(date_info.getDate()).padStart(2, '0');
+            const month = String(date_info.getMonth() + 1).padStart(2, '0');
+            const year = date_info.getFullYear();
+            tarikhGraduasi = `${day}/${month}/${year}`;
+          }
           const noTelefon = String(row['No Telefon'] || row['Telefon'] || row['noTelefon'] || '').trim();
           const emel = String(row['Emel'] || row['Email'] || row['emel'] || '').trim();
           const pekerjaanJawatan = String(row['Pekerjaan / Jawatan'] || row['Pekerjaan'] || row['Jawatan'] || row['pekerjaanJawatan'] || '').trim();
@@ -835,58 +844,100 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-2 px-3 font-mono font-bold text-slate-400">3</td>
+                      <td className="py-2 px-3 font-bold text-slate-900">No Pendaftaran Pelajar</td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 text-[9px] font-bold">Wajib</span></td>
+                      <td className="py-2 px-3">No matrik pendaftaran kolej semasa belajar</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">KKBS-2021-009</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/50">
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">4</td>
+                      <td className="py-2 px-3 font-bold text-slate-900">Program</td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 text-[9px] font-bold">Wajib</span></td>
+                      <td className="py-2 px-3">Nama program pengajian di KKBS</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">Sijil Kulinari</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/50">
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">5</td>
+                      <td className="py-2 px-3 font-bold text-slate-900">Tahun Lulusan</td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 text-[9px] font-bold">Wajib</span></td>
+                      <td className="py-2 px-3">Tahun graduasi / tamat pengajian (4 digit)</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">2024</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/50">
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">6</td>
+                      <td className="py-2 px-3 font-bold text-slate-900">Tarikh Graduasi</td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 text-[9px] font-bold">Wajib</span></td>
+                      <td className="py-2 px-3">Tarikh konvokesyen (format: dd/mm/yyyy)</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">12/10/2024</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/50">
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">7</td>
+                      <td className="py-2 px-3 font-bold text-slate-900">Jantina</td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[9px] font-bold">Disyorkan</span></td>
+                      <td className="py-2 px-3">Lelaki atau Perempuan</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">Lelaki</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/50">
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">8</td>
+                      <td className="py-2 px-3 font-bold text-slate-900">Agama</td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[9px] font-bold">Disyorkan</span></td>
+                      <td className="py-2 px-3">Agama anutan ahli (Islam / Kristian dll.)</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">Islam</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/50">
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">9</td>
+                      <td className="py-2 px-3 font-bold text-slate-900">Kaum Utama</td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[9px] font-bold">Disyorkan</span></td>
+                      <td className="py-2 px-3">Kategori etnik / kaum utama</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">Bumiputera Sabah</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/50">
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">10</td>
+                      <td className="py-2 px-3 font-bold text-slate-900">Negeri</td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[9px] font-bold">Disyorkan</span></td>
+                      <td className="py-2 px-3">Negeri asal atau tempat tinggal semasa</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">Sabah</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/50">
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">11</td>
                       <td className="py-2 px-3 font-bold text-slate-900">No Telefon</td>
                       <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[9px] font-bold">Disyorkan</span></td>
                       <td className="py-2 px-3">Nombor telefon bimbit untuk semakan status</td>
                       <td className="py-2 px-3 font-mono text-slate-800">0138899123</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
-                      <td className="py-2 px-3 font-mono font-bold text-slate-400">4</td>
-                      <td className="py-2 px-3 font-bold text-slate-900">Program</td>
-                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[9px] font-bold">Opsyen</span></td>
-                      <td className="py-2 px-3">Nama program pengajian di KKBS</td>
-                      <td className="py-2 px-3 font-mono text-slate-800">Sijil Teknologi Senibina</td>
-                    </tr>
-                    <tr className="hover:bg-slate-50/50">
-                      <td className="py-2 px-3 font-mono font-bold text-slate-400">5</td>
-                      <td className="py-2 px-3 font-bold text-slate-900">Tahun Lulusan</td>
-                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[9px] font-bold">Opsyen</span></td>
-                      <td className="py-2 px-3">Tahun graduasi / tamat pengajian (4 digit)</td>
-                      <td className="py-2 px-3 font-mono text-slate-800">2024</td>
-                    </tr>
-                    <tr className="hover:bg-slate-50/50">
-                      <td className="py-2 px-3 font-mono font-bold text-slate-400">6</td>
-                      <td className="py-2 px-3 font-bold text-slate-900">No Ahli</td>
-                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[9px] font-bold">Opsyen</span></td>
-                      <td className="py-2 px-3">No pendaftaran ahli (auto jana jika kosong)</td>
-                      <td className="py-2 px-3 font-mono text-slate-800">ALUMNI-2026-042</td>
-                    </tr>
-                    <tr className="hover:bg-slate-50/50">
-                      <td className="py-2 px-3 font-mono font-bold text-slate-400">7</td>
-                      <td className="py-2 px-3 font-bold text-slate-900">No Pendaftaran Pelajar</td>
-                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[9px] font-bold">Opsyen</span></td>
-                      <td className="py-2 px-3">No matrik semasa belajar di kolej</td>
-                      <td className="py-2 px-3 font-mono text-slate-800">KKBS-2021-009</td>
-                    </tr>
-                    <tr className="hover:bg-slate-50/50">
-                      <td className="py-2 px-3 font-mono font-bold text-slate-400">8</td>
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">12</td>
                       <td className="py-2 px-3 font-bold text-slate-900">Emel</td>
                       <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[9px] font-bold">Opsyen</span></td>
                       <td className="py-2 px-3">Alamat e-mel untuk notifikasi</td>
-                      <td className="py-2 px-3 font-mono text-slate-800">alumni@gmail.com</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">afif@gmail.com</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
-                      <td className="py-2 px-3 font-mono font-bold text-slate-400">9</td>
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">13</td>
+                      <td className="py-2 px-3 font-bold text-slate-900">No Ahli</td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[9px] font-bold">Opsyen</span></td>
+                      <td className="py-2 px-3">No pendaftaran ahli (auto-jana jika kosong)</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">ALUMNI-2026-001</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/50">
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">14</td>
                       <td className="py-2 px-3 font-bold text-slate-900">Pekerjaan / Jawatan</td>
                       <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[9px] font-bold">Opsyen</span></td>
                       <td className="py-2 px-3">Jawatan atau status kerjaya terkini</td>
-                      <td className="py-2 px-3 font-mono text-slate-800">Jurutera Tapak / Usahawan</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">Chef Eksekutif</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
-                      <td className="py-2 px-3 font-mono font-bold text-slate-400">10</td>
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">15</td>
+                      <td className="py-2 px-3 font-bold text-slate-900">Nama Majikan</td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[9px] font-bold">Opsyen</span></td>
+                      <td className="py-2 px-3">Nama syarikat majikan atau agensi</td>
+                      <td className="py-2 px-3 font-mono text-slate-800">Hotel Grand Beaufort</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50/50">
+                      <td className="py-2 px-3 font-mono font-bold text-slate-400">16</td>
                       <td className="py-2 px-3 font-bold text-slate-900">Status</td>
                       <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[9px] font-bold">Opsyen</span></td>
-                      <td className="py-2 px-3">Active / Pending / Inactive</td>
+                      <td className="py-2 px-3">Active / Pending / Inactive (default: Active)</td>
                       <td className="py-2 px-3 font-mono text-slate-800">Active</td>
                     </tr>
                   </tbody>
@@ -1002,8 +1053,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                           <th className="py-2 px-3">Bil</th>
                           <th className="py-2 px-3">Nama</th>
                           <th className="py-2 px-3">No. KP</th>
+                          <th className="py-2 px-3">No. Pendaftaran</th>
                           <th className="py-2 px-3">Program</th>
                           <th className="py-2 px-3">Tahun</th>
+                          <th className="py-2 px-3">Tarikh Graduasi</th>
                           <th className="py-2 px-3">Telefon</th>
                         </tr>
                       </thead>
@@ -1013,8 +1066,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                             <td className="py-1.5 px-3 font-mono text-slate-400">{idx + 1}</td>
                             <td className="py-1.5 px-3 font-bold text-slate-800">{m.nama}</td>
                             <td className="py-1.5 px-3 font-mono">{m.noKp || '-'}</td>
+                            <td className="py-1.5 px-3 font-mono text-slate-700">{m.noPendaftaran || '-'}</td>
                             <td className="py-1.5 px-3 truncate max-w-[150px]">{m.program}</td>
                             <td className="py-1.5 px-3">{m.tahunLulusan}</td>
+                            <td className="py-1.5 px-3 font-mono text-slate-700">{m.tarikhGraduasi || '-'}</td>
                             <td className="py-1.5 px-3 font-mono">{m.noTelefon || '-'}</td>
                           </tr>
                         ))}
