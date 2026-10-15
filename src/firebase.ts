@@ -401,6 +401,39 @@ export async function deleteMemberFromFirestore(id: string): Promise<boolean> {
   }
 }
 
+export async function bulkAddMembersToFirestore(
+  newMembers: AlumniMember[]
+): Promise<{ success: boolean; count: number; error?: string }> {
+  try {
+    const chunkSize = 400;
+    let addedCount = 0;
+    for (let i = 0; i < newMembers.length; i += chunkSize) {
+      const chunk = newMembers.slice(i, i + chunkSize);
+      const batch = writeBatch(db);
+      chunk.forEach((m) => {
+        const docId = m.id || `MEM-${m.noKp || m.noAhli || Date.now().toString(36) + Math.random().toString(36).substring(2, 6)}`;
+        const ref = doc(db, COLLECTIONS.MEMBERS, docId);
+        batch.set(
+          ref,
+          {
+            ...m,
+            id: docId,
+            status: m.status || 'Active',
+            role: m.role || 'Member'
+          },
+          { merge: true }
+        );
+      });
+      await batch.commit();
+      addedCount += chunk.length;
+    }
+    return { success: true, count: addedCount };
+  } catch (err: any) {
+    console.error('Error in bulkAddMembersToFirestore:', err);
+    return { success: false, count: 0, error: err.message || 'Ralat menyimpan data ahli ke Firestore' };
+  }
+}
+
 export async function addOrUpdateTransaction(tx: Transaction): Promise<boolean> {
   try {
     const docId = tx.id || `TX-${Date.now()}`;

@@ -30,6 +30,7 @@ import {
   subscribeToReceipts,
   addOrUpdateReceipt,
   deleteReceiptFromFirestore,
+  bulkAddMembersToFirestore,
   INITIAL_PROGRAMS_LIST
 } from './firebase';
 
@@ -386,6 +387,20 @@ export default function App() {
       setConfig(newConfig);
     }
     return success;
+  };
+
+  const handleBulkAddMembers = async (
+    newMembers: AlumniMember[]
+  ): Promise<{ success: boolean; count: number; error?: string }> => {
+    const result = await bulkAddMembersToFirestore(newMembers);
+    if (result.success) {
+      setMembers((prev) => {
+        const existingIds = new Set(prev.map((m) => m.id));
+        const filteredNew = newMembers.filter((m) => !existingIds.has(m.id));
+        return [...filteredNew, ...prev];
+      });
+    }
+    return result;
   };
 
   const handleLogout = () => {
@@ -760,6 +775,7 @@ export default function App() {
                 onOpenAdminModal={() => setAuthMode('admin')}
                 onReseedFirestore={seedInitialFirestoreData}
                 membersCount={members.length}
+                onBulkAddMembers={handleBulkAddMembers}
               />
             )}
           </main>
