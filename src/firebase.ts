@@ -278,10 +278,10 @@ export function subscribeToMembers(
           status: data.status || getMemberStatus(data.noTelefon)
         });
       });
-      // Sort members by id (MEM-1, MEM-2...) or noAhli
+      // Sort members by noAhli (PAKKBS-00011, PAKKBS-00012, ... PAKKBS-00947)
       items.sort((a, b) => {
-        const numA = parseInt((a.id || '').replace(/\D/g, ''), 10) || 0;
-        const numB = parseInt((b.id || '').replace(/\D/g, ''), 10) || 0;
+        const numA = parseInt((a.noAhli || '').replace(/\D/g, ''), 10) || parseInt((a.id || '').replace(/\D/g, ''), 10) || 0;
+        const numB = parseInt((b.noAhli || '').replace(/\D/g, ''), 10) || parseInt((b.id || '').replace(/\D/g, ''), 10) || 0;
         return numA - numB;
       });
       onUpdate(items);

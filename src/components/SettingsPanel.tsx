@@ -190,7 +190,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         'Negeri': 'Sabah',
         'No Telefon': '0138899123',
         'Emel': 'ahmad@gmail.com',
-        'No Ahli': 'PAKKBS-00001',
+        'No Ahli': '', // Biarkan kosong untuk auto-jana bersiri automatik (cth: PAKKBS-00948)
         'Pekerjaan / Jawatan': 'Demi Chef',
         'Nama Majikan': 'Hotel Grand Beaufort',
         'Status': 'Active'
@@ -208,7 +208,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         'Negeri': 'Sabah',
         'No Telefon': '0198877665',
         'Emel': 'siti.nur@yahoo.com',
-        'No Ahli': 'PAKKBS-00002',
+        'No Ahli': '', // Biarkan kosong untuk auto-jana bersiri automatik (cth: PAKKBS-00949)
         'Pekerjaan / Jawatan': 'Pastry Chef',
         'Nama Majikan': 'Bakery Delights Beaufort',
         'Status': 'Active'
@@ -264,12 +264,12 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         }
 
         // Cari nombor siri tertinggi sedia ada bagi format PAKKBS-xxxxx
-        let highestSeq = 0;
+        let highestSeq = 947;
         (members || []).forEach((m) => {
           const match = (m.noAhli || '').match(/(\d+)/);
           if (match) {
             const val = parseInt(match[1], 10);
-            if (!isNaN(val) && val > highestSeq && val < 900000) {
+            if (!isNaN(val) && val > highestSeq && val < 50000) {
               highestSeq = val;
             }
           }
@@ -282,15 +282,16 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
           const rawNoAhli = String(row['No Ahli'] || row['NoAhli'] || row['noAhli'] || row['Nombor Ahli'] || '').trim();
           let noAhli = '';
 
-          if (rawNoAhli) {
-            const digits = rawNoAhli.replace(/\D/g, '');
-            if (digits && parseInt(digits, 10) > 0 && parseInt(digits, 10) < 900000) {
-              noAhli = `PAKKBS-${String(parseInt(digits, 10)).padStart(5, '0')}`;
-            } else {
-              nextSeqCounter++;
-              noAhli = `PAKKBS-${String(nextSeqCounter).padStart(5, '0')}`;
-            }
+          // Jika ada digit dalam rawNoAhli, periksa sama ada ia siri baharu yang sah (> highestSeq)
+          const digits = rawNoAhli.replace(/\D/g, '');
+          const specifiedNum = digits ? parseInt(digits, 10) : 0;
+
+          if (specifiedNum > highestSeq && specifiedNum < 50000) {
+            // Pengguna nyatakan nombor siri baharu yang sah secara sengaja
+            noAhli = `PAKKBS-${String(specifiedNum).padStart(5, '0')}`;
+            if (specifiedNum > nextSeqCounter) nextSeqCounter = specifiedNum;
           } else {
+            // Auto-jana berurutan menyambung nombor siri ahli terakhir
             nextSeqCounter++;
             noAhli = `PAKKBS-${String(nextSeqCounter).padStart(5, '0')}`;
           }
