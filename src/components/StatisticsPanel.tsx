@@ -32,7 +32,22 @@ export const StatisticsPanel: React.FC<StatisticsPanelProps> = ({ members }) => 
   const getYearDistribution = () => {
     const counts: Record<string, number> = {};
     activeMembers.forEach(m => {
-      const y = String(m.tahunLulusan || 'Lain-lain').trim();
+      // Ambilkira tahun berdasarkan tarikh graduasi pelajar
+      let y = '';
+      const tg = String(m.tarikhGraduasi || '').trim();
+      if (tg) {
+        // Ekstrak 4 digit tahun (cth: '8/10/2016' -> '2016', '12/10/2024' -> '2024', '2020' -> '2020')
+        const match = tg.match(/\b(19\d{2}|20\d{2})\b/);
+        if (match) {
+          y = match[1];
+        }
+      }
+      // Jika tarikh graduasi tiada, baru gunakan tahunLulusan sebagai sandaran
+      if (!y) {
+        const tl = String(m.tahunLulusan || '').trim();
+        const matchTl = tl.match(/\b(19\d{2}|20\d{2})\b/);
+        y = matchTl ? matchTl[1] : 'Lain-lain';
+      }
       counts[y] = (counts[y] || 0) + 1;
     });
     return counts;
@@ -120,8 +135,13 @@ export const StatisticsPanel: React.FC<StatisticsPanelProps> = ({ members }) => 
 
   // SVG Chart: Draw Bar Chart bars
   const renderBarChart = (data: Record<string, number>) => {
-    const keys = Object.keys(data);
-    const values = Object.values(data);
+    const keys = Object.keys(data).sort((a, b) => {
+      const numA = parseInt(a, 10);
+      const numB = parseInt(b, 10);
+      if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+      return a.localeCompare(b);
+    });
+    const values = keys.map(k => data[k] || 0);
     const maxVal = values.length > 0 ? Math.max(...values) : 5;
     const total = values.reduce((a, b) => a + b, 0);
 
@@ -232,7 +252,7 @@ export const StatisticsPanel: React.FC<StatisticsPanelProps> = ({ members }) => 
         <h3 className="text-sm font-extrabold text-slate-700 uppercase tracking-wider mb-6">
           {activeSubTab === 'status' && 'Statistik Status Keahlian'}
           {activeSubTab === 'program' && 'Statistik Program Pengajian'}
-          {activeSubTab === 'year' && 'Statistik Tahun Lulusan Alumni'}
+          {activeSubTab === 'year' && 'Statistik Tahun Graduasi Alumni'}
           {activeSubTab === 'state' && 'Statistik Negeri Kediaman Semasa'}
         </h3>
 
