@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AlumniMember, SystemConfig } from '../types';
 import { CreditCard, Edit, Users, ShieldCheck, Check, X, AlertTriangle, UserX, UserCheck, Trash2, Lock, User, Download, Filter, Search, FileSpreadsheet } from 'lucide-react';
 import { formatDateString } from '../utils/date';
@@ -8,7 +8,14 @@ interface MembershipPortalProps {
   members: AlumniMember[];
   config: SystemConfig;
   userRole: 'admin' | 'member';
-  onUpdateProfile: (data: { noTelefon: string; emel: string; pekerjaanJawatan: string; namaMajikan: string }) => Promise<boolean>;
+  onUpdateProfile: (data: {
+    noTelefon: string;
+    emel: string;
+    pekerjaanJawatan: string;
+    namaMajikan: string;
+    kaumUtama?: string;
+    negeri?: string;
+  }) => Promise<boolean>;
   onApproveMember: (id: string, noAhli: string) => Promise<boolean>;
   onRejectMember: (id: string) => Promise<boolean>;
   onActivateMember: (id: string) => Promise<boolean>;
@@ -44,7 +51,21 @@ export const MembershipPortal: React.FC<MembershipPortalProps> = ({
   const [email, setEmail] = useState(() => String(currentMember?.emel || ''));
   const [occupation, setOccupation] = useState(() => String(currentMember?.pekerjaanJawatan || ''));
   const [employer, setEmployer] = useState(() => String(currentMember?.namaMajikan || ''));
+  const [kaumUtama, setKaumUtama] = useState(() => String(currentMember?.kaumUtama || '').toUpperCase());
+  const [negeri, setNegeri] = useState(() => String(currentMember?.negeri || 'SABAH').toUpperCase());
   const [formMsg, setFormMsg] = useState<{ status: 'success' | 'error'; text: string } | null>(null);
+
+  // Sync state if currentMember changes
+  useEffect(() => {
+    if (currentMember) {
+      setPhone(formatPhone(currentMember.noTelefon || ''));
+      setEmail(String(currentMember.emel || ''));
+      setOccupation(String(currentMember.pekerjaanJawatan || ''));
+      setEmployer(String(currentMember.namaMajikan || ''));
+      setKaumUtama(String(currentMember.kaumUtama || '').toUpperCase());
+      setNegeri(String(currentMember.negeri || 'SABAH').toUpperCase());
+    }
+  }, [currentMember]);
 
   // Admin Approval Dialog state
   const [selectedPendingMember, setSelectedPendingMember] = useState<AlumniMember | null>(null);
@@ -74,7 +95,9 @@ export const MembershipPortal: React.FC<MembershipPortalProps> = ({
       noTelefon: phone,
       emel: email,
       pekerjaanJawatan: occupation,
-      namaMajikan: employer
+      namaMajikan: employer,
+      kaumUtama: kaumUtama.trim().toUpperCase(),
+      negeri: negeri.trim().toUpperCase()
     });
     if (ok) {
       setFormMsg({ status: 'success', text: 'Profil anda berjaya dikemas kini!' });
@@ -393,10 +416,6 @@ export const MembershipPortal: React.FC<MembershipPortalProps> = ({
                     <div className="font-bold text-slate-700 mt-0.5 uppercase">{currentMember.agama}</div>
                   </div>
                   <div>
-                    <label className="block text-[8px] font-black text-slate-400 uppercase">Kaum Utama</label>
-                    <div className="font-bold text-slate-700 mt-0.5 uppercase">{currentMember.kaumUtama}</div>
-                  </div>
-                  <div>
                     <label className="block text-[8px] font-black text-slate-400 uppercase">Tarikh Graduasi</label>
                     <div className="font-bold text-slate-700 mt-0.5">{formatDateString(currentMember.tarikhGraduasi)}</div>
                   </div>
@@ -407,7 +426,32 @@ export const MembershipPortal: React.FC<MembershipPortalProps> = ({
               <div className="space-y-4 pt-1">
                 <div className="flex items-center gap-1.5 text-blue-600 mb-1">
                   <Edit className="w-3.5 h-3.5" />
-                  <span className="text-[9px] font-black uppercase tracking-wider">Kemaskini Maklumat Hubungan & Kerjaya</span>
+                  <span className="text-[9px] font-black uppercase tracking-wider">Kemaskini Maklumat Demografi, Hubungan & Kerjaya</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">Kaum Utama</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="CONTOH: BUMIPUTERA SABAH / MELAYU"
+                      value={kaumUtama}
+                      onChange={(e) => setKaumUtama(e.target.value.toUpperCase())}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-blue-600 uppercase font-bold text-slate-800"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">Negeri Kediaman</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="CONTOH: SABAH / SARAWAK / SELANGOR"
+                      value={negeri}
+                      onChange={(e) => setNegeri(e.target.value.toUpperCase())}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-blue-600 uppercase font-bold text-slate-800"
+                    />
+                  </div>
                 </div>
 
                 <div>
