@@ -38,7 +38,9 @@ interface SettingsPanelProps {
   onOpenAdminModal: () => void;
   onReseedFirestore?: () => Promise<void>;
   membersCount?: number;
+  members?: AlumniMember[];
   onBulkAddMembers?: (newMembers: AlumniMember[]) => Promise<{ success: boolean; count: number; error?: string }>;
+  onStandardizeMemberNumbers?: () => Promise<{ success: boolean; count: number; error?: string }>;
 }
 
 export const SettingsPanel: React.FC<SettingsPanelProps> = ({
@@ -48,7 +50,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   onOpenAdminModal,
   onReseedFirestore,
   membersCount = 0,
+  members = [],
   onBulkAddMembers,
+  onStandardizeMemberNumbers,
 }) => {
   // Subtab navigation: [Data], [JK Persatuan], [Keahlian]
   const [activeSubTab, setActiveSubTab] = useState<'data' | 'jk' | 'keahlian'>('data');
@@ -77,6 +81,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [isImporting, setIsImporting] = useState(false);
   const [importSuccessMsg, setImportSuccessMsg] = useState<string | null>(null);
+  const [isStandardizing, setIsStandardizing] = useState(false);
+  const [standardizeMsg, setStandardizeMsg] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Sync local form state whenever config prop updates from Firestore
@@ -184,7 +190,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         'Negeri': 'Sabah',
         'No Telefon': '0138899123',
         'Emel': 'ahmad@gmail.com',
-        'No Ahli': 'ALUMNI-2026-001',
+        'No Ahli': 'PAKKBS-00001',
         'Pekerjaan / Jawatan': 'Demi Chef',
         'Nama Majikan': 'Hotel Grand Beaufort',
         'Status': 'Active'
@@ -202,7 +208,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         'Negeri': 'Sabah',
         'No Telefon': '0198877665',
         'Emel': 'siti.nur@yahoo.com',
-        'No Ahli': 'ALUMNI-2026-002',
+        'No Ahli': 'PAKKBS-00002',
         'Pekerjaan / Jawatan': 'Pastry Chef',
         'Nama Majikan': 'Bakery Delights Beaufort',
         'Status': 'Active'
@@ -257,9 +263,38 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
           return;
         }
 
+        // Cari nombor siri tertinggi sedia ada bagi format PAKKBS-xxxxx
+        let highestSeq = 0;
+        (members || []).forEach((m) => {
+          const match = (m.noAhli || '').match(/(\d+)/);
+          if (match) {
+            const val = parseInt(match[1], 10);
+            if (!isNaN(val) && val > highestSeq && val < 900000) {
+              highestSeq = val;
+            }
+          }
+        });
+
+        let nextSeqCounter = highestSeq;
+
         // Map data mengikut nama kolum
         const parsed: AlumniMember[] = rawJson.map((row, idx) => {
-          const noAhli = String(row['No Ahli'] || row['NoAhli'] || row['noAhli'] || '').trim();
+          const rawNoAhli = String(row['No Ahli'] || row['NoAhli'] || row['noAhli'] || row['Nombor Ahli'] || '').trim();
+          let noAhli = '';
+
+          if (rawNoAhli) {
+            const digits = rawNoAhli.replace(/\D/g, '');
+            if (digits && parseInt(digits, 10) > 0 && parseInt(digits, 10) < 900000) {
+              noAhli = `PAKKBS-${String(parseInt(digits, 10)).padStart(5, '0')}`;
+            } else {
+              nextSeqCounter++;
+              noAhli = `PAKKBS-${String(nextSeqCounter).padStart(5, '0')}`;
+            }
+          } else {
+            nextSeqCounter++;
+            noAhli = `PAKKBS-${String(nextSeqCounter).padStart(5, '0')}`;
+          }
+
           const nama = String(row['Nama Penuh'] || row['Nama'] || row['nama'] || '').trim().toUpperCase();
           const rawKp = String(row['No KP'] || row['No K/P'] || row['NoKP'] || row['noKp'] || row['Kad Pengenalan'] || '');
           const noKp = rawKp.replace(/\D/g, '');
@@ -288,8 +323,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
           const status = ['Active', 'Pending', 'Inactive', 'Rejected'].includes(statusRaw) ? (statusRaw as any) : 'Active';
 
           return {
-            id: `MEM-${noKp || Date.now().toString(36) + idx}`,
-            noAhli: noAhli || `ALUMNI-${Date.now().toString().slice(-4)}-${idx + 1}`,
+            id: `MEM-${noKp || noAhli.replace(/\D/g, '') || Date.now().toString(36) + idx}`,
+            noAhli,
             nama: nama || `AHLI ${idx + 1}`,
             noKp,
             noPendaftaran,
@@ -343,6 +378,34 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
       setUploadError('Ralat sistem semasa memuat naik data: ' + err.toString());
     } finally {
       setIsImporting(false);
+    }
+  };
+
+  // Seragamkan nombor ahli dalam Firestore kepada format piawai PAKKBS-xxxxx
+  const handleRunStandardize = async () => {
+    if (!onStandardizeMemberNumbers) return;
+    const confirmRun = window.confirm(
+      'Adakah anda pasti untuk menyelaraskan semua nombor ahli dalam pangkalan data kepada format rasmi: PAKKBS-xxxxx?'
+    );
+    if (!confirmRun) return;
+
+    setIsStandardizing(true);
+    setStandardizeMsg(null);
+    try {
+      const res = await onStandardizeMemberNumbers();
+      if (res.success) {
+        if (res.count > 0) {
+          setStandardizeMsg(`Berjaya! Sebanyak ${res.count} rekod nombor ahli telah diselaraskan kepada format rasmi PAKKBS-xxxxx.`);
+        } else {
+          setStandardizeMsg('Semua nombor ahli sedia ada sudah pun mematuhi format rasmi PAKKBS-xxxxx.');
+        }
+      } else {
+        setStandardizeMsg('Ralat semasa menyelaraskan nombor ahli: ' + (res.error || ''));
+      }
+    } catch (e: any) {
+      setStandardizeMsg('Ralat sistem: ' + e.toString());
+    } finally {
+      setIsStandardizing(false);
     }
   };
 
@@ -781,6 +844,19 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
               </div>
 
               <div className="flex items-center gap-2 flex-wrap">
+                {onStandardizeMemberNumbers && (
+                  <button
+                    type="button"
+                    onClick={handleRunStandardize}
+                    disabled={isStandardizing}
+                    className="px-3 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 font-bold text-xs rounded-xl border border-indigo-200 flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50"
+                    title="Seragamkan semua nombor ahli sedia ada kepada format rasmi: PAKKBS-xxxxx"
+                  >
+                    <RefreshCw className={`w-3.5 h-3.5 text-indigo-600 ${isStandardizing ? 'animate-spin' : ''}`} />
+                    <span>{isStandardizing ? 'Menyelaraskan...' : 'Seragamkan No. Ahli'}</span>
+                  </button>
+                )}
+
                 <button
                   type="button"
                   onClick={handleDownloadExcelTemplate}
@@ -801,6 +877,22 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 </button>
               </div>
             </div>
+
+            {standardizeMsg && (
+              <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-blue-900 text-xs font-bold flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                  <span>{standardizeMsg}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setStandardizeMsg(null)}
+                  className="text-blue-500 hover:text-blue-800 text-xs font-bold px-2 py-0.5 rounded cursor-pointer"
+                >
+                  ✕
+                </button>
+              </div>
+            )}
 
             {/* Cadangan Jadual Data Excel (Rujukan Format) */}
             <div className="space-y-3">
@@ -916,8 +1008,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       <td className="py-2 px-3 font-mono font-bold text-slate-400">13</td>
                       <td className="py-2 px-3 font-bold text-slate-900">No Ahli</td>
                       <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[9px] font-bold">Opsyen</span></td>
-                      <td className="py-2 px-3">No pendaftaran ahli (auto-jana jika kosong)</td>
-                      <td className="py-2 px-3 font-mono text-slate-800">ALUMNI-2026-001</td>
+                      <td className="py-2 px-3">Format rasmi: PAKKBS-xxxxx (cth: PAKKBS-00001, auto-jana bersiri jika kosong)</td>
+                      <td className="py-2 px-3 font-mono text-slate-800 font-bold">PAKKBS-00001</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-2 px-3 font-mono font-bold text-slate-400">14</td>
@@ -1051,6 +1143,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       <thead className="bg-slate-100 text-slate-700 sticky top-0 text-[10px] uppercase font-black">
                         <tr>
                           <th className="py-2 px-3">Bil</th>
+                          <th className="py-2 px-3">No. Ahli</th>
                           <th className="py-2 px-3">Nama</th>
                           <th className="py-2 px-3">No. KP</th>
                           <th className="py-2 px-3">No. Pendaftaran</th>
@@ -1064,6 +1157,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         {previewMembers.slice(0, 5).map((m, idx) => (
                           <tr key={idx} className="hover:bg-slate-50">
                             <td className="py-1.5 px-3 font-mono text-slate-400">{idx + 1}</td>
+                            <td className="py-1.5 px-3 font-mono font-bold text-blue-700">{m.noAhli}</td>
                             <td className="py-1.5 px-3 font-bold text-slate-800">{m.nama}</td>
                             <td className="py-1.5 px-3 font-mono">{m.noKp || '-'}</td>
                             <td className="py-1.5 px-3 font-mono text-slate-700">{m.noPendaftaran || '-'}</td>

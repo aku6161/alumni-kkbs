@@ -31,6 +31,7 @@ import {
   addOrUpdateReceipt,
   deleteReceiptFromFirestore,
   bulkAddMembersToFirestore,
+  standardizeAllMemberNumbersInFirestore,
   INITIAL_PROGRAMS_LIST
 } from './firebase';
 
@@ -775,7 +776,9 @@ export default function App() {
                 onOpenAdminModal={() => setAuthMode('admin')}
                 onReseedFirestore={seedInitialFirestoreData}
                 membersCount={members.length}
+                members={members}
                 onBulkAddMembers={handleBulkAddMembers}
+                onStandardizeMemberNumbers={standardizeAllMemberNumbersInFirestore}
               />
             )}
           </main>

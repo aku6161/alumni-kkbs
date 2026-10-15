@@ -540,3 +540,64 @@ export async function deleteReceiptFromFirestore(id: string): Promise<boolean> {
     return true;
   }
 }
+
+/**
+ * Seragamkan semua nombor ahli dalam Firestore kepada format piawai rasmi: PAKKBS-xxxxx
+ */
+export async function standardizeAllMemberNumbersInFirestore(): Promise<{ success: boolean; count: number; error?: string }> {
+  try {
+    const colRef = collection(db, COLLECTIONS.MEMBERS);
+    const snap = await getDocs(colRef);
+    let maxKnown = 0;
+    const docsToUpdate: { ref: any; newNo: string }[] = [];
+
+    // Cari nombor siri tertinggi sedia ada yang standard PAKKBS-xxxxx
+    snap.forEach((docSnap) => {
+      const data = docSnap.data() as AlumniMember;
+      const no = (data.noAhli || '').trim();
+      const m = no.match(/^PAKKBS-(\d{5})$/);
+      if (m) {
+        const val = parseInt(m[1], 10);
+        if (val > maxKnown && val < 900000) maxKnown = val;
+      }
+    });
+
+    let counter = maxKnown;
+    snap.forEach((docSnap) => {
+      const data = docSnap.data() as AlumniMember;
+      const no = (data.noAhli || '').trim();
+      const isAlreadyStandard = /^PAKKBS-\d{5}$/.test(no);
+      if (!isAlreadyStandard) {
+        let finalNum = 0;
+        const digits = no.replace(/\D/g, '');
+        if (digits && parseInt(digits, 10) > 0 && parseInt(digits, 10) < 900000) {
+          finalNum = parseInt(digits, 10);
+        } else {
+          counter++;
+          finalNum = counter;
+        }
+        const standardized = `PAKKBS-${String(finalNum).padStart(5, '0')}`;
+        docsToUpdate.push({ ref: docSnap.ref, newNo: standardized });
+      }
+    });
+
+    if (docsToUpdate.length === 0) {
+      return { success: true, count: 0 };
+    }
+
+    const chunkSize = 400;
+    for (let i = 0; i < docsToUpdate.length; i += chunkSize) {
+      const chunk = docsToUpdate.slice(i, i + chunkSize);
+      const batch = writeBatch(db);
+      chunk.forEach(item => {
+        batch.update(item.ref, { noAhli: item.newNo });
+      });
+      await batch.commit();
+    }
+
+    return { success: true, count: docsToUpdate.length };
+  } catch (err: any) {
+    console.error('Error in standardizeAllMemberNumbersInFirestore:', err);
+    return { success: false, count: 0, error: err.message };
+  }
+}
