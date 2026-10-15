@@ -311,7 +311,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         }).filter(m => m.nama && (m.noKp || m.noTelefon || m.noAhli));
 
         if (parsed.length === 0) {
-          setUploadError('Tiada rekod sah dijumpai. Sila pastikan kolum Nama dan No KP / Telefon diisi dalam fail Excel.');
+          setUploadError('Tiada rekod sah dijumpai. Sila pastikan medan wajib seperti Nama Penuh, No KP, No Pendaftaran, Program, Tahun, Tarikh Graduasi, Jantina, Agama, Kaum dan Negeri diisi dalam fail Excel.');
           return;
         }
 
@@ -873,28 +873,28 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-2 px-3 font-mono font-bold text-slate-400">7</td>
                       <td className="py-2 px-3 font-bold text-slate-900">Jantina</td>
-                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[9px] font-bold">Disyorkan</span></td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 text-[9px] font-bold">Wajib</span></td>
                       <td className="py-2 px-3">Lelaki atau Perempuan</td>
                       <td className="py-2 px-3 font-mono text-slate-800">Lelaki</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-2 px-3 font-mono font-bold text-slate-400">8</td>
                       <td className="py-2 px-3 font-bold text-slate-900">Agama</td>
-                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[9px] font-bold">Disyorkan</span></td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 text-[9px] font-bold">Wajib</span></td>
                       <td className="py-2 px-3">Agama anutan ahli (Islam / Kristian dll.)</td>
                       <td className="py-2 px-3 font-mono text-slate-800">Islam</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-2 px-3 font-mono font-bold text-slate-400">9</td>
                       <td className="py-2 px-3 font-bold text-slate-900">Kaum Utama</td>
-                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[9px] font-bold">Disyorkan</span></td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 text-[9px] font-bold">Wajib</span></td>
                       <td className="py-2 px-3">Kategori etnik / kaum utama</td>
                       <td className="py-2 px-3 font-mono text-slate-800">Bumiputera Sabah</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-2 px-3 font-mono font-bold text-slate-400">10</td>
                       <td className="py-2 px-3 font-bold text-slate-900">Negeri</td>
-                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[9px] font-bold">Disyorkan</span></td>
+                      <td className="py-2 px-3"><span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 text-[9px] font-bold">Wajib</span></td>
                       <td className="py-2 px-3">Negeri asal atau tempat tinggal semasa</td>
                       <td className="py-2 px-3 font-mono text-slate-800">Sabah</td>
                     </tr>
