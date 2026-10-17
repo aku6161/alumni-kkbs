@@ -80,5 +80,5 @@ export interface ProgramReceipt {
   autoLedgerSync?: boolean;
 }
 
-export type ViewType = 'dashboard' | 'programs' | 'membership' | 'finance' | 'statistics' | 'reports' | 'settings';
+export type ViewType = 'dashboard' | 'programs' | 'membership' | 'finance' | 'receipts' | 'statistics' | 'reports' | 'settings';
 export type UserRole = 'landing' | 'member' | 'admin';

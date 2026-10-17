@@ -322,13 +322,18 @@ export const OfficialReceiptDocument: React.FC<{ receipt: ProgramReceipt }> = ({
           pageBreakInside: 'avoid'
         }}
       >
-        {/* Left: Square QR Code */}
+        {/* Left: Square QR Code with offline fallback */}
         <div style={{ textAlign: 'center', width: '130px' }}>
           <img
             src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&data=${encodeURIComponent(
               `RESIT RASMI BAYARAN: ${receipt.receiptNo}\nTARIKH: ${receipt.date}\nNAMA: ${receipt.payerName}\nJUMLAH: RM ${receipt.amount.toFixed(2)}\nKAEDAH: ${receipt.paymentMethod}`
             )}`}
             alt="QR Code"
+            onError={(e) => {
+              (e.currentTarget as HTMLElement).style.display = 'none';
+              const fallback = document.getElementById(`qr-fallback-${receipt.receiptNo.replace(/[^a-zA-Z0-9]/g, '_')}`);
+              if (fallback) fallback.style.display = 'flex';
+            }}
             style={{
               width: '85px',
               height: '85px',
@@ -340,6 +345,27 @@ export const OfficialReceiptDocument: React.FC<{ receipt: ProgramReceipt }> = ({
               boxSizing: 'border-box'
             }}
           />
+          <div
+            id={`qr-fallback-${receipt.receiptNo.replace(/[^a-zA-Z0-9]/g, '_')}`}
+            style={{
+              display: 'none',
+              width: '85px',
+              height: '85px',
+              margin: '0 auto',
+              border: '1.5px solid #000',
+              backgroundColor: '#f8fafc',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '4px',
+              boxSizing: 'border-box'
+            }}
+          >
+            <div style={{ fontSize: '7px', fontWeight: 'bold', color: '#1e3a8a', textTransform: 'uppercase' }}>PAKKBS</div>
+            <div style={{ fontSize: '8px', fontWeight: 'bold', color: '#000', margin: '2px 0' }}>✓ DISAHKAN</div>
+            <div style={{ fontSize: '6.5px', fontFamily: 'monospace', color: '#334155' }}>{receipt.receiptNo}</div>
+            <div style={{ fontSize: '5.5px', color: '#64748b', marginTop: '2px' }}>STATUS: LUNAS</div>
+          </div>
           <span style={{ fontSize: '7.5px', color: '#333', display: 'block', marginTop: '4px', fontWeight: 'bold', letterSpacing: '0.3px' }}>
             IMBAS KOD PENGESAHAN
           </span>
@@ -489,6 +515,38 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
     }
   };
 
+  // Muat turun fail resit rasmi secara offline (HTML / Bersedia Cetak)
+  const handleDownloadHtml = (receipt: ProgramReceipt) => {
+    const el = document.getElementById('receipt-screen-preview-container');
+    const content = el ? el.innerHTML : '';
+    const fullHtml = `<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <title>${receipt.receiptNo} - RESIT RASMI BAYARAN</title>
+  <style>
+    @page { size: A4 portrait; margin: 8mm 10mm 10mm 10mm; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #ffffff; color: #000000; margin: 0; padding: 20px; }
+    @media print { body { padding: 0; } }
+  </style>
+</head>
+<body onload="window.print()">
+  <div style="max-width: 780px; margin: 0 auto;">
+    ${content}
+  </div>
+</body>
+</html>`;
+    const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `Resit_${receipt.receiptNo.replace(/[^a-zA-Z0-9.-]/g, '_')}.html`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   // Direct Print & Preview Trigger: opens on-screen preview AND browser print dialog
   // Pastikan nama dokumen yang disimpan pelayar (Save as PDF) adalah mengikut no resit rasmi
   const handleTriggerPrint = (receipt: ProgramReceipt) => {
@@ -497,14 +555,14 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
     setPrintReceipt(receipt);
     setSelectedReceiptForPreview(receipt);
 
-    // Lancarkan dialog cetak pelayar serta-merta
+    // Lancarkan dialog cetak pelayar dengan sela masa 300ms agar DOM dan susun atur sempat dipaparkan
     setTimeout(() => {
       try {
         window.print();
       } catch (err) {
         console.error('Error opening print window:', err);
       }
-    }, 80);
+    }, 300);
 
     // Kembalikan tajuk tetingkap asal selepas cetakan
     const restoreDocTitle = () => {
@@ -514,7 +572,7 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
     window.addEventListener('afterprint', restoreDocTitle);
     setTimeout(() => {
       document.title = originalTitle;
-    }, 3000);
+    }, 5000);
   };
 
   // Submit Handler
@@ -537,13 +595,14 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
 
     setIsSubmitting(true);
 
+    // Gantikan undefined dengan rentetan kosong agar tidak mencetuskan ralat dokumen Firestore
     const newReceiptPayload: Omit<ProgramReceipt, 'id' | 'createdAt'> = {
       receiptNo: receiptNo.trim() || nextReceiptNumber,
       date,
       payerName: payerName.trim(),
-      payerIcOrReg: payerAddress.trim() || undefined,
-      payerPhone: payerPhone.trim() || undefined,
-      payerEmail: payerEmail.trim() || undefined,
+      payerIcOrReg: payerAddress.trim() || '',
+      payerPhone: payerPhone.trim() || '',
+      payerEmail: payerEmail.trim() || '',
       programName: resolvedProgramName,
       paymentCategory: 'Bayaran Program Khas',
       paymentMethod,
@@ -559,14 +618,18 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
       const ok = await onAddReceipt(newReceiptPayload);
       if (ok) {
         if (autoLedgerSync && onAddTransaction) {
-          await onAddTransaction({
-            date: new Date(date).toISOString(),
-            category: 'Aktiviti Persatuan',
-            amount: parsedAmount,
-            type: 'Income',
-            description: `[${newReceiptPayload.receiptNo}] ${payerName.trim()} - ${resolvedProgramName}`,
-            receiptUrl: `resit_${newReceiptPayload.receiptNo.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`
-          });
+          try {
+            await onAddTransaction({
+              date: new Date(date).toISOString(),
+              category: 'Aktiviti Persatuan',
+              amount: parsedAmount,
+              type: 'Income',
+              description: `[${newReceiptPayload.receiptNo}] ${payerName.trim()} - ${resolvedProgramName}`,
+              receiptUrl: `resit_${newReceiptPayload.receiptNo.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`
+            });
+          } catch (txErr) {
+            console.warn('Auto sync transaction to ledger failed:', txErr);
+          }
         }
 
         const fullReceipt: ProgramReceipt = {
@@ -583,11 +646,11 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
           setSelectedReceiptForPreview(fullReceipt);
         }
       } else {
-        setFormMsg({ type: 'error', text: 'Gagal menjana resit ke pengkalan data. Sila cuba lagi.' });
+        setFormMsg({ type: 'error', text: 'Gagal menjana resit ke pengkalan data. Sila semak sambungan atau cuba lagi.' });
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error generating receipt:', err);
-      setFormMsg({ type: 'error', text: 'Ralat semasa menyimpan resit.' });
+      setFormMsg({ type: 'error', text: `Ralat semasa menyimpan resit: ${err?.message || 'Sila cuba lagi.'}` });
     } finally {
       setIsSubmitting(false);
     }
@@ -1190,6 +1253,16 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
               <div className="flex items-center gap-2">
                 <button
                   type="button"
+                  onClick={() => handleDownloadHtml(selectedReceiptForPreview)}
+                  className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-xs rounded-xl flex items-center gap-1.5 border border-slate-700 transition-all cursor-pointer"
+                  title="Simpan / Muat turun salinan resit sebagai fail HTML"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Muat Turun</span>
+                </button>
+
+                <button
+                  type="button"
                   onClick={() => handleTriggerPrint(selectedReceiptForPreview)}
                   className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-blue-500/30 cursor-pointer transition-all active:scale-95"
                 >
@@ -1209,18 +1282,18 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
 
             {/* Document Paper Container on Screen */}
             <div className="p-4 sm:p-8 overflow-y-auto bg-slate-200/80 flex justify-center">
-              <div className="bg-white rounded-xl shadow-xl border border-slate-300 w-full max-w-[760px] p-6 sm:p-8">
+              <div id="receipt-screen-preview-container" className="bg-white rounded-xl shadow-xl border border-slate-300 w-full max-w-[760px] p-6 sm:p-8">
                 <OfficialReceiptDocument receipt={selectedReceiptForPreview} />
               </div>
             </div>
 
             {/* Modal Footer */}
-            <div className="bg-white px-6 py-3 border-t border-slate-200 flex justify-between items-center shrink-0">
+            <div className="bg-white px-6 py-3 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-2 shrink-0">
               <span className="text-[11px] font-medium text-slate-500">
                 Pilihan saiz cetakan disyorkan: <strong>A4 Potret (Portrait)</strong>
               </span>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
                 <button
                   type="button"
                   onClick={() => setSelectedReceiptForPreview(null)}
@@ -1231,8 +1304,18 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
 
                 <button
                   type="button"
+                  onClick={() => handleDownloadHtml(selectedReceiptForPreview)}
+                  className="px-3.5 py-2 border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold rounded-xl flex items-center gap-1.5 cursor-pointer transition-all"
+                  title="Muat turun salinan resit HTML luar talian"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Muat Turun Fail</span>
+                </button>
+
+                <button
+                  type="button"
                   onClick={() => handleTriggerPrint(selectedReceiptForPreview)}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95 transition-all"
                 >
                   <Printer className="w-3.5 h-3.5" />
                   <span>Cetak Dokumen Sekarang</span>
@@ -1247,8 +1330,8 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
       {(printReceipt || selectedReceiptForPreview) && (
         <div
           id="receipt-print-area"
+          className="hidden print:block"
           style={{
-            display: 'none',
             width: '100%',
             maxWidth: '100%',
             boxSizing: 'border-box',
@@ -1268,31 +1351,35 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
           __html: `
         @page {
           size: A4 portrait;
-          margin: 10mm 12mm 12mm 12mm !important;
+          margin: 8mm 10mm 10mm 10mm !important;
         }
         @media print {
-          body * {
-            visibility: hidden !important;
-          }
-          #receipt-print-area, #receipt-print-area * {
-            visibility: visible !important;
-          }
-          #receipt-print-area {
-            display: block !important;
-            position: fixed !important;
-            left: 0 !important;
-            top: 0 !important;
-            width: 100% !important;
-            height: auto !important;
+          html, body {
+            background: #ffffff !important;
+            color: #000000 !important;
             margin: 0 !important;
             padding: 0 !important;
-            background: #ffffff !important;
-            z-index: 99999999 !important;
+            width: 100% !important;
+            height: auto !important;
+            overflow: visible !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
-          .print\\:hidden, .no-print {
+          #root, main, div, table, tr, td, th {
+            overflow: visible !important;
+          }
+          .print\\:hidden, .no-print, header, footer, nav, aside {
             display: none !important;
+          }
+          #receipt-print-area {
+            display: block !important;
+            position: relative !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+            background: #ffffff !important;
+            color: #000000 !important;
           }
         }
       `

@@ -369,11 +369,21 @@ export default function App() {
       id: `REC-${Date.now()}`,
       createdAt: new Date().toISOString()
     };
-    const success = await addOrUpdateReceipt(fullReceipt);
-    if (success) {
-      setReceipts(prev => [fullReceipt, ...prev.filter(r => r.id !== fullReceipt.id)]);
+    // Pastikan tiada nilai undefined
+    const cleanReceipt = Object.fromEntries(
+      Object.entries(fullReceipt).filter(([_, v]) => v !== undefined)
+    ) as unknown as ProgramReceipt;
+
+    // Simpan serta-merta ke dalam state tempatan
+    setReceipts(prev => [cleanReceipt, ...prev.filter(r => r.id !== cleanReceipt.id)]);
+
+    try {
+      await addOrUpdateReceipt(cleanReceipt);
+      return true;
+    } catch (err) {
+      console.warn('Sync to Firestore receipt warning:', err);
+      return true;
     }
-    return success;
   };
 
   const handleDeleteReceipt = async (id: string): Promise<boolean> => {
@@ -747,13 +757,14 @@ export default function App() {
               <StatisticsPanel members={members} />
             )}
             
-            {currentView === 'finance' && userRole === 'admin' && (
+            {(currentView === 'finance' || currentView === 'receipts') && userRole === 'admin' && (
               <FinanceLedger
                 transactions={transactions}
                 programs={programs}
                 config={config}
                 members={members}
                 receipts={receipts}
+                initialTab={currentView === 'receipts' ? 'receipts' : undefined}
                 onAddTransaction={handleAddTransaction}
                 onDeleteTransaction={handleDeleteTransaction}
                 onAddReceipt={handleAddReceipt}

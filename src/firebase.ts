@@ -13,7 +13,7 @@ import {
   Unsubscribe
 } from 'firebase/firestore';
 import { AlumniMember, Transaction, Program, SystemConfig, ProgramReceipt } from './types';
-import { INITIAL_MEMBERS, INITIAL_TRANSACTIONS, INITIAL_CONFIG, INITIAL_RECEIPTS } from './data/initialData';
+import { INITIAL_MEMBERS, INITIAL_TRANSACTIONS, INITIAL_CONFIG } from './data/initialData';
 
 const getApiKey = () => {
   try {
@@ -521,7 +521,11 @@ export async function addOrUpdateReceipt(receipt: ProgramReceipt): Promise<boole
   try {
     const docId = receipt.id || `REC-${Date.now()}`;
     const docRef = doc(db, COLLECTIONS.RECEIPTS, docId);
-    await setDoc(docRef, { ...receipt, id: docId }, { merge: true });
+    // Tapis keluar semua nilai undefined agar tidak mencetuskan ralat 'Unsupported field value: undefined' dalam Firestore
+    const cleanReceipt = Object.fromEntries(
+      Object.entries({ ...receipt, id: docId }).filter(([_, v]) => v !== undefined)
+    );
+    await setDoc(docRef, cleanReceipt, { merge: true });
     return true;
   } catch (err) {
     console.error('Error saving program receipt:', err);

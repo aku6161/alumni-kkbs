@@ -1,6 +1,6 @@
 import React from 'react';
 import { ViewType, UserRole } from '../types';
-import { GraduationCap, LogOut, LayoutDashboard, Search, CreditCard, BarChart2, DollarSign, FileSpreadsheet, Settings, Mail, FileText } from 'lucide-react';
+import { GraduationCap, LogOut, LayoutDashboard, Search, CreditCard, BarChart2, DollarSign, FileSpreadsheet, Settings, Mail, FileText, Receipt } from 'lucide-react';
 
 interface NavbarProps {
   currentView: ViewType;
@@ -100,6 +100,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 <DollarSign className="w-4 h-4" />
                 <span>Kewangan</span>
+              </button>
+
+              <button
+                onClick={() => setCurrentView('receipts')}
+                className={`py-3 px-4 font-bold text-xs uppercase tracking-wider border-b-2 flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
+                  currentView === 'receipts'
+                    ? 'border-blue-700 text-blue-700 bg-white shadow-2xs font-extrabold'
+                    : 'border-transparent text-slate-500 hover:text-slate-800'
+                }`}
+              >
+                <Receipt className="w-4 h-4" />
+                <span>Resit / Invois</span>
               </button>
 
               <button

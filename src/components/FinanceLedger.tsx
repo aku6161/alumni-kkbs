@@ -9,6 +9,7 @@ interface FinanceLedgerProps {
   config?: SystemConfig;
   members?: AlumniMember[];
   receipts?: ProgramReceipt[];
+  initialTab?: 'roster' | 'add' | 'receipts';
   onAddTransaction: (tx: Omit<Transaction, 'id'>) => Promise<boolean>;
   onDeleteTransaction: (id: string) => Promise<boolean>;
   onAddReceipt?: (receipt: Omit<ProgramReceipt, 'id' | 'createdAt'>) => Promise<boolean>;
@@ -21,12 +22,19 @@ export const FinanceLedger: React.FC<FinanceLedgerProps> = ({
   config,
   members = [],
   receipts = [],
+  initialTab,
   onAddTransaction,
   onDeleteTransaction,
   onAddReceipt,
   onDeleteReceipt
 }) => {
-  const [activeTab, setActiveTab] = useState<'roster' | 'add' | 'receipts'>('roster');
+  const [activeTab, setActiveTab] = useState<'roster' | 'add' | 'receipts'>(initialTab || 'roster');
+
+  React.useEffect(() => {
+    if (initialTab) {
+      setActiveTab(initialTab);
+    }
+  }, [initialTab]);
   const [selectedYear, setSelectedYear] = useState<string>('Semua');
 
   const handlePrint = () => {

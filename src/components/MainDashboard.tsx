@@ -1,6 +1,6 @@
 import React from 'react';
 import { AlumniMember, ViewType } from '../types';
-import { Users, UserCheck, UserMinus, ShieldAlert, ArrowRight, CreditCard, BarChart2, DollarSign, Settings, Mail, Briefcase, ExternalLink, GraduationCap, Search } from 'lucide-react';
+import { Users, UserCheck, UserMinus, ShieldAlert, ArrowRight, CreditCard, BarChart2, DollarSign, Settings, Mail, Briefcase, ExternalLink, GraduationCap, Search, Receipt } from 'lucide-react';
 
 interface MainDashboardProps {
   members: AlumniMember[];
@@ -147,6 +147,24 @@ export const MainDashboard: React.FC<MainDashboardProps> = ({
               </div>
               <div className="flex items-center gap-1.5 text-xs text-emerald-600 font-extrabold mt-6 group-hover:gap-2.5 transition-all">
                 <span>Buka Menu</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </div>
+            </div>
+
+            {/* Card: Resit & Invois Program */}
+            <div 
+              onClick={() => setCurrentView('receipts')}
+              className="bg-white p-5 rounded-2xl border border-slate-100 shadow-2xs hover:shadow-md cursor-pointer transition-all flex flex-col justify-between group"
+            >
+              <div>
+                <div className="bg-indigo-50 w-fit p-3 rounded-xl text-indigo-600 mb-4">
+                  <Receipt className="w-5 h-5" />
+                </div>
+                <h4 className="font-extrabold text-sm text-slate-800">Resit & Invois Program</h4>
+                <p className="text-xs text-slate-500 mt-1">Jana, rekod, simpan dan cetak resit rasmi program alumni.</p>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs text-indigo-600 font-extrabold mt-6 group-hover:gap-2.5 transition-all">
+                <span>Jana Resit</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </div>
