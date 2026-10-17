@@ -467,8 +467,6 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
   const [autoLedgerSync, setAutoLedgerSync] = useState(true);
 
   // Member selector
-  const [selectedMemberId, setSelectedMemberId] = useState('');
-
   // Form message
   const [formMsg, setFormMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -496,23 +494,8 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
     setDescription('');
     setReceivedBy(config?.bendahari || defaultOfficer);
     setAutoLedgerSync(true);
-    setSelectedMemberId('');
     setFormMsg(null);
     setIsFormOpen(true);
-  };
-
-  // Autofill when a registered member is selected
-  const handleMemberSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const memId = e.target.value;
-    setSelectedMemberId(memId);
-    if (!memId) return;
-    const found = members.find(m => m.id === memId);
-    if (found) {
-      setPayerName(found.nama);
-      setPayerAddress(found.alamat || found.noKp || '');
-      setPayerPhone(found.noTelefon || '');
-      setPayerEmail(found.emel || '');
-    }
   };
 
   // Muat turun fail resit rasmi secara offline (HTML / Bersedia Cetak)
@@ -980,7 +963,7 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
                 </div>
               </div>
 
-              {/* Section 2: Nama Program (Manual) */}
+              {/* Section 2: Nama Program */}
               <div>
                 <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
                   Nama Program *
@@ -988,7 +971,7 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
                 <input
                   type="text"
                   required
-                  placeholder="Masukkan nama program secara manual (Contoh: MAKAN MALAM AMAL ALUMNI KKBS 2026)"
+                  placeholder="Contoh: MAKAN MALAM AMAL ALUMNI KKBS 2026"
                   value={customProgramName}
                   onChange={(e) => setCustomProgramName(e.target.value)}
                   className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:outline-blue-600 uppercase"
@@ -997,29 +980,10 @@ export const ProgramReceiptsManager: React.FC<ProgramReceiptsManagerProps> = ({
 
               {/* Section 3: Maklumat Pembayar */}
               <div className="border border-slate-200 p-3.5 rounded-xl space-y-3">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-[11px] font-black text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-                    <User className="w-3.5 h-3.5 text-blue-600" />
-                    <span>Maklumat Pembayar / Peserta / Syarikat</span>
-                  </h4>
-
-                  {/* Optional Alumni Autofill */}
-                  {members.length > 0 && (
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[9px] font-bold text-slate-400 uppercase">Isi dari Ahli:</span>
-                      <select
-                        value={selectedMemberId}
-                        onChange={handleMemberSelect}
-                        className="bg-slate-100 border border-slate-200 text-[10px] font-medium rounded-lg px-2 py-0.5 text-slate-600 cursor-pointer focus:outline-blue-500 max-w-[150px] truncate"
-                      >
-                        <option value="">-- Pilih Ahli --</option>
-                        {members.map(m => (
-                          <option key={m.id} value={m.id}>{m.nama}</option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
-                </div>
+                <h4 className="text-[11px] font-black text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                  <User className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Maklumat Pembayar / Peserta / Syarikat</span>
+                </h4>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>

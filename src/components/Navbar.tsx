@@ -103,30 +103,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
 
               <button
-                onClick={() => setCurrentView('receipts')}
-                className={`py-3 px-4 font-bold text-xs uppercase tracking-wider border-b-2 flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
-                  currentView === 'receipts'
-                    ? 'border-blue-700 text-blue-700 bg-white shadow-2xs font-extrabold'
-                    : 'border-transparent text-slate-500 hover:text-slate-800'
-                }`}
-              >
-                <Receipt className="w-4 h-4" />
-                <span>Resit / Invois</span>
-              </button>
-
-              <button
-                onClick={() => setCurrentView('reports')}
-                className={`py-3 px-4 font-bold text-xs uppercase tracking-wider border-b-2 flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
-                  currentView === 'reports'
-                    ? 'border-blue-700 text-blue-700 bg-white shadow-2xs font-extrabold'
-                    : 'border-transparent text-slate-500 hover:text-slate-800'
-                }`}
-              >
-                <FileSpreadsheet className="w-4 h-4" />
-                <span>Laporan</span>
-              </button>
-
-              <button
                 onClick={() => setCurrentView('programs')}
                 className={`py-3 px-4 font-bold text-xs uppercase tracking-wider border-b-2 flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
                   currentView === 'programs'

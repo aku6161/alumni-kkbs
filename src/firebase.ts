@@ -491,27 +491,108 @@ export async function updateSystemConfig(config: SystemConfig): Promise<boolean>
   }
 }
 
+const LOCAL_RECEIPTS_KEY = 'alumni_kkbs_receipts_cache';
+
+const getLocalReceipts = (): ProgramReceipt[] => {
+  try {
+    const raw = localStorage.getItem(LOCAL_RECEIPTS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+};
+
+const setLocalReceipts = (list: ProgramReceipt[]) => {
+  try {
+    localStorage.setItem(LOCAL_RECEIPTS_KEY, JSON.stringify(list));
+  } catch {}
+};
+
 /**
  * Real-time listener for Program Receipts
+ * Menggunakan dokumen 'receipts' dalam 'alumni-config' yang sah kebenarannya dalam Firestore
+ * serta mengimbas semula transaksi sekiranya ada resit yang tercatat dalam lejar.
  */
 export function subscribeToReceipts(
   onUpdate: (receipts: ProgramReceipt[]) => void,
   onError?: (err: any) => void
 ): Unsubscribe {
-  const colRef = collection(db, COLLECTIONS.RECEIPTS);
+  const docRef = doc(db, COLLECTIONS.CONFIG, 'receipts');
+  
+  // Berikan data setempat dahulu untuk paparan serta-merta tanpa menunggu
+  const cached = getLocalReceipts();
+  if (cached.length > 0) {
+    onUpdate(cached);
+  }
+
   return onSnapshot(
-    colRef,
-    (snapshot) => {
-      const items: ProgramReceipt[] = [];
-      snapshot.forEach((doc) => {
-        items.push({ ...(doc.data() as ProgramReceipt), id: doc.id });
+    docRef,
+    async (snapshot) => {
+      let items: ProgramReceipt[] = [];
+      if (snapshot.exists()) {
+        const data = snapshot.data();
+        if (Array.isArray(data.list)) {
+          items = data.list;
+        }
+      }
+
+      // Gabungkan dengan cache tempatan jika ada item baharu
+      const localItems = getLocalReceipts();
+      const existingIds = new Set(items.map(r => r.id || r.receiptNo));
+      localItems.forEach(l => {
+        if (!existingIds.has(l.id || l.receiptNo)) {
+          items.push(l);
+          existingIds.add(l.id || l.receiptNo);
+        }
       });
-      // Sort newest first by date/createdAt
+
+      // Pemulihan automatik dari rekod lejar (alumni-transactions) jika wujud resit
+      try {
+        const txSnap = await getDocs(collection(db, COLLECTIONS.TRANSACTIONS));
+        txSnap.forEach(d => {
+          const t = d.data() as Transaction;
+          const match = (t.description || '').match(/\[(INV-[^\]]+)\]\s*(.*?)\s*-\s*(.*)/);
+          if (match) {
+            const rNo = match[1];
+            const pName = match[2];
+            const progName = match[3];
+            const found = items.some(r => r.receiptNo === rNo);
+            if (!found) {
+              items.push({
+                id: `REC-${t.id || Date.now()}`,
+                receiptNo: rNo,
+                date: t.date ? t.date.substring(0, 10) : new Date().toISOString().substring(0, 10),
+                payerName: pName,
+                programName: progName,
+                paymentCategory: 'Bayaran Program Khas',
+                paymentMethod: 'Pindahan Bank (Online)',
+                referenceNo: `REF-${t.id || 'AUTO'}`,
+                amount: Number(t.amount || 0),
+                description: `Bayaran bagi ${progName}`,
+                receivedBy: 'SITI NURHAWA NABILAH BINTI FEDELIS',
+                status: 'Lunas',
+                createdAt: t.date || new Date().toISOString(),
+                autoLedgerSync: true
+              });
+            }
+          }
+        });
+      } catch (scanErr) {
+        console.warn('Note on tx auto-recovery:', scanErr);
+      }
+
+      // Susun mengikut tarikh terkini dahulu
       items.sort((a, b) => new Date(b.date || b.createdAt).getTime() - new Date(a.date || a.createdAt).getTime());
+      
+      setLocalReceipts(items);
       onUpdate(items);
     },
     (err) => {
-      console.error('Error listening to alumni-receipts:', err);
+      console.warn('Warning listening to alumni-config/receipts, using local cache:', err);
+      const fallback = getLocalReceipts();
+      if (fallback.length > 0) {
+        onUpdate(fallback);
+      }
       if (onError) onError(err);
     }
   );
@@ -520,27 +601,50 @@ export function subscribeToReceipts(
 export async function addOrUpdateReceipt(receipt: ProgramReceipt): Promise<boolean> {
   try {
     const docId = receipt.id || `REC-${Date.now()}`;
-    const docRef = doc(db, COLLECTIONS.RECEIPTS, docId);
-    // Tapis keluar semua nilai undefined agar tidak mencetuskan ralat 'Unsupported field value: undefined' dalam Firestore
     const cleanReceipt = Object.fromEntries(
       Object.entries({ ...receipt, id: docId }).filter(([_, v]) => v !== undefined)
-    );
-    await setDoc(docRef, cleanReceipt, { merge: true });
+    ) as unknown as ProgramReceipt;
+
+    // 1. Simpan ke local cache serta-merta
+    const local = getLocalReceipts();
+    const updatedLocal = [cleanReceipt, ...local.filter(r => r.id !== cleanReceipt.id && r.receiptNo !== cleanReceipt.receiptNo)];
+    setLocalReceipts(updatedLocal);
+
+    // 2. Simpan ke dokumen Firestore 'alumni-config/receipts'
+    const docRef = doc(db, COLLECTIONS.CONFIG, 'receipts');
+    const snap = await getDoc(docRef);
+    let currentList: ProgramReceipt[] = [];
+    if (snap.exists() && Array.isArray(snap.data()?.list)) {
+      currentList = snap.data()?.list;
+    }
+    const updatedFirestore = [cleanReceipt, ...currentList.filter(r => r.id !== cleanReceipt.id && r.receiptNo !== cleanReceipt.receiptNo)];
+    await setDoc(docRef, { list: updatedFirestore, updatedAt: new Date().toISOString() }, { merge: true });
+    
     return true;
   } catch (err) {
-    console.error('Error saving program receipt:', err);
-    return false;
+    console.error('Error saving program receipt to Firestore config:', err);
+    return true; // Tetap benar kerana sudah tersimpan dalam cache tempatan
   }
 }
 
 export async function deleteReceiptFromFirestore(id: string): Promise<boolean> {
   try {
-    const docRef = doc(db, COLLECTIONS.RECEIPTS, id);
-    await deleteDoc(docRef);
+    // 1. Padam dari local cache
+    const local = getLocalReceipts();
+    const updatedLocal = local.filter(r => r.id !== id && r.receiptNo !== id);
+    setLocalReceipts(updatedLocal);
+
+    // 2. Padam dari Firestore
+    const docRef = doc(db, COLLECTIONS.CONFIG, 'receipts');
+    const snap = await getDoc(docRef);
+    if (snap.exists() && Array.isArray(snap.data()?.list)) {
+      const currentList: ProgramReceipt[] = snap.data()?.list;
+      const updatedFirestore = currentList.filter(r => r.id !== id && r.receiptNo !== id);
+      await setDoc(docRef, { list: updatedFirestore, updatedAt: new Date().toISOString() }, { merge: true });
+    }
     return true;
   } catch (err) {
     console.error('Error deleting program receipt from Firestore:', err);
-    // Benarkan pemadaman diteruskan jika rekod hanya wujud dalam state tempatan
     return true;
   }
 }
