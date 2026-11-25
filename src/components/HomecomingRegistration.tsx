@@ -56,6 +56,43 @@ const BANK_DETAILS = {
 const PRICE_12_PLUS = 90;
 const PRICE_5_TO_11 = 45;
 const PRICE_4_BELOW = 0;
+const JK_DISCOUNT_AMOUNT = 45;
+
+// Helper: Normalisasi nama untuk perbandingan tepat & fleksibel
+const normalizeNameForMatching = (str: string): string => {
+  return (str || '')
+    .toUpperCase()
+    .replace(/^(DR\.|TS\.|ENCIK|PUAN|CIK|TN\.|PN\.|USTAZ|USTAZAH|EN\.)\s+/i, '')
+    .replace(/[^A-Z0-9]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+};
+
+const simplifyNameForMatching = (str: string): string => {
+  return normalizeNameForMatching(str)
+    .replace(/\b(BIN|BINTI|BTE|BT|ANAK|A\/L|A\/P)\b/g, '')
+    .replace(/\b(MOHAMMAD|MUHAMMAD|MUHAMAD)\b/g, 'MOHD')
+    .replace(/\s+/g, ' ')
+    .trim();
+};
+
+const isJkNameMatch = (candidate: string, targetJk: string): boolean => {
+  const normCand = normalizeNameForMatching(candidate);
+  const normTarget = normalizeNameForMatching(targetJk);
+  if (!normCand || !normTarget) return false;
+  if (normCand === normTarget) return true;
+
+  const simpCand = simplifyNameForMatching(candidate);
+  const simpTarget = simplifyNameForMatching(targetJk);
+  if (simpCand && simpTarget && simpCand === simpTarget) return true;
+
+  return false;
+};
+
+interface JkMemberEntry {
+  position: string;
+  name: string;
+}
 
 const APPS_SCRIPT_SNIPPET = `var HOMECOMING_FOLDER_ID = "${HOMECOMING_DRIVE_FOLDER_ID}";
 
@@ -238,12 +275,50 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
   const [driveSaveMsg, setDriveSaveMsg] = useState('');
   const [copiedScriptCode, setCopiedScriptCode] = useState(false);
 
-  // Auto-calculate totals
+  // Ekstrak semua senarai penama JK Persatuan dari tetapan konfigurasi
+  const jkMembers = useMemo<JkMemberEntry[]>(() => {
+    const list: JkMemberEntry[] = [];
+    if (config.pengerusi?.trim()) list.push({ position: 'Pengerusi', name: config.pengerusi.trim() });
+    if (config.timbalanPengerusi?.trim()) list.push({ position: 'Timbalan Pengerusi', name: config.timbalanPengerusi.trim() });
+    if (config.setiausaha?.trim()) list.push({ position: 'Setiausaha', name: config.setiausaha.trim() });
+    if (config.penolongSetiausaha?.trim()) list.push({ position: 'Penolong Setiausaha', name: config.penolongSetiausaha.trim() });
+    if (config.bendahari?.trim()) list.push({ position: 'Bendahari', name: config.bendahari.trim() });
+    if (config.juruAudit?.trim()) list.push({ position: 'Juru Audit', name: config.juruAudit.trim() });
+    if (config.penasihat?.trim()) list.push({ position: 'Penasihat', name: config.penasihat.trim() });
+    if (Array.isArray(config.ajk)) {
+      config.ajk.forEach((item, index) => {
+        if (item?.trim()) {
+          list.push({ position: `AJK ${index + 1}`, name: item.trim() });
+        }
+      });
+    }
+    return list;
+  }, [config]);
+
+  // Nama calon peserta semasa (Alumni atau Pensyarah)
+  const currentParticipantName = useMemo(() => {
+    if (participantType === 'Alumni') {
+      return loggedInAlumni?.nama || '';
+    }
+    return lecturerName.trim();
+  }, [participantType, loggedInAlumni, lecturerName]);
+
+  // Semak adakah penama wujud dalam barisan JK Persatuan
+  const matchedJk = useMemo(() => {
+    if (!currentParticipantName) return null;
+    return jkMembers.find(jk => isJkNameMatch(currentParticipantName, jk.name)) || null;
+  }, [currentParticipantName, jkMembers]);
+
+  // Kira subtotal & potongan harga JK (RM45)
   const subtotal12Plus = pax12Plus * PRICE_12_PLUS;
   const subtotal5To11 = pax5To11 * PRICE_5_TO_11;
   const subtotal4Below = pax4Below * PRICE_4_BELOW;
   const totalPax = pax12Plus + pax5To11 + pax4Below;
-  const totalAmount = subtotal12Plus + subtotal5To11 + subtotal4Below;
+  const grossAmount = subtotal12Plus + subtotal5To11 + subtotal4Below;
+
+  // Potongan RM45 jika penama dalam tetapan JK Persatuan
+  const jkDiscount = matchedJk ? Math.min(grossAmount, JK_DISCOUNT_AMOUNT) : 0;
+  const totalAmount = Math.max(0, grossAmount - jkDiscount);
 
   // Sequential receipt number (INV-YYYY.NNN)
   const nextReceiptNumber = useMemo(() => {
@@ -464,15 +539,21 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
       }
 
       // 2. Build pax breakdown description
+      const isJk = Boolean(matchedJk);
+      const discountReasonText = matchedJk ? `Potongan Khas JK Persatuan (${matchedJk.position})` : undefined;
+
       const paxParts: string[] = [];
       if (pax12Plus > 0) paxParts.push(`12 tahun ke atas: ${pax12Plus} pax (RM${(pax12Plus * PRICE_12_PLUS).toFixed(2)})`);
       if (pax5To11 > 0) paxParts.push(`5-11 tahun: ${pax5To11} pax (RM${(pax5To11 * PRICE_5_TO_11).toFixed(2)})`);
       if (pax4Below > 0) paxParts.push(`4 tahun ke bawah: ${pax4Below} pax (Percuma)`);
+      if (jkDiscount > 0 && matchedJk) {
+        paxParts.push(`Potongan JK Persatuan [${matchedJk.position}]: -RM${jkDiscount.toFixed(2)}`);
+      }
 
       const categoryLabel =
         participantType === 'Alumni'
-          ? `Alumni (${resolvedNoAhli || 'Ahli'})`
-          : 'Pensyarah';
+          ? `Alumni (${resolvedNoAhli || 'Ahli'}${matchedJk ? ` • ${matchedJk.position}` : ''})`
+          : `Pensyarah${matchedJk ? ` • ${matchedJk.position}` : ''}`;
 
       const receiptDescription = `Tempahan ${program.namaProgram} [${categoryLabel}] — ${paxParts.join(', ')}`;
 
@@ -522,6 +603,11 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
         pax5To11,
         pax4Below,
         totalPax,
+        grossAmount,
+        discountAmount: jkDiscount,
+        discountReason: discountReasonText,
+        isJkMember: isJk,
+        jkPosition: matchedJk?.position,
         totalAmount,
         referenceNo: resolvedRefNo,
         receiptNo: generatedReceiptNo,
@@ -599,6 +685,9 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
     if (reg.pax12Plus > 0) paxParts.push(`12 tahun ke atas: ${reg.pax12Plus} pax (RM${(reg.pax12Plus * PRICE_12_PLUS).toFixed(2)})`);
     if (reg.pax5To11 > 0) paxParts.push(`5-11 tahun: ${reg.pax5To11} pax (RM${(reg.pax5To11 * PRICE_5_TO_11).toFixed(2)})`);
     if (reg.pax4Below > 0) paxParts.push(`4 tahun ke bawah: ${reg.pax4Below} pax (Percuma)`);
+    if (reg.discountAmount && reg.discountAmount > 0) {
+      paxParts.push(`Potongan JK Persatuan${reg.jkPosition ? ` [${reg.jkPosition}]` : ''}: -RM${reg.discountAmount.toFixed(2)}`);
+    }
 
     setLatestRegistration(reg);
     setReceiptForPreview({
@@ -614,7 +703,7 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
       paymentMethod: `Pindahan Bank (${BANK_DETAILS.bank} - ${BANK_DETAILS.accountNo})`,
       referenceNo: reg.referenceNo,
       amount: reg.totalAmount,
-      description: `Tempahan ${reg.programName} [${reg.participantType}] — ${paxParts.join(', ')}`,
+      description: `Tempahan ${reg.programName} [${reg.participantType}${reg.jkPosition ? ` • ${reg.jkPosition}` : ''}] — ${paxParts.join(', ')}`,
       receivedBy: config.bendahari || 'SITI NURHAWA NABILAH BINTI FEDELIS',
       status: 'Lunas',
       createdAt: reg.createdAt
@@ -631,8 +720,10 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
         acc.totalPax5To11 += Number(r.pax5To11 || 0);
         acc.totalPax4Below += Number(r.pax4Below || 0);
         acc.totalAmount += Number(r.totalAmount || 0);
+        acc.totalDiscount += Number(r.discountAmount || 0);
         if (r.participantType === 'Alumni') acc.alumniCount += 1;
         else acc.lecturerCount += 1;
+        if (r.isJkMember) acc.jkCount += 1;
         return acc;
       },
       {
@@ -642,8 +733,10 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
         totalPax5To11: 0,
         totalPax4Below: 0,
         totalAmount: 0,
+        totalDiscount: 0,
         alumniCount: 0,
-        lecturerCount: 0
+        lecturerCount: 0,
+        jkCount: 0
       }
     );
   }, [registrations]);
@@ -906,6 +999,24 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                         <span>Log masuk berjaya! Nama penuh dan No. Ahli anda telah dimasukkan secara automatik.</span>
                       </div>
 
+                      {matchedJk && (
+                        <div className="p-3.5 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl flex items-center justify-between gap-3 text-amber-900 text-xs font-bold">
+                          <div className="flex items-center gap-2">
+                            <span className="w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center text-xs shadow-xs">
+                              ⭐
+                            </span>
+                            <div>
+                              <span>Penama Tetapan JK Persatuan: </span>
+                              <strong className="text-amber-950 uppercase">{matchedJk.position}</strong>
+                              <span className="text-slate-600 font-medium"> ({matchedJk.name})</span>
+                            </div>
+                          </div>
+                          <span className="px-2.5 py-1 rounded-xl bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wider shrink-0 shadow-xs">
+                            Potongan RM45 Layak
+                          </span>
+                        </div>
+                      )}
+
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
@@ -944,6 +1055,20 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                         onChange={(e) => setLecturerName(e.target.value)}
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-bold text-slate-800 uppercase focus:outline-blue-600"
                       />
+
+                      {matchedJk && (
+                        <div className="mt-2.5 p-3 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl flex items-center justify-between gap-3 text-amber-900 text-xs font-bold">
+                          <div className="flex items-center gap-2">
+                            <span className="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center text-xs">
+                              ⭐
+                            </span>
+                            <span>Penama JK Persatuan: <strong>{matchedJk.position}</strong> ({matchedJk.name})</span>
+                          </div>
+                          <span className="px-2 py-0.5 rounded-lg bg-emerald-600 text-white text-[10px] font-black uppercase">
+                            Potongan RM45 Layak
+                          </span>
+                        </div>
+                      )}
                     </div>
                   )}
 
@@ -1120,7 +1245,14 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                   <div className="space-y-2 text-xs">
                     <div className="flex justify-between text-slate-600">
                       <span>Kategori Peserta</span>
-                      <strong className="text-slate-900 uppercase">{participantType}</strong>
+                      <div className="text-right">
+                        <strong className="text-slate-900 uppercase">{participantType}</strong>
+                        {matchedJk && (
+                          <span className="block text-[10px] font-black text-amber-700">
+                            ⭐ JK Persatuan: {matchedJk.position}
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <div className="flex justify-between text-slate-600">
                       <span>12 Tahun ke Atas ({pax12Plus} pax × RM90)</span>
@@ -1135,12 +1267,43 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                       <strong className="text-emerald-700">Percuma</strong>
                     </div>
 
+                    {/* Potongan Khas JK Persatuan */}
+                    {matchedJk && (
+                      <div className="p-3 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl space-y-1">
+                        <div className="flex justify-between items-center text-emerald-800 font-black">
+                          <span className="flex items-center gap-1.5 text-xs">
+                            <span className="w-4 h-4 rounded-full bg-emerald-600 text-white text-[10px] flex items-center justify-center">
+                              ✓
+                            </span>
+                            Potongan Harga JK Persatuan ({matchedJk.position})
+                          </span>
+                          <span className="text-xs font-black text-emerald-700">
+                            - RM {jkDiscount.toFixed(2)}
+                          </span>
+                        </div>
+                        <div className="text-[10px] text-emerald-700 font-semibold">
+                          Penama &quot;{matchedJk.name}&quot; layak menikmati potongan harga RM45 ringgit daripada jumlah bayaran.
+                        </div>
+                      </div>
+                    )}
+
                     <div className="border-t border-slate-200 pt-3 mt-2 flex justify-between items-baseline">
                       <div>
-                        <span className="block text-[10px] font-black text-slate-400 uppercase">Jumlah Keseluruhan</span>
-                        <span className="text-[11px] font-bold text-slate-500">Jumlah Pax: {totalPax} orang</span>
+                        <span className="block text-[10px] font-black text-slate-400 uppercase">
+                          {matchedJk ? 'Jumlah Perlu Dibayar (Selepas Potongan)' : 'Jumlah Keseluruhan'}
+                        </span>
+                        <span className="text-[11px] font-bold text-slate-500">
+                          Jumlah Pax: {totalPax} orang {matchedJk && <span className="text-emerald-700 font-bold">• Jimat RM{jkDiscount.toFixed(2)}</span>}
+                        </span>
                       </div>
-                      <span className="text-2xl font-black text-blue-700">RM {totalAmount.toFixed(2)}</span>
+                      <div className="text-right">
+                        {matchedJk && grossAmount > totalAmount && (
+                          <div className="text-xs line-through text-slate-400 font-bold">
+                            RM {grossAmount.toFixed(2)}
+                          </div>
+                        )}
+                        <span className="text-2xl font-black text-blue-700">RM {totalAmount.toFixed(2)}</span>
+                      </div>
                     </div>
                   </div>
 
@@ -1448,15 +1611,22 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                             {reg.receiptNo}
                           </td>
                           <td className="py-3 px-3.5">
-                            <span
-                              className={`inline-block text-[9px] font-black uppercase px-2 py-0.5 rounded-full mb-1 ${
-                                reg.participantType === 'Alumni'
-                                  ? 'bg-blue-100 text-blue-700'
-                                  : 'bg-indigo-100 text-indigo-700'
-                              }`}
-                            >
-                              {reg.participantType} {reg.noAhli ? `• ${reg.noAhli}` : ''}
-                            </span>
+                            <div className="flex items-center gap-1.5 flex-wrap mb-1">
+                              <span
+                                className={`inline-block text-[9px] font-black uppercase px-2 py-0.5 rounded-full ${
+                                  reg.participantType === 'Alumni'
+                                    ? 'bg-blue-100 text-blue-700'
+                                    : 'bg-indigo-100 text-indigo-700'
+                                }`}
+                              >
+                                {reg.participantType} {reg.noAhli ? `• ${reg.noAhli}` : ''}
+                              </span>
+                              {(reg.isJkMember || (reg.discountAmount && reg.discountAmount > 0)) && (
+                                <span className="inline-block text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300">
+                                  ⭐ {reg.jkPosition || 'JK Persatuan'} (-RM45)
+                                </span>
+                              )}
+                            </div>
                             <div className="font-extrabold text-slate-900 uppercase">{reg.nama}</div>
                             {reg.noTelefon && <div className="text-[10px] text-slate-500">{reg.noTelefon}</div>}
                           </td>
@@ -1480,8 +1650,15 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                               {reg.totalPax}
                             </span>
                           </td>
-                          <td className="py-3 px-3.5 font-black text-emerald-700 whitespace-nowrap">
-                            RM {Number(reg.totalAmount || 0).toFixed(2)}
+                          <td className="py-3 px-3.5 whitespace-nowrap">
+                            <div className="font-black text-emerald-700">
+                              RM {Number(reg.totalAmount || 0).toFixed(2)}
+                            </div>
+                            {reg.discountAmount && reg.discountAmount > 0 ? (
+                              <div className="text-[9px] font-bold text-amber-700">
+                                Diskaun JK: -RM{Number(reg.discountAmount).toFixed(2)}
+                              </div>
+                            ) : null}
                           </td>
                           <td className="py-3 px-3.5">
                             {reg.driveFileUrl ? (

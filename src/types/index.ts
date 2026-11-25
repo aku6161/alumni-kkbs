@@ -71,6 +71,11 @@ export interface HomecomingRegistration {
   pax5To11: number;
   pax4Below: number;
   totalPax: number;
+  grossAmount?: number;
+  discountAmount?: number;
+  discountReason?: string;
+  isJkMember?: boolean;
+  jkPosition?: string;
   totalAmount: number;
   referenceNo: string;
   receiptNo: string;
