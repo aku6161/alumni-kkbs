@@ -392,6 +392,8 @@ function doPost(e) {
       return handleUpdateProgram(postData.id, postData.program);
     } else if (action === "delete_program") {
       return handleDeleteProgram(postData.id);
+    } else if (action === "upload_homecoming_proof") {
+      return handleUploadHomecomingProof(postData);
     } else {
       return ContentService
         .createTextOutput(JSON.stringify({ success: false, error: "Aksi tidak dikenali" }))
@@ -705,5 +707,50 @@ function ensureHeaders(sheet, expectedHeaders) {
       sheet.getRange(1, lastCol + k + 1).setValue(missing[k]);
     }
     SpreadsheetApp.flush();
+  }
+}
+
+/**
+ * Muat naik bukti bayaran Alumni Homecoming Night terus ke Google Drive folder:
+ * https://drive.google.com/drive/folders/1FeJfBi6hMg_8doCOaN3m7MCHc09cSiAa
+ */
+function handleUploadHomecomingProof(postData) {
+  try {
+    var folderId = postData.folderId || "1FeJfBi6hMg_8doCOaN3m7MCHc09cSiAa";
+    var folder = DriveApp.getFolderById(folderId);
+    var fileName = postData.fileName || ("Bukti_Bayaran_" + new Date().getTime() + ".png");
+    var mimeType = postData.mimeType || "application/octet-stream";
+    var base64Data = (postData.fileBase64 || "").replace(/^data:[^;]+;base64,/, "");
+
+    var bytes = Utilities.base64Decode(base64Data);
+    var blob = Utilities.newBlob(bytes, mimeType, fileName);
+    var file = folder.createFile(blob);
+
+    try {
+      file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    } catch (shareErr) {
+      // Abaikan jika dasar organisasi tidak membenarkan sharing awam
+    }
+
+    var reg = postData.registrationData || {};
+    file.setDescription(
+      "Bukti Bayaran Alumni Homecoming Night | Nama: " + (reg.nama || "-") +
+      " | Kategori: " + (reg.participantType || "-") +
+      " | No. Resit: " + (reg.receiptNo || "-") +
+      " | Jumlah: RM " + (reg.totalAmount || 0)
+    );
+
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        success: true,
+        fileId: file.getId(),
+        fileName: file.getName(),
+        fileUrl: file.getUrl()
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: false, error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
   }
 }

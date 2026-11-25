@@ -12,7 +12,7 @@ import {
   writeBatch,
   Unsubscribe
 } from 'firebase/firestore';
-import { AlumniMember, Transaction, Program, SystemConfig, ProgramReceipt } from './types';
+import { AlumniMember, Transaction, Program, SystemConfig, ProgramReceipt, HomecomingRegistration } from './types';
 import { INITIAL_MEMBERS, INITIAL_TRANSACTIONS, INITIAL_CONFIG } from './data/initialData';
 
 const getApiKey = () => {
@@ -42,7 +42,8 @@ export const COLLECTIONS = {
   TRANSACTIONS: 'alumni-transactions',
   PROGRAMS: 'alumni-programs',
   CONFIG: 'alumni-config',
-  RECEIPTS: 'alumni-receipts'
+  RECEIPTS: 'alumni-receipts',
+  HOMECOMING_REGISTRATIONS: 'alumni-homecoming-registrations'
 } as const;
 
 export const INITIAL_PROGRAMS_LIST: Program[] = [
@@ -166,6 +167,17 @@ export const INITIAL_PROGRAMS_LIST: Program[] = [
     "implikasiKewangan": "RM 475.00",
     "sasaranPeserta": "3 ORANG",
     "bilanganPeserta": 3
+  },
+  {
+    "id": "PROG-homecoming-night",
+    "namaProgram": "Alumni Homecoming Night",
+    "tarikhProgram": "Akan Ditetapkan",
+    "masaProgram": "7.30 Malam - 11.00 Malam",
+    "tempatProgram": "Kolej Komuniti Beaufort / Dewan Makan",
+    "kerjasama": "Kolej Komuniti Beaufort",
+    "implikasiKewangan": "Yuran Penyertaan Peserta",
+    "sasaranPeserta": "Alumni & Pensyarah KKBS",
+    "bilanganPeserta": 100
   }
 ];
 
@@ -203,6 +215,16 @@ export async function seedInitialFirestoreData(): Promise<void> {
         batch.set(ref, prog);
       });
       await batch.commit();
+    } else {
+      const hasHomecoming = progSnap.docs.some(d =>
+        String(d.data()?.namaProgram || '').toLowerCase().includes('homecoming')
+      );
+      if (!hasHomecoming) {
+        const homecomingProg = INITIAL_PROGRAMS_LIST.find(p => p.id === 'PROG-homecoming-night');
+        if (homecomingProg) {
+          await setDoc(doc(db, COLLECTIONS.PROGRAMS, homecomingProg.id), homecomingProg, { merge: true });
+        }
+      }
     }
 
     // 3. Check & Seed Transactions (only if INITIAL_TRANSACTIONS has records)
@@ -707,5 +729,120 @@ export async function standardizeAllMemberNumbersInFirestore(): Promise<{ succes
   } catch (err: any) {
     console.error('Error in standardizeAllMemberNumbersInFirestore:', err);
     return { success: false, count: 0, error: err.message };
+  }
+}
+
+const LOCAL_HOMECOMING_KEY = 'alumni_kkbs_homecoming_registrations_cache';
+
+const getLocalHomecomingRegistrations = (): HomecomingRegistration[] => {
+  try {
+    const raw = localStorage.getItem(LOCAL_HOMECOMING_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+};
+
+const setLocalHomecomingRegistrations = (list: HomecomingRegistration[]) => {
+  try {
+    localStorage.setItem(LOCAL_HOMECOMING_KEY, JSON.stringify(list));
+  } catch {}
+};
+
+/**
+ * Real-time listener untuk pendaftaran program Alumni Homecoming Night
+ * Disimpan dalam dokumen 'homecoming_registrations' di bawah koleksi 'alumni-config'
+ */
+export function subscribeToHomecomingRegistrations(
+  onUpdate: (registrations: HomecomingRegistration[]) => void,
+  onError?: (err: any) => void
+): Unsubscribe {
+  const docRef = doc(db, COLLECTIONS.CONFIG, 'homecoming_registrations');
+
+  const cached = getLocalHomecomingRegistrations();
+  if (cached.length > 0) {
+    onUpdate(cached);
+  }
+
+  return onSnapshot(
+    docRef,
+    (snapshot) => {
+      let items: HomecomingRegistration[] = [];
+      if (snapshot.exists()) {
+        const data = snapshot.data();
+        if (Array.isArray(data.list)) {
+          items = data.list;
+        }
+      }
+
+      const localItems = getLocalHomecomingRegistrations();
+      const existingIds = new Set(items.map(r => r.id));
+      localItems.forEach(l => {
+        if (!existingIds.has(l.id)) {
+          items.push(l);
+          existingIds.add(l.id);
+        }
+      });
+
+      items.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+      setLocalHomecomingRegistrations(items);
+      onUpdate(items);
+    },
+    (err) => {
+      console.warn('Warning listening to alumni-config/homecoming_registrations, using local cache:', err);
+      const fallback = getLocalHomecomingRegistrations();
+      if (fallback.length > 0) {
+        onUpdate(fallback);
+      }
+      if (onError) onError(err);
+    }
+  );
+}
+
+export async function addOrUpdateHomecomingRegistration(
+  registration: HomecomingRegistration
+): Promise<boolean> {
+  try {
+    const docId = registration.id || `HCN-${Date.now()}`;
+    const cleanReg = Object.fromEntries(
+      Object.entries({ ...registration, id: docId }).filter(([_, v]) => v !== undefined)
+    ) as unknown as HomecomingRegistration;
+
+    const local = getLocalHomecomingRegistrations();
+    const updatedLocal = [cleanReg, ...local.filter(r => r.id !== cleanReg.id)];
+    setLocalHomecomingRegistrations(updatedLocal);
+
+    const docRef = doc(db, COLLECTIONS.CONFIG, 'homecoming_registrations');
+    const snap = await getDoc(docRef);
+    let currentList: HomecomingRegistration[] = [];
+    if (snap.exists() && Array.isArray(snap.data()?.list)) {
+      currentList = snap.data()?.list;
+    }
+    const updatedFirestore = [cleanReg, ...currentList.filter(r => r.id !== cleanReg.id)];
+    await setDoc(docRef, { list: updatedFirestore, updatedAt: new Date().toISOString() }, { merge: true });
+    return true;
+  } catch (err) {
+    console.error('Error saving homecoming registration to Firestore:', err);
+    return true;
+  }
+}
+
+export async function deleteHomecomingRegistrationFromFirestore(id: string): Promise<boolean> {
+  try {
+    const local = getLocalHomecomingRegistrations();
+    const updatedLocal = local.filter(r => r.id !== id);
+    setLocalHomecomingRegistrations(updatedLocal);
+
+    const docRef = doc(db, COLLECTIONS.CONFIG, 'homecoming_registrations');
+    const snap = await getDoc(docRef);
+    if (snap.exists() && Array.isArray(snap.data()?.list)) {
+      const currentList: HomecomingRegistration[] = snap.data()?.list;
+      const updatedFirestore = currentList.filter(r => r.id !== id);
+      await setDoc(docRef, { list: updatedFirestore, updatedAt: new Date().toISOString() }, { merge: true });
+    }
+    return true;
+  } catch (err) {
+    console.error('Error deleting homecoming registration:', err);
+    return true;
   }
 }

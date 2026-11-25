@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { AlumniMember, Transaction, SystemConfig, ViewType, UserRole, Program, ProgramReceipt } from './types';
+import { AlumniMember, Transaction, SystemConfig, ViewType, UserRole, Program, ProgramReceipt, HomecomingRegistration as HomecomingRegistrationType } from './types';
 import { INITIAL_MEMBERS, INITIAL_TRANSACTIONS, INITIAL_CONFIG, INITIAL_RECEIPTS } from './data/initialData';
 import { Navbar } from './components/Navbar';
 import { MainDashboard } from './components/MainDashboard';
 import { MembershipPortal } from './components/MembershipPortal';
 import { ProgramsManager } from './components/ProgramsManager';
+import { HomecomingRegistration } from './components/HomecomingRegistration';
 import { StatisticsPanel } from './components/StatisticsPanel';
 import { FinanceLedger } from './components/FinanceLedger';
 import { ReportsManager } from './components/ReportsManager';
@@ -30,6 +31,9 @@ import {
   subscribeToReceipts,
   addOrUpdateReceipt,
   deleteReceiptFromFirestore,
+  subscribeToHomecomingRegistrations,
+  addOrUpdateHomecomingRegistration,
+  deleteHomecomingRegistrationFromFirestore,
   bulkAddMembersToFirestore,
   standardizeAllMemberNumbersInFirestore,
   INITIAL_PROGRAMS_LIST
@@ -61,6 +65,8 @@ export default function App() {
   const [transactions, setTransactions] = useState<Transaction[]>(INITIAL_TRANSACTIONS);
   const [programs, setPrograms] = useState<Program[]>(INITIAL_PROGRAMS_LIST);
   const [receipts, setReceipts] = useState<ProgramReceipt[]>(INITIAL_RECEIPTS);
+  const [homecomingRegistrations, setHomecomingRegistrations] = useState<HomecomingRegistrationType[]>([]);
+  const [selectedHomecomingProgram, setSelectedHomecomingProgram] = useState<Program | null>(null);
   const [config, setConfig] = useState<SystemConfig>(INITIAL_CONFIG);
   
   const [currentMember, setCurrentMember] = useState<AlumniMember | null>(null);
@@ -132,12 +138,18 @@ export default function App() {
       if (freshReceipts) setReceipts(freshReceipts);
     });
 
+    // 6. Subscribe to Homecoming Registrations (Real-time sync from Firestore)
+    const unsubHomecoming = subscribeToHomecomingRegistrations((freshRegs) => {
+      if (freshRegs) setHomecomingRegistrations(freshRegs);
+    });
+
     return () => {
       unsubMembers();
       unsubTransactions();
       unsubPrograms();
       unsubConfig();
       unsubReceipts();
+      unsubHomecoming();
     };
   }, [currentMember?.id, userRole]);
 
@@ -390,6 +402,16 @@ export default function App() {
     setReceipts(prev => prev.filter(r => r.id !== id));
     const success = await deleteReceiptFromFirestore(id);
     return success;
+  };
+
+  const handleAddHomecomingRegistration = async (reg: HomecomingRegistrationType): Promise<boolean> => {
+    setHomecomingRegistrations(prev => [reg, ...prev.filter(r => r.id !== reg.id)]);
+    return addOrUpdateHomecomingRegistration(reg);
+  };
+
+  const handleDeleteHomecomingRegistration = async (id: string): Promise<boolean> => {
+    setHomecomingRegistrations(prev => prev.filter(r => r.id !== id));
+    return deleteHomecomingRegistrationFromFirestore(id);
   };
 
   const handleUpdateConfig = async (newConfig: SystemConfig) => {
@@ -750,6 +772,39 @@ export default function App() {
                 onAddProgram={handleAddProgram}
                 onUpdateProgram={handleUpdateProgram}
                 onDeleteProgram={handleDeleteProgram}
+                onOpenHomecomingRegistration={(program) => {
+                  setSelectedHomecomingProgram(program);
+                  setCurrentView('homecoming_registration');
+                }}
+              />
+            )}
+
+            {currentView === 'homecoming_registration' && userRole === 'admin' && (
+              <HomecomingRegistration
+                program={
+                  selectedHomecomingProgram ||
+                  programs.find(p => String(p.namaProgram || '').toLowerCase().includes('homecoming')) || {
+                    id: 'PROG-homecoming-night',
+                    namaProgram: 'Alumni Homecoming Night',
+                    tarikhProgram: '',
+                    masaProgram: '',
+                    tempatProgram: '',
+                    kerjasama: '',
+                    implikasiKewangan: '',
+                    sasaranPeserta: 'Alumni & Pensyarah KKBS',
+                    bilanganPeserta: 100
+                  }
+                }
+                members={members}
+                config={config}
+                receipts={receipts}
+                registrations={homecomingRegistrations}
+                onBack={() => setCurrentView('programs')}
+                onAddRegistration={handleAddHomecomingRegistration}
+                onDeleteRegistration={handleDeleteHomecomingRegistration}
+                onAddReceipt={handleAddReceipt}
+                onAddTransaction={handleAddTransaction}
+                onUpdateConfig={handleUpdateConfig}
               />
             )}
             

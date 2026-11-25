@@ -105,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={() => setCurrentView('programs')}
                 className={`py-3 px-4 font-bold text-xs uppercase tracking-wider border-b-2 flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
-                  currentView === 'programs'
+                  currentView === 'programs' || currentView === 'homecoming_registration'
                     ? 'border-blue-700 text-blue-700 bg-white shadow-2xs font-extrabold'
                     : 'border-transparent text-slate-500 hover:text-slate-800'
                 }`}

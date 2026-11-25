@@ -45,6 +45,7 @@ export interface SystemConfig {
   bendahari?: string;
   juruAudit?: string;
   ajk?: string[];
+  homecomingDriveScriptUrl?: string;
 }
 
 export interface Program {
@@ -57,6 +58,31 @@ export interface Program {
   implikasiKewangan: string;
   sasaranPeserta: string;
   bilanganPeserta: number;
+}
+
+export interface HomecomingRegistration {
+  id: string;
+  participantType: 'Alumni' | 'Pensyarah';
+  nama: string;
+  noAhli?: string;
+  noTelefon?: string;
+  emel?: string;
+  pax12Plus: number;
+  pax5To11: number;
+  pax4Below: number;
+  totalPax: number;
+  totalAmount: number;
+  referenceNo: string;
+  receiptNo: string;
+  proofFileName: string;
+  proofMimeType?: string;
+  driveFileId?: string;
+  driveFileUrl?: string;
+  proofPreviewDataUrl?: string;
+  driveSyncStatus: 'synced' | 'pending_script' | 'error';
+  driveSyncMessage?: string;
+  programName: string;
+  createdAt: string;
 }
 
 export interface ProgramReceipt {
@@ -80,5 +106,5 @@ export interface ProgramReceipt {
   autoLedgerSync?: boolean;
 }
 
-export type ViewType = 'dashboard' | 'programs' | 'membership' | 'finance' | 'receipts' | 'statistics' | 'reports' | 'settings';
+export type ViewType = 'dashboard' | 'programs' | 'homecoming_registration' | 'membership' | 'finance' | 'receipts' | 'statistics' | 'reports' | 'settings';
 export type UserRole = 'landing' | 'member' | 'admin';

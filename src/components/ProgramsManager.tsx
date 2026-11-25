@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Program, SystemConfig } from '../types';
-import { PlusCircle, Edit2, Printer, FileText, X, Calendar, MapPin, Users, DollarSign, Clock, Search, Handshake } from 'lucide-react';
+import { PlusCircle, Edit2, Printer, FileText, X, Calendar, MapPin, Users, DollarSign, Clock, Search, Handshake, UserPlus } from 'lucide-react';
 
 interface ProgramsManagerProps {
   programs: Program[];
@@ -8,6 +8,7 @@ interface ProgramsManagerProps {
   onAddProgram: (program: Omit<Program, 'id'>) => void;
   onUpdateProgram: (program: Program) => void;
   onDeleteProgram: (id: string) => void;
+  onOpenHomecomingRegistration?: (program: Program) => void;
 }
 
 // Helper interface for tentative schedule
@@ -370,7 +371,8 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
   config,
   onAddProgram,
   onUpdateProgram,
-  onDeleteProgram
+  onDeleteProgram,
+  onOpenHomecomingRegistration
 }) => {
   // UI states
   const [searchTerm, setSearchTerm] = useState('');
@@ -535,6 +537,17 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
 
                 {/* Actions */}
                 <div className="flex gap-2 flex-wrap items-center justify-end shrink-0 border-t border-slate-50 pt-3 md:border-t-0 md:pt-0">
+                  {String(p.namaProgram || '').toLowerCase().includes('homecoming') && onOpenHomecomingRegistration && (
+                    <button
+                      onClick={() => onOpenHomecomingRegistration(p)}
+                      className="px-3.5 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl text-xs font-extrabold cursor-pointer transition-all flex items-center gap-1.5 shadow-sm shadow-blue-500/20"
+                      title="Buka halaman pendaftaran Alumni Homecoming Night"
+                    >
+                      <UserPlus className="w-3.5 h-3.5" />
+                      <span>Pendaftaran</span>
+                    </button>
+                  )}
+
                   <button
                     onClick={() => handleOpenEdit(p)}
                     className="px-3 py-1.5 hover:bg-slate-100 text-slate-600 rounded-xl text-xs font-bold cursor-pointer transition-all flex items-center gap-1.5 border border-slate-200"
