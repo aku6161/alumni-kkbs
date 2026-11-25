@@ -6,6 +6,7 @@ import { MainDashboard } from './components/MainDashboard';
 import { MembershipPortal } from './components/MembershipPortal';
 import { ProgramsManager } from './components/ProgramsManager';
 import { HomecomingRegistration } from './components/HomecomingRegistration';
+import { AlumniAuthCard } from './components/AlumniAuthCard';
 import { StatisticsPanel } from './components/StatisticsPanel';
 import { FinanceLedger } from './components/FinanceLedger';
 import { ReportsManager } from './components/ReportsManager';
@@ -67,6 +68,14 @@ export default function App() {
   const [receipts, setReceipts] = useState<ProgramReceipt[]>(INITIAL_RECEIPTS);
   const [homecomingRegistrations, setHomecomingRegistrations] = useState<HomecomingRegistrationType[]>([]);
   const [selectedHomecomingProgram, setSelectedHomecomingProgram] = useState<Program | null>(null);
+  const [isPublicHomecomingMode] = useState<boolean>(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('daftar') === 'homecoming' || params.get('page') === 'homecoming';
+    } catch {
+      return false;
+    }
+  });
   const [config, setConfig] = useState<SystemConfig>(INITIAL_CONFIG);
   
   const [currentMember, setCurrentMember] = useState<AlumniMember | null>(null);
@@ -442,290 +451,124 @@ export default function App() {
     setCurrentView('dashboard');
   };
 
+  const handleActivateMemberAccount = async (
+    memberId: string,
+    updateData: Partial<AlumniMember>
+  ): Promise<boolean> => {
+    const success = await updateMemberPartial(memberId, updateData);
+    if (success) {
+      setMembers(prev => prev.map(m => (m.id === memberId ? { ...m, ...updateData } : m)));
+    }
+    return success;
+  };
+
+  const handleLoginAdminDirect = () => {
+    const mockAdmin: AlumniMember = {
+      id: 'ADMIN-MOCK',
+      noAhli: 'ADMIN-001',
+      nama: 'ADMIN',
+      noKp: '000000000000',
+      noPendaftaran: 'ADMIN',
+      tahunLulusan: '2026',
+      program: 'Pentadbiran',
+      jantina: 'Lelaki',
+      agama: 'Islam',
+      kaumUtama: 'Melayu',
+      tarikhGraduasi: '12/08/2026',
+      noTelefon: '087-223000',
+      emel: 'admin@kkbs.edu.my',
+      pekerjaanJawatan: 'Pentadbir',
+      namaMajikan: 'KKBS',
+      negeri: 'Sabah',
+      status: 'Active',
+      role: 'Admin'
+    };
+    setCurrentMember(mockAdmin);
+    setUserRole('admin');
+  };
+
+  const resolvedHomecomingProgram: Program =
+    selectedHomecomingProgram ||
+    programs.find(p => String(p.namaProgram || '').toLowerCase().includes('homecoming')) || {
+      id: 'PROG-homecoming-night',
+      namaProgram: 'Alumni Homecoming Night',
+      tarikhProgram: 'Akan Ditetapkan',
+      masaProgram: '7.30 Malam - 11.00 Malam',
+      tempatProgram: 'Kolej Komuniti Beaufort / Dewan Makan',
+      kerjasama: 'Kolej Komuniti Beaufort',
+      implikasiKewangan: 'Yuran Penyertaan Peserta',
+      sasaranPeserta: 'Alumni & Pensyarah KKBS',
+      bilanganPeserta: 100
+    };
+
   return (
     <div className="min-h-screen relative flex flex-col font-sans text-slate-800 selection:bg-cyan-500 selection:text-white print:bg-white overflow-x-hidden">
       {/* Dynamic Network Security Background */}
-      <NetworkSecurityBackground showCentralLock={userRole === 'landing'} />
-      
-      {/* 1. AUTH LANDING PAGE VIEW */}
-      {userRole === 'landing' ? (
-        <div className="flex-1 flex items-center justify-center p-4 sm:p-6 relative z-10">
-          <div className="w-full max-w-md bg-slate-900/85 backdrop-blur-xl border border-cyan-500/30 rounded-3xl shadow-[0_0_50px_rgba(0,242,254,0.18)] p-6 sm:p-8 space-y-6 text-white animate-in fade-in zoom-in-95 duration-300">
-            
-            {/* Brand Title */}
-            <div className="flex flex-col items-center gap-3">
-              <div className="relative">
-                <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full blur-md opacity-40 animate-pulse"></div>
-                <img src="/logo-alumni.png" alt="Logo Persatuan Alumni" className="w-20 h-20 object-contain relative z-10 drop-shadow-[0_0_15px_rgba(0,242,254,0.35)]" />
+      <NetworkSecurityBackground showCentralLock={!isPublicHomecomingMode && userRole === 'landing'} />
+
+      {/* 0. PUBLIC HOMECOMING REGISTRATION MODE (?daftar=homecoming) - Registration Only, No Admin Functions */}
+      {isPublicHomecomingMode ? (
+        <div className="relative z-10 flex flex-col flex-1 min-h-screen">
+          <header className="bg-white/95 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-30 shadow-xs print:hidden">
+            <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <img src="/logo-alumni.png" alt="Logo Persatuan Alumni" className="w-10 h-10 object-contain" />
+                <div>
+                  <h1 className="font-extrabold text-sm tracking-tight text-blue-900 leading-none">
+                    PERSATUAN ALUMNI KKBS
+                  </h1>
+                  <p className="text-[10px] text-slate-500 font-medium mt-0.5">
+                    Kolej Komuniti Beaufort, Sabah • Pendaftaran Program
+                  </p>
+                </div>
               </div>
-              <h2 className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white tracking-tight leading-none uppercase text-center">
-                PERSATUAN ALUMNI
-              </h2>
-              <p className="text-[10px] text-cyan-200/80 font-bold uppercase tracking-wider text-center">
-                Kolej Komuniti Beaufort, Sabah
-              </p>
-              <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[9px] font-mono font-bold tracking-wider uppercase">
-                <ShieldCheck className="w-3 h-3 text-cyan-400" /> PORTAL RASMI ALUMNI
+              <span className="bg-cyan-50 text-cyan-800 border border-cyan-200 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
+                Pendaftaran Awam
               </span>
             </div>
+          </header>
 
-            {authError && (
-              <div className="p-3 bg-rose-950/80 rounded-xl text-rose-200 text-xs font-semibold text-center border border-rose-500/40 shadow-inner">
-                {authError}
-              </div>
-            )}
+          <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-6 print:p-0 print:max-w-none">
+            <HomecomingRegistration
+              program={resolvedHomecomingProgram}
+              members={members}
+              config={config}
+              receipts={receipts}
+              registrations={homecomingRegistrations}
+              isPublicMode={true}
+              initialLoggedInAlumni={userRole === 'member' ? currentMember : null}
+              onActivateMemberAccount={handleActivateMemberAccount}
+              onAlumniAuthenticated={(member) => {
+                setCurrentMember(member);
+                setUserRole('member');
+              }}
+              onAddRegistration={handleAddHomecomingRegistration}
+              onDeleteRegistration={handleDeleteHomecomingRegistration}
+              onAddReceipt={handleAddReceipt}
+              onAddTransaction={handleAddTransaction}
+              onUpdateConfig={handleUpdateConfig}
+            />
+          </main>
 
-            {/* A. Login Mode Form */}
-            {authMode === 'login' && (
-              <form onSubmit={handleLogin} className="space-y-4">
-                <div>
-                  <label className="block text-[10px] font-black text-cyan-200/80 uppercase mb-1">E-mel Pendaftaran</label>
-                  <div className="flex items-center bg-slate-950/70 border border-slate-700 rounded-xl px-3 py-2 focus-within:ring-2 focus-within:ring-cyan-500/30 focus-within:border-cyan-400 transition-all">
-                    <Mail className="w-4 h-4 text-cyan-400 mr-2 shrink-0" />
-                    <input
-                      type="email"
-                      required
-                      placeholder="contoh@gmail.com"
-                      value={loginEmail}
-                      onChange={(e) => setLoginEmail(e.target.value)}
-                      className="bg-transparent text-sm w-full outline-none font-medium text-white placeholder-slate-500"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-[10px] font-black text-cyan-200/80 uppercase mb-1">Kata Laluan</label>
-                  <div className="flex items-center bg-slate-950/70 border border-slate-700 rounded-xl px-3 py-2 focus-within:ring-2 focus-within:ring-cyan-500/30 focus-within:border-cyan-400 transition-all">
-                    <Key className="w-4 h-4 text-cyan-400 mr-2 shrink-0" />
-                    <input
-                      type="password"
-                      required
-                      placeholder="••••••••"
-                      value={loginPassword}
-                      onChange={(e) => setLoginPassword(e.target.value)}
-                      className="bg-transparent text-sm w-full outline-none font-medium text-white placeholder-slate-500"
-                    />
-                  </div>
-                </div>
-
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-2.5 rounded-xl shadow-lg shadow-cyan-500/25 cursor-pointer transition-all active:scale-[0.99] text-sm"
-                  >
-                    Log Masuk
-                  </button>
-                </div>
-
-                <div className="text-center pt-2 text-xs border-t border-slate-800/80">
-                  <span className="text-slate-400">Belum berdaftar? </span>
-                  <button
-                    type="button"
-                    onClick={() => { setAuthMode('register'); setAuthError(''); }}
-                    className="text-cyan-400 font-extrabold hover:text-cyan-300 hover:underline cursor-pointer ml-1"
-                  >
-                    Daftar Baharu
-                  </button>
-                </div>
-              </form>
-            )}
-
-            {/* B. Register Mode Form */}
-            {authMode === 'register' && (
-              <form onSubmit={handleRegister} className="space-y-4 max-h-[460px] overflow-y-auto pr-1 scrollbar-thin">
-                <h3 className="text-xs font-bold text-cyan-300 uppercase tracking-wider mb-2">Maklumat Pendaftaran Ahli</h3>
-                
-                {regStep === 'ic_lookup' ? (
-                  /* Step 1: IC Lookup */
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-[9px] font-black text-cyan-200/80 uppercase mb-1">Nombor Kad Pengenalan (12 Digit)</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="Contoh: 950505125678"
-                        value={regKp}
-                        onChange={(e) => setRegKp(formatIcNumber(e.target.value))}
-                        className="w-full bg-slate-950/70 border border-slate-700 text-white rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-cyan-400 font-mono font-bold"
-                      />
-                    </div>
-
-                    <div className="pt-2">
-                      <button
-                        type="submit"
-                        className="w-full bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-2.5 rounded-xl shadow-lg shadow-cyan-500/25 cursor-pointer transition-all text-xs"
-                      >
-                        Semak Kad Pengenalan
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  /* Step 2: Info update and activation */
-                  <div className="space-y-4">
-                    {/* Pre-populated Readonly Alumni Details */}
-                    {matchedAlumni && (
-                      <div className="bg-slate-950/80 p-3.5 rounded-xl border border-cyan-500/30 space-y-1 animate-in fade-in">
-                        <p className="text-[10px] text-cyan-400 font-black uppercase tracking-wider">REKOD DIJUMPAI</p>
-                        <p className="text-xs font-extrabold text-white uppercase">{matchedAlumni.nama}</p>
-                        <p className="text-[10px] text-slate-300 font-semibold">{matchedAlumni.program} ({matchedAlumni.tahunLulusan})</p>
-                      </div>
-                    )}
-
-                    <div>
-                      <label className="block text-[9px] font-black text-cyan-200/80 uppercase mb-1">E-mel Utama</label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="contoh@gmail.com"
-                        value={regEmail}
-                        onChange={(e) => setRegEmail(e.target.value)}
-                        className="w-full bg-slate-950/70 border border-slate-700 text-white rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-cyan-400"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[9px] font-black text-cyan-200/80 uppercase mb-1">Nombor Telefon Bimbit</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="Contoh: 012-3456789"
-                        value={regPhone}
-                        onChange={(e) => setRegPhone(formatPhone(e.target.value))}
-                        className="w-full bg-slate-950/70 border border-slate-700 text-white rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-cyan-400"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <label className="block text-[9px] font-black text-cyan-200/80 uppercase mb-1">Pekerjaan Semasa</label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="Chef / Kerani"
-                          value={regOccupation}
-                          onChange={(e) => setRegOccupation(e.target.value)}
-                          className="w-full bg-slate-950/70 border border-slate-700 text-white rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-cyan-400"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-[9px] font-black text-cyan-200/80 uppercase mb-1">Nama Majikan / Syarikat</label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="Syarikat SDN BHD"
-                          value={regEmployer}
-                          onChange={(e) => setRegEmployer(e.target.value)}
-                          className="w-full bg-slate-950/70 border border-slate-700 text-white rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-cyan-400"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-[9px] font-black text-cyan-200/80 uppercase mb-1">Cipta Kata Laluan</label>
-                      <input
-                        type="password"
-                        required
-                        placeholder="Minimum 6 aksara"
-                        value={regPassword}
-                        onChange={(e) => setRegPassword(e.target.value)}
-                        className="w-full bg-slate-950/70 border border-slate-700 text-white rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-cyan-400"
-                      />
-                    </div>
-
-                    <div className="pt-2 flex gap-2">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setRegStep('ic_lookup');
-                          setMatchedAlumni(null);
-                          setAuthError('');
-                        }}
-                        className="flex-1 py-2.5 border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-bold rounded-xl cursor-pointer"
-                      >
-                        Kembali
-                      </button>
-                      <button
-                        type="submit"
-                        className="flex-1 bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-2.5 rounded-xl shadow-lg shadow-cyan-500/25 cursor-pointer transition-all text-xs"
-                      >
-                        Selesaikan Pendaftaran
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                <div className="text-center pt-2 text-xs border-t border-slate-800/80">
-                  <span className="text-slate-400">Sudah berdaftar? </span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setAuthMode('login');
-                      setRegStep('ic_lookup');
-                      setMatchedAlumni(null);
-                      setAuthError('');
-                    }}
-                    className="text-cyan-400 font-extrabold hover:text-cyan-300 hover:underline cursor-pointer ml-1"
-                  >
-                    Log Masuk Sini
-                  </button>
-                </div>
-              </form>
-            )}
-
-            {/* C. Admin Mode Login Form */}
-            {authMode === 'admin' && (
-              <form onSubmit={handleAdminLogin} className="space-y-4">
-                <div>
-                  <label className="block text-[10px] font-black text-cyan-200/80 uppercase mb-1">Kata Laluan Pentadbir</label>
-                  <div className="flex items-center bg-slate-950/70 border border-slate-700 rounded-xl px-3 py-2 focus-within:ring-2 focus-within:ring-cyan-500/30 focus-within:border-cyan-400 transition-all">
-                    <Lock className="w-4 h-4 text-cyan-400 mr-2 shrink-0" />
-                    <input
-                      type="password"
-                      required
-                      placeholder="••••••••"
-                      value={adminPasswordInput}
-                      onChange={(e) => setAdminPasswordInput(e.target.value)}
-                      className="bg-transparent text-sm w-full outline-none font-medium text-white placeholder-slate-500"
-                    />
-                  </div>
-                </div>
-
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-indigo-700 via-blue-700 to-cyan-700 hover:from-indigo-600 hover:to-cyan-600 text-white font-bold py-2.5 rounded-xl shadow-lg shadow-blue-500/25 cursor-pointer transition-all text-sm"
-                  >
-                    Log Masuk Portal Admin
-                  </button>
-                </div>
-
-                <div className="text-center pt-2 text-xs border-t border-slate-800/80">
-                  <button
-                    type="button"
-                    onClick={() => { setAuthMode('login'); setAuthError(''); }}
-                    className="text-cyan-400 font-extrabold hover:text-cyan-300 hover:underline"
-                  >
-                    Kembali ke Log Masuk Alumni
-                  </button>
-                </div>
-              </form>
-            )}
-
-            {/* Footer Admin toggle */}
-            {authMode !== 'admin' && (
-              <div className="text-center border-t border-slate-800/80 pt-4">
-                <button
-                  type="button"
-                  onClick={() => { setAuthMode('admin'); setAuthError(''); }}
-                  className="text-[10px] font-bold text-slate-400 hover:text-cyan-300 inline-flex items-center gap-1.5 cursor-pointer transition-colors"
-                >
-                  <Lock className="w-3 h-3 text-cyan-500" />
-                  <span>Log Masuk sebagai Pentadbir (Admin)</span>
-                </button>
-              </div>
-            )}
-
-          </div>
+          <footer className="bg-white/90 backdrop-blur-md border-t border-slate-200/80 py-4 print:hidden relative z-10">
+            <div className="max-w-6xl mx-auto px-4 text-center text-[10px] text-slate-500 font-semibold">
+              © {new Date().getFullYear()} Persatuan Alumni Kolej Komuniti Beaufort Sabah. Hak Cipta Terpelihara.
+            </div>
+          </footer>
+        </div>
+      ) : userRole === 'landing' ? (
+        /* 1. AUTH LANDING PAGE VIEW */
+        <div className="flex-1 flex items-center justify-center p-4 sm:p-6 relative z-10">
+          <AlumniAuthCard
+            members={members}
+            showAdminOption={true}
+            onAlumniLoginSuccess={(member) => {
+              setCurrentMember(member);
+              setUserRole('member');
+            }}
+            onActivateMemberAccount={handleActivateMemberAccount}
+            onAdminLoginSuccess={handleLoginAdminDirect}
+          />
         </div>
       ) : (
         
@@ -781,25 +624,14 @@ export default function App() {
 
             {currentView === 'homecoming_registration' && userRole === 'admin' && (
               <HomecomingRegistration
-                program={
-                  selectedHomecomingProgram ||
-                  programs.find(p => String(p.namaProgram || '').toLowerCase().includes('homecoming')) || {
-                    id: 'PROG-homecoming-night',
-                    namaProgram: 'Alumni Homecoming Night',
-                    tarikhProgram: '',
-                    masaProgram: '',
-                    tempatProgram: '',
-                    kerjasama: '',
-                    implikasiKewangan: '',
-                    sasaranPeserta: 'Alumni & Pensyarah KKBS',
-                    bilanganPeserta: 100
-                  }
-                }
+                program={resolvedHomecomingProgram}
                 members={members}
                 config={config}
                 receipts={receipts}
                 registrations={homecomingRegistrations}
+                isPublicMode={false}
                 onBack={() => setCurrentView('programs')}
+                onActivateMemberAccount={handleActivateMemberAccount}
                 onAddRegistration={handleAddHomecomingRegistration}
                 onDeleteRegistration={handleDeleteHomecomingRegistration}
                 onAddReceipt={handleAddReceipt}

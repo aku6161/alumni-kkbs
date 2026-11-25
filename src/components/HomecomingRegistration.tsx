@@ -8,6 +8,7 @@ import {
   Transaction
 } from '../types';
 import { OfficialReceiptDocument } from './ProgramReceiptsManager';
+import { AlumniAuthCard } from './AlumniAuthCard';
 import {
   ArrowLeft,
   Building2,
@@ -22,7 +23,7 @@ import {
   FileCheck2,
   GraduationCap,
   HardDrive,
-  KeyRound,
+  Link2,
   ListChecks,
   LogOut,
   MapPin,
@@ -96,7 +97,11 @@ interface HomecomingRegistrationProps {
   config: SystemConfig;
   receipts: ProgramReceipt[];
   registrations: HomecomingRegistrationType[];
-  onBack: () => void;
+  isPublicMode?: boolean;
+  initialLoggedInAlumni?: AlumniMember | null;
+  onBack?: () => void;
+  onActivateMemberAccount: (memberId: string, updateData: Partial<AlumniMember>) => Promise<boolean>;
+  onAlumniAuthenticated?: (member: AlumniMember) => void;
   onAddRegistration: (reg: HomecomingRegistrationType) => Promise<boolean>;
   onDeleteRegistration: (id: string) => Promise<boolean>;
   onAddReceipt: (receipt: Omit<ProgramReceipt, 'id' | 'createdAt'>) => Promise<boolean>;
@@ -167,7 +172,11 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
   config,
   receipts,
   registrations,
+  isPublicMode = false,
+  initialLoggedInAlumni = null,
   onBack,
+  onActivateMemberAccount,
+  onAlumniAuthenticated,
   onAddRegistration,
   onDeleteRegistration,
   onAddReceipt,
@@ -178,10 +187,28 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
   const [participantType, setParticipantType] = useState<'Alumni' | 'Pensyarah'>('Alumni');
 
   // Alumni Auth inside Homecoming form
-  const [alumniIdentifier, setAlumniIdentifier] = useState('');
-  const [alumniPassword, setAlumniPassword] = useState('');
-  const [alumniLoginError, setAlumniLoginError] = useState('');
-  const [loggedInAlumni, setLoggedInAlumni] = useState<AlumniMember | null>(null);
+  const [loggedInAlumni, setLoggedInAlumni] = useState<AlumniMember | null>(initialLoggedInAlumni);
+  const [copiedPublicLink, setCopiedPublicLink] = useState(false);
+
+  const publicRegistrationUrl = useMemo(() => {
+    try {
+      return `${window.location.origin}/?daftar=homecoming`;
+    } catch {
+      return '/?daftar=homecoming';
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (initialLoggedInAlumni) {
+      setLoggedInAlumni(initialLoggedInAlumni);
+      setPhoneInput(
+        initialLoggedInAlumni.noTelefon && initialLoggedInAlumni.noTelefon !== '-'
+          ? initialLoggedInAlumni.noTelefon
+          : ''
+      );
+      setEmailInput(initialLoggedInAlumni.emel || '');
+    }
+  }, [initialLoggedInAlumni]);
 
   // Registration Form Fields
   const [lecturerName, setLecturerName] = useState('');
@@ -239,42 +266,28 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
     return `${yearPrefix}${String(maxNum + 1).padStart(3, '0')}`;
   }, [receipts]);
 
-  // Alumni Login Handler
-  const handleAlumniLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    setAlumniLoginError('');
-    const rawId = alumniIdentifier.trim().toLowerCase();
-    const cleanDigits = alumniIdentifier.replace(/\D/g, '');
-
-    if (!rawId || !alumniPassword.trim()) {
-      setAlumniLoginError('Sila masukkan E-mel / No. KP dan Kata Laluan alumni anda.');
-      return;
+  // Alumni Login Handler (from shared main AlumniAuthCard)
+  const handleAlumniAuthSuccess = (member: AlumniMember) => {
+    setLoggedInAlumni(member);
+    setPhoneInput(member.noTelefon && member.noTelefon !== '-' ? member.noTelefon : '');
+    setEmailInput(member.emel || '');
+    if (onAlumniAuthenticated) {
+      onAlumniAuthenticated(member);
     }
-
-    const match = members.find(m => {
-      const emailMatch = m.emel && m.emel.toLowerCase().trim() === rawId;
-      const kpMatch = cleanDigits.length >= 12 && String(m.noKp || '').replace(/\D/g, '') === cleanDigits;
-      const passwordMatch = String(m.password || '').trim() === alumniPassword.trim();
-      return (emailMatch || kpMatch) && passwordMatch;
-    });
-
-    if (!match) {
-      setAlumniLoginError('Log masuk gagal. E-mel / No. KP atau kata laluan alumni tidak sepadan.');
-      return;
-    }
-
-    setLoggedInAlumni(match);
-    setPhoneInput(match.noTelefon && match.noTelefon !== '-' ? match.noTelefon : '');
-    setEmailInput(match.emel || '');
-    setAlumniIdentifier('');
-    setAlumniPassword('');
   };
 
   const handleAlumniLogout = () => {
     setLoggedInAlumni(null);
     setPhoneInput('');
     setEmailInput('');
-    setAlumniLoginError('');
+  };
+
+  const handleCopyPublicLink = async () => {
+    try {
+      await navigator.clipboard.writeText(publicRegistrationUrl);
+      setCopiedPublicLink(true);
+      setTimeout(() => setCopiedPublicLink(false), 2500);
+    } catch {}
   };
 
   const handleCopyAccount = async () => {
@@ -631,14 +644,16 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
           <div className="absolute -right-12 -top-12 w-56 h-56 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
           <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="space-y-2">
-              <button
-                type="button"
-                onClick={onBack}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-300 hover:text-white bg-white/10 hover:bg-white/15 px-3 py-1.5 rounded-xl transition-all cursor-pointer"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Kembali ke Menu Program</span>
-              </button>
+              {!isPublicMode && onBack && (
+                <button
+                  type="button"
+                  onClick={onBack}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-300 hover:text-white bg-white/10 hover:bg-white/15 px-3 py-1.5 rounded-xl transition-all cursor-pointer"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Kembali ke Menu Program</span>
+                </button>
+              )}
 
               <div className="flex items-center gap-2 pt-1">
                 <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 text-[10px] font-black uppercase tracking-wider">
@@ -672,49 +687,88 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
               </div>
             </div>
 
-            {/* Sub-navigation Tabs */}
-            <div className="flex flex-wrap gap-2 shrink-0">
-              <button
-                type="button"
-                onClick={() => setPageTab('register')}
-                className={`px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 cursor-pointer transition-all ${
-                  pageTab === 'register'
-                    ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30'
-                    : 'bg-white/10 text-white hover:bg-white/20'
-                }`}
-              >
-                <ClipboardCheck className="w-4 h-4" />
-                <span>Borang Pendaftaran</span>
-              </button>
+            {/* Sub-navigation Tabs (Admin sees all 3 tabs; public link sees ONLY registration) */}
+            {!isPublicMode && (
+              <div className="flex flex-wrap gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setPageTab('register')}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 cursor-pointer transition-all ${
+                    pageTab === 'register'
+                      ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30'
+                      : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
+                >
+                  <ClipboardCheck className="w-4 h-4" />
+                  <span>Borang Pendaftaran</span>
+                </button>
 
-              <button
-                type="button"
-                onClick={() => setPageTab('list')}
-                className={`px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 cursor-pointer transition-all ${
-                  pageTab === 'list'
-                    ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30'
-                    : 'bg-white/10 text-white hover:bg-white/20'
-                }`}
-              >
-                <ListChecks className="w-4 h-4" />
-                <span>Senarai ({registrations.length})</span>
-              </button>
+                <button
+                  type="button"
+                  onClick={() => setPageTab('list')}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 cursor-pointer transition-all ${
+                    pageTab === 'list'
+                      ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30'
+                      : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
+                >
+                  <ListChecks className="w-4 h-4" />
+                  <span>Senarai ({registrations.length})</span>
+                </button>
 
-              <button
-                type="button"
-                onClick={() => setPageTab('drive_setup')}
-                className={`px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 cursor-pointer transition-all ${
-                  pageTab === 'drive_setup'
-                    ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30'
-                    : 'bg-white/10 text-white hover:bg-white/20'
-                }`}
-              >
-                <HardDrive className="w-4 h-4" />
-                <span>Google Drive</span>
-              </button>
-            </div>
+                <button
+                  type="button"
+                  onClick={() => setPageTab('drive_setup')}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 cursor-pointer transition-all ${
+                    pageTab === 'drive_setup'
+                      ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30'
+                      : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
+                >
+                  <HardDrive className="w-4 h-4" />
+                  <span>Google Drive</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
+
+        {/* Admin Shareable Public Link Bar */}
+        {!isPublicMode && (
+          <div className="bg-white/95 rounded-2xl border border-cyan-200 p-4 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-start sm:items-center gap-3 min-w-0">
+              <div className="p-2.5 bg-cyan-50 text-cyan-700 rounded-xl shrink-0">
+                <Link2 className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[10px] font-black text-cyan-800 uppercase tracking-wider">
+                  Pautan Pendaftaran Awam (Untuk Diwarwarkan Kepada Alumni &amp; Pensyarah)
+                </p>
+                <p className="text-xs font-mono font-bold text-slate-700 truncate">{publicRegistrationUrl}</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={handleCopyPublicLink}
+                className="px-3.5 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-xs font-extrabold rounded-xl inline-flex items-center gap-1.5 cursor-pointer transition-colors"
+              >
+                <Copy className="w-3.5 h-3.5" />
+                <span>{copiedPublicLink ? 'Pautan Disalin!' : 'Salin Pautan'}</span>
+              </button>
+              <a
+                href={publicRegistrationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl inline-flex items-center gap-1.5 transition-colors"
+              >
+                <span>Buka</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        )}
 
         {/* ============================================================ */}
         {/* TAB 1: BORANG PENDAFTARAN                                    */}
@@ -791,66 +845,17 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
               </div>
             </div>
 
-            {/* ALUMNI LOGIN GATE (When Alumni selected and not yet logged in) */}
+            {/* ALUMNI LOGIN GATE (Main Portal Rasmi Alumni Login Card) */}
             {participantType === 'Alumni' && !loggedInAlumni && (
-              <div className="bg-white rounded-3xl border border-blue-200 p-6 shadow-sm max-w-xl mx-auto space-y-4">
-                <div className="flex items-center gap-3 pb-3 border-b border-slate-100">
-                  <div className="p-2.5 bg-blue-100 text-blue-700 rounded-xl">
-                    <KeyRound className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">
-                      1. Log Masuk Alumni
-                    </h3>
-                    <p className="text-xs text-slate-500">
-                      Sila log masuk untuk mengisi Nama &amp; No. Ahli Alumni secara automatik ke dalam borang pendaftaran.
-                    </p>
-                  </div>
-                </div>
-
-                {alumniLoginError && (
-                  <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold rounded-xl flex items-center gap-2">
-                    <AlertCircle className="w-4 h-4 shrink-0" />
-                    <span>{alumniLoginError}</span>
-                  </div>
-                )}
-
-                <form onSubmit={handleAlumniLogin} className="space-y-4">
-                  <div>
-                    <label className="block text-[10px] font-black text-slate-600 uppercase mb-1">
-                      E-mel Pendaftaran atau No. Kad Pengenalan
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="contoh@gmail.com atau 950505125678"
-                      value={alumniIdentifier}
-                      onChange={(e) => setAlumniIdentifier(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-800 focus:outline-blue-600"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-black text-slate-600 uppercase mb-1">
-                      Kata Laluan
-                    </label>
-                    <input
-                      type="password"
-                      required
-                      placeholder="••••••••"
-                      value={alumniPassword}
-                      onChange={(e) => setAlumniPassword(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-800 focus:outline-blue-600"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-md cursor-pointer transition-all"
-                  >
-                    Log Masuk &amp; Auto-Isi Borang
-                  </button>
-                </form>
+              <div className="py-2">
+                <AlumniAuthCard
+                  members={members}
+                  onAlumniLoginSuccess={handleAlumniAuthSuccess}
+                  onActivateMemberAccount={onActivateMemberAccount}
+                  showAdminOption={false}
+                  subtitleNote="Log masuk Portal Rasmi Alumni untuk meneruskan pendaftaran Alumni Homecoming Night. Nama dan No. Ahli anda akan diisi secara automatik."
+                  onCancel={() => setParticipantType('Pensyarah')}
+                />
               </div>
             )}
 
@@ -1271,7 +1276,7 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
         {/* ============================================================ */}
         {/* TAB 2: SENARAI PENDAFTARAN HOMECOMING                        */}
         {/* ============================================================ */}
-        {pageTab === 'list' && (
+        {!isPublicMode && pageTab === 'list' && (
           <div className="space-y-6">
             {/* Summary Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1436,7 +1441,7 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
         {/* ============================================================ */}
         {/* TAB 3: TETAPAN AUTO-SIMPAN GOOGLE DRIVE                      */}
         {/* ============================================================ */}
-        {pageTab === 'drive_setup' && (
+        {!isPublicMode && pageTab === 'drive_setup' && (
           <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-5">
             <div className="flex items-start justify-between gap-4 flex-wrap pb-4 border-b border-slate-100">
               <div className="flex items-center gap-3">

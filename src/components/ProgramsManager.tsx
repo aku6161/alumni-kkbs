@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Program, SystemConfig } from '../types';
-import { PlusCircle, Edit2, Printer, FileText, X, Calendar, MapPin, Users, DollarSign, Clock, Search, Handshake, UserPlus } from 'lucide-react';
+import { PlusCircle, Edit2, Printer, FileText, X, Calendar, MapPin, Users, DollarSign, Clock, Search, Handshake, UserPlus, Link2, Check } from 'lucide-react';
 
 interface ProgramsManagerProps {
   programs: Program[];
@@ -391,6 +391,16 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
 
   // Print state
   const [printJob, setPrintJob] = useState<{ program: Program; type: 'kertas_kerja' | 'laporan' } | null>(null);
+  const [copiedLinkProgramId, setCopiedLinkProgramId] = useState<string | null>(null);
+
+  const handleCopyHomecomingLink = async (programId: string) => {
+    try {
+      const link = `${window.location.origin}/?daftar=homecoming`;
+      await navigator.clipboard.writeText(link);
+      setCopiedLinkProgramId(programId);
+      setTimeout(() => setCopiedLinkProgramId(null), 2500);
+    } catch {}
+  };
 
   // Reset form inputs
   const resetForm = () => {
@@ -538,14 +548,34 @@ export const ProgramsManager: React.FC<ProgramsManagerProps> = ({
                 {/* Actions */}
                 <div className="flex gap-2 flex-wrap items-center justify-end shrink-0 border-t border-slate-50 pt-3 md:border-t-0 md:pt-0">
                   {String(p.namaProgram || '').toLowerCase().includes('homecoming') && onOpenHomecomingRegistration && (
-                    <button
-                      onClick={() => onOpenHomecomingRegistration(p)}
-                      className="px-3.5 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl text-xs font-extrabold cursor-pointer transition-all flex items-center gap-1.5 shadow-sm shadow-blue-500/20"
-                      title="Buka halaman pendaftaran Alumni Homecoming Night"
-                    >
-                      <UserPlus className="w-3.5 h-3.5" />
-                      <span>Pendaftaran</span>
-                    </button>
+                    <>
+                      <button
+                        onClick={() => onOpenHomecomingRegistration(p)}
+                        className="px-3.5 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl text-xs font-extrabold cursor-pointer transition-all flex items-center gap-1.5 shadow-sm shadow-blue-500/20"
+                        title="Buka halaman pendaftaran Alumni Homecoming Night"
+                      >
+                        <UserPlus className="w-3.5 h-3.5" />
+                        <span>Pendaftaran</span>
+                      </button>
+
+                      <button
+                        onClick={() => handleCopyHomecomingLink(p.id)}
+                        className="px-3 py-1.5 bg-cyan-50 hover:bg-cyan-100 text-cyan-800 rounded-xl text-xs font-bold cursor-pointer transition-all flex items-center gap-1.5 border border-cyan-200"
+                        title="Salin pautan pendaftaran awam untuk Alumni & Pensyarah"
+                      >
+                        {copiedLinkProgramId === p.id ? (
+                          <>
+                            <Check className="w-3.5 h-3.5 text-emerald-600" />
+                            <span>Link Disalin!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Link2 className="w-3.5 h-3.5" />
+                            <span>Salin Link</span>
+                          </>
+                        )}
+                      </button>
+                    </>
                   )}
 
                   <button
