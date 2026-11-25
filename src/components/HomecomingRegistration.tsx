@@ -861,412 +861,424 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
 
             {/* REGISTRATION FORM (Visible when Pensyarah selected OR Alumni logged in) */}
             {(participantType === 'Pensyarah' || (participantType === 'Alumni' && loggedInAlumni)) && (
-              <form onSubmit={handleSubmitRegistration} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {/* Left Column: Participant Info + Pax + Upload */}
-                <div className="lg:col-span-2 space-y-6">
-                  {/* Section 1: Maklumat Peserta */}
-                  <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
-                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-slate-100">
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-black flex items-center justify-center">
-                          1
-                        </span>
-                        <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">
-                          {participantType === 'Alumni' ? 'Maklumat Alumni (Auto-Isi)' : 'Maklumat Pensyarah'}
-                        </h3>
-                      </div>
-
-                      {participantType === 'Alumni' && loggedInAlumni && (
-                        <button
-                          type="button"
-                          onClick={handleAlumniLogout}
-                          className="text-xs font-bold text-rose-600 hover:text-rose-700 inline-flex items-center gap-1 bg-rose-50 px-2.5 py-1 rounded-lg cursor-pointer"
-                        >
-                          <LogOut className="w-3.5 h-3.5" />
-                          <span>Tukar Alumni</span>
-                        </button>
-                      )}
-                    </div>
-
-                    {participantType === 'Alumni' && loggedInAlumni ? (
-                      <div className="space-y-4">
-                        <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center gap-2.5 text-emerald-800 text-xs font-bold">
-                          <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-                          <span>Log masuk berjaya! Nama penuh dan No. Ahli anda telah dimasukkan secara automatik.</span>
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <div>
-                            <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
-                              Nama Penuh Alumni
-                            </label>
-                            <input
-                              type="text"
-                              readOnly
-                              value={loggedInAlumni.nama}
-                              className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-black text-slate-800 uppercase"
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
-                              No. Ahli Alumni
-                            </label>
-                            <input
-                              type="text"
-                              readOnly
-                              value={loggedInAlumni.noAhli || '-'}
-                              className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-mono font-black text-blue-700"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      <div>
-                        <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
-                          Nama Penuh Pensyarah <span className="text-rose-500">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="Contoh: PN. NURUL HIDAYAH BINTI AHMAD"
-                          value={lecturerName}
-                          onChange={(e) => setLecturerName(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-bold text-slate-800 uppercase focus:outline-blue-600"
-                        />
-                      </div>
-                    )}
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                      <div>
-                        <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
-                          No. Telefon (Untuk Rekod Resit)
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="Contoh: 012-3456789"
-                          value={phoneInput}
-                          onChange={(e) => setPhoneInput(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-semibold text-slate-800 focus:outline-blue-600"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
-                          E-mel (Opsyen)
-                        </label>
-                        <input
-                          type="email"
-                          placeholder="contoh@gmail.com"
-                          value={emailInput}
-                          onChange={(e) => setEmailInput(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-semibold text-slate-800 focus:outline-blue-600"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Section 2: Pilih Bilangan Pax */}
-                  <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
-                    <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
+              <form onSubmit={handleSubmitRegistration} className="space-y-6 max-w-4xl mx-auto">
+                {/* 1. Maklumat Peserta */}
+                <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
+                  <div className="flex items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                    <div className="flex items-center gap-2.5">
                       <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-black flex items-center justify-center">
-                        2
+                        1
                       </span>
-                      <div>
-                        <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">
-                          Pilih Bilangan Pax
-                        </h3>
-                        <p className="text-[11px] text-slate-500">
-                          Jumlah bayaran akan dikira secara automatik berdasarkan kategori umur peserta.
-                        </p>
-                      </div>
+                      <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">
+                        {participantType === 'Alumni' ? 'Maklumat Alumni (Auto-Isi)' : 'Maklumat Pensyarah'}
+                      </h3>
                     </div>
 
-                    <div className="space-y-3">
-                      {/* 12 tahun ke atas */}
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl border border-slate-200 bg-slate-50/70">
-                        <div>
-                          <h4 className="text-sm font-extrabold text-slate-900">12 Tahun ke Atas</h4>
-                          <p className="text-xs font-bold text-blue-700">RM {PRICE_12_PLUS}.00 / seorang</p>
-                        </div>
-                        <div className="flex items-center gap-3 justify-between sm:justify-end">
-                          <div className="flex items-center gap-2">
-                            <button
-                              type="button"
-                              onClick={() => updatePax(setPax12Plus, -1)}
-                              className="w-8 h-8 rounded-lg bg-white border border-slate-300 flex items-center justify-center text-slate-700 hover:bg-slate-100 cursor-pointer"
-                            >
-                              <Minus className="w-3.5 h-3.5" />
-                            </button>
-                            <input
-                              type="number"
-                              min={0}
-                              max={50}
-                              value={pax12Plus}
-                              onChange={(e) => setPax12Plus(Math.max(0, Number(e.target.value) || 0))}
-                              className="w-14 text-center bg-white border border-slate-300 rounded-lg py-1.5 text-sm font-black text-slate-900"
-                            />
-                            <button
-                              type="button"
-                              onClick={() => updatePax(setPax12Plus, 1)}
-                              className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 cursor-pointer"
-                            >
-                              <Plus className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                          <span className="w-24 text-right text-sm font-black text-slate-800">
-                            RM {subtotal12Plus.toFixed(2)}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* 5 - 11 tahun */}
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl border border-slate-200 bg-slate-50/70">
-                        <div>
-                          <h4 className="text-sm font-extrabold text-slate-900">5 – 11 Tahun</h4>
-                          <p className="text-xs font-bold text-indigo-700">RM {PRICE_5_TO_11}.00 / seorang</p>
-                        </div>
-                        <div className="flex items-center gap-3 justify-between sm:justify-end">
-                          <div className="flex items-center gap-2">
-                            <button
-                              type="button"
-                              onClick={() => updatePax(setPax5To11, -1)}
-                              className="w-8 h-8 rounded-lg bg-white border border-slate-300 flex items-center justify-center text-slate-700 hover:bg-slate-100 cursor-pointer"
-                            >
-                              <Minus className="w-3.5 h-3.5" />
-                            </button>
-                            <input
-                              type="number"
-                              min={0}
-                              max={50}
-                              value={pax5To11}
-                              onChange={(e) => setPax5To11(Math.max(0, Number(e.target.value) || 0))}
-                              className="w-14 text-center bg-white border border-slate-300 rounded-lg py-1.5 text-sm font-black text-slate-900"
-                            />
-                            <button
-                              type="button"
-                              onClick={() => updatePax(setPax5To11, 1)}
-                              className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-700 cursor-pointer"
-                            >
-                              <Plus className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                          <span className="w-24 text-right text-sm font-black text-slate-800">
-                            RM {subtotal5To11.toFixed(2)}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* 4 tahun ke bawah */}
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl border border-emerald-200 bg-emerald-50/50">
-                        <div>
-                          <h4 className="text-sm font-extrabold text-slate-900">4 Tahun ke Bawah</h4>
-                          <p className="text-xs font-extrabold text-emerald-700">Percuma (RM 0.00)</p>
-                        </div>
-                        <div className="flex items-center gap-3 justify-between sm:justify-end">
-                          <div className="flex items-center gap-2">
-                            <button
-                              type="button"
-                              onClick={() => updatePax(setPax4Below, -1)}
-                              className="w-8 h-8 rounded-lg bg-white border border-slate-300 flex items-center justify-center text-slate-700 hover:bg-slate-100 cursor-pointer"
-                            >
-                              <Minus className="w-3.5 h-3.5" />
-                            </button>
-                            <input
-                              type="number"
-                              min={0}
-                              max={50}
-                              value={pax4Below}
-                              onChange={(e) => setPax4Below(Math.max(0, Number(e.target.value) || 0))}
-                              className="w-14 text-center bg-white border border-slate-300 rounded-lg py-1.5 text-sm font-black text-slate-900"
-                            />
-                            <button
-                              type="button"
-                              onClick={() => updatePax(setPax4Below, 1)}
-                              className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center hover:bg-emerald-700 cursor-pointer"
-                            >
-                              <Plus className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                          <span className="w-24 text-right text-sm font-black text-emerald-700">
-                            PERCUMA
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                    {participantType === 'Alumni' && loggedInAlumni && (
+                      <button
+                        type="button"
+                        onClick={handleAlumniLogout}
+                        className="text-xs font-bold text-rose-600 hover:text-rose-700 inline-flex items-center gap-1 bg-rose-50 px-2.5 py-1 rounded-lg cursor-pointer"
+                      >
+                        <LogOut className="w-3.5 h-3.5" />
+                        <span>Tukar Alumni</span>
+                      </button>
+                    )}
                   </div>
 
-                  {/* Section 4: Muat Naik Bukti Bayaran */}
-                  <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
-                    <div className="flex items-center justify-between gap-2 pb-3 border-b border-slate-100 flex-wrap">
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-black flex items-center justify-center">
-                          4
-                        </span>
-                        <div>
-                          <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">
-                            Muat Naik Bukti Bayaran
-                          </h3>
-                          <p className="text-[11px] text-slate-500">
-                            Fail bukti bayaran akan disimpan secara automatik ke folder Google Drive persatuan.
-                          </p>
-                        </div>
+                  {participantType === 'Alumni' && loggedInAlumni ? (
+                    <div className="space-y-4">
+                      <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center gap-2.5 text-emerald-800 text-xs font-bold">
+                        <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
+                        <span>Log masuk berjaya! Nama penuh dan No. Ahli anda telah dimasukkan secara automatik.</span>
                       </div>
 
-                      <a
-                        href={HOMECOMING_DRIVE_FOLDER_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-[11px] font-bold text-indigo-700 hover:underline bg-indigo-50 px-2.5 py-1 rounded-lg"
-                      >
-                        <HardDrive className="w-3.5 h-3.5" />
-                        <span>Folder Google Drive</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
+                            Nama Penuh Alumni
+                          </label>
+                          <input
+                            type="text"
+                            readOnly
+                            value={loggedInAlumni.nama}
+                            className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-black text-slate-800 uppercase"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
+                            No. Ahli Alumni
+                          </label>
+                          <input
+                            type="text"
+                            readOnly
+                            value={loggedInAlumni.noAhli || '-'}
+                            className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-mono font-black text-blue-700"
+                          />
+                        </div>
+                      </div>
                     </div>
-
+                  ) : (
                     <div>
                       <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
-                        No. Rujukan Transaksi Bank (Opsyen)
+                        Nama Penuh Pensyarah <span className="text-rose-500">*</span>
                       </label>
                       <input
                         type="text"
-                        placeholder="Contoh: RPP20261125001234"
-                        value={referenceNo}
-                        onChange={(e) => setReferenceNo(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-mono font-bold text-slate-800 focus:outline-blue-600"
+                        required
+                        placeholder="Contoh: PN. NURUL HIDAYAH BINTI AHMAD"
+                        value={lecturerName}
+                        onChange={(e) => setLecturerName(e.target.value)}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-bold text-slate-800 uppercase focus:outline-blue-600"
                       />
                     </div>
+                  )}
 
-                    <div className="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-2xl p-6 text-center bg-slate-50/70 transition-colors">
-                      <input
-                        type="file"
-                        id="homecoming-proof-input"
-                        accept="image/*,.pdf"
-                        onChange={handleProofFileChange}
-                        className="hidden"
-                      />
-                      <label htmlFor="homecoming-proof-input" className="cursor-pointer flex flex-col items-center gap-2">
-                        <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center">
-                          <UploadCloud className="w-6 h-6" />
-                        </div>
-                        <span className="text-sm font-extrabold text-slate-800">
-                          {proofFile ? proofFile.name : 'Klik untuk muat naik resit / slip bayaran'}
-                        </span>
-                        <span className="text-xs text-slate-400">
-                          Format disokong: JPG, PNG, WEBP atau PDF (Maksimum 10MB)
-                        </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                    <div>
+                      <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
+                        No. Telefon (Untuk Rekod Resit)
                       </label>
-
-                      {proofPreviewUrl && (
-                        <div className="mt-4 flex flex-col items-center gap-2">
-                          <img
-                            src={proofPreviewUrl}
-                            alt="Pratonton Bukti Bayaran"
-                            className="max-h-48 rounded-xl border border-slate-200 shadow-xs object-contain"
-                          />
-                        </div>
-                      )}
+                      <input
+                        type="text"
+                        placeholder="Contoh: 012-3456789"
+                        value={phoneInput}
+                        onChange={(e) => setPhoneInput(e.target.value)}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-semibold text-slate-800 focus:outline-blue-600"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
+                        E-mel (Opsyen)
+                      </label>
+                      <input
+                        type="email"
+                        placeholder="contoh@gmail.com"
+                        value={emailInput}
+                        onChange={(e) => setEmailInput(e.target.value)}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-semibold text-slate-800 focus:outline-blue-600"
+                      />
                     </div>
                   </div>
                 </div>
 
-                {/* Right Column: Auto Jumlah & Maklumat Akaun Persatuan Alumni + Submit */}
-                <div className="space-y-6">
-                  <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-5 sticky top-24">
-                    <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
-                      <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-black flex items-center justify-center">
-                        3
-                      </span>
+                {/* 2. Pilih Bilangan Pax */}
+                <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
+                  <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
+                    <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-black flex items-center justify-center">
+                      2
+                    </span>
+                    <div>
                       <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">
-                        Ringkasan &amp; Bayaran
+                        Pilih Bilangan Pax
                       </h3>
+                      <p className="text-[11px] text-slate-500">
+                        Pilih bilangan kehadiran mengikut kategori umur.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    {/* 12 tahun ke atas */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl border border-slate-200 bg-slate-50/70">
+                      <div>
+                        <h4 className="text-sm font-extrabold text-slate-900">12 Tahun ke Atas</h4>
+                        <p className="text-xs font-bold text-blue-700">RM {PRICE_12_PLUS}.00 / seorang</p>
+                      </div>
+                      <div className="flex items-center gap-3 justify-between sm:justify-end">
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => updatePax(setPax12Plus, -1)}
+                            className="w-8 h-8 rounded-lg bg-white border border-slate-300 flex items-center justify-center text-slate-700 hover:bg-slate-100 cursor-pointer"
+                          >
+                            <Minus className="w-3.5 h-3.5" />
+                          </button>
+                          <input
+                            type="number"
+                            min={0}
+                            max={50}
+                            value={pax12Plus}
+                            onChange={(e) => setPax12Plus(Math.max(0, Number(e.target.value) || 0))}
+                            className="w-14 text-center bg-white border border-slate-300 rounded-lg py-1.5 text-sm font-black text-slate-900"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => updatePax(setPax12Plus, 1)}
+                            className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 cursor-pointer"
+                          >
+                            <Plus className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                        <span className="w-24 text-right text-sm font-black text-slate-800">
+                          RM {subtotal12Plus.toFixed(2)}
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Ringkasan Pax */}
+                    {/* 5 - 11 tahun */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl border border-slate-200 bg-slate-50/70">
+                      <div>
+                        <h4 className="text-sm font-extrabold text-slate-900">5 – 11 Tahun</h4>
+                        <p className="text-xs font-bold text-indigo-700">RM {PRICE_5_TO_11}.00 / seorang</p>
+                      </div>
+                      <div className="flex items-center gap-3 justify-between sm:justify-end">
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => updatePax(setPax5To11, -1)}
+                            className="w-8 h-8 rounded-lg bg-white border border-slate-300 flex items-center justify-center text-slate-700 hover:bg-slate-100 cursor-pointer"
+                          >
+                            <Minus className="w-3.5 h-3.5" />
+                          </button>
+                          <input
+                            type="number"
+                            min={0}
+                            max={50}
+                            value={pax5To11}
+                            onChange={(e) => setPax5To11(Math.max(0, Number(e.target.value) || 0))}
+                            className="w-14 text-center bg-white border border-slate-300 rounded-lg py-1.5 text-sm font-black text-slate-900"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => updatePax(setPax5To11, 1)}
+                            className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-700 cursor-pointer"
+                          >
+                            <Plus className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                        <span className="w-24 text-right text-sm font-black text-slate-800">
+                          RM {subtotal5To11.toFixed(2)}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* 4 tahun ke bawah */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl border border-emerald-200 bg-emerald-50/50">
+                      <div>
+                        <h4 className="text-sm font-extrabold text-slate-900">4 Tahun ke Bawah</h4>
+                        <p className="text-xs font-extrabold text-emerald-700">Percuma (RM 0.00)</p>
+                      </div>
+                      <div className="flex items-center gap-3 justify-between sm:justify-end">
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => updatePax(setPax4Below, -1)}
+                            className="w-8 h-8 rounded-lg bg-white border border-slate-300 flex items-center justify-center text-slate-700 hover:bg-slate-100 cursor-pointer"
+                          >
+                            <Minus className="w-3.5 h-3.5" />
+                          </button>
+                          <input
+                            type="number"
+                            min={0}
+                            max={50}
+                            value={pax4Below}
+                            onChange={(e) => setPax4Below(Math.max(0, Number(e.target.value) || 0))}
+                            className="w-14 text-center bg-white border border-slate-300 rounded-lg py-1.5 text-sm font-black text-slate-900"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => updatePax(setPax4Below, 1)}
+                            className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center hover:bg-emerald-700 cursor-pointer"
+                          >
+                            <Plus className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                        <span className="w-24 text-right text-sm font-black text-emerald-700">
+                          PERCUMA
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Auto Jumlah & Maklumat Akaun Persatuan Alumni */}
+                <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-5">
+                  <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
+                    <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-black flex items-center justify-center">
+                      3
+                    </span>
+                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">
+                      Auto Jumlah &amp; Buat Bayaran
+                    </h3>
+                  </div>
+
+                  {/* Ringkasan Pax */}
+                  <div className="space-y-2 text-xs">
+                    <div className="flex justify-between text-slate-600">
+                      <span>Kategori Peserta</span>
+                      <strong className="text-slate-900 uppercase">{participantType}</strong>
+                    </div>
+                    <div className="flex justify-between text-slate-600">
+                      <span>12 Tahun ke Atas ({pax12Plus} pax × RM90)</span>
+                      <strong className="text-slate-900">RM {subtotal12Plus.toFixed(2)}</strong>
+                    </div>
+                    <div className="flex justify-between text-slate-600">
+                      <span>5–11 Tahun ({pax5To11} pax × RM45)</span>
+                      <strong className="text-slate-900">RM {subtotal5To11.toFixed(2)}</strong>
+                    </div>
+                    <div className="flex justify-between text-slate-600">
+                      <span>4 Tahun ke Bawah ({pax4Below} pax)</span>
+                      <strong className="text-emerald-700">Percuma</strong>
+                    </div>
+
+                    <div className="border-t border-slate-200 pt-3 mt-2 flex justify-between items-baseline">
+                      <div>
+                        <span className="block text-[10px] font-black text-slate-400 uppercase">Jumlah Keseluruhan</span>
+                        <span className="text-[11px] font-bold text-slate-500">Jumlah Pax: {totalPax} orang</span>
+                      </div>
+                      <span className="text-2xl font-black text-blue-700">RM {totalAmount.toFixed(2)}</span>
+                    </div>
+                  </div>
+
+                  {/* Maklumat Akaun Bank Persatuan Alumni */}
+                  <div className="bg-gradient-to-br from-blue-900 to-indigo-950 text-white rounded-2xl p-5 space-y-3 shadow-md">
+                    <div className="flex items-center gap-2 text-cyan-300 text-[10px] font-black uppercase tracking-wider">
+                      <Building2 className="w-4 h-4" />
+                      <span>Sila Buat Bayaran Melalui Akaun Persatuan Alumni</span>
+                    </div>
+
                     <div className="space-y-2 text-xs">
-                      <div className="flex justify-between text-slate-600">
-                        <span>Kategori Peserta</span>
-                        <strong className="text-slate-900 uppercase">{participantType}</strong>
+                      <div className="flex justify-between">
+                        <span className="text-blue-200">Bank:</span>
+                        <strong className="text-white text-sm">{BANK_DETAILS.bank}</strong>
                       </div>
-                      <div className="flex justify-between text-slate-600">
-                        <span>12 Tahun ke Atas ({pax12Plus} pax × RM90)</span>
-                        <strong className="text-slate-900">RM {subtotal12Plus.toFixed(2)}</strong>
+                      <div className="flex justify-between">
+                        <span className="text-blue-200">Nama:</span>
+                        <strong className="text-white text-sm">{BANK_DETAILS.accountName}</strong>
                       </div>
-                      <div className="flex justify-between text-slate-600">
-                        <span>5–11 Tahun ({pax5To11} pax × RM45)</span>
-                        <strong className="text-slate-900">RM {subtotal5To11.toFixed(2)}</strong>
-                      </div>
-                      <div className="flex justify-between text-slate-600">
-                        <span>4 Tahun ke Bawah ({pax4Below} pax)</span>
-                        <strong className="text-emerald-700">Percuma</strong>
-                      </div>
-
-                      <div className="border-t border-slate-200 pt-3 mt-2 flex justify-between items-baseline">
-                        <div>
-                          <span className="block text-[10px] font-black text-slate-400 uppercase">Jumlah Keseluruhan</span>
-                          <span className="text-[11px] font-bold text-slate-500">Jumlah Pax: {totalPax} orang</span>
-                        </div>
-                        <span className="text-2xl font-black text-blue-700">RM {totalAmount.toFixed(2)}</span>
-                      </div>
-                    </div>
-
-                    {/* Maklumat Akaun Bank Persatuan Alumni */}
-                    <div className="bg-gradient-to-br from-blue-900 to-indigo-950 text-white rounded-2xl p-4 space-y-3 shadow-md">
-                      <div className="flex items-center gap-2 text-cyan-300 text-[10px] font-black uppercase tracking-wider">
-                        <Building2 className="w-4 h-4" />
-                        <span>Akaun Rasmi Persatuan Alumni</span>
-                      </div>
-
-                      <div className="space-y-1.5 text-xs">
-                        <div className="flex justify-between">
-                          <span className="text-blue-200">Bank:</span>
-                          <strong className="text-white">{BANK_DETAILS.bank}</strong>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-blue-200">Nama:</span>
-                          <strong className="text-white">{BANK_DETAILS.accountName}</strong>
-                        </div>
-                        <div className="flex items-center justify-between pt-1">
-                          <span className="text-blue-200">No. Akaun:</span>
-                          <div className="flex items-center gap-2">
-                            <strong className="font-mono text-base text-cyan-300 tracking-wider">
-                              {BANK_DETAILS.accountNo}
-                            </strong>
-                            <button
-                              type="button"
-                              onClick={handleCopyAccount}
-                              className="px-2 py-1 bg-white/15 hover:bg-white/25 rounded-lg text-[10px] font-bold inline-flex items-center gap-1 cursor-pointer transition-colors"
-                              title="Salin nombor akaun"
-                            >
-                              <Copy className="w-3 h-3" />
-                              <span>{copiedAccount ? 'Disalin!' : 'Salin'}</span>
-                            </button>
-                          </div>
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-1 gap-2 border-t border-blue-800/80">
+                        <span className="text-blue-200">No. Akaun:</span>
+                        <div className="flex items-center gap-2">
+                          <strong className="font-mono text-lg text-cyan-300 tracking-wider">
+                            {BANK_DETAILS.accountNo}
+                          </strong>
+                          <button
+                            type="button"
+                            onClick={handleCopyAccount}
+                            className="px-2.5 py-1 bg-white/15 hover:bg-white/25 rounded-lg text-xs font-bold inline-flex items-center gap-1 cursor-pointer transition-colors"
+                            title="Salin nombor akaun"
+                          >
+                            <Copy className="w-3.5 h-3.5" />
+                            <span>{copiedAccount ? 'Disalin!' : 'Salin'}</span>
+                          </button>
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
 
-                    {submitError && (
-                      <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold rounded-xl flex items-start gap-2">
-                        <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-                        <span>{submitError}</span>
+                {/* 4. Muat Naik Bukti Bayaran */}
+                <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
+                  <div className="flex items-center justify-between gap-2 pb-3 border-b border-slate-100 flex-wrap">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-black flex items-center justify-center">
+                        4
+                      </span>
+                      <div>
+                        <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">
+                          Muat Naik Bukti Bayaran
+                        </h3>
+                        <p className="text-[11px] text-slate-500">
+                          Auto simpan ke dalam fail Google Drive persatuan.
+                        </p>
+                      </div>
+                    </div>
+
+                    <a
+                      href={HOMECOMING_DRIVE_FOLDER_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-indigo-700 hover:underline bg-indigo-50 px-2.5 py-1 rounded-lg"
+                    >
+                      <HardDrive className="w-3.5 h-3.5" />
+                      <span>Folder Google Drive</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-500 uppercase mb-1">
+                      No. Rujukan Transaksi Bank (Opsyen)
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Contoh: RPP20261125001234"
+                      value={referenceNo}
+                      onChange={(e) => setReferenceNo(e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-mono font-bold text-slate-800 focus:outline-blue-600"
+                    />
+                  </div>
+
+                  <div className="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-2xl p-6 text-center bg-slate-50/70 transition-colors">
+                    <input
+                      type="file"
+                      id="homecoming-proof-input"
+                      accept="image/*,.pdf"
+                      onChange={handleProofFileChange}
+                      className="hidden"
+                    />
+                    <label htmlFor="homecoming-proof-input" className="cursor-pointer flex flex-col items-center gap-2">
+                      <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center">
+                        <UploadCloud className="w-6 h-6" />
+                      </div>
+                      <span className="text-sm font-extrabold text-slate-800">
+                        {proofFile ? proofFile.name : 'Klik untuk muat naik resit / slip bayaran'}
+                      </span>
+                      <span className="text-xs text-slate-400">
+                        Format disokong: JPG, PNG, WEBP atau PDF (Maksimum 10MB)
+                      </span>
+                    </label>
+
+                    {proofPreviewUrl && (
+                      <div className="mt-4 flex flex-col items-center gap-2">
+                        <img
+                          src={proofPreviewUrl}
+                          alt="Pratonton Bukti Bayaran"
+                          className="max-h-56 rounded-xl border border-slate-200 shadow-xs object-contain"
+                        />
                       </div>
                     )}
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-3.5 px-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2 cursor-pointer transition-all disabled:opacity-50"
-                    >
-                      <Receipt className="w-4 h-4" />
-                      <span>
-                        {isSubmitting ? 'Sedang Memproses & Simpan Drive...' : '5. Hantar & Jana Resit Tempahan'}
-                      </span>
-                    </button>
-
-                    <p className="text-[10px] text-slate-400 text-center leading-relaxed">
-                      Resit rasmi bayaran akan dijana serta-merta sebagai bukti tempahan program Alumni Homecoming Night.
-                    </p>
                   </div>
+                </div>
+
+                {/* 5. Jana Resit Sebagai Bukti Tempahan */}
+                <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-4">
+                  <div className="flex items-center gap-2.5 pb-2 border-b border-slate-100">
+                    <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-black flex items-center justify-center">
+                      5
+                    </span>
+                    <div>
+                      <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">
+                        Jana Resit Sebagai Bukti Tempahan
+                      </h3>
+                      <p className="text-[11px] text-slate-500">
+                        Tekan butang di bawah untuk menghantar borang dan menjana resit rasmi secara automatik.
+                      </p>
+                    </div>
+                  </div>
+
+                  {submitError && (
+                    <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold rounded-xl flex items-start gap-2">
+                      <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                      <span>{submitError}</span>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-black text-sm uppercase tracking-wider rounded-2xl shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2.5 cursor-pointer transition-all disabled:opacity-50"
+                  >
+                    <Receipt className="w-5 h-5" />
+                    <span>
+                      {isSubmitting ? 'Sedang Memproses & Simpan ke Drive...' : 'Hantar & Jana Resit Sebagai Bukti Tempahan'}
+                    </span>
+                  </button>
+
+                  <p className="text-[10px] text-slate-400 text-center leading-relaxed">
+                    Resit rasmi bayaran akan dijana serta-merta selepas borang dihantar untuk disimpan atau dicetak.
+                  </p>
                 </div>
               </form>
             )}
