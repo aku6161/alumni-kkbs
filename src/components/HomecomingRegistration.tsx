@@ -1588,31 +1588,6 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
               </div>
             </div>
 
-            {/* Drive Sync Status Banner */}
-            {latestRegistration && (
-              <div
-                className={`px-6 py-2.5 text-xs font-bold flex items-center justify-between gap-2 flex-wrap border-b ${
-                  latestRegistration.driveSyncStatus === 'synced'
-                    ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                    : 'bg-amber-50 text-amber-800 border-amber-200'
-                }`}
-              >
-                <div className="flex items-center gap-2">
-                  <HardDrive className="w-4 h-4 shrink-0" />
-                  <span>{latestRegistration.driveSyncMessage}</span>
-                </div>
-                <a
-                  href={latestRegistration.driveFileUrl || HOMECOMING_DRIVE_FOLDER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 underline font-extrabold"
-                >
-                  <span>{latestRegistration.driveFileUrl ? 'Buka Fail di Drive' : 'Buka Folder Drive'}</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </div>
-            )}
-
             {/* Official Receipt Paper */}
             <div className="p-4 sm:p-8 overflow-y-auto bg-slate-200/80 flex justify-center">
               <div
