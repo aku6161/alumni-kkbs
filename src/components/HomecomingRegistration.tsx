@@ -626,12 +626,24 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
       (acc, r) => {
         acc.totalBookings += 1;
         acc.totalPax += Number(r.totalPax || 0);
+        acc.totalPax12Plus += Number(r.pax12Plus || 0);
+        acc.totalPax5To11 += Number(r.pax5To11 || 0);
+        acc.totalPax4Below += Number(r.pax4Below || 0);
         acc.totalAmount += Number(r.totalAmount || 0);
         if (r.participantType === 'Alumni') acc.alumniCount += 1;
         else acc.lecturerCount += 1;
         return acc;
       },
-      { totalBookings: 0, totalPax: 0, totalAmount: 0, alumniCount: 0, lecturerCount: 0 }
+      {
+        totalBookings: 0,
+        totalPax: 0,
+        totalPax12Plus: 0,
+        totalPax5To11: 0,
+        totalPax4Below: 0,
+        totalAmount: 0,
+        alumniCount: 0,
+        lecturerCount: 0
+      }
     );
   }, [registrations]);
 
@@ -1307,7 +1319,7 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                   <Users className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase">Jumlah Pax</p>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase">Jumlah Keseluruhan Pax</p>
                   <h4 className="text-lg font-black text-slate-800">{stats.totalPax} Orang</h4>
                 </div>
               </div>
@@ -1331,6 +1343,48 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                   <h4 className="text-xs font-black text-slate-800">
                     {stats.alumniCount} Alumni • {stats.lecturerCount} Pensyarah
                   </h4>
+                </div>
+              </div>
+            </div>
+
+            {/* Pecahan Pax Mengikut Kategori Umur */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+              <div className="bg-blue-50/70 border border-blue-200/80 p-3.5 rounded-2xl flex items-center justify-between shadow-2xs">
+                <div>
+                  <span className="text-[10px] font-black uppercase tracking-wider text-blue-700">
+                    12 Tahun ke Atas
+                  </span>
+                  <div className="text-xs font-bold text-slate-500">RM 90.00 / pax</div>
+                </div>
+                <div className="text-right">
+                  <span className="text-xl font-black text-blue-900">{stats.totalPax12Plus}</span>
+                  <span className="text-xs font-bold text-blue-700 ml-1">pax</span>
+                </div>
+              </div>
+
+              <div className="bg-indigo-50/70 border border-indigo-200/80 p-3.5 rounded-2xl flex items-center justify-between shadow-2xs">
+                <div>
+                  <span className="text-[10px] font-black uppercase tracking-wider text-indigo-700">
+                    5 – 11 Tahun
+                  </span>
+                  <div className="text-xs font-bold text-slate-500">RM 45.00 / pax</div>
+                </div>
+                <div className="text-right">
+                  <span className="text-xl font-black text-indigo-900">{stats.totalPax5To11}</span>
+                  <span className="text-xs font-bold text-indigo-700 ml-1">pax</span>
+                </div>
+              </div>
+
+              <div className="bg-emerald-50/70 border border-emerald-200/80 p-3.5 rounded-2xl flex items-center justify-between shadow-2xs">
+                <div>
+                  <span className="text-[10px] font-black uppercase tracking-wider text-emerald-700">
+                    4 Tahun ke Bawah
+                  </span>
+                  <div className="text-xs font-bold text-slate-500">Percuma (RM 0.00)</div>
+                </div>
+                <div className="text-right">
+                  <span className="text-xl font-black text-emerald-900">{stats.totalPax4Below}</span>
+                  <span className="text-xs font-bold text-emerald-700 ml-1">pax</span>
                 </div>
               </div>
             </div>
@@ -1362,21 +1416,33 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                   <table className="w-full text-left text-xs border-collapse">
                     <thead className="bg-slate-100 text-slate-600 text-[10px] uppercase font-black">
                       <tr>
-                        <th className="py-3 px-4">No. Resit</th>
-                        <th className="py-3 px-4">Kategori &amp; Nama</th>
-                        <th className="py-3 px-4">Pax</th>
-                        <th className="py-3 px-4">Jumlah</th>
-                        <th className="py-3 px-4">Bukti Google Drive</th>
-                        <th className="py-3 px-4 text-right">Tindakan</th>
+                        <th className="py-3 px-3.5">No. Resit</th>
+                        <th className="py-3 px-3.5">Kategori &amp; Nama</th>
+                        <th className="py-3 px-3 text-center bg-blue-50/60 text-blue-900">
+                          12 Tahun ke Atas
+                          <div className="text-[9px] font-bold text-blue-600 lowercase tracking-normal">(RM90)</div>
+                        </th>
+                        <th className="py-3 px-3 text-center bg-indigo-50/60 text-indigo-900">
+                          5–11 Tahun
+                          <div className="text-[9px] font-bold text-indigo-600 lowercase tracking-normal">(RM45)</div>
+                        </th>
+                        <th className="py-3 px-3 text-center bg-emerald-50/60 text-emerald-900">
+                          4 Tahun ke Bawah
+                          <div className="text-[9px] font-bold text-emerald-600 lowercase tracking-normal">(Percuma)</div>
+                        </th>
+                        <th className="py-3 px-3 text-center font-black">Jumlah Pax</th>
+                        <th className="py-3 px-3.5">Jumlah Bayaran</th>
+                        <th className="py-3 px-3.5">Bukti Google Drive</th>
+                        <th className="py-3 px-3.5 text-right">Tindakan</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       {registrations.map(reg => (
                         <tr key={reg.id} className="hover:bg-slate-50/70">
-                          <td className="py-3 px-4 font-mono font-bold text-blue-700 whitespace-nowrap">
+                          <td className="py-3 px-3.5 font-mono font-bold text-blue-700 whitespace-nowrap">
                             {reg.receiptNo}
                           </td>
-                          <td className="py-3 px-4">
+                          <td className="py-3 px-3.5">
                             <span
                               className={`inline-block text-[9px] font-black uppercase px-2 py-0.5 rounded-full mb-1 ${
                                 reg.participantType === 'Alumni'
@@ -1389,16 +1455,30 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                             <div className="font-extrabold text-slate-900 uppercase">{reg.nama}</div>
                             {reg.noTelefon && <div className="text-[10px] text-slate-500">{reg.noTelefon}</div>}
                           </td>
-                          <td className="py-3 px-4 text-[11px] text-slate-700">
-                            <div><strong>{reg.totalPax}</strong> pax</div>
-                            <div className="text-[10px] text-slate-400">
-                              ≥12t: {reg.pax12Plus} | 5–11t: {reg.pax5To11} | ≤4t: {reg.pax4Below}
-                            </div>
+                          <td className="py-3 px-3 text-center bg-blue-50/20">
+                            <span className="inline-block min-w-6 text-center font-extrabold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-lg text-xs">
+                              {reg.pax12Plus ?? 0}
+                            </span>
                           </td>
-                          <td className="py-3 px-4 font-black text-emerald-700 whitespace-nowrap">
+                          <td className="py-3 px-3 text-center bg-indigo-50/20">
+                            <span className="inline-block min-w-6 text-center font-extrabold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-lg text-xs">
+                              {reg.pax5To11 ?? 0}
+                            </span>
+                          </td>
+                          <td className="py-3 px-3 text-center bg-emerald-50/20">
+                            <span className="inline-block min-w-6 text-center font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-lg text-xs">
+                              {reg.pax4Below ?? 0}
+                            </span>
+                          </td>
+                          <td className="py-3 px-3 text-center">
+                            <span className="inline-block min-w-7 text-center font-black text-slate-900 bg-slate-100 px-2 py-1 rounded-lg text-xs">
+                              {reg.totalPax}
+                            </span>
+                          </td>
+                          <td className="py-3 px-3.5 font-black text-emerald-700 whitespace-nowrap">
                             RM {Number(reg.totalAmount || 0).toFixed(2)}
                           </td>
-                          <td className="py-3 px-4">
+                          <td className="py-3 px-3.5">
                             {reg.driveFileUrl ? (
                               <a
                                 href={reg.driveFileUrl}
@@ -1416,7 +1496,7 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                               </span>
                             )}
                           </td>
-                          <td className="py-3 px-4 text-right whitespace-nowrap">
+                          <td className="py-3 px-3.5 text-right whitespace-nowrap">
                             <div className="inline-flex items-center gap-1.5">
                               <button
                                 type="button"
@@ -1443,6 +1523,29 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                         </tr>
                       ))}
                     </tbody>
+                    <tfoot className="bg-slate-50 font-black text-slate-800 border-t-2 border-slate-200">
+                      <tr>
+                        <td colSpan={2} className="py-3.5 px-4 text-right uppercase text-[10px] text-slate-500 font-black">
+                          Jumlah Keseluruhan:
+                        </td>
+                        <td className="py-3.5 px-3 text-center text-blue-700 font-black bg-blue-50/60 text-xs">
+                          {stats.totalPax12Plus}
+                        </td>
+                        <td className="py-3.5 px-3 text-center text-indigo-700 font-black bg-indigo-50/60 text-xs">
+                          {stats.totalPax5To11}
+                        </td>
+                        <td className="py-3.5 px-3 text-center text-emerald-700 font-black bg-emerald-50/60 text-xs">
+                          {stats.totalPax4Below}
+                        </td>
+                        <td className="py-3.5 px-3 text-center font-black text-slate-900 bg-slate-100 text-xs">
+                          {stats.totalPax}
+                        </td>
+                        <td className="py-3.5 px-3.5 font-black text-emerald-700 whitespace-nowrap">
+                          RM {stats.totalAmount.toFixed(2)}
+                        </td>
+                        <td colSpan={2}></td>
+                      </tr>
+                    </tfoot>
                   </table>
                 </div>
               )}
