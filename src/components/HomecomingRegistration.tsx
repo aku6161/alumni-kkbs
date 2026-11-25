@@ -40,7 +40,8 @@ import {
   UserCheck,
   Users,
   X,
-  AlertCircle
+  AlertCircle,
+  Loader2
 } from 'lucide-react';
 
 export const HOMECOMING_DRIVE_FOLDER_ID = '1FeJfBi6hMg_8doCOaN3m7MCHc09cSiAa';
@@ -1282,9 +1283,13 @@ export const HomecomingRegistration: React.FC<HomecomingRegistrationProps> = ({
                     disabled={isSubmitting}
                     className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-black text-sm uppercase tracking-wider rounded-2xl shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2.5 cursor-pointer transition-all disabled:opacity-50"
                   >
-                    <Receipt className="w-5 h-5" />
+                    {isSubmitting ? (
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                    ) : (
+                      <Receipt className="w-5 h-5" />
+                    )}
                     <span>
-                      {isSubmitting ? 'Sedang Memproses & Simpan ke Drive...' : 'Hantar & Jana Resit Sebagai Bukti Tempahan'}
+                      {isSubmitting ? 'Pendaftaran sedang diproses...' : 'Hantar & Jana Resit Sebagai Bukti Tempahan'}
                     </span>
                   </button>
 
